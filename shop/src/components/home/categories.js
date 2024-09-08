@@ -1,6 +1,7 @@
 import { useState, React } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../assets/css/home/categories.css";
+import "../../assets/css/href.css"
 import tshirtImage from "../../assets/media/tshirt.png";
 import pantsImage from "../../assets/media/pants.png";
 import socksImage from "../../assets/media/socks.png";
@@ -24,16 +25,23 @@ function Categories() {
         <div class="p-3 d-flex justify-content-center col-md-10">
           <div class="glassy-bg col-md-12 row" style={{ height: "120px" }}>
             {Categories.map((c) => (
-              <div class="col d-flex justify-content-center ">
+              <a
+                class="col d-flex justify-content-center hrefb"
+                href={"/products?category=" + c.Category}
+              >
                 <div class="pt-2">
                   <div
                     class=" rounded d-flex justify-content-center "
-                    style={{ backgroundColor: "#D9D9D9", height: "100px" , width:"100px"}}
+                    style={{
+                      backgroundColor: "#D9D9D9",
+                      height: "100px",
+                      width: "100px",
+                    }}
                   >
                     <span class="fontr align-self-center">{c.Category}</span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

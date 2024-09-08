@@ -1,12 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import Home from './components/Home';
-import Prod from './components/home/products';
+import Nav from '../src/components/Nav';
+import Home from './components/products/mostSeller';
+import Hoe from './components/products/products';
+import Footer from './components/footer';
 
 
 function App() {
   return (<>
-      <Prod />
+      <Nav />
+      <Home />
+
+      <Footer />
   </>);
 }
 
