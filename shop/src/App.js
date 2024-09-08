@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Example from './components/Home';
+import Home from './components/Home';
+import Prod from './components/home/products';
+
 
 function App() {
-  return (
-    <Example />
-  );
+  return (<>
+      <Prod />
+  </>);
 }
 
 export default App;

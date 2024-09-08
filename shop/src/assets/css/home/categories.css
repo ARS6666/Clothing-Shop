@@ -1,0 +1,7 @@
+.glassy-bg{
+    background: rgba(135, 135, 135, 0.45);
+    box-shadow: 0 8px 32px 0px rgba(0, 102, 255, 0.37);
+    backdrop-filter: blur( 16px );
+    -webkit-backdrop-filter: blur( 16px );
+    border-radius: 10px;
+}

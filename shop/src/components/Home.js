@@ -1,17 +1,13 @@
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import Nav from './Nav';
+import Cat from './home/categories';
+import Example from './home/slider';
 
-function Example() {
-    return (
-        <div>
-            <h1>
-                Example heading
-                <Badge bg="secondary" as={Button}>
-                    New
-                </Badge>
-            </h1>
-        </div>
-    );
+function Home() {
+  return (<>
+    <Nav />
+    <Example />
+    <Cat />
+  </>);
 }
 
-export default Example;
+export default Home;
