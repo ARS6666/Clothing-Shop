@@ -1,37 +1,28 @@
-import './App.css';
-import Nav from '../src/components/Nav';
-<<<<<<< HEAD
-import Home from './components/productsinfo/PI';
-import Comment from './components/productsinfo/CommentBox';
-import Footer from './components/footer';
-import COm from './components/productsinfo/commonProducts';
-=======
-import Home from './components/Home';
-import Hoe from './components/products/products';
-import Footer from './components/footer';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
->>>>>>> 0e5a90ed1752c58d847db07e041ee5bc06326818
+import "./App.css";
+import Nav from "../src/components/Nav";
 
+import Home from "./components/Home";
+import PI from "./components/productsinfo/ProductPage";
+import ProductList from "./components/products/ProductList";
+import Footer from "./components/footer";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 function App() {
-  return (<>
-<<<<<<< HEAD
-      <Nav />
-      <Home />
-      <Comment />
-      <COm />
+  // const location = useLocation();
+  // const hideFooterPaths = ["/login", "/register", "*"];
+  // const showFooter = !hideFooterPaths.includes(location.pathname);
 
-      <div class="pt-4"><Footer /></div>
-=======
-    <Nav />
-    <Router>
-      <Routes>
-        <Route path='' element={<Home />} />
-      </Routes>
-    </Router>
-    <Footer />
->>>>>>> 0e5a90ed1752c58d847db07e041ee5bc06326818
-  </>);
+  return (
+    <>
+      <Nav />
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/pi" element={<PI />} />
+        </Routes>
+      <Footer />
+    </>
+  );
 }
 
 export default App;

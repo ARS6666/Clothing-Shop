@@ -42,7 +42,7 @@ function Products() {
 
       try {
         const response = await fetch(
-          "http://94.183.74.154:1234/api/v1/products/",
+          "http://127.0.0.1/api/v1/products/",
           requestOptions
         );
         const result = await response.json();
