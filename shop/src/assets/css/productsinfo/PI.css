@@ -3,8 +3,17 @@
     background-color: white;
     height: 700px;
 }
+
 .Imageside {
     object-fit: contain;
     background-color: white;
     height: 222px;
+}
+
+.color-option {
+    transition: transform 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
 }

@@ -11,16 +11,16 @@ const CustomNavbar = () => {
 
   return (
     <>
-      <div dir="rtl" class="col-md-12 fontr border-bottom border-dark" style={{ height: "50px" }}>
+      <div dir="rtl" class="col-md-12 fontr border-bottom border-dark" style={{ height: "65px" }}>
         <div class="row">
           <div class="col-md-7 row">
             <div class="col-md-3 ">
-              <img style={{ height: "50px" }} src={logo} class="col" />
+              <img style={{ height: "60px" }} src={logo} class="col" />
             </div>
             <div class="col-md-9 align-self-center d-flex justify-content-between">
-              <span class="col-md-3">خانه </span>
-              <span class="col-md-3">محصولات </span>
-              <span class="col-md-3">درباره ما </span>
+              <span class="col-md-3 h5">خانه </span>
+              <span class="col-md-3 h5">محصولات </span>
+              <span class="col-md-3 h5">درباره ما </span>
             </div>
           </div>
           <div class="col-md-5  row">
@@ -43,16 +43,16 @@ const CustomNavbar = () => {
                 </button>
               </a>
             </div>
-            <div class="col-md-3 h5 mt-2 d-flex justify-content-center align-self-center">
-              <i class="fa-solid fa-cart-shopping"></i>
+            <div class="col-md-2 h5 mt-2 d-flex justify-content-center align-self-center">
+              <a href="/cart" class="hrefb"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
-            <div class="col-md-3 align-self-center">
+            <div class="col-md-4 align-self-center">
               <span>
-                <a href="/login" class="hrefb">
+                <a href="/login" class="hrefb h5">
                   ورود
                 </a>
                 |
-                <a href="/account" class="hrefb">
+                <a href="/account" class="hrefb h5">
                   حساب کاربری
                 </a>
               </span>

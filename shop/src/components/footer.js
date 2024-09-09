@@ -9,7 +9,7 @@ function Footer() {
   return (
     <>
       <div
-        class="col-md-12 row border-top border-dark"
+        class="col-md-12 row border-top border-dark pt-3"
         dir="rtl"
         style={{ height: "300px" }}
       >

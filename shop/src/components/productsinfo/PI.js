@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.css";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 
@@ -13,41 +12,15 @@ function ProductInfo() {
     { image: two },
     { image: three },
   ]);
-  const [IMG, setIMG] = useState([]);
-  const [product, setProduct] = useState({ colors: [] });
-  const location = useLocation();
-  const [id, setId] = useState('');
-  const [isChecked, setIsChecked] = React.useState(false);
+  const [selectedColor, setSelectedColor] = useState("#ffffff"); // Default white color
 
-  const myHeaders = new Headers();
-  myHeaders.append("accept", "application/json");
-  myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
-  myHeaders.append("X-CSRFToken", "tc6gv0BlCSEVzaDY2DEUFDyvHxAouuuWnjsAM5wngQp4psjqQKsZfKhJ0eopXCA7");
-
-  const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-  };
-
-  useEffect(() => {
-      const searchParams = new URLSearchParams(location.search);
-      const paramId = searchParams.get('id');
-      if (paramId) {
-          setId(paramId);
-      }
-  }, [location.search]);
-
-  useEffect(() => {
-      if (id) {
-          fetch("http://127.10.0.1/api/v1/products/" + id, requestOptions)
-              .then((response) => response.json())
-              .then((result) => {
-                  setProduct(result);setIMG(result.images);console.log(IMG);
-              })
-              .catch((error) => console.error(error));
-      }
-  }, [id]);
+  const color = [
+    { name: "Red", value: "#ff0000" },
+    { name: "Green", value: "#00ff00" },
+    { name: "Blue", value: "#0000ff" },
+    { name: "Yellow", value: "#ffff00" },
+    { name: "Purple", value: "#800080" },
+  ];
 
   return (
     <>
@@ -68,7 +41,72 @@ function ProductInfo() {
             </Carousel>
           </div>
         </div>
-        <div class="col-md-6 bg-warning"></div>
+        <div class="col-md-6  fontr pt-5">
+          <div>
+            <span class="h1">شلوار مردانه</span>
+          </div>
+          <div class="pt-3">
+            <span class="h3 ">998 هزار تومان</span>
+          </div>
+          <div class="pt-5">
+            <span class="h4">رنگ ها:</span>
+            <div class="  d-flex justify-content-end ">
+              <div className="d-flex flex-wrap">
+                {color.map((color) => (
+                  <div
+                    key={color.name}
+                    className="color-option m-2"
+                    style={{
+                      borderRadius: "50px",
+                      backgroundColor: color.value,
+                      width: "40px",
+                      height: "40px",
+                      cursor: "pointer",
+                      border:
+                        selectedColor === color.value
+                          ? "2px solid black"
+                          : "none",
+                    }}
+                    onClick={() => setSelectedColor(color.value)}
+                  />
+                ))}
+              </div>
+
+              <div />
+            </div>
+          </div>
+          <div class="pt-4">
+            <div>
+              <span class="h4">توضیحات:</span>
+            </div>
+            <div>
+              <span class="h5">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
+                در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
+              </span>
+            </div>
+          </div>
+          <div class="pt-4">
+            <div>
+              <span class="h4">جنس:</span>
+            </div>
+            <div class="  d-flex justify-content-end ">
+              <span class="h5">پنبه و الیاف مصنوعی</span>
+            </div>
+          </div>
+          <div class="pt-4">
+            <div>
+              <span class="h4">برند:</span>
+            </div>
+            <div class="  d-flex justify-content-end ">
+              <span class="h5">زارا</span>
+            </div>
+          </div>
+          <div class="pt-5">
+            <button class="col-md-12 btn rounded-0 btn-lg btn-outline-dark ">افزودن به سبد خرید</button>
+          </div>
+        </div>
       </div>
     </>
   );
