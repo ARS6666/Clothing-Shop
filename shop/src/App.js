@@ -1,28 +1,30 @@
-import "./App.css";
-import Nav from "../src/components/Nav";
+import './App.css';
+import Nav from '../src/components/Nav';
+import Home from './components/Home';
+import PI from './components/productsinfo/ProductPage';
+import Products from './components/products/ProductList';
+import Signin from './components/authentication/signin';
+import Login from './components/authentication/login';
+import Panel from './components/account/panel';
+import Footer from './components/footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from "./components/Home";
-import PI from "./components/productsinfo/ProductPage";
-import ProductList from "./components/products/ProductList";
-import Footer from "./components/footer";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 function App() {
-  // const location = useLocation();
-  // const hideFooterPaths = ["/login", "/register", "*"];
-  // const showFooter = !hideFooterPaths.includes(location.pathname);
-
-  return (
-    <>
-      <Nav />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/pi" element={<PI />} />
-        </Routes>
-      <Footer />
-    </>
-  );
+  return (<>
+    <Nav />
+    <Router>
+      <Routes>
+        <Route path='' element={<Home />} />
+        <Route path='/pi' element={<PI />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/panel' element={<Panel />} />
+        <Route path='/signin' element={<Signin />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Router>
+    <Footer />
+  </>);
 }
 
 export default App;

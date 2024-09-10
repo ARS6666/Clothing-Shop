@@ -18,9 +18,9 @@ const CustomNavbar = () => {
               <img style={{ height: "60px" }} src={logo} class="col" />
             </div>
             <div class="col-md-9 align-self-center d-flex justify-content-between">
-              <span class="col-md-3 h5">خانه </span>
-              <span class="col-md-3 h5">محصولات </span>
-              <span class="col-md-3 h5">درباره ما </span>
+              <a class="hrefb" href="/"><span class="col-md-3 h5">خانه </span></a>
+              <a class="hrefb" href="/products"><span class="col-md-3 h5">محصولات </span></a>
+              <a class="hrefb" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
             </div>
           </div>
           <div class="col-md-5  row">

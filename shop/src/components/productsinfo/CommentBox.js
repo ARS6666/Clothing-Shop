@@ -13,7 +13,7 @@ const Comments = ({ productId }) => {
   }, [productId]);
 
   function show() {
-    fetch(`http://127.0.0.1/comments/api/v1/post?pst=${productId}`)
+    fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
       .then((response) => response.json())
       .then((result) => {
         setComments(result);
@@ -42,7 +42,7 @@ const Comments = ({ productId }) => {
       body: raw,
       redirect: "follow",
     };
-    fetch("http://127.0.0.1/comments/api/v1/post", requestOptions)
+    fetch("http://127.0.0.1:8000/comments/api/v1/post", requestOptions)
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => {
@@ -107,14 +107,14 @@ const Comments = ({ productId }) => {
             </div>
           </div>
           <div class=" col-md-6 contain">
-            {/* {comments.map((c, index) => ( */}
-            <div class="p-3">
-              <div className="mt-2 text-dark-50 shadow rounded font-weight-bold font-size-lg text-left max-w-1500px fontr p-2">
-                <div className="text-muted h5">خدایا :</div>
-                <div className="h5">خودت کمک کن</div>
+            {comments.map((c, index) => (
+              <div class="p-3">
+                <div className="mt-2 text-dark-50 shadow rounded font-weight-bold font-size-lg text-left max-w-1500px fontr p-2">
+                  <div className="text-muted h5">{c.name} :</div>
+                  <div className="h5">{c.content}</div>
+                </div>
               </div>
-            </div>
-            {/* ))} */}
+            ))}
           </div>
         </div>
       </div>
