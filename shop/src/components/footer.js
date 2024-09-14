@@ -4,6 +4,7 @@ import eight from "../assets/media/85.png";
 import eighto from "../assets/media/86.PNG";
 import "../assets/css/href.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
+import "../assets/css/footer.css"
 
 function Footer() {
   return (
@@ -18,9 +19,12 @@ function Footer() {
             <div class="pt-4 row">
               <img
                 src={logo}
-                style={{ height: "45px", width: "auto" }}
+                style={{ height: "50px", width: "auto",
+                marginBottom: "10px"
+                 }}
                 class="col-md-12"
               />
+              
               <div>
                 <i class="fa fa-telegram h4 p-1" aria-hidden="true"></i>
                 <i class="fa-brands fa-facebook-f h4 p-1"></i>
@@ -76,6 +80,10 @@ function Footer() {
           <img class="m-3 border rounded p-2" src={eight} style={{ height: "100px", width: "auto" }} />
           <img class="m-3 border rounded p-2" src={eighto} style={{ height: "100px", width: "auto" }} />
         </div>
+        <div className="inputt-group">
+    <label className="label"><h6>برای با خبر شدن از جدید ترین اخبار </h6></label>
+    <input autocomplete="off" name="Email" id="Email" className="inputt" type="email" placeholder="ایمیل خود را وارد کنید..."/>
+    </div>
       </div>
     </>
   );

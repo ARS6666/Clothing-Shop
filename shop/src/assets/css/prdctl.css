@@ -1,0 +1,63 @@
+
+  
+  .mega-menu h6 {
+    color: #000000; /* قرمز تیره برای عناوین */
+    font-size: 17px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    border-right: solid #e63946;
+    padding-right: 9px;
+    content: '>';
+
+  }
+
+  .mega-menu ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .mega-menu li {
+    list-style: none;
+    color: #4f4f4f; /* طوسی تیره برای آیتم‌های لیست */
+    padding: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .mega-menu li:hover {
+    color: #e00a0a; /* تغییر رنگ به قرمز هنگام هاور */
+    transition: 0.2s;
+  }
+  
+  .mega-menu .col-md-3 {
+    border-right: 1px solid #e0e0e0; /* این خطه وسطه */
+    padding-right: 15px;
+    margin-bottom: 10px;
+    
+
+  }
+  
+
+  
+  
+  .mega-menu-row {
+    margin-bottom: 20px;
+  }
+  
+ 
+  
+  .mega-menu-container ul li {
+    margin-bottom: 0;
+  }
+  
+  .mega-menu-container ul {
+    margin-bottom: 20px;
+  }
+  
+  .mega-menu ul li:hover::before {
+    content: "→";
+    color: #363636;
+    padding-right: 5px;
+    
+  }
+  

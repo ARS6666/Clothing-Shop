@@ -8,6 +8,7 @@ import Login from './components/authentication/login';
 import Panel from './components/account/panel';
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Prdctlist from './components/Features/PrdctList';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/panel' element={<Panel />} />
         <Route path='/signin' element={<Signin />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/prdct' element={<Prdctlist />} />
       </Routes>
     </Router>
     <Footer />

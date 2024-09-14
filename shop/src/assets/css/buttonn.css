@@ -1,0 +1,27 @@
+.ah {
+    text-decoration: none; /* حذف خط زیر متن پیش‌فرض */
+    position: relative; /* برای قرار دادن خط زیر متن */
+  }
+  
+  .ah:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* فاصله خط از پایین */
+    width: 100%;
+    height: 2px; /* ضخامت خط */
+    background-color: rgb(221, 1, 1); /* رنگ خط */
+    transition: width 0.3s ease; /* انیمیشن خط */
+  }
+  
+  .ah::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: rgb(215, 2, 2);
+    transition: width 0.3s ease;
+  }
+  

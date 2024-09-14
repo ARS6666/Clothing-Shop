@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
 import logo from "../assets/media/logo.png";
-import "https://kit.fontawesome.com/6c2a0de8a3.js";
+import "https://kit.fontawesome.com/6c2a0de8a3.js"
+import Prdctlist from "./Features/PrdctList";
+import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
   const [search, setSearch] = useState();
@@ -17,10 +19,13 @@ const CustomNavbar = () => {
             <div class="col-md-3 ">
               <img style={{ height: "60px" }} src={logo} class="col" />
             </div>
-            <div class="col-md-9 align-self-center d-flex justify-content-between">
-              <a class="hrefb" href="/"><span class="col-md-3 h5">خانه </span></a>
-              <a class="hrefb" href="/products"><span class="col-md-3 h5">محصولات </span></a>
-              <a class="hrefb" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
+            <div class="col-md-8 align-self-center d-flex justify-content-between">
+              <a class="hrefb ah" href="/"><span class="col-md-3 h5">خانه </span></a> 
+              <a className="hrefb ah"><Prdctlist/></a>
+              <a class="hrefb ah" href="/products"><span class="col-md-3 h5">محصولات </span></a>
+              <a class="hrefb ah" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
+             
+              
             </div>
           </div>
           <div class="col-md-5  row">
