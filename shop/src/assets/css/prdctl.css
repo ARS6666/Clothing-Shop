@@ -1,7 +1,7 @@
 
   
   .mega-menu h6 {
-    color: #000000; /* قرمز تیره برای عناوین */
+    color: #000000; /* قرمز تیره برای عنوان گنده ها */
     font-size: 17px;
     margin-bottom: 10px;
     margin-top: 15px;
@@ -18,7 +18,7 @@
 
   .mega-menu li {
     list-style: none;
-    color: #4f4f4f; /* طوسی تیره برای آیتم‌های لیست */
+    color: #4f4f4f; /* طوسی تیره برای آیتم‌های لیسته*/
     padding: 5px 0;
     cursor: pointer;
     transition: color 0.3s ease;

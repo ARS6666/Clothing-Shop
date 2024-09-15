@@ -1,6 +1,6 @@
 .ah {
-    text-decoration: none; /* حذف خط زیر متن پیش‌فرض */
-    position: relative; /* برای قرار دادن خط زیر متن */
+    text-decoration: none; 
+    position: relative; /* واسه قرار دادن خط زیر متنه*/
   }
   
   .ah:hover::after {
