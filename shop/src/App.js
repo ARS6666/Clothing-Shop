@@ -9,6 +9,7 @@ import Panel from './components/account/panel';
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
+import About from './components/CornerPages/About';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/signin' element={<Signin />} />
         <Route path='/login' element={<Login />} />
         <Route path='/prdct' element={<Prdctlist />} />
+        <Route path='/about' element={<About />} />
       </Routes>
     </Router>
     <Footer />
