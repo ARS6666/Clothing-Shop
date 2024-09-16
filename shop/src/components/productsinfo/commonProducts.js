@@ -18,10 +18,15 @@ const CommonProducts = () => {
     redirect: "follow",
   };
 
-  fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions)
-    .then((response) => response.json())
-    .then((result) => setPRoduct(result))
-    .catch((error) => console.error(error));
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setPRoduct(result))
+      .catch((error) => console.error(error));
+  }, []);
+
+
+
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -65,45 +70,44 @@ const CommonProducts = () => {
           </div>
         </div>
         <div class="d-flex justify-content-end col-md-6">
-            <span class=" fontr h3  align-self-center">محصولات مشابه</span>
+          <span class=" fontr h3  align-self-center">محصولات مشابه</span>
         </div>
       </div>
 
       <div className="product-slider">
-        <div class="col-md-12 row " dir ="rtl">
+        <div class="col-md-12 row " dir="rtl">
           {Productss.slice(currentIndex, currentIndex + 4).map((c) => (
             <div class="p-3 col-md-3">
-            <div class="bg-light shadow  col-md-12 product-card">
-              <div class="row">
-                <div class="d-flex justify-content-center ">
-                  <img
-                    src={c.pic}
-                    class="Img col-md-11 p-2"
-                    style={{ borderRadius: "20px" }}
-                  />
+              <div class="col-md-12 product-card">
+                <div class="row">
+                  <div class="d-flex justify-content-center ">
+                    <img
+                      src={c.pic}
+                      class="Img col-md-11 p-2"
+                    />
+                  </div>
+                  <div class="d-flex justify-content-center pt-2">
+                    <span class="h3 fontr">{c.name}</span>
+                  </div>
+                  <div class="d-flex justify-content-center ">
+                    <span class="h5 fontr pt-1" dir="rtl">
+                      {c.price} هزار تومن
+                    </span>
+                  </div>
                 </div>
-                <div class="d-flex justify-content-center pt-2">
-                  <span class="h3 fontr">{c.name}</span>
-                </div>
-                <div class="d-flex justify-content-center ">
-                  <span class="h5 fontr pt-1" dir="rtl">
-                    {c.price} هزار تومن
-                  </span>
+                <div className="hover-details col-md-12 ">
+                  <div
+                    class="d-flex justify-content-center "
+                    style={{ height: "400px" }}
+                  >
+                    <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                      <button className="btn btn-light hover  fontr ">
+                        مشاهده محصول
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className="hover-details col-md-12 ">
-                <div
-                  class="d-flex justify-content-center "
-                  style={{ height: "400px" }}
-                >
-                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                    <button className="btn btn-light hover  fontr ">
-                      مشاهده محصول
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
             </div>
           ))}
         </div>

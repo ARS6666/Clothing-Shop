@@ -4,9 +4,6 @@ import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 import Comment from './CommentBox';
 
-import one from "../../assets/media/11.png";
-import two from "../../assets/media/12.PNG";
-import three from "../../assets/media/123.png";
 function ProductInfo() {
   const [IMG, setIMG] = useState([]);
   const [Size, setSize] = useState([]);

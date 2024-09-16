@@ -14,21 +14,21 @@ const CustomNavbar = () => {
   return (
     <>
       <div dir="rtl" class="col-md-12 fontr border-bottom border-dark" style={{ height: "65px" }}>
-        <div class="row">
-          <div class="col-md-7 row">
+        <div class="row m-0">
+          <div class="col-md-7 row m-0">
             <div class="col-md-3 ">
               <img style={{ height: "60px" }} src={logo} class="col" />
             </div>
             <div class="col-md-8 align-self-center d-flex justify-content-between">
-              <a class="hrefb ah" href="/"><span class="col-md-3 h5">خانه </span></a> 
-              <a className="hrefb ah"><Prdctlist/></a>
+              <a class="hrefb ah" href="/"><span class="col-md-3 h5">خانه </span></a>
               <a class="hrefb ah" href="/products"><span class="col-md-3 h5">محصولات </span></a>
+              <a className="hrefb ah"><Prdctlist /></a>
               <a class="hrefb ah" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
-             
-              
+
+
             </div>
           </div>
-          <div class="col-md-5  row">
+          <div class="col-md-5  row m-0">
             <div class="col-md-5 align-self-center">
               <input
                 class="form-control fontr"

@@ -20,7 +20,7 @@ const Prdctlist = () => {
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} dir="rtl">
     <span className="col-md-3 h5">
-        دسته بندی کالا ها
+        دسته بندی
     </span>
       {showMenu && (
         <div

@@ -42,7 +42,7 @@ function Products() {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1/api/v1/products/",
+          "http://127.0.0.1:8000/api/v1/products/",
           requestOptions
         );
         const result = await response.json();
@@ -99,23 +99,22 @@ function Products() {
         </span>
       </div>
       <div class="col-md-12 row" dir="rtl">
-        <div class="col-md-3 bg-danger">
-          {/* <Filter onFilterChange={handleFilterChange} /> */}
+        <div class="col-md-3 ">
+          <Filter onFilterChange={handleFilterChange} />
         </div>
         <div class="col-md-9 row d-flex justify-content-center fontr">
           {detail.map((c) => (
             <div class="p-3 col-md-4">
-              <div class="bg-light shadow  col-md-12 m-3 product-card">
+              <div class="col-md-12 m-3 product-card">
                 <div class="row">
                   <div class="d-flex justify-content-center ">
                     <img
                       src={c.pic}
-                      class="Img col-md-11 p-2 "
-                      style={{ borderRadius: "20px" }}
+                      class="Img col-md-11 "
                     />
                   </div>
                   <div class="d-flex justify-content-center pt-2">
-                    <span class="h3 fontr ">{c.name}</span>
+                    <span class="h4 fontr ">{c.name}</span>
                   </div>
                   <div class="d-flex justify-content-center ">
                     <span class="h5 fontr pt-1 " dir="rtl">

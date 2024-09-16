@@ -100,7 +100,7 @@ const Comments = ({ productId }) => {
             <div className="d-flex justify-content-end p-2">
               <button
                 onClick={sendToServer}
-                className="col-md-3 btn btn-lg btn-success font-weight-bold"
+                className="col-md-3 btn btn-success"
               >
                 ثبت
               </button>

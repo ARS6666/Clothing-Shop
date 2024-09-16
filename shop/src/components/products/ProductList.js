@@ -3,8 +3,8 @@ import Products from './products';
 
 function Home() {
   return (<>
-    <MostSeller />
     <Products />
+    <MostSeller />
   </>);
 }
 
