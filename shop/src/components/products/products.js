@@ -3,25 +3,29 @@ import { useLocation } from "react-router-dom";
 import "../../assets/css/home/products.css";
 import Filter from "./Filter";
 function Products() {
+
   const [detail, setDetail] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [category, setCategory] = useState('');
   const location = useLocation();
+
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const paramId = searchParams.get("category");
+    const paramId = searchParams.get('category');
     if (paramId) {
       setCategory(paramId);
+
     }
   }, [location.search]);
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const paramId = searchParams.get("search");
+    const paramId = searchParams.get('search');
     if (paramId) {
       setSearchTerm(paramId);
+
     }
   }, [location.search]);
 
@@ -29,26 +33,20 @@ function Products() {
     const fetchProducts = async () => {
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
-      myHeaders.append(
-        "X-CSRFToken",
-        "AmrdKuP98ULWK4LXWttdeKR7sbq8MXasc254HGREEMpPhMwsthsWoHV4KfdW6NHl"
-      );
+      myHeaders.append("X-CSRFToken", "AmrdKuP98ULWK4LXWttdeKR7sbq8MXasc254HGREEMpPhMwsthsWoHV4KfdW6NHl");
 
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
-        redirect: "follow",
+        redirect: "follow"
       };
 
       try {
-        const response = await fetch(
-          "http://127.0.0.1:8000/api/v1/products/",
-          requestOptions
-        );
+        const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
         const result = await response.json();
         setDetail(result);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
@@ -63,19 +61,12 @@ function Products() {
   };
 
   const filteredProducts = detail.filter((product) => {
-    const matchesSearchTerm = product.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesMinPrice =
-      minPrice === "" || product.price >= parseFloat(minPrice);
-    const matchesMaxPrice =
-      maxPrice === "" || product.price <= parseFloat(maxPrice);
-    const matchesCategory =
-      category === "" || product.category.includes(category);
+    const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesMinPrice = minPrice === '' || product.price >= parseFloat(minPrice);
+    const matchesMaxPrice = maxPrice === '' || product.price <= parseFloat(maxPrice);
+    const matchesCategory = category === '' || product.category.includes(category);
 
-    return (
-      matchesSearchTerm && matchesMinPrice && matchesMaxPrice && matchesCategory
-    );
+    return matchesSearchTerm && matchesMinPrice && matchesMaxPrice && matchesCategory;
   });
 
   const groupedProducts = filteredProducts.reduce((acc, product) => {
@@ -87,13 +78,14 @@ function Products() {
     return acc;
   }, {});
 
-  const displayedProducts = Object.values(groupedProducts).flatMap(
-    (products) => products
+  const displayedProducts = Object.values(groupedProducts).flatMap(products =>
+    products
   );
+
 
   return (
     <>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center col-md-12">
         <span class="h1 fontr border-bottom border-4 border-danger p-3">
           محصولات
         </span>
@@ -103,7 +95,7 @@ function Products() {
           <Filter onFilterChange={handleFilterChange} />
         </div>
         <div class="col-md-9 row d-flex justify-content-center fontr">
-          {detail.map((c) => (
+          {displayedProducts.map((c) => (
             <div class="p-3 col-md-4">
               <div class="col-md-12 m-3 product-card">
                 <div class="row">

@@ -24,8 +24,6 @@ const CustomNavbar = () => {
               <a class="hrefb ah" href="/products"><span class="col-md-3 h5">محصولات </span></a>
               <a className="hrefb ah"><Prdctlist /></a>
               <a class="hrefb ah" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
-
-
             </div>
           </div>
           <div class="col-md-5  row m-0">

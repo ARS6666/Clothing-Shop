@@ -32,8 +32,8 @@ const Filter = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="container fontr " dir='rtl'>
-      <div className="filter-header">فیلتر محصولات</div>
+    <div className="container  fontr " dir='rtl'>
+      <div className="filter-header ">فیلتر محصولات</div>
       <div className="filter-input">
         <label className="filter-label">جستجو</label>
         <input

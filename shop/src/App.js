@@ -1,11 +1,12 @@
 import './App.css';
 import Nav from '../src/components/Nav';
 import Home from './components/Home';
+import Test from './components/test';
 import PI from './components/productsinfo/ProductPage';
 import Products from './components/products/ProductList';
 import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
-import Panel from './components/account/panel';
+import Panel from './components/account/account';
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path='' element={<Home />} />
         <Route path='/pi' element={<PI />} />
+        <Route path='/test' element={<Test />} />
         <Route path='/products' element={<Products />} />
         <Route path='/panel' element={<Panel />} />
         <Route path='/signin' element={<Signin />} />

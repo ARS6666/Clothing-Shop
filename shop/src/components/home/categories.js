@@ -6,11 +6,11 @@ import "../../assets/css/href.css"
 function Categories() {
   // const [Categories, setCategories] = useState();
   const Categories = [
-    { Name: "تی شرت" ,Category: "تی شرت" },
+    { Name: "تی شرت", Category: "تی شرت" },
     { Name: "شلوار", Category: "شلوار" },
-    { Name: "جوراب",Category: "جوراب" },
+    { Name: "جوراب", Category: "جوراب" },
     { Name: "کت", Category: "کت" },
-    { Name: "کلاه",  Category: "شلوارک" },
+    { Name: "کلاه", Category: "کلاه" },
     { Name: "دامن", Category: "پیراهن" },
   ];
 
