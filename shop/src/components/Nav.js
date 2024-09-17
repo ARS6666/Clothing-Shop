@@ -13,11 +13,11 @@ const CustomNavbar = () => {
 
   return (
     <>
-      <Navbar dir="rtl" style={{ height: "65px" }}>
+      <Navbar dir="rtl" style={{ height: "50px" }}>
         <div class="col-md-12 fontr border-bottom border-dark row m-0">
           <div class="col-md-7 row m-0">
             <div class="col-md-3 ">
-              <img style={{ height: "60px" }} src={logo} class="col" />
+              <img style={{ height: "45px" }} src={logo} class="col" />
             </div>
               <Nav class="col-md-8 align-self-center d-flex justify-content-between">
                 <Nav.Link class="hrefb " href="/"><span class="col-md-3 h5 ah">خانه </span></Nav.Link>

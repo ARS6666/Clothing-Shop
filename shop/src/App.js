@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from '../src/components/Nav';
 import Home from './components/Home';
-import Test from './components/test';
+import Test from './components/home/Categories.2';
 import PI from './components/productsinfo/ProductPage';
 import Products from './components/products/ProductList';
 import Signin from './components/authentication/signin';

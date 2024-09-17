@@ -1,5 +1,5 @@
 import Nav from './Nav';
-import Cat from './home/categories';
+import Cat from './home/Categories.2';
 import Example from './home/slider';
 import Prod from './home/products';
 
