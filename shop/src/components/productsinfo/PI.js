@@ -56,13 +56,13 @@ function ProductInfo() {
   return (
     <>
       <div class=" col-md-12 row pt-2" dir="rtl">
-        <div class="col-md-6 row" style={{ height: "700px" }}>
-          <div class="col-md-3 ">
+        <div class="col-md-6 row" >
+          <div class="col-md-2 ">
             {IMG.slice(0, 3).map((c) => (
-              <img className="col-md-12 Imageside mb-3" src={c.image} />
+              <img className="col-md-12 m-1" src={c.image} />
             ))}
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10">
             <Carousel>
               {IMG.map((Pic) => (
                 <Carousel.Item>
