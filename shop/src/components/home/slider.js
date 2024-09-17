@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import img from "../../assets/media/vid.mp4"
 import 'bootstrap/dist/css/bootstrap.css';
 import { Carousel } from 'react-bootstrap';
 
@@ -28,13 +29,15 @@ function ImageSlider() {
   return (<>
 
     <div class="col-md-12 ">
-      <Carousel>
+      <video style={{ height:"500px" , width:"100%" ,objectFit:"cover"}} src={img} muted autoPlay loop/>
+
+      {/* <Carousel>
         {SliderPic.map(Pic =>
           <Carousel.Item>
-            <img className="d-block w-100" src={Pic.image} />
+            <img src={Pic.image} style={{ height:"500px" , width:"100%" ,objectFit:"cover"}} />
           </Carousel.Item>
         )}
-      </Carousel>
+      </Carousel> */}
     </div>
 
   </>);
