@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Container, Row, Col, Dropdown, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../assets/css/prdctl.css'
+import "../../assets/css/buttonn.css"
+
 const Prdctlist = () => {
   const [showMenu, setShowMenu] = useState(false);
   let timer;
@@ -19,7 +21,7 @@ const Prdctlist = () => {
 
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} dir="rtl">
-    <span className="col-md-3 h5">
+    <span className="col-md-3 h5  ah">
         دسته بندی
     </span>
       {showMenu && (

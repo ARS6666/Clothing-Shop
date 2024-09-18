@@ -10,21 +10,21 @@ function Footer() {
   return (
     <>
       <div
-        class="col-md-12 row border-top border-dark pt-3"
+        class="col-md-12 row border-top border-dark pt-3 pb-5"
         dir="rtl"
-        style={{ height: "300px" }}
       >
-        <div class=" col-md-8  row">
-          <div class="col-md-3 " style={{ height: "300px" }}>
+        <div class=" col-md-8  row pb-3">
+          <div class="col-md-3 ">
             <div class="pt-4 row">
               <img
                 src={logo}
-                style={{ height: "50px", width: "auto",
-                marginBottom: "10px"
-                 }}
+                style={{
+                  height: "50px", width: "auto",
+                  marginBottom: "10px"
+                }}
                 class="col-md-12"
               />
-              
+
               <div>
                 <i class="fa fa-telegram h4 p-1" aria-hidden="true"></i>
                 <i class="fa-brands fa-facebook-f h4 p-1"></i>
@@ -33,7 +33,7 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div class="col-md-3  fontr" style={{ height: "300px" }}>
+          <div class="col-md-3  fontr">
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">🛒فروشگاه شاپ </h5>
               <p className="mb-3">
@@ -47,7 +47,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div class="col-md-3 fontr" style={{ height: "300px" }}>
+          <div class="col-md-3 fontr" >
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">خدمات مشتریان</h5>
               <p className="mb-3">
@@ -61,7 +61,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div class="col-md-3  fontr" style={{ height: "300px" }}>
+          <div class="col-md-3  fontr">
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">نمیی دانم</h5>
               <p className="mb-3">
@@ -80,10 +80,6 @@ function Footer() {
           <img class="m-3 border rounded p-2" src={eight} style={{ height: "100px", width: "auto" }} />
           <img class="m-3 border rounded p-2" src={eighto} style={{ height: "100px", width: "auto" }} />
         </div>
-        <div className="inputt-group">
-    <label className="label"><h6>برای با خبر شدن از جدید ترین اخبار </h6></label>
-    <input autocomplete="off" name="Email" id="Email" className="inputt" type="email" placeholder="ایمیل خود را وارد کنید..."/>
-    </div>
       </div>
     </>
   );

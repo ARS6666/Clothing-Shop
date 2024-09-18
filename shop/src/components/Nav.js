@@ -13,18 +13,18 @@ const CustomNavbar = () => {
 
   return (
     <>
-      <div dir="rtl" class="col-md-12 fontr border-bottom border-dark" style={{ height: "65px" }}>
-        <div class="row m-0">
+      <Navbar dir="rtl" style={{ height: "50px" }}>
+        <div class="col-md-12 fontr border-bottom border-dark row m-0">
           <div class="col-md-7 row m-0">
             <div class="col-md-3 ">
-              <img style={{ height: "60px" }} src={logo} class="col" />
+              <img style={{ height: "45px" }} src={logo} class="col" />
             </div>
-            <div class="col-md-8 align-self-center d-flex justify-content-between">
-              <a class="hrefb ah" href="/"><span class="col-md-3 h5">خانه </span></a>
-              <a class="hrefb ah" href="/products"><span class="col-md-3 h5">محصولات </span></a>
-              <a className="hrefb ah"><Prdctlist /></a>
-              <a class="hrefb ah" href="/about"><span class="col-md-3 h5">درباره ما </span></a>
-            </div>
+              <Nav class="col-md-8 align-self-center d-flex justify-content-between">
+                <Nav.Link class="hrefb " href="/"><span class="col-md-3 h5 ah">خانه </span></Nav.Link>
+                <Nav.Link class="hrefb" href="/products"><span class="col-md-3 h5  ah">محصولات </span></Nav.Link>
+                <Nav.Link className="hrefb"><Prdctlist /></Nav.Link>
+                <Nav.Link class="hrefb" href="/about"><span class="col-md-3 h5  ah">درباره ما </span></Nav.Link>
+              </Nav >
           </div>
           <div class="col-md-5  row m-0">
             <div class="col-md-5 align-self-center">
@@ -49,6 +49,7 @@ const CustomNavbar = () => {
             <div class="col-md-2 h5 mt-2 d-flex justify-content-center align-self-center">
               <a href="/cart" class="hrefb"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
+
             <div class="col-md-4 align-self-center">
               <span>
                 <a href="/login" class="hrefb h5">
@@ -61,8 +62,8 @@ const CustomNavbar = () => {
               </span>
             </div>
           </div>
-        </div>
       </div>
+    </Navbar >
     </>
   );
 };

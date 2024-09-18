@@ -16,12 +16,10 @@
     position: absolute;
     top: 0;
     right: 0;
-
     background: rgba(255, 255, 255, 0.17);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
-
     height: 450px;
     display: none;
     /* Initially hidden */
@@ -31,3 +29,11 @@
     display: block;
     /* Show on hover */
 }
+@media (max-width: 1000px) {
+    .hover-details {
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+  
+  }
