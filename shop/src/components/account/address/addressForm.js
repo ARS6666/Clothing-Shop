@@ -15,13 +15,13 @@ function Address() {
     };
 
     return (<>
-        <div class="col-md-12 pt-2 fontr">
+        <div class="col-md-12 pt-2 fontr" >
             <div class="col-md-12" style={{ borderStyle: "dashed" }}>
-                <buttton class="col-md-12 btn btn-lg  border-0" onClick={openOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
+                <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={openOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
             </div>
         </div>
         {isOverlayOpen && (
-            <div className="overlay row m-0">
+            <div className="overlay row m-0 fontr" dir="rtl">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class=" col-md-8 " style={{ backgroundColor: "#ffffff" }}>
                         <div class="col-md-12">
@@ -64,10 +64,10 @@ function Address() {
                                 placeholder="آدرس تحویل گیرنده را وارد کنید"
                             />
                         </div>
-                        <div class="col-md-12 row m-1">
-                            <div class="col-md-10"></div>
-                            <div class="col-md-1 "><button class="btn rounded-0  text-light" style={{ backgroundColor: "#000000" }}>انصراف</button></div>
-                            <div class="col-md-1 "><button class="btn  rounded-0  text-light" style={{ backgroundColor: "#000000" }}>ثبت</button></div>
+                        <div class="col-md-12 col-12 row m-1">
+                            <div class="col-md-10 col-8"></div>
+                            <div class="col-md-1 col-2 "><button class="btn rounded-0  text-light" style={{ backgroundColor: "#000000" }}>انصراف</button></div>
+                            <div class="col-md-1 col-2 "><button class="btn  rounded-0  text-light" style={{ backgroundColor: "#000000" }}>ثبت</button></div>
 
                         </div>
                     </div>

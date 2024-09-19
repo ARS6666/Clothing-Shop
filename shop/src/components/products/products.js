@@ -90,8 +90,8 @@ function Products() {
           محصولات
         </span>
       </div>
-      <div class="col-md-12 row" dir="rtl">
-        <div class="col-md-3 ">
+      <div class="col-md-12 row  d-flex justify-content-center pt-5" dir="rtl">
+        <div class="col-md-3 col-9">
           <Filter onFilterChange={handleFilterChange} />
         </div>
         <div class="col-md-9 row d-flex justify-content-center fontr">

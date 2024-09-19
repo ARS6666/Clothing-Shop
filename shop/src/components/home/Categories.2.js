@@ -7,6 +7,24 @@ import img5 from "../../assets/media/t2.jpg"
 import img6 from "../../assets/media/s2.jpg"
 const ProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [State, setState] = useState(6)
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      if (window.innerWidth < 756) {
+        setState(1);
+      } else {
+        setState(6);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+
 
   const Categories = [
     { Name: "تی شرت", Category: "تی شرت", pic: img2 },
@@ -38,7 +56,7 @@ const ProductSlider = () => {
 
   return (
 
-    <div className=" pt-5 col-md-12 p-3 pb-3">
+    <div className="col-md-12 p-3 pb-3">
       <div className="fontr">
         <div class=" col-md-12 row border-bottom border-2 ">
           <div class="d-flex justify-content-start col-md-6">
@@ -64,7 +82,7 @@ const ProductSlider = () => {
           <div class="align-self-center text-end h3 d-flex justify-content-end col-md-6">دسته بندی ها</div>
         </div>
         <div class="col-md-12 row m-0 row pt-2" dir="rtl">
-          {Categories.slice(currentIndex, currentIndex + 6).map((c) => (
+          {Categories.slice(currentIndex, currentIndex + State).map((c) => (
             <div class="col-md-2">
               <div class="col-md-12 ">
                 <a class="hrefb align-self-center" href={"/products?category=" + c.Category}>

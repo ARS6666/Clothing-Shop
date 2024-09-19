@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../../assets/css/remove.css";
+
 import ProductCard from "../home/products"; // Import the ProductCard component
 
 const CommonProducts = () => {
@@ -47,7 +49,7 @@ const CommonProducts = () => {
   }, [Productss]);
 
   return (
-    <div className="slider-container pt-5">
+    <div className="slider-container pt-5 remove p-4">
       <div class="border-bottom border-dark col-md-12 row">
         <div class="d-flex justify-content-start col-md-6">
           <div class="m-1 fontr">

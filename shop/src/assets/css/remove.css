@@ -1,0 +1,11 @@
+.remove{
+    display: block;
+
+}
+    
+@media (max-width: 1000px) {
+    .remove {
+        display: none;
+    }
+    
+    }

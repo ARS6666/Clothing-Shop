@@ -63,7 +63,7 @@ const Comments = ({ productId }) => {
   }
 
   return (
-    <div class="  d-flex justify-content-center pt-5">
+    <div class="  d-flex justify-content-center pt-5 p-4">
       <div
         className="col-md-11 fontr   shadow  border-dark"
         dir="rtl"

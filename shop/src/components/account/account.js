@@ -61,7 +61,7 @@ function Panel() {
                                 <Profile />
                             )
                         }}
-                            class="btn  col-md-12  btn-lg hover d-flex justify-content-start border-0"
+                            class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked ? '#7a7a7a' : '' }}
                         ><h5 class="p-2">
                                 <i class="  p-1 fa fa-user" aria-hidden="true"></i>
@@ -71,7 +71,7 @@ function Panel() {
                     </div>
                     <div class=" col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick2(); changeContent("Coming Sooon") }}
-                            class="btn  col-md-12  btn-lg hover d-flex justify-content-start border-0"
+                            class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked2 ? '#7a7a7a' : '' }}
                         ><h5 class="p-2">
                                 <i class="fas fa-shopping-basket  p-1"></i>
@@ -81,7 +81,7 @@ function Panel() {
                     </div>
                     <div class=" col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick3(); changeContent(<Address />) }}
-                            class="btn  col-md-12  btn-lg hover d-flex justify-content-start border-0"
+                            class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '' }}>
                             <h5 class="p-2">
                                 <i class="fas fa-map  p-1"></i>
@@ -89,9 +89,9 @@ function Panel() {
                             </h5>
                         </button>
                     </div>
-                    <div class=" col-md-12 border-top border-bottom part">
+                    <div class=" col-md-12  border-top border-bottom part">
                         <button onClick={() => { handleClick4(); changeContent("sssoooon") }}
-                            class="btn  col-md-12  btn-lg hover d-flex justify-content-start border-0"
+                            class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '' }}>
                             <h5 class="p-2">
                                 <i class="fas fa-folder-open  p-1"></i>

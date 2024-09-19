@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from '../src/components/Nav';
 import Home from './components/Home';
-import Test from './components/home/Categories.2';
+import Test from './components/account/address/addressForm';
 import PI from './components/productsinfo/ProductPage';
 import Products from './components/products/ProductList';
 import Signin from './components/authentication/signin';
@@ -15,7 +15,6 @@ import About from './components/CornerPages/About';
 
 function App() {
   return (<>
-    <Nav />
     <Router>
       <Routes>
         <Route path='' element={<Home />} />
@@ -29,7 +28,9 @@ function App() {
         <Route path='/about' element={<About />} />
       </Routes>
     </Router>
-    <Footer />
+    <div class="pt-2">
+      <Footer />
+    </div>
   </>);
 }
 

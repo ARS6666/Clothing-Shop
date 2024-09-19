@@ -1,14 +1,12 @@
-.video-container {
-    position: fixed; /* Positioning to cover the entire screen */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+.vid{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 756px) {
+  .vid {
+      height: 400px;
   }
   
-  .video-player {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the entire container */
   }

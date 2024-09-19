@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import img from "../../assets/media/vid.mp4"
 import 'bootstrap/dist/css/bootstrap.css';
+import "../../assets/css/home/slider.css"
 import { Carousel } from 'react-bootstrap';
 
 
@@ -29,7 +30,7 @@ function ImageSlider() {
   return (<>
 
     <div class="col-md-12 ">
-      <video style={{ height:"500px" , width:"100%" ,objectFit:"cover"}} src={img} muted autoPlay loop/>
+      <video class="vid" src={img} muted autoPlay loop/>
 
       {/* <Carousel>
         {SliderPic.map(Pic =>

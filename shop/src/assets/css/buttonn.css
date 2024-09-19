@@ -1,13 +1,14 @@
 .ah {
     text-decoration: none; 
     position: relative; /* واسه قرار دادن خط زیر متنه*/
+    
   }
   
   .ah:hover::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px; /* فاصله خط از پایین */
+    bottom: -6px; /* فاصله خط از پایین */
     width: 100%;
     height: 2px; /* ضخامت خط */
     background-color: rgb(221, 1, 1); /* رنگ خط */
@@ -18,7 +19,7 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px;
+    bottom: -6px;
     width: 0;
     height: 2px;
     background-color: rgb(215, 2, 2);

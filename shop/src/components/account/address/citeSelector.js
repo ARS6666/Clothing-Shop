@@ -115,7 +115,7 @@ const CityCountySelector = () => {
 
     return (
         <div class="fontr row m-0 pt-2" dir="rtl" style={{ color: "#000000" }}>
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
                 <label class="h5">
                     انتخاب استان:
                     <div class="pt-2">
@@ -130,7 +130,7 @@ const CityCountySelector = () => {
                     </div>
                 </label>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
                 <label class="h5">
                     انتخاب شهر:
                     <div class="pt-2">
