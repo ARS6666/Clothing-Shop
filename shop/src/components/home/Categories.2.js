@@ -5,15 +5,18 @@ import img3 from "../../assets/media/s1.jpg"
 import img4 from "../../assets/media/pirahan.jpg"
 import img5 from "../../assets/media/t2.jpg"
 import img6 from "../../assets/media/s2.jpg"
+import "../../assets/css/home/category.css"
+
 const ProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [State, setState] = useState(6)
   const [width, setWidth] = useState(window.innerWidth);
+  const [width2, setWidth2] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
-      if (window.innerWidth < 756) {
-        setState(1);
+      if (window.innerWidth < 765) {
+        setState(3);
       } else {
         setState(6);
       }
@@ -24,6 +27,7 @@ const ProductSlider = () => {
       window.removeEventListener('resize', handleResize);
     };
   });
+
 
 
   const Categories = [
@@ -83,14 +87,14 @@ const ProductSlider = () => {
         </div>
         <div class="col-md-12 row m-0 row pt-2" dir="rtl">
           {Categories.slice(currentIndex, currentIndex + State).map((c) => (
-            <div class="col-md-2">
+            <div class="col-md-2 col-4">
               <div class="col-md-12 ">
                 <a class="hrefb align-self-center" href={"/products?category=" + c.Category}>
                   <div class="row">
                     <div class="d-flex justify-content-center ">
                       <img
                         src={c.pic}
-                        class="d-block col-md-11 p-2 w-100"
+                        class="d-block col-md-11 p-2  w-100"
                       />
                     </div>
                     <div class="d-flex justify-content-center pt-2">

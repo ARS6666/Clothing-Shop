@@ -1,14 +1,14 @@
 .Img {
     object-fit: cover;
-    height: 400px;
+    height: 300px;
 }
 
 .bp {
-    height: 450px;
+    height: 300px;
 }
 
 .product-card {
-    height: 500px;
+    height: 375px;
     transition: transform .5s;
 }
 
@@ -24,7 +24,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
-    height: 500px;
+    height: 395px;
     display: none;
     /* Initially hidden */
 }
@@ -39,20 +39,20 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 350px;
+        height: 300px;
 
     }
 
     .Img {
-        height: 250px;
+        height: 200px;
     }
 
     .product-card {
-        height: 350px;
+        height: 300px;
     }
 
     .bp {
-        height: 350px;
+        height: 300px;
     }
 
 

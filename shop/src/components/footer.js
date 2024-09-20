@@ -2,15 +2,16 @@ import { React } from "react";
 import logo from "../assets/media/logo.png";
 import eight from "../assets/media/85.png";
 import eighto from "../assets/media/86.PNG";
-import "../assets/css/href.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
+import "../assets/css/href.css";
 import "../assets/css/footer.css"
+import "../assets/css/remove.css"
 
 function Footer() {
   return (
-    <>
+    <div class="remove">
       <div
-        class="col-md-12 row border-top border-dark pt-3 pb-5"
+        class="col-md-12 row border-top border-dark pt-3 pb-5 remove"
         dir="rtl"
       >
         <div class=" col-md-8  row pb-3">
@@ -81,7 +82,7 @@ function Footer() {
           <img class="m-3 border rounded p-2" src={eighto} style={{ height: "100px", width: "auto" }} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

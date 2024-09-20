@@ -35,7 +35,7 @@ function HProducts() {
       </div>
       <div class="col-md-12 row d-flex justify-content-center fontr">
         {Product.map((c) => (
-          <div class=" col-md-3 m-3 product-card">
+          <div class=" col-md-3 col-4 col-sm-4 m-3 product-card">
             <div class="row">
               <div class="d-flex justify-content-center ">
                 <img
@@ -44,18 +44,17 @@ function HProducts() {
                 />
               </div>
               <div class="d-flex justify-content-center pt-3">
-                <span class="h4 fontr ">{c.name}</span>
+                <span class="h5 fontr ">{c.name}</span>
               </div>
               <div class="d-flex justify-content-center ">
-                <span class="h5 fontr pt-1 " dir="rtl">
+                <span class=" fontr pt-1 " dir="rtl">
                   {c.price} هزار تومن
                 </span>
               </div>
             </div>
             <div className="hover-details col-md-12 ">
               <div
-                class="d-flex justify-content-center "
-                style={{ height: "400px" }}
+                class="d-flex justify-content-center bp"
               >
                 <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
                   <button className="btn btn-light hover  fontr ">
@@ -67,7 +66,7 @@ function HProducts() {
           </div>
         ))}
         <div class="d-flex justify-content-center pt-2 mb-4">
-          <a class="hrefw col-md-6" href="/products"><button class="btn btn-lg btn-dark col-md-12">مشاهده همه</button></a>
+          <a class="hrefw col-md-6 col-6" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-12">مشاهده همه</button></a>
         </div>
       </div>
     </>

@@ -1,0 +1,10 @@
+.Img{
+    display: block;
+
+}
+@media (max-width: 1000px) {
+    .Img {
+        max-height: 250px;
+    }
+    
+    }

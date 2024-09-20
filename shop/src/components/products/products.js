@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "../../assets/css/home/products.css";
+import "../../assets/css/products/products.css";
+import "../../assets/css/remove.css"
 import Filter from "./Filter";
 function Products() {
 
@@ -90,45 +91,45 @@ function Products() {
           محصولات
         </span>
       </div>
-      <div class="col-md-12 row  d-flex justify-content-center pt-5" dir="rtl">
-        <div class="col-md-3 col-9">
-          <Filter onFilterChange={handleFilterChange} />
-        </div>
-        <div class="col-md-9 row d-flex justify-content-center fontr">
+      <div class="col-md-12 row  d-flex justify-content-center pt-5 " dir="ltr">
+        <div class="col-md-9 col-12 row d-flex justify-content-center fontr">
           {displayedProducts.map((c) => (
-            <div class="p-3 col-md-4">
-              <div class="col-md-12 m-3 product-card">
-                <div class="row">
-                  <div class="d-flex justify-content-center ">
-                    <img
-                      src={c.pic}
-                      class="Img col-md-11 "
-                    />
-                  </div>
-                  <div class="d-flex justify-content-center pt-2">
-                    <span class="h4 fontr ">{c.name}</span>
-                  </div>
-                  <div class="d-flex justify-content-center ">
-                    <span class="h5 fontr pt-1 " dir="rtl">
-                      {c.price} هزار تومن
-                    </span>
-                  </div>
+            <div class=" col-md-3 col-4 col-sm-4 m-3 product-card">
+              <div class="row">
+                <div class="d-flex justify-content-center ">
+                  <img
+                    src={c.pic}
+                    class="Img col-md-11"
+                  />
                 </div>
-                <div className="hover-details col-md-12 ">
-                  <div
-                    class="d-flex justify-content-center "
-                    style={{ height: "400px" }}
-                  >
-                    <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                      <button className="btn btn-light hover  fontr ">
-                        مشاهده محصول
-                      </button>
-                    </a>
-                  </div>
+                <div class="d-flex justify-content-center pt-3">
+                  <span class="h5 fontr ">{c.name}</span>
+                </div>
+                <div class="d-flex justify-content-center ">
+                  <span class=" fontr pt-1 " dir="rtl">
+                    {c.price} هزار تومن
+                  </span>
+                </div>
+              </div>
+              <div className="hover-details col-md-12 ">
+                <div
+                  class="d-flex justify-content-center bp"
+                >
+                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                    <button className="btn btn-light hover  fontr ">
+                      مشاهده محصول
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
           ))}
+          <div class="d-flex justify-content-center pt-2 mb-4">
+            <a class="hrefw col-md-6 col-6" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-12">مشاهده همه</button></a>
+          </div>
+        </div>
+        <div class="col-md-3 col-9 ">
+          <Filter onFilterChange={handleFilterChange} />
         </div>
       </div>
     </>

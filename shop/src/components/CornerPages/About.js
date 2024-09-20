@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <section className="py-5" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
+    <section className="py-5 fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
       <div className="container">
         <div className="row align-items-center mb-5">
           <div className="col-12 col-lg-6 mb-4 mb-lg-0">
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <p className="lead mb-4 fw-bold" >
               <h style={{
              color: '#8B0000'
-            }}>              سلام خو شآمدید ما عالی هستیم خفن و پرطرفدار ماه عسل فدامون بشم خیلی خوب کردی اومدی به مغازه ی ما
+            }}>              سلام خو ش آمدید ما عالی هستیم خفن و پرطرفدار ماه عسل فدامون بشم خیلی خوب کردی اومدی به مغازه ی ما
               </h>
             </p>
             <p >

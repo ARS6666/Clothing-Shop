@@ -63,27 +63,39 @@ const Comments = ({ productId }) => {
   }
 
   return (
-    <div class="  d-flex justify-content-center pt-5 p-4">
+    <div class="col-md-12 col-12 d-flex justify-content-center pt-5">
       <div
-        className="col-md-11 fontr   shadow  border-dark"
+        className="col-md-11 col-11 fontr shadow "
         dir="rtl"
-        style={{ borderRadius: "20px" }}
+        style={{ borderRadius: "0px" }}
       >
         <div class="col-md-12 row p-5">
-          <div className="col-md-6 ">
-            <div className="d-flex justify-content-start ">
-              <div className="col-md-11  d-flex align-items-center">
+          <div class=" col-md-6 contain pt-2 col-12">
+            <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-1 ">
+              <div className="text-muted h5">سلام عرض شد:</div>
+              <div className="h5">تسته میدونم این  نباید اینجا باشه</div>
+            </div>
+            {comments.map((c, index) => (
+              <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-1 ">
+                <div className="text-muted h5">{c.name}:</div>
+                <div className="h5">{c.content}</div>
+              </div>
+            ))}
+          </div>
+          <div className="col-md-6 col-12 pt-3">
+            <div className="d-flex justify-content-start">
+              <div className="col-md-11 col-12 d-flex align-items-center pt-3">
                 <input
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-control form-control-solid form-control-lg bg-light"
+                  className="form-control form-control-solid form-control-lg bg-lightform-control form-control-lg border-dark rounded-0"
                   placeholder="نام و نام خانوادگی:"
                 />
               </div>
             </div>
             <div className="d-flex justify-content-start">
-              <div className="col-md-11 rounded pt-3 d-flex align-items-center">
+              <div className="col-md-11 col-12 rounded pt-3 d-flex align-items-center">
                 <textarea
                   id="comment"
                   rows="4"
@@ -92,7 +104,7 @@ const Comments = ({ productId }) => {
                     if (e.key === "Enter") sendToServer();
                   }}
                   onChange={(e) => setComment(e.target.value)}
-                  className="form-control input-lg bg-light form-control-solid form-control-lg textarea"
+                  className="form-control form-control-lg border-dark rounded-0 textarea"
                   placeholder="نظر شما:"
                 />
               </div>
@@ -100,21 +112,11 @@ const Comments = ({ productId }) => {
             <div className="d-flex justify-content-end p-2">
               <button
                 onClick={sendToServer}
-                className="col-md-3 btn btn-success"
+                className="col-md-3 col-3 btn btn-success"
               >
                 ثبت
               </button>
             </div>
-          </div>
-          <div class=" col-md-6 contain">
-            {comments.map((c, index) => (
-              <div class="p-3">
-                <div className="mt-2 text-dark-50 shadow rounded font-weight-bold font-size-lg text-left max-w-1500px fontr p-2">
-                  <div className="text-muted h5">{c.name} :</div>
-                  <div className="h5">{c.content}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ function Login() {
                             <input class="form-control form-control-lg" />
                         </div>
                         <div class="col-md-12 d-flex justify-content-center pt-4">
-                            <button class=" col-md-6 btn btn-outline-success">ورود</button>
+                            <button class=" col-md-6 col-6 btn btn-outline-success">ورود</button>
                         </div>
                         <div class=" col-md-12 d-flex justify-content-end pt-2">
                             <span >اکانت ندارید؟</span>

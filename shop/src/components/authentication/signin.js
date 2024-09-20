@@ -81,7 +81,7 @@ function SignIn() {
                         {error && <div className="alert alert-danger" role="alert">{error}</div>}
 
                         <div class="col-md-12 d-flex justify-content-center pt-4">
-                            <button type="submit" class=" col-md-6 btn btn-outline-success">ثبت نام</button>
+                            <button type="submit" class=" col-md-6 col-6 btn btn-outline-success">ثبت نام</button>
                         </div>
                     </div>
                 </div>
