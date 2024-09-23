@@ -60,7 +60,7 @@ const ProductSlider = () => {
 
   return (
 
-    <div className="col-md-12 p-3 pb-3 m-0">
+    <div className="col-md-12 col-12 p-3 pb-3 m-0">
       <div className="fontr">
         <div class=" col-md-12 row border-bottom border-2 ">
           <div class="d-flex justify-content-start col-md-6">

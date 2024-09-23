@@ -3,14 +3,14 @@ import logo from "../assets/media/logo.png";
 import eight from "../assets/media/85.png";
 import eighto from "../assets/media/86.PNG";
 import "../assets/css/href.css";
-import "../assets/css/hide.css"
+import "../assets/css/hide.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 
 function Footer() {
   return (
     <>
       <div
-        class="col-md-12 row border-top border-dark pt-3 remove"
+        class="col-md-12 row remove border-top border-dark pt-3"
         dir="rtl"
         style={{ height: "300px" }}
       >
