@@ -1,11 +1,18 @@
-.remove{
+.remove {
     display: block;
 
 }
-    
+.add {
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .remove {
         display: none;
     }
-    
+
+    .add {
+        display: block;
     }
+
+}

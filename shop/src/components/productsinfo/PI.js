@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
-import "../../assets/css/remove.css";
+import "../../assets/css/hide.css";
 import Comment from './CommentBox';
 
 function ProductInfo() {

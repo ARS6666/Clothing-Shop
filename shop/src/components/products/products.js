@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../../assets/css/products/products.css";
-import "../../assets/css/remove.css"
 import Filter from "./Filter";
 function Products() {
 
@@ -83,15 +82,36 @@ function Products() {
     products
   );
 
-
+  const [content, setContent] = useState(<button
+    class="btn btn-dark col-md-11 col-11 add"
+    onClick={() => {
+      handleClick(); changeContent(
+        <Filter  onFilterChange={handleFilterChange} />
+      )
+    }}
+  ><span class="h5">اعمال فیلتر</span>
+  </button>);
+  const changeContent = (newContent) => {
+    setContent(newContent);
+  };
+  const [isChecked, setIsChecked] = useState(true);
+  const handleClick = () => {
+    setIsChecked(prevChecked => !prevChecked);
+  };
   return (
     <>
+      <div class="col-md-12 col-12 d-flex justify-content-center fontr row m-0 p-3">
+        <div class="col-10 col-md-10 ">
+          {content}
+        </div>
+      </div>
+
       <div class="d-flex justify-content-center col-md-12">
         <span class="h1 fontr border-bottom border-4 border-danger p-3">
           محصولات
         </span>
       </div>
-      <div class="col-md-12 row  d-flex justify-content-center pt-5 " dir="ltr">
+      <div class="col-md-12 row  d-flex justify-content-center pt-5 m-0 " dir="ltr">
         <div class="col-md-9 col-12 row d-flex justify-content-center fontr">
           {displayedProducts.map((c) => (
             <div class=" col-md-3 col-4 col-sm-4 m-3 product-card">
@@ -124,11 +144,8 @@ function Products() {
               </div>
             </div>
           ))}
-          <div class="d-flex justify-content-center pt-2 mb-4">
-            <a class="hrefw col-md-6 col-6" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-12">مشاهده همه</button></a>
-          </div>
         </div>
-        <div class="col-md-3 col-9 ">
+        <div class="col-md-3 col-9 remove pb-3">
           <Filter onFilterChange={handleFilterChange} />
         </div>
       </div>

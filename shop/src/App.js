@@ -21,8 +21,8 @@ const AppContent = () => {
 
   return (
     <>
-      <Nav />
       <div className="main-content">
+        {/* <Nav /> */}
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='*' element={<NotFoundPage />} />

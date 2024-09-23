@@ -3,7 +3,7 @@ import { Navbar, Nav, Button, FormControl } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
-import "../assets/css/remove.css";
+import "../assets/css/hide.css";
 import logo from "../assets/media/logo.png";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";

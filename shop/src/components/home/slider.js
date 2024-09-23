@@ -29,7 +29,7 @@ function ImageSlider() {
 
   return (<>
 
-    <div class="col-md-12 ">
+    <div class="col-md-12 m-0">
       <video class="vid" src={img} muted autoPlay loop/>
 
       {/* <Carousel>

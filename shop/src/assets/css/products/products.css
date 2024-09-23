@@ -16,6 +16,16 @@
     transform: scale(1.05);
 }
 
+.remove {
+    display: block;
+
+}
+
+.add {
+    display: none;
+}
+
+
 .hover-details {
     position: absolute;
     top: 0;
@@ -53,6 +63,14 @@
 
     .bp {
         height: 300px;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .add {
+        display: block;
     }
 
 

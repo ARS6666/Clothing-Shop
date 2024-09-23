@@ -28,7 +28,7 @@ function HProducts() {
 
   return (
     <>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center m-0">
         <span class="h2 fontr border-bottom border-4 border-danger p-3">
           محصولات
         </span>

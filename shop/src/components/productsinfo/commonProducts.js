@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/css/remove.css";
-
-import ProductCard from "../home/products"; // Import the ProductCard component
+import "../../assets/css/hide.css";
 
 const CommonProducts = () => {
   const [Productss, setPRoduct] = useState([]);

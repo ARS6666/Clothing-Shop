@@ -2,30 +2,26 @@ import { React } from "react";
 import logo from "../assets/media/logo.png";
 import eight from "../assets/media/85.png";
 import eighto from "../assets/media/86.PNG";
-import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import "../assets/css/href.css";
-import "../assets/css/footer.css"
-import "../assets/css/remove.css"
+import "../assets/css/hide.css"
+import "https://kit.fontawesome.com/6c2a0de8a3.js";
 
 function Footer() {
   return (
-    <div class="remove">
+    <>
       <div
-        class="col-md-12 row border-top border-dark pt-3 pb-5 remove"
+        class="col-md-12 row border-top border-dark pt-3 remove"
         dir="rtl"
+        style={{ height: "300px" }}
       >
-        <div class=" col-md-8  row pb-3">
-          <div class="col-md-3 ">
+        <div class=" col-md-8  row">
+          <div class="col-md-3 " style={{ height: "300px" }}>
             <div class="pt-4 row">
               <img
                 src={logo}
-                style={{
-                  height: "50px", width: "auto",
-                  marginBottom: "10px"
-                }}
+                style={{ height: "45px", width: "auto" }}
                 class="col-md-12"
               />
-
               <div>
                 <i class="fa fa-telegram h4 p-1" aria-hidden="true"></i>
                 <i class="fa-brands fa-facebook-f h4 p-1"></i>
@@ -34,7 +30,7 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div class="col-md-3  fontr">
+          <div class="col-md-3  fontr" style={{ height: "300px" }}>
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">🛒فروشگاه شاپ </h5>
               <p className="mb-3">
@@ -48,7 +44,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div class="col-md-3 fontr" >
+          <div class="col-md-3 fontr" style={{ height: "300px" }}>
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">خدمات مشتریان</h5>
               <p className="mb-3">
@@ -62,7 +58,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div class="col-md-3  fontr">
+          <div class="col-md-3  fontr" style={{ height: "300px" }}>
             <div class="pt-4 row">
               <h5 className="mb-4 text-dark brand-name">نمیی دانم</h5>
               <p className="mb-3">
@@ -82,7 +78,7 @@ function Footer() {
           <img class="m-3 border rounded p-2" src={eighto} style={{ height: "100px", width: "auto" }} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
