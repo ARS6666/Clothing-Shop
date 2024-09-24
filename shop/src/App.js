@@ -16,13 +16,13 @@ import About from './components/CornerPages/About';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/register', '*'];
+  const hideFooterPaths = ['/login', '/register', '*','/panel '];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
     <>
       <div className="main-content">
-        {/* <Nav /> */}
+        <Nav />
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='*' element={<NotFoundPage />} />

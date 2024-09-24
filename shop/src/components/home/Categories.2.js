@@ -50,13 +50,6 @@ const ProductSlider = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
-  useEffect(() => {
-    // Example: If you want to automatically slide every 3 seconds
-    const intervalId = setInterval(nextSlide, 100000);
-
-    // Cleanup interval on component unmount
-    return () => clearInterval(intervalId);
-  }, [Categories]);
 
   return (
 
