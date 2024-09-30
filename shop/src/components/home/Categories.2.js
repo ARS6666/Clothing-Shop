@@ -55,7 +55,7 @@ const ProductSlider = () => {
 
     <div className="col-md-12 col-12 p-3 pb-3 m-0">
       <div className="fontr">
-        <div class=" col-md-12 row border-bottom border-2 ">
+        <div class=" col-md-12 row m-0 border-bottom border-2 ">
           <div class="d-flex justify-content-start col-md-6">
             <div class="m-1 fontr">
               <button
@@ -78,12 +78,12 @@ const ProductSlider = () => {
           </div>
           <div class="align-self-center text-end h3 d-flex justify-content-end col-md-6">دسته بندی ها</div>
         </div>
-        <div class="col-md-12 row m-0 row pt-2" dir="rtl">
+        <div class="col-md-12 row m-0  pt-2" dir="rtl">
           {Categories.slice(currentIndex, currentIndex + State).map((c) => (
             <div class="col-md-2 col-4">
               <div class="col-md-12 ">
                 <a class="hrefb align-self-center" href={"/products?category=" + c.Category}>
-                  <div class="row">
+                  <div class="row m-0">
                     <div class="d-flex justify-content-center ">
                       <img
                         src={c.pic}
@@ -91,7 +91,7 @@ const ProductSlider = () => {
                       />
                     </div>
                     <div class="d-flex justify-content-center pt-2">
-                      <span class="h2 fontr">{c.Name}</span>
+                      <span class="h4 fontr">{c.Name}</span>
                     </div>
                   </div>
                 </a>

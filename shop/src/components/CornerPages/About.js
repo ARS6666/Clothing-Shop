@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <section className="py-5 fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
       <div className="container">
-        <div className="row align-items-center mb-5">
+        <div className="row m-0 align-items-center mb-5">
           <div className="col-12 col-lg-6 mb-4 mb-lg-0">
             <img
               src="https://via.placeholder.com/500"
@@ -34,7 +34,7 @@ const AboutUs = () => {
         </div>
 
         {/* Services Section */}
-        <div className="row text-center">
+        <div className="row m-0 text-center">
           <div className="col-12 col-md-4 shadow">
             <div className="p-4  text-white rounded" style={{
               backgroundColor: "#8B0000"

@@ -8,28 +8,36 @@ function SignIn() {
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError(null);
+        setLoading(true);
+        if (password !== password1) {
+            setError("Passwords do not match.");
+            setLoading(false);
+            return;
+        }
 
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
+        myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("X-CSRFToken", "KMc5hxXTxGq48f6W7B9S2FipbKgtw0PovamdrfyY7fYp2zJGTo0t4TkwtbyIFRML");
+        myHeaders.append("X-CSRFToken", "S9ziK45gGaKNq54vL0xyaYBmlmv9oN6fgKoYYiBBuiZWoitosXmdQbFv3wW0t1CJ");
 
         const raw = JSON.stringify({
-            email: email,
-            password: password,
-            password1: password1,
+            "email": email,
+            "password": password,
+            "password1": password1
         });
 
         const requestOptions = {
-            method: 'POST',
+            method: "POST",
             headers: myHeaders,
             body: raw,
-            redirect: 'follow'
+            redirect: "follow"
         };
 
         try {
@@ -37,14 +45,20 @@ function SignIn() {
             const result = await response.json();
 
             if (response.ok) {
-                navigate('/login'); // Redirect to login page after successful registration
+                navigate('/login');
+                setEmail("");
+                setPassword("");
+                setPassword1("");
             } else {
-                setError(result); // Display error message
+                setError(result.message || "Registration failed.");
             }
         } catch (error) {
             setError(error.toString());
+        } finally {
+            setLoading(false);
         }
     };
+
     return (<>
         <div class="col-md-12  fontr " dir="rtl" style={{ backgroundColor: "#D9D9D9", height: "600px" }}>
             <form onSubmit={handleSubmit} class="col-md-12 d-flex justify-content-center pt-5">
@@ -68,7 +82,7 @@ function SignIn() {
                         </div>
 
                         <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setPassword(e.target.value)}  dir="ltr"/>
+                            <input class="form-control form-control-lg" onChange={e => setPassword(e.target.value)} dir="ltr" />
                         </div>
                         <small id="emailHelp" class="form-text text-muted">رمز عبور شما باید دارای 8 کرکتر باشد.</small>
                         <div class="pt-3">
@@ -76,7 +90,7 @@ function SignIn() {
                         </div>
 
                         <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setPassword1(e.target.value)}  dir="ltr"/>
+                            <input class="form-control form-control-lg" onChange={e => setPassword1(e.target.value)} dir="ltr" />
                         </div>
                         {error && <div className="alert alert-danger" role="alert">{error}</div>}
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import "../../assets/css/account/panel.css"
 import pfp from "../../assets/media/pfp.jpg"
 import Profile from "./profile"
@@ -9,6 +9,26 @@ import "https://kit.fontawesome.com/6c2a0de8a3.js"
 
 
 function Panel() {
+    const [Prop, setProp] = useState({})
+    useEffect(() => {
+
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("X-CSRFToken", "hokKVAaR2S1flum20JC9E6zabZsARewk31NGGIUOMRiNOlAWLEHjAjRwiGZlfPp8");
+        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NDgzNTI0LCJpYXQiOjE3Mjc0Nzc1MjQsImp0aSI6IjY4ODc5YjEzNjczYTQyMWJhOTZmNGYyM2RiZDkwOWE5IiwidXNlcl9pZCI6MX0.s02dHcEwa1MHlrk0ZPJrGlrkRJMXp6PVMS0alFmeGKg");
+
+        const requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+
+        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setProp(result))
+            .catch((error) => console.error(error));
+    }, []);
+
     const [content, setContent] = useState(<Profile />);
     const changeContent = (newContent) => {
         setContent(newContent);
@@ -49,10 +69,10 @@ function Panel() {
         <div class=" fontr col-md-12 row m-0 " dir="rtl">
             <div class="col-md-3" style={{ backgroundColor: "#D9D9D9" }}>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <img src={pfp} class="pfp rounded-circle" />
+                    <img src={Prop.image} class="pfp rounded-circle" />
                 </div>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <span class=" h4">عرشیا قاسم زاده</span>
+                    <span class=" h4">{Prop.name}</span>
                 </div>
                 <div class="pt-3">
                     <div class=" col-md-12 border-top border-bottom part">

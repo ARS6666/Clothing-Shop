@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/css/home/products.css";
+import "../../assets/css/home/prooductcard.css";
 
 function HProducts() {
   const [Product, setPRoduct] = useState([]);
@@ -35,12 +35,12 @@ function HProducts() {
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
         {Product.map((c) => (
-          <div class=" col-md-3 col-4 col-sm-4 m-3 product-card">
+          <div class=" col-md-3 col-4 col-sm-4 m-3 product-carde">
             <div class="row m-0">
               <div class="d-flex justify-content-center ">
                 <img
                   src={c.pic}
-                  class="Img col-md-11"
+                  class="Imge col-md-11"
                 />
               </div>
               <div class="d-flex justify-content-center pt-3">
@@ -52,9 +52,9 @@ function HProducts() {
                 </span>
               </div>
             </div>
-            <div className="hover-details col-md-12 ">
+            <div className="hover-detailse col-md-12 ">
               <div
-                class="d-flex justify-content-center bp"
+                class="d-flex justify-content-center bpe"
               >
                 <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
                   <button className="btn btn-light hover  fontr ">
@@ -65,7 +65,7 @@ function HProducts() {
             </div>
           </div>
         ))}
-        <div class="d-flex justify-content-center pt-2 mb-4">
+        <div class="d-flex justify-content-center pt-4 mb-4">
           <a class="hrefw col-md-6 col-6" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-12">مشاهده همه</button></a>
         </div>
       </div>

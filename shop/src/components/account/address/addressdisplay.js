@@ -1,28 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 function AddressDisplay() {
-    return (<>
-        <div class="col-md-6 p-1 fontr " dir="rtl" style={{color:"gray"}}>
-            <div class=" border border-3 border-dark" style={{ borderStyle: "double" }}>
-                <div class="col-md-12 p-3">
-                    <span class="h3">عرشیا قاسم زاده</span>
-                </div>
-                <div class="col-md-12 row m-0 fontr pt-3">
-                    <div class="col-md-6 text-end h5 ">استان    : زنجان</div>
-                    <div class="col-md-6 text-end h5 ">شهرستان : زنجان</div>
-                </div>
-                <div class="col-md-12 pt-3">
-                    <span class="h5 p-4 ">آدرس : لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</span>
-                </div>
-                <div class="col-md-12 pt-3">
-                    <span class="h5 p-4 ">کد پستی :24214124</span>
-                </div>
-                <div class="col-md-12 row m-0 fontr pt-3">
-                    <div class="col-md-6 text-end h5 ">تلفن همراه :0991591053841</div>
-                    <div class="col-md-6 text-start h5 "><button class="btn rounded-0 text-light"style={{backgroundColor:"#000000"}}>حدف</button></div>
-                </div>
+    const [Prop, setProp] = useState([])
+    useEffect(() => {
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("X-CSRFToken", "3PsPK9K8KJIvlRSxGFP8sOFAlGX4AalPRfR0NEtrC1ekoz46JTToUCbSWNrpzbgo");
+        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NTAxMDczLCJpYXQiOjE3Mjc0OTUwNzMsImp0aSI6IjQyOGFkOTJlMWQ4ZDRmNTJhY2ZjMmQ3N2RhZmExOTg3IiwidXNlcl9pZCI6MX0.k2y3zjPgQBPwQlCaUJFhEjkw1fGEZJL1vZXFMLE9yhQ");
 
+        const requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+
+        fetch("http://127.0.0.1:8000/account/api/v1/address/", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setProp(result))
+            .catch((error) => console.error(error));
+
+    }, []);
+
+    return (<>
+        {Prop.map((c) => (
+            <div class="col-md-6 p-1 fontr " dir="rtl" style={{ color: "gray" }}>
+                <div class=" border border-3 border-dark" style={{ borderStyle: "double" }}>
+                    <div class="col-md-12 p-3">
+                        <span class="h3">{c.name}</span>
+                    </div>
+                    <div class="col-md-12 row m-0 fontr pt-3">
+                        <div class="col-md-6 text-end h5 ">استان : {c.ostan}</div>
+                        <div class="col-md-6 text-end h5 ">شهرستان : {c.shahr}</div>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <span class="h5 p-4 ">آدرس :{c.address}.</span>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
+                    </div>
+                    <div class="col-md-12 row m-0 fontr pt-3 p-2">
+                        <div class="col-md-6 text-end h5 ">تلفن همراه :{c.phone}</div>
+                        <div class="col-md-6 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }}>حذف</button></div>
+                    </div>
+
+                </div>
             </div>
-        </div>
+        ))}
     </>);
 }
 

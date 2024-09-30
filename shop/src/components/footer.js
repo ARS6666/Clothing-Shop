@@ -9,13 +9,13 @@ function Footer() {
   return (
     <>
       <div
-        class="col-md-12 col-12 row border-top border-dark pt-3 bg-light "
+        class="col-md-12 col-12 row m-0 border-top border-dark pt-3 bg-light "
         dir="rtl"
         style={{ height: "300px" }}
       >
-        <div class=" col-md-8 col-9 row">
+        <div class=" col-md-8 col-9 row m-0">
           <div class="col-md-3 " >
-            <div class="pt-4 row">
+            <div class="pt-4 row m-0">
               <img
                 src={logo}
                 style={{ height: "45px", width: "auto" }}
@@ -30,7 +30,7 @@ function Footer() {
             </div>
           </div>
           <div class="col-md-3 col-6 fontr bg-light" style={{ height: "300px" }}>
-            <div class="pt-4 row">
+            <div class="pt-4 row m-0">
               <h5 className="mb-4 text-dark brand-name">🛒فروشگاه شاپ </h5>
               <p className="mb-3">
                 <i class="bi bi-geo-alt-fill"></i> زنجان افغانستان آلمان پلاک 68
@@ -44,7 +44,7 @@ function Footer() {
             </div>
           </div>
           <div class="col-md-3 col-6 fontr bg-light" style={{ height: "300px" }}>
-            <div class="pt-4 row">
+            <div class="pt-4 row m-0">
               <h5 className="mb-4 text-dark brand-name">خدمات مشتریان</h5>
               <p className="mb-3">
                 <a class="hrefb"> درباره ی ما </a>
@@ -58,7 +58,7 @@ function Footer() {
             </div>
           </div>
           <div class="col-md-3 fontr remove bg-light" style={{ height: "300px" }}>
-            <div class="pt-4 row">
+            <div class="pt-4 row m-0">
               <h5 className="mb-4 text-dark brand-name">نمیی دانم</h5>
               <p className="mb-3">
                 <a class="hrefb">نمیدونم</a>

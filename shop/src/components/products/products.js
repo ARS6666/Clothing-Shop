@@ -111,11 +111,11 @@ function Products() {
           محصولات
         </span>
       </div>
-      <div class="col-md-12 row  d-flex justify-content-center pt-5 m-0 " dir="ltr">
-        <div class="col-md-9 col-12 row d-flex justify-content-center fontr">
+      <div class="col-md-12 row m-0  d-flex justify-content-center pt-5 " dir="ltr">
+        <div class="col-md-9 col-12 row m-0 d-flex justify-content-center fontr">
           {displayedProducts.map((c) => (
             <div class=" col-md-3 col-4 col-sm-4 m-3 product-card">
-              <div class="row">
+              <div class="row m-0">
                 <div class="d-flex justify-content-center ">
                   <img
                     src={c.pic}

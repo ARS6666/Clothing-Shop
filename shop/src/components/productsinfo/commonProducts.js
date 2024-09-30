@@ -48,7 +48,7 @@ const CommonProducts = () => {
 
   return (
     <div className="slider-container pt-5 remove p-4">
-      <div class="border-bottom border-dark col-md-12 row">
+      <div class="border-bottom border-dark col-md-12 row m-0">
         <div class="d-flex justify-content-start col-md-6">
           <div class="m-1 fontr">
             <button
@@ -75,11 +75,11 @@ const CommonProducts = () => {
       </div>
 
       <div className="product-slider">
-        <div class="col-md-12 row " dir="rtl">
+        <div class="col-md-12 row m-0 " dir="rtl">
           {Productss.slice(currentIndex, currentIndex + 4).map((c) => (
             <div class="p-3 col-md-3">
               <div class="col-md-12 product-card">
-                <div class="row">
+                <div class="row m-0">
                   <div class="d-flex justify-content-center ">
                     <img
                       src={c.pic}

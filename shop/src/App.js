@@ -3,8 +3,8 @@ import Nav from '../src/components/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
 import Test from './components/productsinfo/CommentBox';
-import PI from './components/productsinfo/ProductPage';
-import Products from './components/products/ProductList';
+import PI from './components/ProductPage';
+import Products from './components/ProductList';
 import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
 import Panel from './components/account/account';
@@ -29,7 +29,7 @@ const AppContent = () => {
           <Route path='/pi' element={<PI />} />
           <Route path='/test' element={<Test />} />
           <Route path='/products' element={<Products />} />
-          <Route path='/panel' element={<Panel />} />
+          <Route path='/account' element={<Panel />} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/prdct' element={<Prdctlist />} />

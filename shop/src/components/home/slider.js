@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import img from "../../assets/media/vid.mp4"
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../assets/css/home/slider.css"
-import { Carousel } from 'react-bootstrap';
 
 
 function ImageSlider() {

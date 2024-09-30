@@ -57,9 +57,9 @@ function ProductInfo() {
   return (
     <>
       <div class="p-4 col-md-12 pt-2" dir="rtl">
-        <div class="row">
+        <div class="row m-0">
           <div class="col-md-6 d-flex flex-column">
-            <div class="row">
+            <div class="row m-0">
               <div class="col-md-2 remove d-flex flex-column align-items-end romove">
                 {IMG.slice(0, 3).map((c) => (
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
@@ -69,7 +69,7 @@ function ProductInfo() {
                 <Carousel>
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>
-                      <img className="d-block w-100" src={Pic.image} alt="" />
+                      <img className="d-block w-100 Image" src={Pic.image} alt="" />
                     </Carousel.Item>
                   ))}
                 </Carousel>
@@ -77,12 +77,12 @@ function ProductInfo() {
             </div>
           </div>
 
-          <div class="col-md-6 fontr pt-5">
-            <h1>{product.name}</h1>
-            <h3>{product.price} هزار تومان</h3>
+          <div class="col-md-6 fontr pt-5 ">
+            <h1 class="text-dark">{product.name}</h1>
+            <h3 class="text-dark">{product.price} هزار تومان</h3>
 
             <div class="pt-3">
-              <span class="h4">رنگ ها:</span>
+              <span class="h4">رنگ ها:</span> 
               <div class="d-flex justify-content-end">
                 <div className="d-flex flex-wrap">
                   {color.map((color) => (
@@ -106,7 +106,7 @@ function ProductInfo() {
 
             <div class="pt-3">
               <span class="h4">سایز بندی:</span>
-              <div class="row d-flex justify-content-start" dir="ltr">
+              <div class="row m-0 d-flex justify-content-start" dir="ltr">
                 {Size.map((e) => (
                   <div
                     key={e}
@@ -146,7 +146,7 @@ function ProductInfo() {
             </div>
 
             <div class="pt-5">
-              <button class="btn btn-lg btn-outline-dark w-100">افزودن به سبد خرید</button>
+              <button class="btn rounded-0 btn-lg btn-outline-dark w-100">افزودن به سبد خرید</button>
             </div>
           </div>
         </div>

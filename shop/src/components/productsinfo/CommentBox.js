@@ -69,7 +69,7 @@ const Comments = ({ productId }) => {
         dir="rtl"
         style={{ borderRadius: "0px" }}
       >
-        <div class="col-md-12 row p-5">
+        <div class="col-md-12 row m-0 p-5">
           <div class=" col-md-6 contain pt-2 col-12">
             <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-1 ">
               <div className="text-muted h5">سلام عرض شد:</div>
