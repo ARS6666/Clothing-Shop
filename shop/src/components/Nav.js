@@ -10,7 +10,7 @@ import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
-  const navigate = useNavigate();
+  const navigate =useNavigate();
   const [search, setSearch] = useState();
   // const [NavImg, setImg] = useState([{}]);
 
@@ -76,15 +76,14 @@ const CustomNavbar = () => {
 
           <div class="col-md-4 align-self-center">
             <span>
+              <a href="/login" class="hrefb h5 ah">
+                ورود
+              </a>
+              {" "}|{" "}
               <a href="/account" class="hrefb h5 ah">
                 حساب کاربری
               </a>
               <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
-
-              {"  "}|{" "}
-              <a href="/login" class="hrefb h5 ah">
-                ورود
-              </a>
             </span>
           </div>
         </div>
