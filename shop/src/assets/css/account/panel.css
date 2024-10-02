@@ -2,10 +2,9 @@
     object-fit: cover;
     height: 200px;
     width: 200px;
+    background-color: white;
 }
-.part{
-    background-color: #D9D9D9; 
-}
+
 .part:hover{
     background-color: #a2a2a2; 
-}
+} 

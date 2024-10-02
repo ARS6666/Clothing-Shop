@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../assets/css/account/panel.css"
 import pfp from "../../assets/media/pfp.jpg"
 import Profile from "./profile"
@@ -9,13 +9,17 @@ import "https://kit.fontawesome.com/6c2a0de8a3.js"
 
 
 function Panel() {
-    const [Prop, setProp] = useState({})
+    const [Prop, setProp] = useState([]);
+    const token = localStorage.getItem('token');
+    const [Name, setN] = useState("");
+    const [Img, setI] = useState("");
+
     useEffect(() => {
 
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
         myHeaders.append("X-CSRFToken", "hokKVAaR2S1flum20JC9E6zabZsARewk31NGGIUOMRiNOlAWLEHjAjRwiGZlfPp8");
-        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NDgzNTI0LCJpYXQiOjE3Mjc0Nzc1MjQsImp0aSI6IjY4ODc5YjEzNjczYTQyMWJhOTZmNGYyM2RiZDkwOWE5IiwidXNlcl9pZCI6MX0.s02dHcEwa1MHlrk0ZPJrGlrkRJMXp6PVMS0alFmeGKg");
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
             method: "GET",
@@ -28,6 +32,14 @@ function Panel() {
             .then((result) => setProp(result))
             .catch((error) => console.error(error));
     }, []);
+    useEffect(() => {
+        if (Prop.length > 0) {
+            setN(Prop[0].name);
+            setI(Prop[0].image);
+        
+        }
+    }, [Prop]);
+
 
     const [content, setContent] = useState(<Profile />);
     const changeContent = (newContent) => {
@@ -66,13 +78,13 @@ function Panel() {
 
 
     return (<>
-        <div class=" fontr col-md-12 row m-0 " dir="rtl">
-            <div class="col-md-3" style={{ backgroundColor: "#D9D9D9" }}>
+        <div class=" fontr col-md-12 row m-0 pb-2 pt-2" dir="rtl">
+            <div class="col-md-3 border" style={{ borderRadius :"10px" }}>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <img src={Prop.image} class="pfp rounded-circle" />
+                    <img src={Img} class="pfp rounded-circle" />
                 </div>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <span class=" h4">{Prop.name}</span>
+                    <span class=" h4">{Name}</span>
                 </div>
                 <div class="pt-3">
                     <div class=" col-md-12 border-top border-bottom part">

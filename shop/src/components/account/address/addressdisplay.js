@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 function AddressDisplay() {
     const [Prop, setProp] = useState([])
+    const token = localStorage.getItem('token');
+
     useEffect(() => {
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
         myHeaders.append("X-CSRFToken", "3PsPK9K8KJIvlRSxGFP8sOFAlGX4AalPRfR0NEtrC1ekoz46JTToUCbSWNrpzbgo");
-        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NTAxMDczLCJpYXQiOjE3Mjc0OTUwNzMsImp0aSI6IjQyOGFkOTJlMWQ4ZDRmNTJhY2ZjMmQ3N2RhZmExOTg3IiwidXNlcl9pZCI6MX0.k2y3zjPgQBPwQlCaUJFhEjkw1fGEZJL1vZXFMLE9yhQ");
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
             method: "GET",

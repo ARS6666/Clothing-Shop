@@ -2,61 +2,65 @@ import React, { useState, useEffect } from 'react';
 
 
 function Orders() {
-    const [Prop, setProp] = useState({})
-    const [Name, setName] = useState("")
+    const [Prop, setProp] = useState([]); 
+    const token = localStorage.getItem('token');
+    const [Name, setName] = useState("");
     const handleName = (event) => {
         setName(event.target.value);
     };
-    const [Phone, setPhone] = useState("")
+    const [Phone, setPhone] = useState("");
     const handlePhone = (event) => {
         setPhone(event.target.value);
     };
-    const [Email, setEmail] = useState("")
+    const [Email, setEmail] = useState("");
     const handleEmail = (event) => {
         setEmail(event.target.value);
     };
-    const [LastName, setLastName] = useState("")
+    const [LastName, setLastName] = useState("");
     const handleLastName = (event) => {
         setLastName(event.target.value);
     };
+    
     const reset = () => {
-        setName(Prop.name)
-        setPhone(Prop.phone)
-        setEmail(Prop.email)
-        setLastName(Prop.family)
-    }
-
-
+        if (Prop.length > 0) {
+            setName(Prop[0].name); 
+            setPhone(Prop[0].phone);
+            setEmail(Prop[0].email);
+            setLastName(Prop[0].family);
+        }
+    };
+    
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
-    myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
-    myHeaders.append("X-CSRFToken", "S9ziK45gGaKNq54vL0xyaYBmlmv9oN6fgKoYYiBBuiZWoitosXmdQbFv3wW0t1CJ");
-
+    myHeaders.append("Authorization", `Bearer ${token}`); 
+    myHeaders.append("X-CSRFToken", "0a1bccef9a75baa5f7886812bec9a1ef60862467");
+    
     const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow"
     };
-
-
+    
     useEffect(() => {
         fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));
     }, []);
+    
     useEffect(() => {
-        setName(Prop.name)
-        setPhone(Prop.phone)
-        setEmail(Prop.email)
-        setLastName(Prop.family)
-
+        if (Prop.length > 0) {
+            setName(Prop[0].name); 
+            setPhone(Prop[0].phone);
+            setEmail(Prop[0].email);
+            setLastName(Prop[0].family);
+        }
     }, [Prop]);
 
     return (<>
-        <div class="col-md-12 pt-2 fontr" dir="rtl" style={{ borderRadius: "10px" }}>
+        <div class="col-md-12 pt-2 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
             <div class="col-md-12">
-                <div class="col-md-12 bg-light p-3 row m-0">
+                <div class="col-md-12  p-3 row m-0">
                     <div class="col-md-6 d-flex justify-content-start">
                         <span class="h4 col-md-2 border-bottom border-2 border-dark p-2">پروفایل</span>
                     </div>

@@ -1,22 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
+import SignIn from "./signin";
 
 function Login() {
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const navigate = useNavigate();
 
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
-    myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "S9ziK45gGaKNq54vL0xyaYBmlmv9oN6fgKoYYiBBuiZWoitosXmdQbFv3wW0t1CJ");
+    myHeaders.append("X-CSRFToken", "fX5sFP00keywprbGk4cJWZOEoZmk4owWnxI5gWbR2ukOs4u3xiU3bi5THXM1MC03");
 
     const handleLogin = async () => {
         const raw = JSON.stringify({
             "email": Email,
             "password": Password
         });
+
 
         const requestOptions = {
             method: "POST",
@@ -26,7 +30,7 @@ function Login() {
         };
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/account/api/v1/token/login/", requestOptions);
+            const response = await fetch("http://127.0.0.1:8000/account/api/v1/jwt/create/", requestOptions);
 
             if (!response.ok) {
                 const errorResponse = await response.json();
@@ -37,11 +41,13 @@ function Login() {
             }
 
             const result = await response.json();
-            console.log(result);
+            localStorage.setItem('token', result.access);
+
             setSuccessMessage("Login successful!");
             setErrorMessage("");
-            setEmail("")
-            setPassword("")
+            setEmail("");
+            setPassword("");
+            navigate('/account');
         } catch (error) {
             console.error(error);
             setErrorMessage("An error occurred during login.");

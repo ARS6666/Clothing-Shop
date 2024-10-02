@@ -8,7 +8,7 @@ import Products from './components/ProductList';
 import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
 import Panel from './components/account/account';
-import AuthProvider from './context/AuthContext';
+import PrivateRoute from "./components/authentication/PrivateRoute";
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
@@ -16,7 +16,7 @@ import About from './components/CornerPages/About';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/register', '*','/panel '];
+  const hideFooterPaths = ['/login', '/register', '*', '/panel '];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
@@ -29,7 +29,10 @@ const AppContent = () => {
           <Route path='/pi' element={<PI />} />
           <Route path='/test' element={<Test />} />
           <Route path='/products' element={<Products />} />
-          <Route path='/account' element={<Panel />} />
+          <Route path='/account' element={
+            <PrivateRoute>
+              <Panel />
+            </PrivateRoute>} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/prdct' element={<Prdctlist />} />
@@ -43,11 +46,9 @@ const AppContent = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </AuthProvider>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
@@ -76,9 +77,7 @@ export default App;
 // }
 // function App() {
 //   return (
-//     <AuthProvider>
 //       <AppContent />
-//     </AuthProvider>
 //   );
 // }
 

@@ -1,4 +1,5 @@
 import { useState, React, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
@@ -9,6 +10,7 @@ import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState();
   // const [NavImg, setImg] = useState([{}]);
 
@@ -28,6 +30,10 @@ const CustomNavbar = () => {
   //     .then((result) => { setImg(result) })
   //     .catch((error) => console.error(error));
   // }, []);
+  const logout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
 
 
   return (
@@ -66,17 +72,18 @@ const CustomNavbar = () => {
             </a>
           </div>
           <div class="col-md-2 h5 mt-2 d-flex justify-content-center align-self-center">
-            <a href="/cart" class="hrefb"><i class="fa-solid fa-cart-shopping"></i></a>
           </div>
 
           <div class="col-md-4 align-self-center">
             <span>
-              <a href="/login" class="hrefb h5 ah">
-                ورود
-              </a>
-              {" "}|{" "}
               <a href="/account" class="hrefb h5 ah">
                 حساب کاربری
+              </a>
+              <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
+
+              {"  "}|{" "}
+              <a href="/login" class="hrefb h5 ah">
+                ورود
               </a>
             </span>
           </div>
