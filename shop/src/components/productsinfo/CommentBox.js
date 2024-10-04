@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../assets/css/productsinfo/Comment.css";
 
-const Comments = ({ productId }) => {
+const Comments = () => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setLoading] = useState(true);
+  const [ProductId ,setProductId]=useState("")
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const paramId = searchParams.get('id');
+    if (paramId) {
+      setProductId(paramId);
+
+    }
+  }, [location.search]);
 
   useEffect(() => {
     show();
-  }, [productId]);
+  }, [ProductId]);
 
   function show() {
-    fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+    fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${ProductId}`)
       .then((response) => response.json())
       .then((result) => {
         setComments(result);
@@ -32,7 +44,7 @@ const Comments = ({ productId }) => {
       "a4gVs4LKoK9qpwBtyktdTabLGKkDTjtt0aSC8gxZdbs3aTs15Xp16uXl7nRL3uLI"
     );
     const raw = JSON.stringify({
-      post: productId,
+      post: ProductId,
       name: name,
       content: comment,
     });
@@ -71,12 +83,8 @@ const Comments = ({ productId }) => {
       >
         <div class="col-md-12 row m-0 p-5">
           <div class=" col-md-6 contain pt-2 col-12">
-            <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-1 ">
-              <div className="text-muted h5">سلام عرض شد:</div>
-              <div className="h5">تسته میدونم این  نباید اینجا باشه</div>
-            </div>
             {comments.map((c, index) => (
-              <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-1 ">
+              <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-3">
                 <div className="text-muted h5">{c.name}:</div>
                 <div className="h5">{c.content}</div>
               </div>
