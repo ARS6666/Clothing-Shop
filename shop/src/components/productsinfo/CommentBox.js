@@ -20,7 +20,7 @@ const Comments = () => {
 
   useEffect(() => {
     if (productId) {
-      fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`) 
+      fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
         .then((response) => response.json())
         .then((result) => {
           setComments(result);
@@ -39,7 +39,7 @@ const Comments = () => {
     myHeaders.append("X-CSRFToken", "a4gVs4LKoK9qpwBtyktdTabLGKkDTjtt0aSC8gxZdbs3aTs15Xp16uXl7nRL3uLI");
 
     const raw = JSON.stringify({
-      post: productId, 
+      post: productId,
       name: name,
       content: comment,
     });
@@ -75,16 +75,16 @@ const Comments = () => {
       <div
         className="col-md-11 col-11 fontr shadow "
         dir="rtl"
-        style={{ borderRadius: "0px" }}
       >
         <div class="col-md-12 row m-0 p-5">
-          <div class=" col-md-6 contain pt-2 col-12">
+          <div class=" col-md-6  pt-2 col-12 p-0 m-0" style={{ maxHeight: '300px', overflowY: 'auto' }}>
             {comments.map((c, index) => (
-              <div className="mt-1 bg-light rounded text-left max-w-1500px fontr p-3">
+              <div className="mt-1 bg-light fontr p-3 border-bottom ">
                 <div className="text-muted h5">{c.name}:</div>
                 <div className="h5">{c.content}</div>
               </div>
             ))}
+          
           </div>
           <div className="col-md-6 col-12 pt-3">
             <div className="d-flex justify-content-start">
