@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 function Orders() {
-    const [Prop, setProp] = useState([]); 
+    const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
     const [Name, setName] = useState("");
     const handleName = (event) => {
@@ -20,42 +20,47 @@ function Orders() {
     const handleLastName = (event) => {
         setLastName(event.target.value);
     };
-    
+
     const reset = () => {
         if (Prop.length > 0) {
-            setName(Prop[0].name); 
+            setName(Prop[0].name);
             setPhone(Prop[0].phone);
             setEmail(Prop[0].email);
             setLastName(Prop[0].family);
         }
     };
-    
+
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
-    myHeaders.append("Authorization", `Bearer ${token}`); 
+    myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("X-CSRFToken", "0a1bccef9a75baa5f7886812bec9a1ef60862467");
-    
+
     const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow"
     };
-    
+
     useEffect(() => {
         fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));
     }, []);
-    
+
     useEffect(() => {
         if (Prop.length > 0) {
-            setName(Prop[0].name); 
+            setName(Prop[0].name);
             setPhone(Prop[0].phone);
             setEmail(Prop[0].email);
             setLastName(Prop[0].family);
         }
     }, [Prop]);
+
+
+    //POST
+
+
 
     return (<>
         <div class="col-md-12 pt-2 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
@@ -86,12 +91,6 @@ function Orders() {
                                     }}
                                     onChange={handlePhone} value={Phone}></input>
                             </div>
-                            <div class="pt-3">
-                                <span class="text-dark pt-5">عکس پروفایل:</span>
-                            </div>
-                            <div class="pt-2 pb-5 col-md-12" >
-                                <input type="file" dir="rtl" class="form-control form-control-lg border-dark rounded-0" required></input>
-                            </div>
                         </div>
                         <div class="col-md-5">
                             <span class="text-dark pt-5"> نام خانوادگی:</span>
@@ -99,10 +98,10 @@ function Orders() {
                                 <input class="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required></input>
                             </div>
                             <div class="pt-3">
-                                <span class="text-dark pt-5">آدرس ایمیل:</span>
+                                <span class="text-dark pt-5">عکس پروفایل:</span>
                             </div>
-                            <div class="pt-2 pb-1 col-md-12">
-                                <input dir="ltr" class="form-control form-control-lg border-dark rounded-0" onChange={handleEmail} value={Email} required></input>
+                            <div class="pt-2 pb-5 col-md-12" >
+                                <input type="file" dir="rtl" class="form-control form-control-lg border-dark rounded-0" required></input>
                             </div>
                         </div>
                         <div class="col-md-12 col-12 d-flex justify-content-center pt-2">

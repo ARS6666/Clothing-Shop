@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
 import "../assets/css/hide.css";
-import logo from "../assets/media/logo.png";
+import lgo from "../assets/media/logo.png";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
@@ -12,6 +12,8 @@ import "../assets/css/buttonn.css"
 const CustomNavbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState();
+  const [Logo, setLogo] = useState([])
+  const [Image, setI] = useState([])
   const [Login, setlogin] = useState(true)
   const token = localStorage.getItem('token');
   useEffect(() => {
@@ -27,13 +29,35 @@ const CustomNavbar = () => {
     navigate('/login');
   };
 
+  const myHeaders = new Headers();
+  myHeaders.append("accept", "application/json");
+  myHeaders.append("X-CSRFToken", "7x82a1WNLT9ulCcznShlrJoy85HoXsYTKKfGEX6LQRAUtZa24a2oD9O5GHsjvut3");
 
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/navbar/logo/1", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setLogo(result))
+      .catch((error) => console.error(error));
+  }, []);
+  useEffect(() => {
+    if (Logo.length > 0) {
+      setI(Logo[0].image);
+
+    }
+    console.log(Image)
+  }, [Logo]);
   return (
     <>
       <div class="col-md-12 fontr row m-0" dir="rtl">
         <div class="col-md-7 row m-0">
           <div class="col-md-3 ">
-            <img style={{ height: "45px" }} src={logo} class="col" />
+            <img style={{ height: "45px" }} src={Image} class="col" />
           </div>
           <div class="col-md-8 align-self-center d-flex justify-content-between">
             <a class="hrefb " href="/"><span class="col-md-3 h5 ah">خانه </span></a>

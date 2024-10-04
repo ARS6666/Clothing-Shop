@@ -9,6 +9,7 @@ import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
 import Panel from './components/account/account';
 import PrivateRoute from "./components/authentication/PrivateRoute";
+import RefreshToken from "./components/authentication/RefreshToken";
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
@@ -48,6 +49,7 @@ function App() {
   return (
     <Router>
       <AppContent />
+      <RefreshToken/>
     </Router>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import "../../../assets/css/account/address.css";
 function Address() {
+    const token = localStorage.getItem('token');
     const data = {
         تهران: {
             cities: ['تهران', 'شهریار', 'ملارد', 'ری', 'اسلامشهر', 'پردیس'],
@@ -104,12 +105,11 @@ function Address() {
     const [cities, setCities] = useState([]);
     const [counties, setCounties] = useState([]);
 
-    // Handle province selection
     const handleProvinceChange = (event) => {
         const province = event.target.value;
         setSelectedProvince(province);
-        setCities(data[province]?.cities || []); // Update cities based on selected province
-        setCounties(data[province]?.counties || []); // Update counties based on selected province
+        setCities(data[province]?.cities || []);
+        setCounties(data[province]?.counties || []);
     };
     const [Name, setName] = useState("")
     const handleName = (event) => {
@@ -139,11 +139,11 @@ function Address() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "3PsPK9K8KJIvlRSxGFP8sOFAlGX4AalPRfR0NEtrC1ekoz46JTToUCbSWNrpzbgo");
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NTAxMDczLCJpYXQiOjE3Mjc0OTUwNzMsImp0aSI6IjQyOGFkOTJlMWQ4ZDRmNTJhY2ZjMmQ3N2RhZmExOTg3IiwidXNlcl9pZCI6MX0.k2y3zjPgQBPwQlCaUJFhEjkw1fGEZJL1vZXFMLE9yhQ");
+    myHeaders.append("X-CSRFToken", "suAdFiV4TS429JyIf0LP0hxKoYL4IGxU5HHR9e52YQvsh6wbWiwScHXhWAwZgI24");
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
     const raw = JSON.stringify({
-        "profile": "0",
+        "profile": 1,
         "name": Name,
         "address": Address,
         "ostan": Ostan,
@@ -158,30 +158,12 @@ function Address() {
         body: raw,
         redirect: "follow"
     };
-
-    const STS = () => {
+    function STS() {
         fetch("http://127.0.0.1:8000/account/api/v1/address/", requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(error => { throw new Error(error.message); });
-                }
-                return response.json();
-            })
-            .then(result => {
-                console.log(Ostan)
-                setName('');
-                setAddress('');
-                setOstan('');
-                setShahr('');
-                setPostCode('');
-                setPhone('');
-
-
-            })
+            .then((response) => response.text())
+            .then((result) => setIsOverlayOpen(false))
             .catch((error) => console.error(error));
     }
-
-
 
 
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);

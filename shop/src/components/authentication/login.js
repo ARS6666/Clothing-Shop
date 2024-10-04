@@ -42,6 +42,7 @@ function Login() {
 
             const result = await response.json();
             localStorage.setItem('token', result.access);
+            localStorage.setItem('refresh', result.refresh);
 
             setSuccessMessage("Login successful!");
             setErrorMessage("");
