@@ -39,20 +39,20 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 350px;
+        height: 300px;
 
     }
 
     .Imge {
-        height: 250px;
+        height: 200px;
     }
 
     .product-carde {
-        height: 350px;
+        height: 300px;
     }
 
     .bpe {
-        height: 350px;
+        height: 250px;
     }
 
 
@@ -90,7 +90,7 @@
 @keyframes appear {
     from{
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(50px);
     }
     to {
         opacity: 1;

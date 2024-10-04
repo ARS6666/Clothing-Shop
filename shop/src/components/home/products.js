@@ -32,7 +32,7 @@ function HProducts() {
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
         {Product.map((c) => (
-          <div class=" col-md-3 col-4 col-sm-4 m-3 product-carde Anim">
+          <div class=" col-md-3 col-4 col-sm-4 m-3 product-carde Anim ">
             <div class="row m-0">
               <div class="d-flex justify-content-center ">
                 <img

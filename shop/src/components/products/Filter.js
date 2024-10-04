@@ -14,7 +14,7 @@ const Filter = ({ onFilterChange }) => {
       minPrice,
       maxPrice,
       category,
-      
+
     });
   };
 
@@ -37,9 +37,10 @@ const Filter = ({ onFilterChange }) => {
       <div className="filter-input">
         <label className="filter-label">جستجو</label>
         <input
-          onKeyDown={(e) => { 
+          onKeyDown={(e) => {
             if (e.key === "Enter")
-              handleApplyFilter();}}
+              handleApplyFilter();
+          }}
           type="text"
           className="form-control"
           placeholder="کلمه مورد نظر را وارد نمایید"
@@ -50,9 +51,10 @@ const Filter = ({ onFilterChange }) => {
       <div className="filter-input">
         <label className="filter-label">قیمت</label>
         <input
-          onKeyDown={(e) => { 
+          onKeyDown={(e) => {
             if (e.key === "Enter")
-              handleApplyFilter();}}
+              handleApplyFilter();
+          }}
           type="number"
           className="form-control"
           placeholder="کمترین قیمت مد نظر"
@@ -60,9 +62,10 @@ const Filter = ({ onFilterChange }) => {
           onChange={(e) => setMinPrice(e.target.value)}
         />
         <input
-          onKeyDown={(e) => { 
+          onKeyDown={(e) => {
             if (e.key === "Enter")
-              handleApplyFilter();}}
+              handleApplyFilter();
+          }}
           type="number"
           className="form-control mt-2"
           placeholder="بیشترین قیمت مد نظر"
@@ -78,18 +81,17 @@ const Filter = ({ onFilterChange }) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">انتخاب دسته بندی</option>
-          <option value="تی شرت">تی شرت</option>
-          <option value="جوراب">جوراب</option>
+          <option value="تیشرت">تی شرت</option>
           <option value="شلوار">شلوار</option>
-          <option value="کت">کت</option>
+          <option value="کفش">کفش</option>
         </select>
       </div>
       <button className="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>
         اعمال فیلتر
       </button>
-        <button className="btn btn-danger w-100 mt-2" onClick={handleClearFilter}>
-          حذف فیلترها
-        </button>
+      <button className="btn btn-danger w-100 mt-2" onClick={handleClearFilter}>
+        حذف فیلترها
+      </button>
     </div>
   );
 };

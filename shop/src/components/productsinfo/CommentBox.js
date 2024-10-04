@@ -63,6 +63,14 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
+            fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+              .then((response) => response.json())
+              .then((result) => {
+                setComments(result);
+              })
+              .catch((error) => {
+                console.log("Error fetching comments:", error);
+              });
       })
       .catch((error) => {
         console.log("Error posting comment:", error);
@@ -84,7 +92,7 @@ const Comments = () => {
                 <div className="h5">{c.content}</div>
               </div>
             ))}
-          
+
           </div>
           <div className="col-md-6 col-12 pt-3">
             <div className="d-flex justify-content-start">

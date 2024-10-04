@@ -10,28 +10,20 @@ import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const [search, setSearch] = useState();
-  // const [NavImg, setImg] = useState([{}]);
+  const [Login, setlogin] = useState(true)
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    if (token && token.length !== 0) {
+      setlogin(false)
+    }
+  }, [])
 
-  // const myHeaders = new Headers();
-  // myHeaders.append("accept", "application/json");
-  // myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
-  // myHeaders.append("X-CSRFToken", "54NdSdaU1GNeQKLeFe3UC7ubqOMwxKQnRHg9DlURLF4MjBZ8q984ykMxxvjhVlJb");
 
-  // const requestOptions = {
-  //   method: "GET",
-  //   headers: myHeaders,
-  //   redirect: "follow"
-  // };
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/navbar/logo/1", requestOptions)
-  //     .then((response) => response.text())
-  //     .then((result) => { setImg(result) })
-  //     .catch((error) => console.error(error));
-  // }, []);
   const logout = () => {
     localStorage.removeItem('token');
+    setlogin(true)
     navigate('/login');
   };
 
@@ -76,14 +68,25 @@ const CustomNavbar = () => {
 
           <div class="col-md-4 align-self-center">
             <span>
-              <a href="/login" class="hrefb h5 ah">
-                ورود
-              </a>
-              {" "}|{" "}
+              {Login ? (
+                <>
+                  <a href="/login" class="hrefb h5 ah">
+                    ورود
+                  </a>
+                  <span>{" "}|{" "}</span>
+                </>
+              ) :
+                null
+              }
               <a href="/account" class="hrefb h5 ah">
                 حساب کاربری
               </a>
-              <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
+              {Login ? (
+                null
+              ) :
+                <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
+              }
+
             </span>
           </div>
         </div>
