@@ -7,8 +7,7 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
-  const [isLoading, setLoading] = useState(true);
-  const [ProductId ,setProductId]=useState("")
+  const [productId, setProductId] = useState("");
   const location = useLocation();
 
   useEffect(() => {
@@ -16,44 +15,42 @@ const Comments = () => {
     const paramId = searchParams.get('id');
     if (paramId) {
       setProductId(paramId);
-
     }
   }, [location.search]);
 
   useEffect(() => {
-    show();
-  }, [ProductId]);
-
-  function show() {
-    fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${ProductId}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setComments(result);
-        setLoading(false);
-      })
-      .catch((error) => console.log("Error fetching comments:", error));
-  }
+    if (productId) {
+      fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`) 
+        .then((response) => response.json())
+        .then((result) => {
+          setComments(result);
+        })
+        .catch((error) => {
+          console.log("Error fetching comments:", error);
+        });
+    }
+  }, [productId]);
 
   function sendToServer() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "X-CSRFToken",
-      "a4gVs4LKoK9qpwBtyktdTabLGKkDTjtt0aSC8gxZdbs3aTs15Xp16uXl7nRL3uLI"
-    );
+    myHeaders.append("X-CSRFToken", "a4gVs4LKoK9qpwBtyktdTabLGKkDTjtt0aSC8gxZdbs3aTs15Xp16uXl7nRL3uLI");
+
     const raw = JSON.stringify({
-      post: ProductId,
+      post: productId, 
       name: name,
       content: comment,
     });
+
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
+
     fetch("http://127.0.0.1:8000/comments/api/v1/post", requestOptions)
       .then((response) => {
         if (!response.ok) {
@@ -66,13 +63,12 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-        show();
       })
       .catch((error) => {
         console.log("Error posting comment:", error);
-        setLoading(false);
       });
   }
+
 
   return (
     <div class="col-md-12 col-12 d-flex justify-content-center pt-5">
