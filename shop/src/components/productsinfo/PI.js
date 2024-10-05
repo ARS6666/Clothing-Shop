@@ -4,8 +4,10 @@ import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 import "../../assets/css/hide.css";
 import Comment from './CommentBox';
+import Loading from "../loading/loading";
 
 function ProductInfo() {
+  const [IsLoading, setisLoading] = useState(true)
   const [IMG, setIMG] = useState([]);
   const [Size, setSize] = useState([]);
   const [product, setProduct] = useState({ colors: [] });
@@ -48,7 +50,7 @@ function ProductInfo() {
       fetch("http://127.0.0.1:8000/api/v1/products/" + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          setProduct(result); setIMG(result.images); setSize(result.size);
+          setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false)
         })
         .catch((error) => console.error(error));
     }
@@ -56,6 +58,7 @@ function ProductInfo() {
 
   return (
     <>
+      {IsLoading ? <Loading /> : null}
       <div class="p-4 col-md-12 pt-2" dir="rtl">
         <div class="row m-0">
           <div class="col-md-6 d-flex flex-column">
@@ -82,7 +85,7 @@ function ProductInfo() {
             <h3 class="text-dark">{product.price} هزار تومان</h3>
 
             <div class="pt-3">
-              <span class="h4">رنگ ها:</span> 
+              <span class="h4">رنگ ها:</span>
               <div class="d-flex justify-content-end">
                 <div className="d-flex flex-wrap">
                   {color.map((color) => (
@@ -120,7 +123,7 @@ function ProductInfo() {
                     }}
                     onClick={() => setSelectedSize(e)}
                   >
-                    <span className='text-dark text-center   align-self-center' style={{marginTop:"20px"}}>{e}</span>
+                    <span className='text-dark text-center   align-self-center' style={{ marginTop: "20px" }}>{e}</span>
                   </div>
                 ))}
               </div>

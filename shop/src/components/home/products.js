@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/css/home/prooductcard.css";
+import Loading from "../loading/loading";
 
 function HProducts() {
+  const [IsLoading, setisLoading] = useState(true)
   const [Product, setPRoduct] = useState([]);
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
@@ -19,12 +21,14 @@ function HProducts() {
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions)
       .then((response) => response.json())
-      .then((result) => setPRoduct(result))
+      .then((result) => {setPRoduct(result);setisLoading(false)})
       .catch((error) => console.error(error));
   }, []);
 
   return (
     <>
+      {IsLoading ? <Loading /> : null}
+
       <div class="d-flex justify-content-center m-0">
         <span class="h2 fontr border-bottom border-4 border-danger p-3">
           محصولات

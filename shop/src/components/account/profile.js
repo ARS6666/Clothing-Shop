@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
+import Loading from '../loading/loading';
 
 function Orders() {
+    const [IsLoading, setisLoading] = useState(true)
     const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
     const [Name, setName] = useState("");
@@ -44,7 +45,7 @@ function Orders() {
     useEffect(() => {
         fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
             .then((response) => response.json())
-            .then((result) => setProp(result))
+            .then((result) => {setProp(result);setisLoading(false)})
             .catch((error) => console.error(error));
     }, []);
 
@@ -63,6 +64,7 @@ function Orders() {
 
 
     return (<>
+        {IsLoading ? <Loading /> : null}
         <div class="col-md-12 pt-2 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
             <div class="col-md-12">
                 <div class="col-md-12  p-3 row m-0">

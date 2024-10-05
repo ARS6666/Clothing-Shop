@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Loading from "../../loading/loading";
+
 function AddressDisplay() {
+    const [IsLoading, setisLoading] = useState(true)
     const [Prop, setProp] = useState([])
     const token = localStorage.getItem('token');
 
@@ -17,12 +20,15 @@ function AddressDisplay() {
 
         fetch("http://127.0.0.1:8000/account/api/v1/address/", requestOptions)
             .then((response) => response.json())
-            .then((result) => setProp(result))
+            .then((result) => {setProp(result);
+                setisLoading(false)
+            })
             .catch((error) => console.error(error));
 
     }, []);
 
     return (<>
+        {IsLoading ? <Loading /> : null}
         {Prop.map((c) => (
             <div class="col-md-6 p-1 fontr " dir="rtl" style={{ color: "gray" }}>
                 <div class=" border border-3 border-dark" style={{ borderStyle: "double" }}>

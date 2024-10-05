@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Loading from "../loading/loading";
 import "../../assets/css/products/products.css";
 import Filter from "./Filter";
 function Products() {
-
+  const [IsLoading, setisLoading] = useState(true)
   const [detail, setDetail] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState('');
@@ -45,6 +46,7 @@ function Products() {
         const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
         const result = await response.json();
         setDetail(result);
+        setisLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -86,7 +88,7 @@ function Products() {
     class="btn btn-dark col-md-11 col-11 add"
     onClick={() => {
       handleClick(); changeContent(
-        <Filter  onFilterChange={handleFilterChange} />
+        <Filter onFilterChange={handleFilterChange} />
       )
     }}
   ><span class="h5">اعمال فیلتر</span>
@@ -100,6 +102,7 @@ function Products() {
   };
   return (
     <>
+    {IsLoading ?<Loading/> : null}
       <div class="col-md-12 col-12 d-flex justify-content-center fontr row m-0 p-3">
         <div class="col-10 col-md-10 ">
           {content}
@@ -145,7 +148,7 @@ function Products() {
             </div>
           ))}
         </div>
-        <div class="col-md-3 col-9 remove pb-3">
+        <div class="col-md-3 col-9 remove pb-3 d-flex justify-content-center">
           <Filter onFilterChange={handleFilterChange} />
         </div>
       </div>

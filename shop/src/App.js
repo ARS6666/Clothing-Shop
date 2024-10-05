@@ -2,7 +2,7 @@ import './App.css';
 import Nav from '../src/components/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
-import Test from './components/productsinfo/CommentBox';
+import Test from './components/loading/loading';
 import PI from './components/ProductPage';
 import Products from './components/ProductList';
 import Signin from './components/authentication/signin';
@@ -17,7 +17,7 @@ import About from './components/CornerPages/About';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/register', '*', '/panel '];
+  const hideFooterPaths = ['/login', '/register', '*', '/panel ','/test'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
@@ -56,31 +56,3 @@ function App() {
 
 export default App;
 
-
-
-// const AppContent = () => {
-//   const location = useLocation();
-//   const hideFooterPaths = ['/login', '/register', '*'];
-//   const showFooter = !hideFooterPaths.includes(location.pathname);
-
-//   return (
-//     <>
-//     <Nav />
-//       <Router>
-//         <Routes>
-//
-//         </Routes>
-//       </Router>
-//       <div class="pt-2">
-//         {showFooter && <Footer />}
-//       </div>
-//     </>
-//   );
-// }
-// function App() {
-//   return (
-//       <AppContent />
-//   );
-// }
-
-// export default App;

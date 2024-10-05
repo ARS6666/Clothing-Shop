@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Loading from "../loading/loading";
 
 function SignIn() {
-
+    const [IsLoading, setisLoading] = useState(false)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
@@ -12,6 +12,7 @@ function SignIn() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
+        setisLoading(true)
         event.preventDefault();
         setError(null);
         setLoading(true);
@@ -49,8 +50,10 @@ function SignIn() {
                 setEmail("");
                 setPassword("");
                 setPassword1("");
+                setisLoading(false)
             } else {
                 setError(result.message || "Registration failed.");
+                setisLoading(false)
             }
         } catch (error) {
             setError(error.toString());
@@ -60,6 +63,7 @@ function SignIn() {
     };
 
     return (<>
+        {IsLoading ? <Loading /> : null}
         <div class="col-md-12  fontr " dir="rtl" style={{ backgroundColor: "#D9D9D9", height: "600px" }}>
             <form onSubmit={handleSubmit} class="col-md-12 d-flex justify-content-center pt-5">
 

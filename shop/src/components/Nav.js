@@ -50,7 +50,6 @@ const CustomNavbar = () => {
       setI(Logo[0].image);
 
     }
-    console.log(Image)
   }, [Logo]);
   return (
     <>
@@ -79,7 +78,7 @@ const CustomNavbar = () => {
           <div class="col-md-1 align-self-center ">
             <a href={"/products?search=" + search}>
               <button
-                class="rounded-circle btn"
+                class="rounded-circle btn bg-transparent align-self-center"
                 alt="جست و جو"
                 style={{ backgroundColor: "#E8E7E7" }}
               >

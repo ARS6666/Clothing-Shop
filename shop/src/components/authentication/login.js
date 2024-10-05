@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import Loading from "../loading/loading";
 import SignIn from "./signin";
 
 function Login() {
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [IsLoading, setisLoading] = useState(false)
     const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ function Login() {
     myHeaders.append("X-CSRFToken", "fX5sFP00keywprbGk4cJWZOEoZmk4owWnxI5gWbR2ukOs4u3xiU3bi5THXM1MC03");
 
     const handleLogin = async () => {
+        setisLoading(true)
         const raw = JSON.stringify({
             "email": Email,
             "password": Password
@@ -37,10 +39,12 @@ function Login() {
                 console.log(errorResponse);
                 setErrorMessage("Login failed:" `${errorResponse.detail || response.statusText}`);
                 setSuccessMessage("");
+                setisLoading(false)
                 return;
             }
 
             const result = await response.json();
+            setisLoading(false)
             localStorage.setItem('token', result.access);
             localStorage.setItem('refresh', result.refresh);
 
@@ -58,6 +62,7 @@ function Login() {
 
     return (
         <>
+            {IsLoading ? <Loading /> : null}
             <div className="col-md-12 fontr" dir="rtl" style={{ backgroundColor: "#D9D9D9", height: "600px" }}>
                 <div className="col-md-12 d-flex justify-content-center pt-5">
                     <div className="col-md-4 pt-5">
@@ -85,6 +90,10 @@ function Login() {
                                     className="form-control form-control-lg"
                                     value={Password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter")
+                                            handleLogin();
+                                    }}
                                 />
                             </div>
                             <div className="col-md-12 d-flex justify-content-center pt-4">

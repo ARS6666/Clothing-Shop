@@ -1,16 +1,4 @@
-/* src/assets/css/Filter.css */
 
-.filter-container {
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 120px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
-}
 
 .filter-header {
     font-size: 1.5rem;
