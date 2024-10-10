@@ -8,6 +8,8 @@ import Loading from "../loading/loading";
 
 function ProductInfo() {
   const [IsLoading, setisLoading] = useState(true)
+  const token = localStorage.getItem('token');
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [IMG, setIMG] = useState([]);
   const [Size, setSize] = useState([]);
   const [product, setProduct] = useState({ colors: [] });
@@ -55,6 +57,31 @@ function ProductInfo() {
         .catch((error) => console.error(error));
     }
   }, [id]);
+  function AddItem(productId) {
+    setButtonDisabled(true);
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    const raw = JSON.stringify({
+      "product_id": productId
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+
+    fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log())
+      .catch((error) => console.error(error));
+
+  }
 
   return (
     <>
@@ -149,7 +176,7 @@ function ProductInfo() {
             </div>
 
             <div class="pt-5">
-              <button class="btn rounded-0 btn-lg btn-outline-dark w-100">افزودن به سبد خرید</button>
+              <button class="btn rounded-0 btn-lg btn-outline-dark w-100" onClick={() => AddItem(product.id)} disabled={buttonDisabled}>افزودن به سبد خرید</button>
             </div>
           </div>
         </div>
