@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Test from './components/loading/loading';
 import PI from './components/ProductPage';
 import Products from './components/ProductList';
+import Cart from './components/account/Cart/cart';
 import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
 import Panel from './components/account/account';
@@ -37,6 +38,7 @@ const AppContent = () => {
           <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/prdct' element={<Prdctlist />} />
+          <Route path='/cart' element={<Cart />} />
           <Route path='/about' element={<About />} />
         </Routes>
       </div>

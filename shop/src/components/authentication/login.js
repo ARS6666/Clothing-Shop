@@ -64,7 +64,7 @@ function Login() {
     return (
         <>
             {IsLoading ? <Loading /> : null}
-            <div className="col-md-12 fontr" dir="rtl" style={{ backgroundColor: "#D9D9D9", height: "600px" }}>
+            <div className="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
                 <div className="col-md-12 d-flex justify-content-center pt-5">
                     <div className="col-md-4 pt-5">
                         <div className="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>

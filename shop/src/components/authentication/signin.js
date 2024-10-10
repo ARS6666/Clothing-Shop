@@ -64,10 +64,10 @@ function SignIn() {
 
     return (<>
         {IsLoading ? <Loading /> : null}
-        <div class="col-md-12  fontr " dir="rtl" style={{ backgroundColor: "#D9D9D9", height: "600px" }}>
+        <div class="col-md-12  fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
             <form onSubmit={handleSubmit} class="col-md-12 d-flex justify-content-center pt-5">
 
-                <div class="col-md-4  ">
+                <div class="col-md-4 ">
                     <div class="col-md-12 p-5  shadow bg-light" style={{ borderRadius: "20px" }}>
                         <div class="d-flex justify-content-center">
                             <span class="h2 col-md-12 border-bottom border-dark text-center p-1">
