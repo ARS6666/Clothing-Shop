@@ -57,6 +57,7 @@ function Login() {
             console.error(error);
             setErrorMessage("An error occurred during login.");
             setSuccessMessage("");
+            setisLoading(false)
         }
     };
 

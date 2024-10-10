@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+body {
+  overflow: hidden;
+}
+
+.scrollable {
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +47,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

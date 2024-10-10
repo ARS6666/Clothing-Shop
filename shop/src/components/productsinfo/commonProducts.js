@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/css/hide.css";
+import "../../assets/css/home/productcard.css";
+
 
 const CommonProducts = () => {
   const [Productss, setPRoduct] = useState([]);
@@ -78,8 +80,9 @@ const CommonProducts = () => {
         <div class="col-md-12 row m-0 " dir="rtl">
           {Productss.slice(currentIndex, currentIndex + 4).map((c) => (
             <div class="p-3 col-md-3">
-              <div class="col-md-12 product-card">
+              <div class={`col-md-12 product-card${c.count === 0 ? 'out-of-stock' : ''}`}>
                 <div class="row m-0">
+                {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
                   <div class="d-flex justify-content-center ">
                     <img
                       src={c.pic}

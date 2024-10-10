@@ -53,6 +53,7 @@ function Products() {
     };
 
     fetchProducts();
+
   }, []);
 
   const handleFilterChange = (filters) => {
@@ -100,9 +101,10 @@ function Products() {
   const handleClick = () => {
     setIsChecked(prevChecked => !prevChecked);
   };
+
   return (
     <>
-    {IsLoading ?<Loading/> : null}
+      {IsLoading ? <Loading /> : null}
       <div class="col-md-12 col-12 d-flex justify-content-center fontr row m-0 p-3">
         <div class="col-10 col-md-10 ">
           {content}
@@ -117,8 +119,9 @@ function Products() {
       <div class="col-md-12 row m-0  d-flex justify-content-center pt-5 " dir="ltr">
         <div class="col-md-9 col-12 row m-0 d-flex justify-content-center fontr">
           {displayedProducts.map((c) => (
-            <div class=" col-md-3 col-4 col-sm-4 m-3 product-card Anim">
+            <div className={`col-md-3 col-4 col-sm-4 m-3 product-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
               <div class="row m-0">
+                {c.discount != 0 && c.count != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
                 <div class="d-flex justify-content-center ">
                   <img
                     src={c.pic}

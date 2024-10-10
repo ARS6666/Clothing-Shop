@@ -100,6 +100,7 @@
 
 
 }
+
 .Anim {
     animation: appear linear;
     animation-timeline: view();
@@ -116,4 +117,27 @@
         opacity: 1;
         transform: translateY(0px);
     }
+}
+
+.out-of-stock { 
+    text-decoration: line-through; 
+    pointer-events: none; 
+    filter:opacity(50%); 
+    color: red;
+    font-style: italic;
+}
+.discountDisplay{
+    z-index: 1;
+    display: flex;
+    position:absolute;
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid red;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: red;
 }

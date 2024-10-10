@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/css/home/prooductcard.css";
+import "../../assets/css/home/productcard.css";
 import Loading from "../loading/loading";
 
 function HProducts() {
@@ -21,7 +21,7 @@ function HProducts() {
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions)
       .then((response) => response.json())
-      .then((result) => {setPRoduct(result);setisLoading(false)})
+      .then((result) => { setPRoduct(result); setisLoading(false) })
       .catch((error) => console.error(error));
   }, []);
 
@@ -36,8 +36,9 @@ function HProducts() {
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
         {Product.map((c) => (
-          <div class=" col-md-3 col-4 col-sm-4 m-3 product-carde Anim ">
+          <div className={` col-md-3 col-4 col-sm-4 m-3 product-carde Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
             <div class="row m-0">
+              {c.discount != 0 && c.count != 0? <div class="discountDisplay">{c.discount}%</div> : null}
               <div class="d-flex justify-content-center ">
                 <img
                   src={c.pic}

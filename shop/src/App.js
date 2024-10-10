@@ -22,7 +22,7 @@ const AppContent = () => {
 
   return (
     <>
-      <div className="main-content">
+      <div className="main-content  scrollable">
         <Nav />
         <Routes>
           <Route path='' element={<Home />} />
