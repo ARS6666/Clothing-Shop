@@ -10,6 +10,7 @@ import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
+  const [CartItems, setCartItem] = useState([])
   const navigate = useNavigate();
   const [search, setSearch] = useState();
   const [Logo, setLogo] = useState([])
@@ -51,6 +52,24 @@ const CustomNavbar = () => {
 
     }
   }, [Logo]);
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+    fetch("http://127.0.0.1:8000/cart/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => { setCartItem(result.items) })
+      .catch((error) => console.error(error));
+
+
+  }, []);
   return (
     <>
       <div class="col-md-12 fontr row m-0" dir="rtl">
@@ -106,8 +125,11 @@ const CustomNavbar = () => {
               </a>
               {Login ? (
                 null
-              ) :
+              ) : <>
                 <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
+                <span>{" "}|{" "}</span>
+                <button class="btn border-0 bg-transparent cart-icon"><a class="hrefb" href="/cart"><i class="fa-solid fa-cart-shopping ah"></i><span class="cart-count text-dark">{CartItems.length}</span></a></button>
+              </>
               }
 
             </span>

@@ -51,7 +51,7 @@ const Filter = ({ onFilterChange }) => {
             />
           </div>
           <div className="filter-input">
-            <label className="filter-label">قیمت</label>
+            <label className="filter-label"> قیمت (هزار تومان)</label>
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter")

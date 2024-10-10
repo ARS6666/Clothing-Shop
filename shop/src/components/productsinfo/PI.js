@@ -11,6 +11,7 @@ function ProductInfo() {
   const token = localStorage.getItem('token');
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [IMG, setIMG] = useState([]);
+  const [added, setAdded] = useState(false);
   const [Size, setSize] = useState([]);
   const [product, setProduct] = useState({ colors: [] });
   const location = useLocation();
@@ -57,7 +58,27 @@ function ProductInfo() {
         .catch((error) => console.error(error));
     }
   }, [id]);
-  function AddItem(productId) {
+
+  function AddItem(productId, event) {
+    setAdded(true);
+
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    document.body.appendChild(dot);
+
+    const buttonRect = event.target.getBoundingClientRect();
+
+    dot.style.left = `${buttonRect.right / 2}px`;
+    dot.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+
+    setTimeout(() => {
+      dot.style.transform = 'translate(-50vh , -100vh)';
+    }, 10);
+
+    setTimeout(() => {
+      document.body.removeChild(dot);
+      setAdded(false);
+    }, 1900);
     setButtonDisabled(true);
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
@@ -81,7 +102,10 @@ function ProductInfo() {
       .then((result) => console.log())
       .catch((error) => console.error(error));
 
+
+
   }
+
 
   return (
     <>
@@ -176,11 +200,15 @@ function ProductInfo() {
             </div>
 
             <div class="pt-5">
-              <button class="btn rounded-0 btn-lg btn-outline-dark w-100" onClick={() => AddItem(product.id)} disabled={buttonDisabled}>افزودن به سبد خرید</button>
+              <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
+                {buttonDisabled ?
+                  <span class="text-success">به سبد خرید اضافه شد!</span>
+                  :
+                  <span>افزودن به سبد خرید</span>}</button>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
 
     </>
   );

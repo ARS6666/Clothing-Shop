@@ -17,3 +17,12 @@
 .color-option:hover {
     transform: scale(1.1);
 }
+
+.dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border-radius: 100%;
+    transition: transform 3s ease;
+}
