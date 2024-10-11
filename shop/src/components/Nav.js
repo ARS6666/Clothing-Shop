@@ -40,7 +40,7 @@ const CustomNavbar = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
-    handleResize(); // Check size on mount
+    handleResize();
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -85,11 +85,31 @@ const CustomNavbar = () => {
       .then((result) => { setCartItem(result.items) })
       .catch((error) => console.error(error));
 
-
   }, []);
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const fetchData = async () => {
+    await delay(4900);
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+    fetch("http://127.0.0.1:8000/cart/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => { setCartItem(result.items) })
+      .catch((error) => console.error(error));
+
+  }
+  useEffect(() => {
+    fetchData();
+  }, [CartItems.length]);
   function HandleNav() {
     setCollapse(!Collapse)
-    console.log(Collapse)
   }
 
   return (

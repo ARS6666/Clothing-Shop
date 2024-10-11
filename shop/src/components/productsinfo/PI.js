@@ -18,8 +18,9 @@ function ProductInfo() {
   const location = useLocation();
   const [id, setId] = useState('');
   const [isChecked, setIsChecked] = React.useState(false);
-  const [selectedColor, setSelectedColor] = useState("#ffffff"); // Default white color
+  const [selectedColor, setSelectedColor] = useState("#ffffff");
   const [selectedSize, setSelectedSize] = useState();
+
 
   const color = [
     { name: "Red", value: "#ff0000" },
@@ -61,7 +62,6 @@ function ProductInfo() {
   }, [id]);
 
   function AddItem(productId, event) {
-    console.log(token)
     if (token) {
       setAdded(true);
 
@@ -69,10 +69,12 @@ function ProductInfo() {
       dot.className = 'dot';
       document.body.appendChild(dot);
 
-      const buttonRect = event.target.getBoundingClientRect();
 
-      dot.style.left = `${buttonRect.right / 2}px`;
-      dot.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+      const x = event.clientX;
+      const y = event.clientY;
+
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
 
       setTimeout(() => {
         dot.style.transform = 'translate(-50vh , -100vh)';

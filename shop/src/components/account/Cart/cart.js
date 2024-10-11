@@ -22,7 +22,7 @@ function Cart() {
     function show() {
         fetch("http://127.0.0.1:8000/cart/", requestOptions)
             .then((response) => response.json())
-            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items); console.log(Cart) })
+            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) })
             .catch((error) => console.error(error));
     }
 
@@ -77,6 +77,29 @@ function Cart() {
             .then((response) => response.text())
             .then((result) => { setButtonDisabled(false); show() })
             .catch((error) => { setButtonDisabled(false); console.error(error) });
+    }
+    function RemoveAll(ProductID) {
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("X-CSRFToken", "59NyS5epInpykUicznqVg6s2p69HTvXo1QKN6hVOfPkeriXhtHF1XOCAQ0ZAPqK0");
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        const raw = JSON.stringify({
+            "product_id": ProductID
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("http://127.0.0.1:8000/cart/remove_all/", requestOptions)
+            .then((response) => response.text())
+            .then((result) => show())
+            .catch((error) => console.error(error));
     }
 
 
@@ -142,19 +165,19 @@ function Cart() {
                                 <div class="col-md-2 col-3 p-3"><span>جمع جزء</span></div>
                             </div>
                         </div>
-                        {CartItems.map((c) => (<>
+                        {CartItems?.map((c) => (<>
                             <div class="col-md-12 col-12">
                                 <div class="col-md-12 col-12 border rounded-0 align-items-center row m-0">
-                                    <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle">x</button></div>
+                                    <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle" onClick={() => RemoveAll(c.product.id)}><i class="fa-solid fa-trash-can"></i></button></div>
                                     <div class="col-md-2 p-3 remove">
-                                        <img src={IMg} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
+                                        <img src={c.product.pic} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
                                     <div class="col-md-2 col-3 p-3">{c.product.price},000تومان</div>
                                     <div class="col-md-2 col-4 p-3">
-                                        <button class="btn-circle btn border" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}>-</button>
+                                        <button class="btn-circle btn btn-light border" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}>-</button>
                                         <span class="border-bottom p-2">{c.quantity}</span>
-                                        <button class="btn-circle btn border" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}>+</button>
+                                        <button class="btn-circle btn btn-light border" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}>+</button>
                                     </div>
                                     <div class="col-md-2 col-2 p-3">{c.product.price * c.quantity}تومان</div>
                                 </div>

@@ -1,46 +1,45 @@
 import React, { useState } from 'react';
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
-import './test.css'; // You can add your styles here
+import './test.css';
 
-const Test = () => {
-    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+const AddToCartButton = () => {
+    const [added, setAdded] = useState(false);
 
-    const openOverlay = () => {
-        setIsOverlayOpen(true);
-    };
+    const handleClick = (event) => {
+        setAdded(true);
 
-    const closeOverlay = () => {
-        setIsOverlayOpen(false);
+        // Create a dot element
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        document.body.appendChild(dot);
+
+        // Get the button's position
+        const buttonRect = event.target.getBoundingClientRect();
+
+        // Set initial position of the dot
+        dot.style.left = `${buttonRect.right}px`;
+        dot.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+
+        // Animate dot to top right corner
+        setTimeout(() => {
+            dot.style.transform = 'translate(-100vw , -40px)';
+        }, 10);
+
+        // Remove dot after animation
+        setTimeout(() => {
+            document.body.removeChild(dot);
+            setAdded(false);
+        }, 2200); // Duration of animation
     };
 
     return (
-        <div className="fontr">
-            <button onClick={openOverlay}>Open Overlay</button>
-
-            {isOverlayOpen && (
-                <div className="overlay row m-0">
-                    <div class="col-md-12 d-flex justify-content-center">
-                        <div class=" col-md-8 " style={{ backgroundColor: "#ffffff", height: "400px" }}>
-                            <div class="col-md-12">
-
-                            </div>
-                            <div class="col-md-12  text-center p-1 h4 row m-0">
-                                <div class="justify-content-end col-md-12 d-flex" style={{ height: "25px" }}>
-                                    <button class="btn  btn-lg border-0" onClick={closeOverlay}><i class="fa fa-times" aria-hidden="true"></i></button>
-                                </div>
-                                <span class="text-dark">افزودن آدرس جدید</span>
-                            </div>
-                            <div class="col-md-12">
-                                <tilte class="h5 text-dark">نام و نام خانوادگی تحویل گیرنده *</tilte>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            )}
+        <div class="col-md-12 d-flex justify-content-end">
+            <button className="add-to-cart" onClick={handleClick} >
+                <i className={`fa ${added ? 'fa-check' : 'fa-cart-plus'}`}></i>
+                {added ? 'Added to Cart' : 'Add to Cart'}
+            </button >
         </div>
     );
 };
 
-export default Test;
+export default AddToCartButton;
