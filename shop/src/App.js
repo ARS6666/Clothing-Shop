@@ -44,8 +44,8 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>
+        {showFooter ? <Footer /> : null}
       </div>
-      {showFooter && <Footer />}
     </>
   );
 };

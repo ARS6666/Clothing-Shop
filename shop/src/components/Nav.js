@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
-import "../assets/css/hide.css";
 import lgo from "../assets/media/logo.png";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
@@ -17,6 +16,7 @@ const CustomNavbar = () => {
   const [Logo, setLogo] = useState([])
   const [Image, setI] = useState([])
   const [Login, setlogin] = useState(true)
+  const [isVisible, setIsVisible] = useState(true);
   const token = localStorage.getItem('token');
   useEffect(() => {
     if (token && token.length !== 0) {
@@ -30,6 +30,22 @@ const CustomNavbar = () => {
     setlogin(true)
     navigate('/login');
   };
+  const handleResize = () => {
+    if (window.innerWidth < 1024) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Check size on mount
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
@@ -78,21 +94,21 @@ const CustomNavbar = () => {
 
   return (
     <>
-      <div class="col-md-12 fontr row m-0 remove" dir="rtl">
-        <div class="col-md-7 row m-0">
-          <div class="col-md-3 ">
+      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 " dir="rtl">
+        <div class="col-md-7 col-sm-7 row m-0">
+          <div class="col-md-3 col-sm-3">
             <img style={{ height: "45px" }} src={Image} class="col" />
           </div>
-          <div class="col-md-8 align-self-center d-flex justify-content-between">
-            <a class="hrefb " href="/"><span class="col-md-3 h5 ah">خانه </span></a>
-            <a class="hrefb" href="/products"><span class="col-md-3 h5  ah">محصولات </span></a>
+          <div class="col-md-8 col-sm-8 align-self-center d-flex justify-content-between">
+            <a class="hrefb " href="/"><span class="col-md-3 col-sm-3 h5 ah">خانه </span></a>
+            <a class="hrefb" href="/products"><span class="col-md-3 col-sm-3 h5  ah">محصولات </span></a>
             <a className="hrefb"><Prdctlist /></a>
-            <a class="hrefb" href="/about"><span class="col-md-3 h5  ah">درباره ما </span></a>
+            <a class="hrefb" href="/about"><span class="col-md-3 h5 col-sm-3 ah">درباره ما </span></a>
           </div >
         </div>
 
-        <div class="col-md-5  row m-0">
-          <div class="col-md-5 align-self-center">
+        <div class="col-md-5 col-sm-5 row m-0">
+          <div class="col-md-5 col-sm-5 align-self-center">
             <input
               class="form-control fontr"
               placeholder="جست وجو ..."
@@ -100,7 +116,7 @@ const CustomNavbar = () => {
               style={{ backgroundColor: "#D9D9D9" }}
             />
           </div>
-          <div class="col-md-1 align-self-center ">
+          <div class="col-md-1 col-sm-1 align-self-center ">
             <a href={"/products?search=" + search}>
               <button
                 class="rounded-circle btn bg-transparent align-self-center"
@@ -111,10 +127,10 @@ const CustomNavbar = () => {
               </button>
             </a>
           </div>
-          <div class="col-md-2 h5 mt-2 d-flex justify-content-center align-self-center">
+          <div class="col-md-2 col-sm-2 h5 mt-2 d-flex justify-content-center align-self-center">
           </div>
 
-          <div class="col-md-4 align-self-center">
+          <div class="col-md-4 col-sm-4 align-self-center">
             <span>
               {Login ? (
                 <>
@@ -137,11 +153,10 @@ const CustomNavbar = () => {
                 <button class="btn border-0 bg-transparent cart-icon"><a class="hrefb" href="/cart"><i class="fa-solid fa-cart-shopping ah"></i><span class="cart-count text-dark">{CartItems.length}</span></a></button>
               </>
               }
-
             </span>
           </div>
         </div>
-      </div>
+      </div> : null}
       <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
         <div class="col-12 m-0 d-flex">
           <div class="col-6 d-flex justify-content-start">

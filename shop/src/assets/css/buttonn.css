@@ -61,3 +61,23 @@
   position:absolute;
   overflow: hidden;
 }
+.remove {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.add {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .remove {
+      display: none;
+  }
+
+  .add {
+      display: flex;
+
+  }
+
+}
