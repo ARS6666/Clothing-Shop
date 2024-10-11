@@ -18,7 +18,7 @@ import About from './components/CornerPages/About';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/register', '*', '/panel ','/test'];
+  const hideFooterPaths = ['/login', '/register', '*', '/panel ', '/test'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
@@ -38,7 +38,10 @@ const AppContent = () => {
           <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/prdct' element={<Prdctlist />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>
       </div>
@@ -51,7 +54,7 @@ function App() {
   return (
     <Router>
       <AppContent />
-      <RefreshToken/>
+      <RefreshToken />
     </Router>
   );
 }

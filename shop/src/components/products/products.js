@@ -3,9 +3,11 @@ import { useLocation } from "react-router-dom";
 import Loading from "../loading/loading";
 import "../../assets/css/products/products.css";
 import Filter from "./Filter";
+
 function Products() {
   const [IsLoading, setisLoading] = useState(true)
   const [detail, setDetail] = useState([]);
+  const [NoResult, setNoResult] = useState(false)
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
@@ -101,6 +103,15 @@ function Products() {
   const handleClick = () => {
     setIsChecked(prevChecked => !prevChecked);
   };
+  useEffect(() => {
+    if (displayedProducts.length === 0) {
+      setNoResult(true)
+    }
+    else {
+      setNoResult(false)
+    }
+
+  }, [displayedProducts]);
 
   return (
     <>
@@ -118,6 +129,13 @@ function Products() {
       </div>
       <div class="col-md-12 row m-0  d-flex justify-content-center pt-5 " dir="ltr">
         <div class="col-md-9 col-12 row m-0 d-flex justify-content-center fontr">
+          {NoResult ?
+            <>
+              <div class="col-md-12 d-flex justify-content-center">
+                <span class="text-dark h1 pb-2 ">!محصولی یافت نشد</span>
+              </div>
+            </>
+            : null}
           {displayedProducts.map((c) => (
             <div className={`col-md-3 col-4 col-sm-4 m-3 product-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
               <div class="row m-0">
@@ -151,7 +169,7 @@ function Products() {
             </div>
           ))}
         </div>
-        <div class="col-md-3 col-9 remove pb-3 d-flex justify-content-center">
+        <div class="col-md-3 col-9 remove pb-3 justify-content-center">
           <Filter onFilterChange={handleFilterChange} />
         </div>
       </div>

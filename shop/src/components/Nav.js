@@ -11,6 +11,7 @@ import "../assets/css/buttonn.css"
 
 const CustomNavbar = () => {
   const [CartItems, setCartItem] = useState([])
+  const [Collapse, setCollapse] = useState(false)
   const navigate = useNavigate();
   const [search, setSearch] = useState();
   const [Logo, setLogo] = useState([])
@@ -70,9 +71,14 @@ const CustomNavbar = () => {
 
 
   }, []);
+  function HandleNav() {
+    setCollapse(!Collapse)
+    console.log(Collapse)
+  }
+
   return (
     <>
-      <div class="col-md-12 fontr row m-0" dir="rtl">
+      <div class="col-md-12 fontr row m-0 remove" dir="rtl">
         <div class="col-md-7 row m-0">
           <div class="col-md-3 ">
             <img style={{ height: "45px" }} src={Image} class="col" />
@@ -132,6 +138,70 @@ const CustomNavbar = () => {
               </>
               }
 
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
+        <div class="col-12 m-0 d-flex">
+          <div class="col-6 d-flex justify-content-start">
+            <button class="btn btn-light rounded-3 p-2" onClick={HandleNav}>
+              <i class=" fa-solid fa-bars"></i>
+            </button>
+            {Collapse ? (
+              <div class="burger-menu">
+                <div class="col-12 border-top border-bottom d-flex justify-content-center p-3  align-self-center">
+                  <div><a class="hrefb h5 p-3 align-self-center" href="/" >خانه</a></div>
+                  <div><a class="hrefb h5 p-3 align-self-center" href="/products" >محصولات</a></div>
+                  <div><a class="hrefb h5 p-3 align-self-center" href="/about" >درباره ی ما</a></div>
+                  <div class="col-4 align-self-center">
+                    <input
+                      class="form-control fontr"
+                      placeholder="جست وجو ..."
+                      onChange={(e) => setSearch(e.target.value)}
+                      style={{ backgroundColor: "#D9D9D9" }}
+                    />
+                  </div>
+                  <div class="col-1 align-self-center ">
+                    <a href={"/products?search=" + search}>
+                      <button
+                        class="rounded-circle btn bg-transparent align-self-center"
+                        alt="جست و جو"
+                        style={{ backgroundColor: "#E8E7E7" }}
+                      >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <span>
+              {Login ? (
+                <>
+                  <a href="/login" class="hrefb h5 ah">
+                    ورود
+                  </a>
+                  <span>{" "}|{" "}</span>
+                </>
+              ) : null}
+              <a href="/account" class="hrefb h5 ah">
+                حساب کاربری
+              </a>
+              {Login ? (
+                null
+              ) : (<>
+                <button class="btn border-0 bg-transparent" onClick={logout}><i class="fas fa-sign-out-alt ah"></i></button>
+                <span>{" "}|{" "}</span>
+                <button class="btn border-0 bg-transparent cart-icon">
+                  <a class="hrefb" href="/cart">
+                    <i class="fa-solid fa-cart-shopping ah"></i>
+                    <span class="cart-count text-dark">{CartItems.length}</span>
+                  </a>
+                </button>
+              </>)}
             </span>
           </div>
         </div>

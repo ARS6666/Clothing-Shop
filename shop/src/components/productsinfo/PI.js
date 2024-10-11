@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 import "../../assets/css/hide.css";
@@ -7,6 +7,7 @@ import Comment from './CommentBox';
 import Loading from "../loading/loading";
 
 function ProductInfo() {
+  const navigate = useNavigate();
   const [IsLoading, setisLoading] = useState(true)
   const token = localStorage.getItem('token');
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -60,49 +61,52 @@ function ProductInfo() {
   }, [id]);
 
   function AddItem(productId, event) {
-    setAdded(true);
+    console.log(token)
+    if (token) {
+      setAdded(true);
 
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    document.body.appendChild(dot);
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      document.body.appendChild(dot);
 
-    const buttonRect = event.target.getBoundingClientRect();
+      const buttonRect = event.target.getBoundingClientRect();
 
-    dot.style.left = `${buttonRect.right / 2}px`;
-    dot.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
+      dot.style.left = `${buttonRect.right / 2}px`;
+      dot.style.top = `${buttonRect.top + buttonRect.height / 2}px`;
 
-    setTimeout(() => {
-      dot.style.transform = 'translate(-50vh , -100vh)';
-    }, 10);
+      setTimeout(() => {
+        dot.style.transform = 'translate(-50vh , -100vh)';
+      }, 10);
 
-    setTimeout(() => {
-      document.body.removeChild(dot);
-      setAdded(false);
-    }, 1900);
-    setButtonDisabled(true);
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", `Bearer ${token}`);
+      setTimeout(() => {
+        document.body.removeChild(dot);
+        setAdded(false);
+      }, 1900);
+      setButtonDisabled(true);
+      const myHeaders = new Headers();
+      myHeaders.append("accept", "application/json");
+      myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", `Bearer ${token}`);
 
-    const raw = JSON.stringify({
-      "product_id": productId
-    });
+      const raw = JSON.stringify({
+        "product_id": productId
+      });
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-    };
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+      };
 
-    fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log())
-      .catch((error) => console.error(error));
-
-
+      fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log())
+        .catch((error) => console.error(error));
+    } else {
+      navigate('/login');;
+    }
 
   }
 
