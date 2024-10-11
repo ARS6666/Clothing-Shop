@@ -145,13 +145,13 @@ function Cart() {
                         {CartItems.map((c) => (<>
                             <div class="col-md-12 col-12">
                                 <div class="col-md-12 col-12 border rounded-0 align-items-center row m-0">
-                                    <div class="col-md-1 col-1 p-3 "><button class="btn btn-dark rounded-circle btn-circle">x</button></div>
+                                    <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle">x</button></div>
                                     <div class="col-md-2 p-3 remove">
                                         <img src={IMg} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
-                                    <div class="col-md-1 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
+                                    <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
                                     <div class="col-md-2 col-3 p-3">{c.product.price},000تومان</div>
-                                    <div class="col-md-4 col-4 p-3">
+                                    <div class="col-md-2 col-4 p-3">
                                         <button class="btn-circle btn border" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}>-</button>
                                         <span class="border-bottom p-2">{c.quantity}</span>
                                         <button class="btn-circle btn border" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}>+</button>
