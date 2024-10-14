@@ -155,17 +155,19 @@ function Products() {
                   </span>
                 </div>
               </div>
-              <div className="hover-details col-md-12 ">
-                <div
-                  class="d-flex justify-content-center bp"
-                >
-                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                    <button className="btn btn-light hover  fontr ">
-                      مشاهده محصول
-                    </button>
-                  </a>
+              <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                <div className="hover-details col-md-12 ">
+                  <div
+                    class="d-flex justify-content-center bp"
+                  >
+                    <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                      <button className="btn btn-light hover  fontr ">
+                        مشاهده محصول
+                      </button>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           ))}
         </div>

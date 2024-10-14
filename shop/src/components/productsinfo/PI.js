@@ -116,8 +116,8 @@ function ProductInfo() {
   return (
     <>
       {IsLoading ? <Loading /> : null}
-      <div class="p-4 col-md-12 pt-2" dir="rtl">
-        <div class="row m-0">
+      <div class="p-4 container-xxl pt-2" dir="rtl">
+        <div class="row m-0 col-md-12">
           <div class="col-md-6 d-flex flex-column">
             <div class="row m-0">
               <div class="col-md-2 remove d-flex flex-column align-items-end romove">
@@ -137,80 +137,82 @@ function ProductInfo() {
             </div>
           </div>
 
-          <div class="col-md-6 fontr pt-5 ">
-            <h1 class="text-dark">{product.name}</h1>
-            <h3 class="text-dark">{product.price} هزار تومان</h3>
+          <div class="col-md-6 fontr pt-4 d-flex justify-content-center">
+            <div class=" col-md-10">
+              <div><span class="text-dark h2">{product.name}</span></div>
+              <div class="pt-2"><span class="text-dark h3 ">{product.price} هزار تومان</span></div>
 
-            <div class="pt-3">
-              <span class="h4">رنگ ها:</span>
-              <div class="d-flex justify-content-end">
-                <div className="d-flex flex-wrap">
-                  {color.map((color) => (
+              <div class="pt-3">
+                <span class="h4">رنگ ها:</span>
+                <div class="d-flex justify-content-end">
+                  <div className="d-flex flex-wrap">
+                    {color.map((color) => (
+                      <div
+                        key={color.name}
+                        className="color-option m-2"
+                        style={{
+                          backgroundColor: color.value,
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          border: selectedColor === color.value ? "2px solid black" : "none",
+                        }}
+                        onClick={() => setSelectedColor(color.value)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-3">
+                <span class="h4">سایز بندی:</span>
+                <div class="row m-0 d-flex justify-content-start" dir="ltr">
+                  {Size.map((e) => (
                     <div
-                      key={color.name}
-                      className="color-option m-2"
+                      key={e}
+                      className="color-option"
                       style={{
-                        borderRadius: "50px",
-                        backgroundColor: color.value,
-                        width: "40px",
-                        height: "40px",
-                        cursor: "pointer",
-                        border: selectedColor === color.value ? "2px solid black" : "none",
+                        height: "35px",
+                        width: "35px",
+                        marginRight: "10px",
+                        border: selectedSize === e ? "2px solid black" : "none",
+                        alignItems :"center",
                       }}
-                      onClick={() => setSelectedColor(color.value)}
-                    />
+                      onClick={() => setSelectedSize(e)}
+                      class="border"
+                    >
+                      <div class="align-content-center pt-2"><span className='text-dark text-center' style={{ marginTop: "20px" }}>{e}</span></div>
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
 
-            <div class="pt-3">
-              <span class="h4">سایز بندی:</span>
-              <div class="row m-0 d-flex justify-content-start" dir="ltr">
-                {Size.map((e) => (
-                  <div
-                    key={e}
-                    className="color-option"
-                    style={{
-                      height: "40px",
-                      width: "40px",
-                      backgroundColor: "#D9D9D9",
-                      marginRight: "10px",
-                      border: selectedSize === e ? "2px solid black" : "none",
-                    }}
-                    onClick={() => setSelectedSize(e)}
-                  >
-                    <span className='text-dark text-center   align-self-center' style={{ marginTop: "20px" }}>{e}</span>
-                  </div>
-                ))}
+              <div class="pt-4">
+                <span class="h4">توضیحات:</span>
+                <p class="h5" style={{lineHeight:"1.9rem"}}>{product.description}</p>
               </div>
-            </div>
 
-            <div class="pt-4">
-              <span class="h4">توضیحات:</span>
-              <p class="h5">{product.description}</p>
-            </div>
-
-            <div class="pt-4">
-              <span class="h4">جنس:</span>
-              <div class="d-flex justify-content-end">
-                <span class="h5">{product.material}</span>
+              <div class="pt-4">
+                <span class="h4">جنس:</span>
+                <div class="d-flex justify-content-end">
+                  <span class="h5">{product.material}</span>
+                </div>
               </div>
-            </div>
 
-            <div class="pt-4">
-              <span class="h4">برند:</span>
-              <div class="d-flex justify-content-end">
-                <span class="h5">{product.brand}</span>
+              <div class="pt-4">
+                <span class="h4">برند:</span>
+                <div class="d-flex justify-content-end">
+                  <span class="h5">{product.brand}</span>
+                </div>
               </div>
-            </div>
 
-            <div class="pt-5">
-              <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
-                {buttonDisabled ?
-                  <span class="text-success">به سبد خرید اضافه شد!</span>
-                  :
-                  <span>افزودن به سبد خرید</span>}</button>
+              <div class="pt-5">
+                <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
+                  {buttonDisabled ?
+                    <span class="text-success">به سبد خرید اضافه شد!</span>
+                    :
+                    <span>افزودن به سبد خرید</span>}</button>
+              </div>
             </div>
           </div>
         </div >

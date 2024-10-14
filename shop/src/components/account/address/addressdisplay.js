@@ -40,7 +40,7 @@ function AddressDisplay() {
                         <div class="col-md-6 text-end h5 ">شهرستان : {c.shahr}</div>
                     </div>
                     <div class="col-md-12 pt-3">
-                        <span class="h5 p-4 ">آدرس :{c.address}.</span>
+                        <span class="h5 p-4 " style={{lineHeight:"1.9rem"}}>آدرس :{c.address}.</span>
                     </div>
                     <div class="col-md-12 pt-3">
                         <span class="h5 p-4 ">کد پستی :{c.postcode}</span>

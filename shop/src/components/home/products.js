@@ -38,7 +38,7 @@ function HProducts() {
         {Product.map((c) => (
           <div className={` col-md-3 col-4 col-sm-4 m-3 product-carde Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
             <div class="row m-0">
-              {c.discount != 0 && c.count != 0? <div class="discountDisplay">{c.discount}%</div> : null}
+              {c.discount != 0 && c.count != 0 ? <div class="discountDisplay">{c.discount}%</div> : null}
               <div class="d-flex justify-content-center ">
                 <img
                   src={c.pic}
@@ -54,17 +54,19 @@ function HProducts() {
                 </span>
               </div>
             </div>
-            <div className="hover-detailse col-md-12 ">
-              <div
-                class="d-flex justify-content-center bpe"
-              >
-                <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                  <button className="btn btn-light hover  fontr ">
-                    مشاهده محصول
-                  </button>
-                </a>
+            <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+              <div className="hover-detailse col-md-12 ">
+                <div
+                  class="d-flex justify-content-center bpe"
+                >
+                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                    <button className="btn btn-light hover  fontr ">
+                      مشاهده محصول
+                    </button>
+                  </a>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         ))}
         <div class="d-flex justify-content-center pt-4 mb-4">
