@@ -140,8 +140,10 @@ function ProductInfo() {
           <div class="col-md-6 fontr pt-4 d-flex justify-content-center">
             <div class=" col-md-10">
               <div><span class="text-dark h2">{product.name}</span></div>
-              <div class="pt-2"><span class="text-dark h3 ">{product.price} هزار تومان</span></div>
-
+              <div class="col-md-12 row m-0">
+                <div class="pt-2 col-md-5"><span class={` h3 ${product.discount === 0 ? "text-dark" : "redFont"}`}>{product.price} هزار تومان</span></div>
+                <div class="col-md-6">{product.discount != 0 ? <div class="pt-2"><span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} هزار تومان</span></div> : null}</div>
+              </div>
               <div class="pt-3">
                 <span class="h4">رنگ ها:</span>
                 <div class="d-flex justify-content-end">
@@ -176,7 +178,7 @@ function ProductInfo() {
                         width: "35px",
                         marginRight: "10px",
                         border: selectedSize === e ? "2px solid black" : "none",
-                        alignItems :"center",
+                        alignItems: "center",
                       }}
                       onClick={() => setSelectedSize(e)}
                       class="border"
@@ -189,7 +191,7 @@ function ProductInfo() {
 
               <div class="pt-4">
                 <span class="h4">توضیحات:</span>
-                <p class="h5" style={{lineHeight:"1.9rem"}}>{product.description}</p>
+                <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
               </div>
 
               <div class="pt-4">

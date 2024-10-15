@@ -9,6 +9,9 @@ const Comments = () => {
   const [name, setName] = useState("");
   const [productId, setProductId] = useState("");
   const location = useLocation();
+  const [ShowCount, setShowCount] = useState(3)
+  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
+  const [ButtDisable, setButtDisable] = useState(false)
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -63,38 +66,52 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-            fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
-              .then((response) => response.json())
-              .then((result) => {
-                setComments(result);
-              })
-              .catch((error) => {
-                console.log("Error fetching comments:", error);
-              });
+        fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+          .then((response) => response.json())
+          .then((result) => {
+            setComments(result);
+          })
+          .catch((error) => {
+            console.log("Error fetching comments:", error);
+          });
       })
       .catch((error) => {
         console.log("Error posting comment:", error);
       });
   }
 
+  function HandleShow() {
+    if (0 >= comments.length - ShowCount) {
+      setButtContent("مشاهده بیشتر ...")
+      setShowCount(ShowCount - 3)
+    } else {
+      setShowCount(ShowCount + 3)
+      setButtContent("مشاهده کمتر ...")
+    }
+  }
+
 
   return (
-    <div class="col-md-12 col-12 d-flex justify-content-center pt-5">
+    <div class="container-xl col-12 d-flex justify-content-center">
       <div
-        className="col-md-11 col-11 fontr shadow "
+        className="col-md-11 col-11  fontr shadow "
         dir="rtl"
       >
         <div class="col-md-12 row m-0 p-5">
-          <div class=" col-md-6  pt-2 col-12 p-0 m-0" style={{ maxHeight: '300px', overflowY: 'auto' }}>
-            {comments.map((c, index) => (
+          <div class=" col-md-6  pt-2 col-12 p-0 m-0">
+            {comments?.slice(comments.length - ShowCount, comments.length).map((c, index) => (
               <div className="mt-1 bg-light fontr p-3 border-bottom ">
                 <div className="text-muted h5">{c.name}:</div>
                 <div className="h5">{c.content}</div>
               </div>
             ))}
+            <div class="col-md-12 pt-3">
+              <button class="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
+              </button>
+            </div>
 
           </div>
-          <div className="col-md-6 col-12 pt-3">
+          <div className="col-md-6 col-12 pt-4">
             <div className="d-flex justify-content-start">
               <div className="col-md-11 col-12 d-flex align-items-center pt-3">
                 <input

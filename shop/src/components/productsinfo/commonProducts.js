@@ -74,7 +74,7 @@ const CommonProducts = () => {
         </div>
       </div>
 
-      <div className="product-slider">
+      <div className="product-sl">
         <div class="col-md-12 row m-0 " dir="rtl">
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
             {Productss.map((c) => (
