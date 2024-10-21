@@ -112,16 +112,17 @@ function ProductInfo() {
 
   }
 
+
   return (
     <>
       {IsLoading ? <Loading /> : null}
-      <div className="container " dir="rtl">
-        <div className="row m-0">
-          <div className="col-md-6 d-flex flex-column">
-            <div className="row m-0">
-              <div className="col-md-2 d-flex flex-column align-items-end">
+      <div class="p-4 container-xxl pt-2" dir="rtl">
+        <div class="row m-0 col-md-12">
+          <div class="col-md-6 d-flex flex-column">
+            <div class="row m-0">
+              <div class="col-md-2 remove d-flex flex-column align-items-end romove">
                 {IMG.slice(0, 3).map((c) => (
-                  <img key={c.image} className="img-fluid m-1" src={c.image} alt="" />
+                  <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
                 ))}
               </div>
               <div className="col-md-10">
@@ -136,115 +137,89 @@ function ProductInfo() {
             </div>
           </div>
 
-          <div className="col-md-6 pt-5">
-            <h1 className="text-dark">{product.name}</h1>
-            <p className="text-muted">{product.description}</p>
-            <h3 className="text-dark">{product.price} هزار تومان</h3>
-            
-            <div className="stars">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="fa fa-star checked"></span>
-              ))}
-              <a href="#reviews" className="ml-2">441 reviews</a>
-            </div>
-
-            
-            <div className="product-colors mt-4">
-              <h4>رنگ‌ها:</h4>
-              <div className="d-flex flex-wrap">
-                {color.map((color) => (
-                  <div
-                    key={color.name}
-                    className="color-option m-2 rounded-circle"
-                    style={{
-                      backgroundColor: color.value,
-                      width: "30px",
-                      height: "30px",
-                      border: selectedColor === color.value ? "2px solid black" : "none",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedColor(color.value)}
-                  />
-                ))}
+          <div class="col-md-6 fontr pt-4 d-flex justify-content-center">
+            <div class=" col-md-10">
+              <div><span class="text-dark h2">{product.name}</span></div>
+              <div class="col-md-12 row m-0">
+                <div class="pt-2 col-md-5"><span class={` h3 ${product.discount === 0 ? "text-dark" : "redFont"}`}>{product.price} هزار تومان</span></div>
+                <div class="col-md-6">{product.discount != 0 ? <div class="pt-2"><span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} هزار تومان</span></div> : null}</div>
               </div>
-            </div>
-
-            
-            <div className="product-sizes mt-4">
-              <h4>سایزبندی:</h4>
-              <div className="d-flex flex-wrap">
-                {Size.map((size) => (
-                  <div
-                    key={size}
-                    className="size-option m-2 rounded"
-                    style={{
-                      backgroundColor: "#e0e0e0",
-                      width: "40px",
-                      height: "40px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: selectedSize === size ? "2px solid black" : "none",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedSize(size)}
-                  >
-                    {size}
+              <div class="pt-3">
+                <span class="h4">رنگ ها:</span>
+                <div class="d-flex justify-content-end">
+                  <div className="d-flex flex-wrap">
+                    {color.map((color) => (
+                      <div
+                        key={color.name}
+                        className="color-option m-2"
+                        style={{
+                          backgroundColor: color.value,
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          border: selectedColor === color.value ? "2px solid black" : "none",
+                        }}
+                        onClick={() => setSelectedColor(color.value)}
+                      />
+                    ))}
                   </div>
-                ))}
+                </div>
+              </div>
+
+              <div class="pt-3">
+                <span class="h4">سایز بندی:</span>
+                <div class="row m-0 d-flex justify-content-start" dir="ltr">
+                  {Size.map((e) => (
+                    <div
+                      key={e}
+                      className="color-option"
+                      style={{
+                        height: "35px",
+                        width: "35px",
+                        marginRight: "10px",
+                        border: selectedSize === e ? "2px solid black" : "none",
+                        alignItems: "center",
+                      }}
+                      onClick={() => setSelectedSize(e)}
+                      class="border"
+                    >
+                      <div class="align-content-center pt-2"><span className='text-dark text-center' style={{ marginTop: "20px" }}>{e}</span></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <span class="h4">توضیحات:</span>
+                <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
+              </div>
+
+              <div class="pt-4">
+                <span class="h4">جنس:</span>
+                <div class="d-flex justify-content-end">
+                  <span class="h5">{product.material}</span>
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <span class="h4">برند:</span>
+                <div class="d-flex justify-content-end">
+                  <span class="h5">{product.brand}</span>
+                </div>
+              </div>
+
+              <div class="pt-5">
+                <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
+                  {buttonDisabled ?
+                    <span class="text-success">به سبد خرید اضافه شد!</span>
+                    :
+                    <span>افزودن به سبد خرید</span>}</button>
               </div>
             </div>
-
-          
-            
-
-<div className="pt-4 d-flex justify-content-between">
-  <button 
-    className="btn btn-outline-dark rounded-1 w-50" 
-    style={{ marginLeft: '6px', height: '50px' }} 
-    disabled={buttonDisabled} 
-    onClick={(event) => AddItem(product.id, event)}
-  >
-    {buttonDisabled ?
-                  <span class="text-success">به سبد خرید اضافه شد!</span>
-                  :
-                  <span>افزودن به سبد خرید</span>}
-  </button>
-  <button 
-    className="btn btn-dark rounded-1 w-50" 
-    style={{ marginRight: '6px', height: '50px' }}  
-  >
-    خرید مستقیم
-  </button>
-</div>
-
-            
-            <div className="pt-4">
-  <div className="card border-dark border-2 shadow" style={{ height: '230px' }}>
-    <div className="card-header text-right" style={{ backgroundColor: '#f8' }}>
-      <h4 className="mb-2 mt-2" style={{ color: '#343a40' }}>توضیحات محصول</h4>
-    </div>
-    <div className="card-body">
-
-
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <span className="h5 font-weight-bold text-dark">جنس:</span>
-        <span className="h5 text-secondary">{product.material}</span>
-      </div>
-      <div className="d-flex justify-content-between align-items-center">
-        <span className="h5 font-weight-bold text-dark">برند:</span>
-        <span className="h5 text-secondary">{product.brand}</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
+
     </>
   );
 }

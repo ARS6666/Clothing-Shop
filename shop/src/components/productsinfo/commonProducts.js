@@ -41,10 +41,8 @@ const CommonProducts = () => {
   };
 
   useEffect(() => {
-    // Example: If you want to automatically slide every 3 seconds
     const intervalId = setInterval(nextSlide, 20000);
 
-    // Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, [Productss]);
 
@@ -76,43 +74,47 @@ const CommonProducts = () => {
         </div>
       </div>
 
-      <div className="product-slider">
+      <div className="product-sl">
         <div class="col-md-12 row m-0 " dir="rtl">
-          {Productss.slice(currentIndex, currentIndex + 4).map((c) => (
-            <div class="p-3 col-md-3">
-              <div class={`col-md-12 product-card${c.count === 0 ? 'out-of-stock' : ''}`}>
-                <div class="row m-0">
-                {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
-                  <div class="d-flex justify-content-center ">
-                    <img
-                      src={c.pic}
-                      class="Img col-md-11 p-2"
-                    />
+          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
+            {Productss.map((c) => (
+              <div class="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
+                <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-card'}`}>
+                  <div class="row m-0">
+                    {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
+                    <div class="d-flex justify-content-center ">
+                      <img
+                        src={c.pic}
+                        class="Img col-md-11 p-2"
+                      />
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                      <span class="h3 fontr">{c.name}</span>
+                    </div>
+                    <div class="d-flex justify-content-center ">
+                      <span class="h5 fontr pt-1" dir="rtl">
+                        {c.price} هزار تومن
+                      </span>
+                    </div>
                   </div>
-                  <div class="d-flex justify-content-center pt-2">
-                    <span class="h3 fontr">{c.name}</span>
-                  </div>
-                  <div class="d-flex justify-content-center ">
-                    <span class="h5 fontr pt-1" dir="rtl">
-                      {c.price} هزار تومن
-                    </span>
-                  </div>
-                </div>
-                <div className="hover-details col-md-12 ">
-                  <div
-                    class="d-flex justify-content-center "
-                    style={{ height: "400px" }}
-                  >
-                    <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                      <button className="btn btn-light hover  fontr ">
-                        مشاهده محصول
-                      </button>
-                    </a>
-                  </div>
+                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                    <div className="hover-details col-md-12 ">
+                      <div
+                        class="d-flex justify-content-center "
+                        style={{ height: "400px" }}
+                      >
+                        <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                          <button className="btn btn-light hover  fontr ">
+                            مشاهده محصول
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </a>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
