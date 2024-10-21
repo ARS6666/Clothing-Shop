@@ -86,28 +86,28 @@ const CustomNavbar = () => {
       .catch((error) => console.error(error));
 
   }, []);
-  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  const fetchData = async () => {
-    await delay(4900);
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
-    myHeaders.append("Authorization", `Bearer ${token}`);
+  // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  // const fetchData = async () => {
+  //   await delay(3000);
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("accept", "application/json");
+  //   myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+  //   myHeaders.append("Authorization", `Bearer ${token}`);
 
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    };
-    fetch("http://127.0.0.1:8000/cart/", requestOptions)
-      .then((response) => response.json())
-      .then((result) => { setCartItem(result.items) })
-      .catch((error) => console.error(error));
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: myHeaders,
+  //     redirect: "follow"
+  //   };
+  //   fetch("http://127.0.0.1:8000/cart/", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((result) => {setCartItem(result.items)})
+  //     .catch((error) => console.error(error));
 
-  }
-  useEffect(() => {
-    fetchData();
-  }, [CartItems.length]);
+  // }
+  // useEffect(() => {
+  // fetchData();
+  // }, [CartItems.length]);
   function HandleNav() {
     setCollapse(!Collapse)
   }
@@ -170,7 +170,7 @@ const CustomNavbar = () => {
               ) : <>
                 <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
                 <span>{" "}|{" "}</span>
-                <button class="btn border-0 bg-transparent cart-icon"><a class="hrefb" href="/cart"><i class="fa-solid fa-cart-shopping ah"></i><span class="cart-count text-dark">{CartItems.length}</span></a></button>
+                <button class="btn border-0 bg-transparent cart-icon"><a class="hrefb" href="/cart"><i class="fa-solid fa-cart-shopping ah"></i><span class="cart-count text-dark">{CartItems?.length}</span></a></button>
               </>
               }
             </span>
@@ -180,8 +180,8 @@ const CustomNavbar = () => {
       <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
         <div class="col-12 m-0 d-flex">
           <div class="col-6 d-flex justify-content-start">
-            <button class="btn btn-light rounded-3 p-2" onClick={HandleNav}>
-              <i class=" fa-solid fa-bars"></i>
+            <button class="btn bg-transparent rounded-3 p-2" onClick={HandleNav}>
+              <i class={` ${Collapse ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}`}></i>
             </button>
             {Collapse ? (
               <div class="burger-menu">
