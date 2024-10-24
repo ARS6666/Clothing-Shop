@@ -52,7 +52,7 @@ function ProductInfo() {
 
   useEffect(() => {
     if (id) {
-      fetch("http://127.0.0.1:8000/api/v1/products/" + id, requestOptions)
+      fetch("http://192.168.1.53:8000/api/v1/products/" + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false)
@@ -102,7 +102,7 @@ function ProductInfo() {
         redirect: "follow"
       };
 
-      fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+      fetch("http://192.168.1.53:8000/cart/add_item/", requestOptions)
         .then((response) => response.text())
         .then((result) => console.log())
         .catch((error) => console.error(error));

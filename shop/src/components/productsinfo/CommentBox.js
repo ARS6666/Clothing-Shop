@@ -23,7 +23,7 @@ const Comments = () => {
 
   useEffect(() => {
     if (productId) {
-      fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+      fetch(`http://192.168.1.53:8000/comments/api/v1/post?pst=${productId}`)
         .then((response) => response.json())
         .then((result) => {
           setComments(result);

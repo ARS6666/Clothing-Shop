@@ -23,7 +23,7 @@ function RefreshToken() {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/account/api/v1/jwt/verify/", requestOptions);
+        const response = await fetch("http://192.168.1.53:8000/account/api/v1/jwt/verify/", requestOptions);
         const result = await response.json();
 
         // Check if token is not valid

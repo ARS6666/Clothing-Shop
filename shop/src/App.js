@@ -15,6 +15,13 @@ import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
 import About from './components/CornerPages/About';
+import CustomCarousel from './components/products/Offprdct';
+import 'bootstrap/dist/css/bootstrap.min.css';
+/* index.css or App.css */
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -31,6 +38,7 @@ const AppContent = () => {
           <Route path='/pi' element={<PI />} />
           <Route path='/test' element={<Test />} />
           <Route path='/products' element={<Products />} />
+          <Route path='/cc' element={<CustomCarousel />} />
           <Route path='/account' element={
             <PrivateRoute>
               <Panel />

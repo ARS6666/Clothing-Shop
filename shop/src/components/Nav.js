@@ -58,7 +58,7 @@ const CustomNavbar = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/navbar/logo/1", requestOptions)
+    fetch("http://192.168.1.53:8000/navbar/logo/1", requestOptions)
       .then((response) => response.json())
       .then((result) => setLogo(result))
       .catch((error) => console.error(error));
@@ -80,7 +80,7 @@ const CustomNavbar = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-    fetch("http://127.0.0.1:8000/cart/", requestOptions)
+    fetch("http://192.168.1.53:8000/cart/", requestOptions)
       .then((response) => response.json())
       .then((result) => { setCartItem(result.items) })
       .catch((error) => console.error(error));

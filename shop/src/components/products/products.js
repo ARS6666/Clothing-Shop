@@ -48,7 +48,7 @@ function Products() {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
+        const response = await fetch("http://192.168.1.53:8000/api/v1/products/", requestOptions);
         const result = await response.json();
         setDetail(result);
         setisLoading(false)

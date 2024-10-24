@@ -44,7 +44,7 @@ function Orders() {
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
+        fetch("http://192.168.1.53:8000/account/api/v1/profile/", requestOptions)
             .then((response) => response.json())
             .then((result) => { setProp(result); setisLoading(false) })
             .catch((error) => console.error(error));
@@ -78,7 +78,7 @@ function Orders() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions2)
+        fetch("http://192.168.1.53:8000/account/api/v1/profile/", requestOptions2)
             .then((response) => {
                 if (!response.ok) {
                     return response.text().then(text => {
