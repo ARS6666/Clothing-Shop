@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import t2 from "../../assets/media/t2.jpg"
+import url from "../../config.json"
+
 
 const Cart = () => {
     const token = localStorage.getItem('token');
@@ -19,7 +21,7 @@ const Cart = () => {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/cart/", requestOptions)
+        fetch(`${url.baseUrl}/cart/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setCart(result))
             .catch((error) => console.error(error));
@@ -48,7 +50,7 @@ const Cart = () => {
 
     const [Num, setNum] = useState(0);
     function Inc() {
-        fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+        fetch(`${url.baseUrl}/cart/add_item/`, requestOptions)
             .then((response) => response.json())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));

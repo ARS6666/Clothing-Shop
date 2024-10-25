@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loading/loading";
+import url from "../../config.json"
+
 
 function SignIn() {
     const [IsLoading, setisLoading] = useState(false)
@@ -42,7 +44,7 @@ function SignIn() {
         };
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/account/api/v1/registration/", requestOptions);
+            const response = await fetch(`${url.baseUrl}/account/api/v1/registration/`, requestOptions);
             const result = await response.json();
 
             if (response.ok) {

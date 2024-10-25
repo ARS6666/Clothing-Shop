@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import Loading from "../loading/loading";
 import "../../assets/css/products/products.css";
 import Filter from "./Filter";
+import url from "../../config.json"
+
 
 function Products() {
   const [IsLoading, setisLoading] = useState(true)
@@ -48,7 +50,7 @@ function Products() {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
+        const response = await fetch(`${url.baseUrl}/api/v1/products/`, requestOptions);
         const result = await response.json();
         setDetail(result);
         setisLoading(false)
@@ -187,10 +189,11 @@ function Products() {
               </a>
             </div>
           ))}
-          <div class="col-md-12 pt-5 pb-5">
-            <button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
-            </button>
-          </div>
+          {NoResult ? <></> :
+            <div class="col-md-12 pt-5 pb-5">
+              <button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
+              </button>
+            </div>}
         </div>
         <div class="col-md-3 col-9 remove pb-3 justify-content-center">
           <Filter onFilterChange={handleFilterChange} />

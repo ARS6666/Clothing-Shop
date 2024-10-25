@@ -7,6 +7,8 @@ import lgo from "../assets/media/logo.png";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
+import url from "../config.json"
+
 
 const CustomNavbar = () => {
   const [CartItems, setCartItem] = useState([])
@@ -58,7 +60,7 @@ const CustomNavbar = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/navbar/logo/1", requestOptions)
+    fetch(`${url.baseUrl}/navbar/logo/1`, requestOptions)
       .then((response) => response.json())
       .then((result) => setLogo(result))
       .catch((error) => console.error(error));
@@ -80,7 +82,7 @@ const CustomNavbar = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-    fetch("http://127.0.0.1:8000/cart/", requestOptions)
+    fetch(`${url.baseUrl}/cart/`, requestOptions)
       .then((response) => response.json())
       .then((result) => { setCartItem(result.items) })
       .catch((error) => console.error(error));
@@ -233,7 +235,7 @@ const CustomNavbar = () => {
                 <button class="btn border-0 bg-transparent cart-icon">
                   <a class="hrefb" href="/cart">
                     <i class="fa-solid fa-cart-shopping ah"></i>
-                    <span class="cart-count text-dark">{CartItems.length}</span>
+                    <span class="cart-count text-dark">{CartItems?.length}</span>
                   </a>
                 </button>
               </>)}

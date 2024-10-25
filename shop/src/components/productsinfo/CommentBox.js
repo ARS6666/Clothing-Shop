@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../assets/css/productsinfo/Comment.css";
+import url from "../../config.json"
+
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -23,7 +25,7 @@ const Comments = () => {
 
   useEffect(() => {
     if (productId) {
-      fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+      fetch(`${url.baseUrl}/comments/api/v1/post?pst=${productId}`)
         .then((response) => response.json())
         .then((result) => {
           setComments(result);
@@ -54,7 +56,7 @@ const Comments = () => {
       redirect: "follow",
     };
 
-    fetch("http://127.0.0.1:8000/comments/api/v1/post", requestOptions)
+    fetch(`${url.baseUrl}/comments/api/v1/post`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => {
@@ -66,7 +68,7 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-        fetch(`http://127.0.0.1:8000/comments/api/v1/post?pst=${productId}`)
+        fetch(`${url.baseUrl}/comments/api/v1/post?pst=${productId}`)
           .then((response) => response.json())
           .then((result) => {
             setComments(result);
@@ -81,14 +83,19 @@ const Comments = () => {
   }
 
   function HandleShow() {
-    if (0 >= comments.length - ShowCount) {
-      setButtContent("مشاهده بیشتر ...")
-      setShowCount(ShowCount - 3)
+    if (comments.length === 0) {
+      setButtContent("کامنتی وجود ندارد ...");
     } else {
-      setShowCount(ShowCount + 3)
-      setButtContent("مشاهده کمتر ...")
+      if (ShowCount >= comments.length) {
+        setShowCount(comments.length - 3);
+        setButtContent("مشاهده بیشتر ...");
+      } else {
+        setShowCount(ShowCount + 3);
+        setButtContent("مشاهده کمتر ...");
+      }
     }
   }
+
 
 
   return (

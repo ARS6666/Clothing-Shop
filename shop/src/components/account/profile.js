@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Loading from '../loading/loading';
 import IMg from "../../assets/media/pfp.jpg"
+import url from "../../config.json"
+
 
 function Orders() {
     const [IsLoading, setisLoading] = useState(true)
@@ -44,7 +46,7 @@ function Orders() {
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
+        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setProp(result); setisLoading(false) })
             .catch((error) => console.error(error));
@@ -78,7 +80,7 @@ function Orders() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions2)
+        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions2)
             .then((response) => {
                 if (!response.ok) {
                     return response.text().then(text => {

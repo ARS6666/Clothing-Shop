@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import "../../../assets/css/account/address.css";
+import url from "../../../config.json"
+
+
 function Address() {
     const token = localStorage.getItem('token');
     const data = {
@@ -159,7 +162,7 @@ function Address() {
         redirect: "follow"
     };
     function STS() {
-        fetch("http://127.0.0.1:8000/account/api/v1/address/", requestOptions)
+        fetch(`${url.baseUrl}/account/api/v1/address/`, requestOptions)
             .then((response) => response.text())
             .then((result) => setIsOverlayOpen(false))
             .catch((error) => console.error(error));

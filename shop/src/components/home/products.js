@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/css/home/productcard.css";
 import Loading from "../loading/loading";
+import url from "../../config.json"
+
 
 function HProducts() {
   const [IsLoading, setisLoading] = useState(true)
@@ -19,7 +21,7 @@ function HProducts() {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions)
+    fetch(`${url.baseUrl}/api/v1/products/`, requestOptions)
       .then((response) => response.json())
       .then((result) => { setPRoduct(result); setisLoading(false) })
       .catch((error) => console.error(error));

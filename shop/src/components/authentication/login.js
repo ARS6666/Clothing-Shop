@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Loading from "../loading/loading";
 import SignIn from "./signin";
+import url from "../../config.json"
 
 function Login() {
     const [Email, setEmail] = useState("");
@@ -32,7 +33,7 @@ function Login() {
         };
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/account/api/v1/jwt/create/", requestOptions);
+            const response = await fetch(`${url.baseUrl}/account/api/v1/jwt/create/`, requestOptions);
 
             if (!response.ok) {
                 const errorResponse = await response.json();
@@ -74,7 +75,7 @@ function Login() {
                             <div className="pt-3">
                                 <label className="h5">ایمیل:</label>
                             </div>
-                            <div className="pt-1">
+                            <div className="pt-1" dir="ltr">
                                 <input
                                     type="email"
                                     className="form-control form-control-lg"
@@ -85,7 +86,7 @@ function Login() {
                             <div className="pt-3">
                                 <label className="h5">رمز عبور:</label>
                             </div>
-                            <div className="pt-1">
+                            <div className="pt-1" dir="ltr">
                                 <input
                                     type="password"
                                     className="form-control form-control-lg"

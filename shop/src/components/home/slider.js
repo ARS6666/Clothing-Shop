@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import img from "../../assets/media/vid.mp4"
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../assets/css/home/slider.css"
+import url from "../../config.json"
 
 
 function ImageSlider() {
@@ -18,7 +19,7 @@ function ImageSlider() {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/sliders/slider/", requestOptions)
+    fetch(`${url.baseUrl}/sliders/slider/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setSliderPic(result))
       .catch((error) => console.error(error));

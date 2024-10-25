@@ -6,6 +6,8 @@ import Address from './address';
 import Cart from './Cart/cart';
 import "../../assets/css/href.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
+import url from "../../config.json"
+
 
 
 
@@ -28,7 +30,7 @@ function Panel() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/account/api/v1/profile/", requestOptions)
+        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));

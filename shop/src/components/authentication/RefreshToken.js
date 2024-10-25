@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import url from "../../config.json"
+
 
 function RefreshToken() {
   const token = localStorage.getItem('token');
@@ -23,10 +25,9 @@ function RefreshToken() {
       };
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/account/api/v1/jwt/verify/", requestOptions);
+        const response = await fetch(`${url.baseUrl}/account/api/v1/jwt/verify/`, requestOptions);
         const result = await response.json();
 
-        // Check if token is not valid
         if (result.code === "token_not_valid") {
           const myHeadersRefresh = new Headers();
           myHeadersRefresh.append("accept", "application/json");
@@ -42,7 +43,7 @@ function RefreshToken() {
             redirect: "follow"
           };
 
-          const refresResponse = await fetch("http://127.0.0.1:8000/account/api/v1/jwt/refresh/", requestOptionsRefresh);
+          const refresResponse = await fetch(`${url.baseUrl}/account/api/v1/jwt/refresh/`, requestOptionsRefresh);
           const refresResult = await refresResponse.json();
 
           if (refresResponse.ok) {

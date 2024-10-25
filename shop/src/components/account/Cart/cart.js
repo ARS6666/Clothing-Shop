@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import IMg from "../../../assets/media/s1.jpg"
 import "../../../assets/css/account/cart.css"
 import "../../../assets/css/hide.css"
+import url from "../../../config.json"
+
 
 function Cart() {
     const [CartItems, setCartItem] = useState([])
@@ -20,7 +22,7 @@ function Cart() {
         redirect: "follow"
     };
     function show() {
-        fetch("http://127.0.0.1:8000/cart/", requestOptions)
+        fetch(`${url.baseUrl}/cart/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) })
             .catch((error) => console.error(error));
@@ -48,7 +50,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+        fetch(`${url.baseUrl}/cart/add_item/`, requestOptions)
             .then((response) => response.text())
             .then((result) => { setButtonDisabled(false); show() })
             .catch((error) => { console.error(error); setButtonDisabled(false) });
@@ -73,7 +75,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/cart/remove_item/", requestOptions)
+        fetch(`${url.baseUrl}/cart/remove_item/`, requestOptions)
             .then((response) => response.text())
             .then((result) => { setButtonDisabled(false); show() })
             .catch((error) => { setButtonDisabled(false); console.error(error) });
@@ -96,7 +98,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch("http://127.0.0.1:8000/cart/remove_all/", requestOptions)
+        fetch(`${url.baseUrl}/cart/remove_all/`, requestOptions)
             .then((response) => response.text())
             .then((result) => show())
             .catch((error) => console.error(error));
@@ -106,7 +108,7 @@ function Cart() {
 
     return (<>
         <div class="col-md-12 col-12 vh-100 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
-            <div class="col-md-8 col-11 pt-5">
+            <div class="col-md-11 col-11 pt-5">
                 <div class="col-md-12 col-12 row m-0 bg-white">
                     <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
                         <div class="col-md-12 col-12 p-1" >

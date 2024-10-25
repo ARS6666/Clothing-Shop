@@ -5,6 +5,8 @@ import "../../assets/css/productsinfo/PI.css";
 import "../../assets/css/hide.css";
 import Comment from './CommentBox';
 import Loading from "../loading/loading";
+import url from "../../config.json"
+
 
 function ProductInfo() {
   const navigate = useNavigate();
@@ -52,7 +54,7 @@ function ProductInfo() {
 
   useEffect(() => {
     if (id) {
-      fetch("http://127.0.0.1:8000/api/v1/products/" + id, requestOptions)
+      fetch(`${url.baseUrl}/api/v1/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false)
@@ -102,7 +104,7 @@ function ProductInfo() {
         redirect: "follow"
       };
 
-      fetch("http://127.0.0.1:8000/cart/add_item/", requestOptions)
+      fetch(`${url.baseUrl}/cart/add_item/`, requestOptions)
         .then((response) => response.text())
         .then((result) => console.log())
         .catch((error) => console.error(error));
@@ -189,26 +191,26 @@ function ProductInfo() {
                 </div>
               </div>
 
-              <div class="pt-4">
+              <div class="pt-2">
                 <span class="h4">توضیحات:</span>
                 <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
               </div>
 
-              <div class="pt-4">
+              <div class="pt-2">
                 <span class="h4">جنس:</span>
                 <div class="d-flex justify-content-end">
                   <span class="h5">{product.material}</span>
                 </div>
               </div>
 
-              <div class="pt-4">
+              <div class="pt-2">
                 <span class="h4">برند:</span>
                 <div class="d-flex justify-content-end">
                   <span class="h5">{product.brand}</span>
                 </div>
               </div>
 
-              <div class="pt-5">
+              <div class="pt-4">
                 <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
                   {buttonDisabled ?
                     <span class="text-success">به سبد خرید اضافه شد!</span>
