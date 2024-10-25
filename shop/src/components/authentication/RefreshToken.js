@@ -48,7 +48,7 @@ function RefreshToken() {
 
           if (refresResponse.ok) {
             localStorage.removeItem("token");
-            localStorage.setItem('token', refresResult.access); 
+            localStorage.setItem('token', refresResult.access);
           } else {
             navigate('/login');
           }
