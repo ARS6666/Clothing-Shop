@@ -33,12 +33,10 @@ const AddToCartButton = () => {
     };
 
     return (
-        <div class="col-md-12 d-flex justify-content-end">
-            <button className="add-to-cart" onClick={handleClick} >
-                <i className={`fa ${added ? 'fa-check' : 'fa-cart-plus'}`}></i>
-                {added ? 'Added to Cart' : 'Add to Cart'}
-            </button >
-        </div>
+        <>
+            <h1 class="typing text-dark">fellan bisan</h1>
+
+        </>
     );
 };
 

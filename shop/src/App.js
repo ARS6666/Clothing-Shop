@@ -2,7 +2,7 @@ import './App.css';
 import Nav from '../src/components/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
-import Test from './components/loading/loading';
+import Test from './components/test';
 import PI from './components/ProductPage';
 import Products from './components/ProductList';
 import Cart from './components/account/Cart/cart';

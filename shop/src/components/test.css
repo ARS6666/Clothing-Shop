@@ -6,3 +6,23 @@
     border-radius: 50%;
     transition: transform 3s ease;
 }
+
+.typing {
+    width: 473px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #392c3e;
+    animation: typing 2s steps(12, end), cursor .2s steps(12, end) infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent
+    }
+}
