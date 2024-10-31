@@ -2,7 +2,7 @@ import './App.css';
 import Nav from '../src/components/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
-import Test from './components/test';
+import Test from './components/products/Offprdct';
 import PI from './components/ProductPage';
 import Products from './components/ProductList';
 import Cart from './components/account/Cart/cart';
@@ -17,9 +17,6 @@ import Prdctlist from './components/Features/PrdctList';
 import About from './components/CornerPages/About';
 import CustomCarousel from './components/products/Offprdct';
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* index.css or App.css */
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -48,7 +45,11 @@ const AppContent = () => {
           <Route path='/prdct' element={<Prdctlist />} />
           <Route path='/cart' element={
             <PrivateRoute>
-              <Cart />
+              <div class="col-md-12 justify-content-center d-flex " style={{ backgroundColor: "#f8f9fa" }}>
+                <div class="col-md-8 ">
+                  <Cart />
+                </div>
+              </div>
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>

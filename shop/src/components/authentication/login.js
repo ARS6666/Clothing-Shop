@@ -5,7 +5,7 @@ import SignIn from "./signin";
 import url from "../../config.json"
 
 function Login() {
-    const [Email, setEmail] = useState("");
+    const [Phone, setPhone] = useState("");
     const [Password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [IsLoading, setisLoading] = useState(false)
@@ -20,7 +20,7 @@ function Login() {
     const handleLogin = async () => {
         setisLoading(true)
         const raw = JSON.stringify({
-            "email": Email,
+            "phone": Phone,
             "password": Password
         });
 
@@ -51,7 +51,7 @@ function Login() {
 
             setSuccessMessage("Login successful!");
             setErrorMessage("");
-            setEmail("");
+            setPhone("");
             setPassword("");
             navigate('/account');
         } catch (error) {
@@ -77,10 +77,10 @@ function Login() {
                             </div>
                             <div className="pt-1" dir="ltr">
                                 <input
-                                    type="email"
+                                    type="Phone"
                                     className="form-control form-control-lg"
-                                    value={Email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={Phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
                             <div className="pt-3">

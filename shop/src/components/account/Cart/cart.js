@@ -146,7 +146,7 @@ function Cart() {
                                                 <span>مجموع</span>
                                             </div>
                                             <div class="col-md-8 col-8 d-flex justify-content-start pb-2">
-                                                <span>{TotalPrice + 58}تومان</span>
+                                                <span>{TotalPrice + 58}هزار تومان</span>
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@ function Cart() {
                                 <div class="col-md-12 col-12 border rounded-0 align-items-center row m-0">
                                     <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle" onClick={() => RemoveAll(c.product.id)}><i class="fa-solid fa-trash-can"></i></button></div>
                                     <div class="col-md-2 p-3 remove">
-                                        <img src={`http://127.0.0.1:8000/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
+                                        <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
                                     <div class="col-md-2 col-3 p-3">{c.product.price},000تومان</div>

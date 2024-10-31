@@ -32,24 +32,21 @@ function AddressDisplay() {
     useEffect(() => {
         show()
     }, []);
-    function RemoveAddress(profile) {
-        const myHeaders = new Headers();
-        myHeaders.append("accept", "application/json");
-        myHeaders.append("X-CSRFToken", "Cqn7opxoUQkZRhxALC8cqgj62FskfVfuSjfcSs4hJvwPBUAhIRkGwJUWAfWypzaE");
-        myHeaders.append("Authorization", `Bearer ${token}`);
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "jCKglkQdvnSmHI66pTsTBWRZqpSGJn9gCAlAoUAu3gkEVo0V42ArOupuYITKOJRX");
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
-        const requestOptions = {
-            method: "DELETE",
-            headers: myHeaders,
-            redirect: "follow"
-        };
+    const requestOptions = {
+        method: "DELETE",
+        headers: myHeaders,
+        redirect: "follow"
+    };
 
-        fetch(`${url.baseUrl}/account/api/v1/address/` + profile, requestOptions)
+    function RemoveAddress(id) {
+        fetch(`${url.baseUrl}/account/api/v1/address/` +id, requestOptions)
             .then((response) => response.text())
-            .then((result) => {
-                show();
-                console.log(132321421)
-            })
+            .then((result) => show())
             .catch((error) => console.error(error));
     }
 
@@ -73,8 +70,9 @@ function AddressDisplay() {
                         <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
                     </div>
                     <div class="col-md-12 row m-0 fontr pt-2 p-2">
-                        <div class="col-md-6 text-end h5 ">تلفن همراه :{c.phone}</div>
-                        <div class="col-md-6 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => RemoveAddress(c.profile)}>حذف</button></div>
+                        <div class="col-md-6 text-end h5 ">تلفن همراه :{c.phone_number}</div>
+                        {c.id}
+                        <div class="col-md-12 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => RemoveAddress(c.id)}>حذف</button></div>
                     </div>
 
                 </div>

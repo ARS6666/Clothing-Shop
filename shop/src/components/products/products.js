@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Loading from "../loading/loading";
-import "../../assets/css/products/products.css";
+import "../../assets/css/products/productPage.css";
 import Filter from "./Filter";
-import url from "../../config.json"
-
 
 function Products() {
   const [IsLoading, setisLoading] = useState(true)
@@ -14,9 +12,6 @@ function Products() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [category, setCategory] = useState('');
-  const [ShowCount, setShowCount] = useState(9)
-  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
-  const [ButtDisable, setButtDisable] = useState(false)
   const location = useLocation();
 
 
@@ -50,7 +45,7 @@ function Products() {
       };
 
       try {
-        const response = await fetch(`${url.baseUrl}/api/v1/products/`, requestOptions);
+        const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
         const result = await response.json();
         setDetail(result);
         setisLoading(false)
@@ -117,20 +112,6 @@ function Products() {
     }
 
   }, [displayedProducts]);
-  function HandleShow() {
-    if (displayedProducts.length - ShowCount > 0) {
-      setButtContent("مشاهده بیشتر ...")
-      setShowCount(ShowCount - 9)
-    }
-    if (0 >= displayedProducts.length - ShowCount) {
-      setButtContent("محصولات به پایان رسیدند ...")
-    }
-    else {
-      // setShowCount(ShowCount + 9)
-      // setButtContent("مشاهده کمتر ...")
-    }
-  }
-
 
   return (
     <>
@@ -155,8 +136,8 @@ function Products() {
               </div>
             </>
             : null}
-          {displayedProducts?.slice(displayedProducts.length - ShowCount, displayedProducts.length).map((c) => (
-            <div className={`col-md-3 col-4 col-sm-4 m-3 product-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+          {displayedProducts.map((c) => (
+            <div className={`col-md-3 col-4 col-sm-4 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
               <div class="row m-0">
                 {c.discount != 0 && c.count != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
                 <div class="d-flex justify-content-center ">
@@ -175,7 +156,7 @@ function Products() {
                 </div>
               </div>
               <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                <div className="hover-details col-md-12 ">
+                <div className="hoverr-details col-md-12 ">
                   <div
                     class="d-flex justify-content-center bp"
                   >
@@ -189,11 +170,6 @@ function Products() {
               </a>
             </div>
           ))}
-          {NoResult ? <></> :
-            <div class="col-md-12 pt-5 pb-5">
-              <button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
-              </button>
-            </div>}
         </div>
         <div class="col-md-3 col-9 remove pb-3 justify-content-center">
           <Filter onFilterChange={handleFilterChange} />

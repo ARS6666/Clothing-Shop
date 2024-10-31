@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import "../../../assets/css/account/address.css";
 import url from "../../../config.json"
@@ -104,15 +104,35 @@ function Address() {
             counties: ['یزد']
         }
     };
+    const [Profile_id, setProfile_id] = useState("")
+    useEffect(() => {
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("X-CSRFToken", "1catw3IpqjPm82a19BnpB3h97CUiCReGSPOsSvJ7NqGtvayHgOKf63rpDKWSqQui");
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        const requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+
+        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
+            .then((response) => response.json())
+            .then((result) => setProfile_id(result[0].id))
+            .catch((error) => console.error(error));
+    }, []);
     const [selectedProvince, setSelectedProvince] = useState('');
     const [cities, setCities] = useState([]);
     const [counties, setCounties] = useState([]);
+    const [Ostan, setOstan] = useState("")
 
     const handleProvinceChange = (event) => {
         const province = event.target.value;
         setSelectedProvince(province);
         setCities(data[province]?.cities || []);
         setCounties(data[province]?.counties || []);
+        setOstan(event.target.value);
     };
     const [Name, setName] = useState("")
     const handleName = (event) => {
@@ -126,10 +146,7 @@ function Address() {
     const handlePhone = (event) => {
         setPhone(event.target.value);
     };
-    const [Ostan, setOstan] = useState("")
-    const handleOstan = (event) => {
-        setOstan(event.target.value);
-    };
+
     const [Shahr, setShahr] = useState("")
     const handleShahr = (event) => {
         setShahr(event.target.value);
@@ -142,17 +159,17 @@ function Address() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "suAdFiV4TS429JyIf0LP0hxKoYL4IGxU5HHR9e52YQvsh6wbWiwScHXhWAwZgI24");
+    myHeaders.append("X-CSRFToken", "1catw3IpqjPm82a19BnpB3h97CUiCReGSPOsSvJ7NqGtvayHgOKf63rpDKWSqQui");
     myHeaders.append("Authorization", `Bearer ${token}`);
 
     const raw = JSON.stringify({
-        "profile": 1,
+        "profile": Profile_id,
         "name": Name,
         "address": Address,
         "ostan": Ostan,
         "shahr": Shahr,
         "postcode": PostCode,
-        "phone": Phone
+        "phone_number": Phone
     });
 
     const requestOptions = {
@@ -161,13 +178,15 @@ function Address() {
         body: raw,
         redirect: "follow"
     };
+
     function STS() {
         fetch(`${url.baseUrl}/account/api/v1/address/`, requestOptions)
             .then((response) => response.text())
-            .then((result) => setIsOverlayOpen(false))
+            .then((result) => {
+                setIsOverlayOpen(false); window.location.reload();;
+            })
             .catch((error) => console.error(error));
     }
-
 
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
@@ -178,6 +197,8 @@ function Address() {
     const closeOverlay = () => {
         setIsOverlayOpen(false);
     };
+
+
 
     return (<>
         <div class="col-md-12 pt-2 fontr" >
@@ -208,13 +229,13 @@ function Address() {
                             <div class="col-md-6">
                                 <span class="text-dark h5">شماره موبایل*</span>
                                 <div class="pt-2 col-md-12 p-1">
-                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={handlePhone}></input>
+                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={handlePhone} dir="ltr"></input>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <span class="text-dark h5">کد پستی*</span>
                                 <div class="pt-2 col-md-12 p-1">
-                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={HandlePostCode}></input>
+                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={HandlePostCode} dir="ltr"></input>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +248,7 @@ function Address() {
                                             <select class="form-select rounded-0" value={selectedProvince} onChange={handleProvinceChange}>
                                                 <option value="">انتخاب کنید</option>
                                                 {Object.keys(data).map((province) => (
-                                                    <option key={province} value={province} onClick={handleOstan}>
+                                                    <option key={province} value={province}>
                                                         {province}
                                                     </option>
                                                 ))}
@@ -240,10 +261,10 @@ function Address() {
                                         انتخاب شهر:
                                         <div class="pt-2">
 
-                                            <select class="form-select rounded-0" disabled={!selectedProvince}>
+                                            <select class="form-select rounded-0" disabled={!selectedProvince} onClick={handleShahr}>
                                                 <option value="">انتخاب کنید</option>
                                                 {cities.map((city) => (
-                                                    <option key={city} value={city} onClick={handleShahr}>
+                                                    <option key={city} value={city} >
                                                         {city}
                                                     </option>
                                                 ))}
