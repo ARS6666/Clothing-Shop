@@ -81,19 +81,37 @@
 }
 
 .gradient-box {
-  height: 300px; 
-  width: 300px; 
-  /* background: linear-gradient(to left, rgb(12, 10, 10), white);  */
+  height: 300px;
+  width: 300px;
   background-color: #e8e6e6;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 8px;
 }
 
-.vertical-text {
-  text-transform:uppercase;
-  text-align: center; /* تراز کردن متن */
-  color: rgb(0, 0, 0); /* رنگ متن */
-  font-size: 24px; /* سایز متن */
+.inner-border {
+  width: 80%; /* تنظیم سایز کادر زرشکی */
+  height: 80%;
+  border: 4px solid #800000; /* رنگ و ضخامت کادر زرشکی */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.view-more-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #800000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-more-button:hover {
+  background-color: #660000; /* تغییر رنگ هنگام هاور */
 }
