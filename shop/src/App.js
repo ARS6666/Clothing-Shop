@@ -29,6 +29,7 @@ const AppContent = () => {
     <>
       <div className="main-content  scrollable">
         <Nav />
+        
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='*' element={<NotFoundPage />} />
@@ -53,6 +54,7 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>
+        <CustomCarousel />
         {showFooter ? <Footer /> : null}
       </div>
     </>

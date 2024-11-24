@@ -45,17 +45,14 @@ const ProductCarousel = () => {
       >
         &#9664; 
       </Button>
-      <div className="text-end float-end mb-6">  
+      <div>
+      <div className=" ">  
             <div class="twelve " >
   <h1>تخفیف ویژه</h1>
-  
-  <div class="gradient-box">
-  <div className="inner-border">
-    {/* <button className="view-more-button">مشاهده بیشتر</button> */}
   </div>
 </div>
-</div></div>
-
+  
+</div>
 
       <Slider ref={sliderRef} {...settings}>
         {products.map((product) => (
