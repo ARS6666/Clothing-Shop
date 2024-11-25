@@ -21,8 +21,8 @@
 }
 
 .btn-primary {
-    background-color: rgb(0, 126, 0) !important;
-    border-color: rgb(0, 126, 0) !important;
+    background-color: rgb(0, 126, 0) ;
+    border-color: rgb(0, 126, 0) ;
 }
 
 .btn-primary:hover {

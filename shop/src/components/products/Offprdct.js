@@ -4,6 +4,8 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import img1 from "../../assets/media/p1.jpg";
 import img2 from "../../assets/media/t1.jpg";
 import img3 from "../../assets/media/s1.jpg";
@@ -43,16 +45,14 @@ const ProductCarousel = () => {
       >
         &#9664; 
       </Button>
-      <div className="text-end float-end mb-6">  
+      <div>
+      <div className=" ">  
             <div class="twelve " >
   <h1>تخفیف ویژه</h1>
-  
-  <div class="gradient-box">
-
-    <div class="vertical-text">متن عمودی</div>
+  </div>
 </div>
-</div></div>
-
+  
+</div>
 
       <Slider ref={sliderRef} {...settings}>
         {products.map((product) => (

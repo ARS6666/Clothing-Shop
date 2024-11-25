@@ -81,19 +81,57 @@
 }
 
 .gradient-box {
-  height: 300px; 
-  width: 300px; 
-  /* background: linear-gradient(to left, rgb(12, 10, 10), white);  */
+  height: 300px;
+  width: 300px;
   background-color: #e8e6e6;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 8px;
 }
 
-.vertical-text {
-  text-transform:uppercase;
-  text-align: center; /* تراز کردن متن */
-  color: rgb(0, 0, 0); /* رنگ متن */
-  font-size: 24px; /* سایز متن */
+.inner-border {
+  width: 80%; /* تنظیم سایز کادر زرشکی */
+  height: 80%;
+  border: 4px solid #800000; /* رنگ و ضخامت کادر زرشکی */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 }
+
+.view-more-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #800000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button {
+  display: inline-block;
+  width: 150px; /* عرض دکمه */
+  height: 150px; /* ارتفاع دکمه */
+  background-color: #333; /* رنگ پس‌زمینه (مشکی) */
+  color: white; /* رنگ متن */
+  text-align: center;
+  line-height: 150px; /* متن را وسط‌چین می‌کند */
+  font-size: 18px; /* اندازه متن */
+  font-weight: bold; /* متن پررنگ */
+  border-radius: 10px; /* گوشه‌های دکمه */
+  border: none; /* بدون حاشیه */
+  transition: all 0.3s ease-in-out; /* انیمیشن نرم */
+  cursor: pointer; /* تغییر شکل نشانگر */
+}
+
+.button:hover {
+  background-color: #6200ea; /* تغییر رنگ پس‌زمینه هنگام Hover */
+  transform: scale(1.1); /* بزرگ شدن دکمه */
+  color: #fff; /* رنگ متن */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* سایه زیبا */
+}
+
