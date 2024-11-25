@@ -4,10 +4,11 @@ import IMg from "../../assets/media/pfp.jpg"
 import url from "../../config.json"
 
 
-function Orders() {
+function ProfProp() {
     const [IsLoading, setisLoading] = useState(true)
     const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
+    const [Id, setId] = useState("")
     const [Name, setName] = useState("");
     const handleName = (event) => {
         setName(event.target.value);
@@ -55,6 +56,7 @@ function Orders() {
     useEffect(() => {
         if (Prop.length > 0) {
             setName(Prop[0].name);
+            setId(Prop[0].id);
             setPhone(Prop[0].phone);
             setLastName(Prop[0].family);
         }
@@ -62,33 +64,29 @@ function Orders() {
 
 
     const handleSubmit = () => {
-        const myHeaders2 = new Headers();
-        myHeaders2.append("accept", "application/json");
-        myHeaders2.append("Content-Type", "application/json");
-        myHeaders2.append("Authorization", `Bearer ${token}`);
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("X-CSRFToken", "q57iInNu2kSPMTmMGoYoDFw5mtQ32POz684Hl0QVQIieFoQIqnwwjg2izEvANEgE");
 
         const raw = JSON.stringify({
-            "name": Name,
+            "id": Id,
             "phone": Phone,
+            "name": Name,
+            "image": Image,
             "family": LastName
         });
 
-        const requestOptions2 = {
+        const requestOptions = {
             method: "POST",
-            headers: myHeaders2,
+            headers: myHeaders,
             body: raw,
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions2)
-            .then((response) => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        throw new Error(`Error: ${response.status} - ${text}`);
-                    });
-                }
-                return response.json();
-            })
+        fetch(`${url.baseUrl}/account/api/v1/profile/1`, requestOptions)
+            .then((response) => response.text())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));
     };
@@ -149,4 +147,4 @@ function Orders() {
     </>);
 }
 
-export default Orders;
+export default ProfProp;

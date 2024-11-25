@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import Loading from "../loading/loading";
 import "../../assets/css/products/productPage.css";
 import Filter from "./Filter";
+import url from "../../config.json"
+
 
 function Products() {
   const [IsLoading, setisLoading] = useState(true)
@@ -36,19 +38,21 @@ function Products() {
     const fetchProducts = async () => {
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
-      myHeaders.append("X-CSRFToken", "AmrdKuP98ULWK4LXWttdeKR7sbq8MXasc254HGREEMpPhMwsthsWoHV4KfdW6NHl");
-
+      myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
+      myHeaders.append("X-CSRFToken", "krMY06dKPZfPJAhssIix8Yjkc9BgJfTCrx6NCcOUN154E9d3tW4npwnd7MvWUz01");
+      
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow"
       };
-
+    
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/products/", requestOptions);
+        const response = await fetch(`${url.baseUrl}/api/products/`, requestOptions);
         const result = await response.json();
         setDetail(result);
-        setisLoading(false)
+        setisLoading(false);
+        console.log(result)
       } catch (error) {
         console.error('Error fetching data:', error);
       }

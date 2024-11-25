@@ -32,21 +32,22 @@ function AddressDisplay() {
     useEffect(() => {
         show()
     }, []);
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "jCKglkQdvnSmHI66pTsTBWRZqpSGJn9gCAlAoUAu3gkEVo0V42ArOupuYITKOJRX");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-
-    const requestOptions = {
-        method: "DELETE",
-        headers: myHeaders,
-        redirect: "follow"
-    };
 
     function RemoveAddress(id) {
-        fetch(`${url.baseUrl}/account/api/v1/address/` +id, requestOptions)
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
+        myHeaders.append("X-CSRFToken", "q57iInNu2kSPMTmMGoYoDFw5mtQ32POz684Hl0QVQIieFoQIqnwwjg2izEvANEgE");
+
+        const requestOptions = { 
+            method: "DELETE",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+
+        fetch(`${url.baseUrl}/account/api/v1/address/` + id, requestOptions)
             .then((response) => response.text())
-            .then((result) => show())
+            .then((result) => console.log(result))
             .catch((error) => console.error(error));
     }
 

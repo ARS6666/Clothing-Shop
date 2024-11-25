@@ -81,6 +81,7 @@ function Login() {
                                     className="form-control form-control-lg"
                                     value={Phone}
                                     onChange={(e) => setPhone(e.target.value)}
+                                    id="phone"
                                 />
                             </div>
                             <div className="pt-3">
@@ -96,6 +97,7 @@ function Login() {
                                         if (e.key === "Enter")
                                             handleLogin();
                                     }}
+                                    id="password"
                                 />
                             </div>
                             <div className="col-md-12 d-flex justify-content-center pt-4">

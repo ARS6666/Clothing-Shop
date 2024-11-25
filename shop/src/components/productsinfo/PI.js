@@ -35,14 +35,18 @@ function ProductInfo() {
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
-  myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
-  myHeaders.append("X-CSRFToken", "tc6gv0BlCSEVzaDY2DEUFDyvHxAouuuWnjsAM5wngQp4psjqQKsZfKhJ0eopXCA7");
+  myHeaders.append("X-CSRFToken", "VFX4ckvV3n06vqkus12kAWvQhLXYj2VmOzJ5C8ixK3YI4EnENS62gMl8ZOjIdIHx");
 
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
     redirect: "follow"
   };
+
+  fetch("http://192.168.1.49:8000/api/products/1", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -54,10 +58,10 @@ function ProductInfo() {
 
   useEffect(() => {
     if (id) {
-      fetch(`${url.baseUrl}/api/v1/products/` + id, requestOptions)
+      fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false)
+          setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false); console.log(2132213)
         })
         .catch((error) => console.error(error));
     }
@@ -139,74 +143,29 @@ function ProductInfo() {
             </div>
           </div>
 
-          <div class="col-md-6 fontr pt-4 d-flex justify-content-center">
-            <div class=" col-md-10">
+          <div class="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
+            <div class=" col-md-10 col-sm-11 col-11">
               <div><span class="text-dark h2">{product.name}</span></div>
               <div class="col-md-12 row m-0">
                 <div class="pt-2 col-md-5"><span class={` h3 ${product.discount === 0 ? "text-dark" : "redFont"}`}>{product.price} هزار تومان</span></div>
-                <div class="col-md-6">{product.discount != 0 ? <div class="pt-2"><span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} هزار تومان</span></div> : null}</div>
+                <div class="col-md-6">{product.discount != 0 ? <div class="pt-4"><span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} هزار تومان</span></div> : null}</div>
               </div>
-              <div class="pt-3">
-                <span class="h4">رنگ ها:</span>
-                <div class="d-flex justify-content-end">
-                  <div className="d-flex flex-wrap">
-                    {color.map((color) => (
-                      <div
-                        key={color.name}
-                        className="color-option m-2"
-                        style={{
-                          backgroundColor: color.value,
-                          width: "30px",
-                          height: "30px",
-                          cursor: "pointer",
-                          border: selectedColor === color.value ? "2px solid black" : "none",
-                        }}
-                        onClick={() => setSelectedColor(color.value)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div class="pt-3">
-                <span class="h4">سایز بندی:</span>
-                <div class="row m-0 d-flex justify-content-start" dir="ltr">
-                  {Size.map((e) => (
-                    <div
-                      key={e}
-                      className="color-option"
-                      style={{
-                        height: "35px",
-                        width: "35px",
-                        marginRight: "10px",
-                        border: selectedSize === e ? "2px solid black" : "none",
-                        alignItems: "center",
-                      }}
-                      onClick={() => setSelectedSize(e)}
-                      class="border"
-                    >
-                      <div class="align-content-center pt-2"><span className='text-dark text-center' style={{ marginTop: "20px" }}>{e}</span></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div class="pt-2">
+              <div class="pt-4">
                 <span class="h4">توضیحات:</span>
                 <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
               </div>
 
-              <div class="pt-2">
-                <span class="h4">جنس:</span>
+              <div class="pt-4">
+                <span class="h4">دسته بندی:</span>
                 <div class="d-flex justify-content-end">
-                  <span class="h5">{product.material}</span>
+                  <span class="h5">{product.category}</span>
                 </div>
               </div>
 
-              <div class="pt-2">
+              <div class="pt-4">
                 <span class="h4">برند:</span>
                 <div class="d-flex justify-content-end">
-                  <span class="h5">{product.brand}</span>
+                  <span class="h5">مس هنر</span>
                 </div>
               </div>
 

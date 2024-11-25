@@ -1,13 +1,13 @@
 .Image {
     object-fit: cover;
     background-color: white;
-    height: 700px;
+    height: 400px;
 }
 
 .Imageside {
     object-fit: contain;
     background-color: white;
-    height: 222px;
+    height: 152px;
 }
 
 .color-option {
