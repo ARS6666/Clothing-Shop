@@ -14,6 +14,7 @@ const Comments = () => {
   const [ShowCount, setShowCount] = useState(3)
   const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
   const [ButtDisable, setButtDisable] = useState(false)
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -25,7 +26,18 @@ const Comments = () => {
 
   useEffect(() => {
     if (productId) {
-      fetch(`${url.baseUrl}/comments/api/v1/post?pst=${productId}`)
+      const myHeaders = new Headers();
+      myHeaders.append("accept", "application/json");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
+      myHeaders.append("Authorization", `Bearer ${token}`);
+
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+      };
+      fetch(`${url.baseUrl}/comments/comment/` + productId + "/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setComments(result);
@@ -39,24 +51,25 @@ const Comments = () => {
   function sendToServer() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
-    myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "a4gVs4LKoK9qpwBtyktdTabLGKkDTjtt0aSC8gxZdbs3aTs15Xp16uXl7nRL3uLI");
+    myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTEwNjA1LCJpYXQiOjE3MzI5MDQ2MDUsImp0aSI6ImRjNmU5MmU0N2NlMTQ5Mzc5M2Q2NWU5MzJkOGZlMWU2IiwidXNlcl9pZCI6MX0.sx-RZx5EZX42HlVG4tiuRbNJXXZVAL5Ll6r0oxucYWg");
+
 
     const raw = JSON.stringify({
-      post: productId,
-      name: name,
-      content: comment,
+      "name": name,
+      "text": comment,
+      "product": productId
     });
 
-    const requestOptions = {
+    const requestOptionss = {
       method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
 
-    fetch(`${url.baseUrl}/comments/api/v1/post`, requestOptions)
+    fetch(`${url.baseUrl}/comments/comment/` + productId + "/", requestOptionss)
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => {
@@ -68,7 +81,7 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-        fetch(`${url.baseUrl}/comments/api/v1/post?pst=${productId}`)
+        fetch(`${url.baseUrl}/comments/comment/` + productId + "/")
           .then((response) => response.json())
           .then((result) => {
             setComments(result);
@@ -109,7 +122,7 @@ const Comments = () => {
             {comments?.slice(comments.length - ShowCount, comments.length).map((c, index) => (
               <div className="mt-1 bg-light fontr p-3 border-bottom ">
                 <div className="text-muted h5">{c.name}:</div>
-                <div className="h5">{c.content}</div>
+                <div className="h5">{c.text}</div>
               </div>
             ))}
             <div class="col-md-12 pt-3">

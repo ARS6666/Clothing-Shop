@@ -30,7 +30,7 @@ function Panel() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));
@@ -39,7 +39,7 @@ function Panel() {
         if (Prop.length > 0) {
             setN(Prop[0].name);
             setI(Prop[0].image);
-        
+
         }
     }, [Prop]);
 
@@ -82,7 +82,7 @@ function Panel() {
 
     return (<>
         <div class=" fontr col-md-12 row m-0 pb-2 pt-2" dir="rtl">
-            <div class="col-md-3 border" style={{ borderRadius :"10px" }}>
+            <div class="col-md-3 border" style={{ borderRadius: "10px" }}>
                 <div class="d-flex justify-content-center  pt-4 ">
                     <img src={Img} class="pfp rounded-circle" />
                 </div>
@@ -115,12 +115,12 @@ function Panel() {
                         </button>
                     </div>
                     <div class=" col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick3(); changeContent(<Address />) }}
+                        <button onClick={() => { handleClick3(); changeContent(<div class="col-md-12" dir="ltr"><Address /></div>) }}
                             class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '' }}>
                             <h5 class="p-2">
                                 <i class="fas fa-map  p-1"></i>
-                                آدرس
+                                آدرس ها
                             </h5>
                         </button>
                     </div>

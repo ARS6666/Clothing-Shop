@@ -82,7 +82,7 @@ const CustomNavbar = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-    fetch(`${url.baseUrl}/cart/`, requestOptions)
+    fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
       .then((response) => response.json())
       .then((result) => { setCartItem(result.items) })
       .catch((error) => console.error(error));

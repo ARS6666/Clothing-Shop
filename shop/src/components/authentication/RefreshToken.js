@@ -13,7 +13,7 @@ function RefreshToken() {
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("X-CSRFToken", "suAdFiV4TS429JyIf0LP0hxKoYL4IGxU5HHR9e52YQvsh6wbWiwScHXhWAwZgI24");
+      myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
 
       const raw = JSON.stringify({ "token": token });
 
@@ -25,14 +25,14 @@ function RefreshToken() {
       };
 
       try {
-        const response = await fetch(`${url.baseUrl}/account/api/v1/jwt/verify/`, requestOptions);
+        const response = await fetch(`${url.baseUrl}/auth/jwt/verify/`, requestOptions);
         const result = await response.json();
 
         if (result.code === "token_not_valid") {
           const myHeadersRefresh = new Headers();
-          myHeadersRefresh.append("accept", "application/json");
-          myHeadersRefresh.append("Content-Type", "application/json");
-          myHeadersRefresh.append("X-CSRFToken", "7x82a1WNLT9ulCcznShlrJoy85HoXsYTKKfGEX6LQRAUtZa24a2oD9O5GHsjvut3");
+          myHeaders.append("accept", "application/json");
+          myHeaders.append("Content-Type", "application/json");
+          myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
 
           const rawRefresh = JSON.stringify({ "refresh": refresh });
 
@@ -43,7 +43,7 @@ function RefreshToken() {
             redirect: "follow"
           };
 
-          const refresResponse = await fetch(`${url.baseUrl}/account/api/v1/jwt/refresh/`, requestOptionsRefresh);
+          const refresResponse = await fetch(`${url.baseUrl}/auth/jwt/refresh/`, requestOptionsRefresh);
           const refresResult = await refresResponse.json();
 
           if (refresResponse.ok) {

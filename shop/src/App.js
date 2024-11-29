@@ -15,7 +15,6 @@ import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Prdctlist from './components/Features/PrdctList';
 import About from './components/CornerPages/About';
-import CustomCarousel from './components/products/Offprdct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -36,7 +35,6 @@ const AppContent = () => {
           <Route path='/pi' element={<PI />} />
           <Route path='/test' element={<Test />} />
           <Route path='/products' element={<Products />} />
-          <Route path='/cc' element={<CustomCarousel />} />
           <Route path='/account' element={
             <PrivateRoute>
               <Panel />
@@ -54,7 +52,6 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>
-        <CustomCarousel />
         {showFooter ? <Footer /> : null}
       </div>
     </>

@@ -15,7 +15,7 @@ function Login() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "fX5sFP00keywprbGk4cJWZOEoZmk4owWnxI5gWbR2ukOs4u3xiU3bi5THXM1MC03");
+    myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
 
     const handleLogin = async () => {
         setisLoading(true)
@@ -33,7 +33,7 @@ function Login() {
         };
 
         try {
-            const response = await fetch(`${url.baseUrl}/account/api/v1/jwt/create/`, requestOptions);
+            const response = await fetch(`${url.baseUrl}/auth/jwt/create/`, requestOptions);
 
             if (!response.ok) {
                 const errorResponse = await response.json();
@@ -73,7 +73,7 @@ function Login() {
                                 <span className="h2 col-md-12 border-bottom border-dark text-center p-1"> ورود </span>
                             </div>
                             <div className="pt-3">
-                                <label className="h5">ایمیل:</label>
+                                <label className="h5">شماره تلفن همراه:</label>
                             </div>
                             <div className="pt-1" dir="ltr">
                                 <input

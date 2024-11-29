@@ -47,7 +47,7 @@ function ProfProp() {
     };
 
     useEffect(() => {
-        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setProp(result); setisLoading(false) })
             .catch((error) => console.error(error));
@@ -85,7 +85,7 @@ function ProfProp() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/account/api/v1/profile/1`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/list/1`, requestOptions)
             .then((response) => response.text())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));

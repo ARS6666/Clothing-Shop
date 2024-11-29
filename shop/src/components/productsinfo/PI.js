@@ -15,7 +15,6 @@ function ProductInfo() {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [IMG, setIMG] = useState([]);
   const [added, setAdded] = useState(false);
-  const [Size, setSize] = useState([]);
   const [product, setProduct] = useState({ colors: [] });
   const location = useLocation();
   const [id, setId] = useState('');
@@ -35,7 +34,7 @@ function ProductInfo() {
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
-  myHeaders.append("X-CSRFToken", "VFX4ckvV3n06vqkus12kAWvQhLXYj2VmOzJ5C8ixK3YI4EnENS62gMl8ZOjIdIHx");
+  myHeaders.append("X-CSRFToken", "KyZ2IoH4Fwq3gYd5NsZ7481BNovNb1aJDsL38cuGmcoFPcgf8j3PKYRTvrRx5HWU");
 
   const requestOptions = {
     method: "GET",
@@ -43,10 +42,6 @@ function ProductInfo() {
     redirect: "follow"
   };
 
-  fetch("http://192.168.1.49:8000/api/products/1", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -56,12 +51,13 @@ function ProductInfo() {
     }
   }, [location.search]);
 
+
   useEffect(() => {
     if (id) {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          setProduct(result); setIMG(result.images); setSize(result.size); setisLoading(false); console.log(2132213)
+          setProduct(result); setIMG(result.images); setisLoading(false); console.log(2132213)
         })
         .catch((error) => console.error(error));
     }
@@ -146,11 +142,11 @@ function ProductInfo() {
           <div class="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
             <div class=" col-md-10 col-sm-11 col-11">
               <div><span class="text-dark h2">{product.name}</span></div>
-              <div class="col-md-12 row m-0">
-                <div class="pt-2 col-md-5"><span class={` h3 ${product.discount === 0 ? "text-dark" : "redFont"}`}>{product.price} هزار تومان</span></div>
-                <div class="col-md-6">{product.discount != 0 ? <div class="pt-4"><span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} هزار تومان</span></div> : null}</div>
+              <div class="col-md-12 col-12 col-sm row m-0">
+                <div class="pt-2"><span class={`${product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}`}>{product.price}  تومان</span></div>
+                <div>{product.discount != 0 ? <span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} تومان</span> : null}</div>
               </div>
-              <div class="pt-4">
+              <div class="pt-2">
                 <span class="h4">توضیحات:</span>
                 <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
               </div>

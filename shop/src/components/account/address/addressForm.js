@@ -117,7 +117,7 @@ function Address() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/account/api/v1/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProfile_id(result[0].id))
             .catch((error) => console.error(error));
@@ -159,8 +159,9 @@ function Address() {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "1catw3IpqjPm82a19BnpB3h97CUiCReGSPOsSvJ7NqGtvayHgOKf63rpDKWSqQui");
+    myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
     myHeaders.append("Authorization", `Bearer ${token}`);
+
 
     const raw = JSON.stringify({
         "profile": Profile_id,
@@ -169,7 +170,6 @@ function Address() {
         "ostan": Ostan,
         "shahr": Shahr,
         "postcode": PostCode,
-        "phone_number": Phone
     });
 
     const requestOptions = {
@@ -179,8 +179,9 @@ function Address() {
         redirect: "follow"
     };
 
+
     function STS() {
-        fetch(`${url.baseUrl}/account/api/v1/address/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/address/`, requestOptions)
             .then((response) => response.text())
             .then((result) => {
                 setIsOverlayOpen(false); window.location.reload();;
@@ -220,7 +221,7 @@ function Address() {
                             <span class="text-dark">افزودن آدرس جدید</span>
                         </div>
                         <div class="col-md-12">
-                            <span class="text-dark h5 p-1">نام و نام خانوادگی تحویل گیرنده *</span>
+                            <span class="text-dark h5 p-1">نام آدرس مورد نظر:*</span>
                             <div class="pt-2 col-md-12 p-3">
                                 <input class="form-control form-control-lg border-dark rounded-0" onChange={handleName}></input>
                             </div>

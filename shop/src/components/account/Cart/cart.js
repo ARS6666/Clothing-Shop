@@ -22,7 +22,7 @@ function Cart() {
         redirect: "follow"
     };
     function show() {
-        fetch(`${url.baseUrl}/cart/`, requestOptions)
+        fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) })
             .catch((error) => console.error(error));
