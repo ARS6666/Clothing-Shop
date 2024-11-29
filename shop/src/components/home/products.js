@@ -21,7 +21,7 @@ function HProducts() {
   };
 
   useEffect(() => {
-    fetch(`${url.baseUrl}/api/v1/products/`, requestOptions)
+    fetch(`${url.baseUrl}/api/products/`, requestOptions)
       .then((response) => response.json())
       .then((result) => { setPRoduct(result); setisLoading(false) })
       .catch((error) => console.error(error));
