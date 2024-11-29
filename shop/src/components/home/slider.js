@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Carousel from 'react-bootstrap/Carousel';
 import img from "../../assets/media/vid.mp4"
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../assets/css/home/slider.css"
@@ -19,7 +20,7 @@ function ImageSlider() {
   };
 
   useEffect(() => {
-    fetch(`${url.baseUrl}/sliders/slider/`, requestOptions)
+    fetch(`${url.baseUrl}/slider/slider/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setSliderPic(result))
       .catch((error) => console.error(error));
@@ -30,15 +31,15 @@ function ImageSlider() {
   return (<>
 
     <div class="col-md-12 m-0">
-      <video class="vid" src={img} muted autoPlay loop/>
+      {/* <video class="vid" src={img} muted autoPlay loop/> */}
 
-      {/* <Carousel>
+      <Carousel>
         {SliderPic.map(Pic =>
           <Carousel.Item>
-            <img src={Pic.image} style={{ height:"500px" , width:"100%" ,objectFit:"cover"}} />
+            <img src={Pic.image} style={{ height: "500px", width: "100%", objectFit: "cover" }} />
           </Carousel.Item>
         )}
-      </Carousel> */}
+      </Carousel>
     </div>
 
   </>);

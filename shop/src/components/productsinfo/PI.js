@@ -87,6 +87,7 @@ function ProductInfo() {
         setAdded(false);
       }, 1900);
       setButtonDisabled(true);
+
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
       myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
@@ -94,7 +95,7 @@ function ProductInfo() {
       myHeaders.append("Authorization", `Bearer ${token}`);
 
       const raw = JSON.stringify({
-        "product_id": productId
+        "product": productId
       });
 
       const requestOptions = {
@@ -104,7 +105,7 @@ function ProductInfo() {
         redirect: "follow"
       };
 
-      fetch(`${url.baseUrl}/cart/add_item/`, requestOptions)
+      fetch(`${url.baseUrl}/cart/cart/add_item/`, requestOptions)
         .then((response) => response.text())
         .then((result) => console.log())
         .catch((error) => console.error(error));

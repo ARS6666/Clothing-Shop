@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
-import lgo from "../assets/media/logo.png";
+import logo from "../assets/media/logo.png";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
@@ -88,38 +88,16 @@ const CustomNavbar = () => {
       .catch((error) => console.error(error));
 
   }, []);
-  // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  // const fetchData = async () => {
-  //   await delay(3000);
-  //   const myHeaders = new Headers();
-  //   myHeaders.append("accept", "application/json");
-  //   myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
-  //   myHeaders.append("Authorization", `Bearer ${token}`);
-
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: myHeaders,
-  //     redirect: "follow"
-  //   };
-  //   fetch("http://127.0.0.1:8000/cart/", requestOptions)
-  //     .then((response) => response.json())
-  //     .then((result) => {setCartItem(result.items)})
-  //     .catch((error) => console.error(error));
-
-  // }
-  // useEffect(() => {
-  // fetchData();
-  // }, [CartItems.length]);
   function HandleNav() {
     setCollapse(!Collapse)
   }
 
   return (
     <>
-      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 " dir="rtl">
+      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 "style={{backgroundColor : "#c68346"}} dir="rtl">
         <div class="col-md-7 col-sm-7 row m-0">
-          <div class="col-md-3 col-sm-3">
-            <img style={{ height: "45px" }} src={Image} class="col" />
+          <div class="col-md-3 col-sm-3 pt-1">
+            <img style={{ height: "35px" }} src={logo} class="col" />
           </div>
           <div class="col-md-8 col-sm-8 align-self-center d-flex justify-content-between">
             <a class="hrefb " href="/"><span class="col-md-3 col-sm-3 h5 ah">خانه </span></a>
