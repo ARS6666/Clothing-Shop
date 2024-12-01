@@ -37,7 +37,7 @@ function HProducts() {
         </span>
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
-        {Product.map((c) => (
+        {Product?.slice(0,9).map((c) => (
           <div className={` col-md-3 col-4 col-sm-4 m-3 product-carde Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
             <div class="row m-0">
               {c.discount != 0 && c.count != 0 ? <div class="discountDisplay">{c.discount}%</div> : null}
