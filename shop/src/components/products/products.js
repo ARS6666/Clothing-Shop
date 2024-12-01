@@ -163,7 +163,7 @@ function Products() {
                   />
                 </div>
                 <div class="d-flex justify-content-center pt-3">
-                  <span class="h5 fontr ">{c.name}</span>
+                  <span class="h5 fontr text-center">{c.name}</span>
                 </div>
                 <div class="d-flex justify-content-center ">
                   <span class=" fontr pt-1 " dir="rtl">

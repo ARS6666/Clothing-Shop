@@ -37,7 +37,7 @@ const CommonProducts = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`${url.baseUrl}/api/v1/products/` + id, requestOptions)
+      fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setCat(result.category); setisLoading(false);
@@ -48,21 +48,20 @@ const CommonProducts = () => {
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
-  myHeaders.append(
-    "X-CSRFToken",
-    "eEAIhybYoInBYX8ZQrRp3EaIxvQ9JkybnKje3c7ErDM26IYdDViudwiEsmQI1o7j"
-  );
+  myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
+  myHeaders.append("X-CSRFToken", "krMY06dKPZfPJAhssIix8Yjkc9BgJfTCrx6NCcOUN154E9d3tW4npwnd7MvWUz01");
 
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
-    redirect: "follow",
+    redirect: "follow"
   };
 
+
   useEffect(() => {
-    fetch(`${url.baseUrl}/api/v1/products/`, requestOptions)
+    fetch(`${url.baseUrl}/api/products/`, requestOptions)
       .then((response) => response.json())
-      .then((result) => setPRoduct(result))
+      .then((result) => { setPRoduct(result); console.log(Productss) })
       .catch((error) => console.error(error));
   }, []);
 
@@ -127,9 +126,9 @@ const CommonProducts = () => {
       <div className="product-sl">
         <div class="col-md-12 row m-0 " dir="rtl">
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
-            {Filter?.map((c, index) => (
+            {Productss?.map((c, index) => (
               <div class="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
-                <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-card'}`}>
+                <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-carde'}`}>
                   <div class="row m-0">
                     {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
                     <div class="d-flex justify-content-center ">
@@ -148,7 +147,7 @@ const CommonProducts = () => {
                     </div>
                   </div>
                   <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                    <div className="hover-details col-md-12 ">
+                    <div className="hover-detailse col-md-12 ">
                       <div
                         class="d-flex justify-content-center "
                         style={{ height: "400px" }}

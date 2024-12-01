@@ -1,6 +1,6 @@
 import PI from './productsinfo/PI';
 import CommentBox from './productsinfo/CommentBox';
-import CommonProducts from './products/Offprdct';
+import CommonProducts from './productsinfo/commonProducts';
 
 
 function ProductPage() {
