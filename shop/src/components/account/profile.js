@@ -47,7 +47,7 @@ function ProfProp() {
     };
 
     useEffect(() => {
-        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setProp(result); setisLoading(false) })
             .catch((error) => console.error(error));
@@ -72,7 +72,6 @@ function ProfProp() {
 
         const raw = JSON.stringify({
             "id": Id,
-            "phone": Phone,
             "name": Name,
             "image": Image,
             "family": LastName
@@ -85,7 +84,7 @@ function ProfProp() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/list/1`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/1`, requestOptions)
             .then((response) => response.text())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));
@@ -110,29 +109,16 @@ function ProfProp() {
                                 <input class="form-control form-control-lg border-dark rounded-0" onChange={handleName} value={Name} required></input>
                             </div>
                             <div class="pt-3">
-                                <span class="text-dark ">شماره موبایل:</span>
+                                <span class="text-dark pt-5">عکس پروفایل:</span>
                             </div>
-                            <div class="pt-2 col-md-12">
-                                <input dir="ltr" class="form-control form-control-lg border-dark rounded-0"
-                                    required
-                                    style={{
-                                        WebkitAppearance: 'none',
-                                        MozAppearance: 'textfield',
-                                        type: "number",
-                                    }}
-                                    onChange={handlePhone} value={Phone}></input>
+                            <div class="pt-2 pb-5 col-md-12" >
+                                <input type="file" dir="rtl" class="form-control form-control-lg border-dark rounded-0" onChange={handleFileChange} required></input>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <span class="text-dark pt-5"> نام خانوادگی:</span>
                             <div class="pt-2  col-md-12">
                                 <input class="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required></input>
-                            </div>
-                            <div class="pt-3">
-                                <span class="text-dark pt-5">عکس پروفایل:</span>
-                            </div>
-                            <div class="pt-2 pb-5 col-md-12" >
-                                <input type="file" dir="rtl" class="form-control form-control-lg border-dark rounded-0" onChange={handleFileChange} required></input>
                             </div>
                         </div>
                         <div class="col-md-12 col-12 d-flex justify-content-center pt-2">

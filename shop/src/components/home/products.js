@@ -52,7 +52,7 @@ function HProducts() {
               </div>
               <div class="d-flex justify-content-center ">
                 <span class=" fontr pt-1 " dir="rtl">
-                  {c.price} هزار تومن
+                  {c.price} هزار تومان
                 </span>
               </div>
             </div>

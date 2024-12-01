@@ -33,12 +33,11 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
-  border-color: #000000 !important;
   padding: 12px;
   cursor: pointer;
-  border-radius: 5%; 
   transition: background-color 0.3s ease;
-  background-color: #ddd !important;
+  background-color: transparent !important;
+  color: black;
   
 }
 
@@ -55,29 +54,6 @@
 
 .carousel-button.right:hover {
   background-color: rgb(47, 47, 47) !important; 
-}
-
-.twelve h1 {
-  font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px;
-}
-.twelve h1:before {
-    background-color: #c50000;
-    content: '';
-    display: block;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 5px;
-}
-.twelve h1:after {
-    background-color: #c50000;
-    content: '';
-    display: block;
-  position:sticky; right:0; bottom:0;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 0.25em;
-    margin-top: 0.7em;
-    margin-left: 5pc
 }
 
 .gradient-box {

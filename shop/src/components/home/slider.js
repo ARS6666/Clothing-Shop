@@ -31,15 +31,15 @@ function ImageSlider() {
   return (<>
 
     <div class="col-md-12 m-0">
-      {/* <video class="vid" src={img} muted autoPlay loop/> */}
-
+      <video class="vid" src={img} muted autoPlay loop />
+      {/* 
       <Carousel>
         {SliderPic.map(Pic =>
           <Carousel.Item>
             <img src={Pic.image} style={{ height: "500px", width: "100%", objectFit: "cover" }} />
           </Carousel.Item>
         )}
-      </Carousel>
+      </Carousel> */}
     </div>
 
   </>);

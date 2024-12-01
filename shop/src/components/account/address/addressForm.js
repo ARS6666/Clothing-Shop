@@ -117,7 +117,7 @@ function Address() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProfile_id(result[0].id))
             .catch((error) => console.error(error));
@@ -178,7 +178,6 @@ function Address() {
         body: raw,
         redirect: "follow"
     };
-
 
     function STS() {
         fetch(`${url.baseUrl}/auth/address/`, requestOptions)

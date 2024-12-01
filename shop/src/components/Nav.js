@@ -94,10 +94,10 @@ const CustomNavbar = () => {
 
   return (
     <>
-      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 "style={{backgroundColor : "#c68346"}} dir="rtl">
+      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 " dir="rtl">
         <div class="col-md-7 col-sm-7 row m-0">
           <div class="col-md-3 col-sm-3 pt-1">
-            <img style={{ height: "35px" }} src={logo} class="col" />
+              <a class="hrefb" href="/"><img style={{ height: "35px" }} src={logo} class="col" /></a>
           </div>
           <div class="col-md-8 col-sm-8 align-self-center d-flex justify-content-between">
             <a class="hrefb " href="/"><span class="col-md-3 col-sm-3 h5 ah">خانه </span></a>

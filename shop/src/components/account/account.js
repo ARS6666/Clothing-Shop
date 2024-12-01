@@ -30,7 +30,7 @@ function Panel() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/list/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));

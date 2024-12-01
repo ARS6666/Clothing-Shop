@@ -14,6 +14,9 @@ function Products() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [category, setCategory] = useState('');
+  const [ShowCount, setShowCount] = useState(9)
+  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
+  const [ButtDisable, setButtDisable] = useState(false)
   const location = useLocation();
 
 
@@ -40,13 +43,13 @@ function Products() {
       myHeaders.append("accept", "application/json");
       myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
       myHeaders.append("X-CSRFToken", "krMY06dKPZfPJAhssIix8Yjkc9BgJfTCrx6NCcOUN154E9d3tW4npwnd7MvWUz01");
-      
+
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow"
       };
-    
+
       try {
         const response = await fetch(`${url.baseUrl}/api/products/`, requestOptions);
         const result = await response.json();
@@ -116,7 +119,16 @@ function Products() {
     }
 
   }, [displayedProducts]);
+  function HandleShow() {
+    if (displayedProducts.length - ShowCount > 0) {
+      setButtContent("مشاهده بیشتر ...")
+      setShowCount(ShowCount + 9)
+    }
+    if (0 >= displayedProducts.length - ShowCount) {
+      setButtContent("محصولات به پایان رسیدند ...")
+    }
 
+  }
   return (
     <>
       {IsLoading ? <Loading /> : null}
@@ -140,7 +152,7 @@ function Products() {
               </div>
             </>
             : null}
-          {displayedProducts.map((c) => (
+          {displayedProducts?.slice(displayedProducts.length - ShowCount, displayedProducts.length).map((c) => (
             <div className={`col-md-3 col-4 col-sm-4 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
               <div class="row m-0">
                 {c.discount != 0 && c.count != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
@@ -155,7 +167,7 @@ function Products() {
                 </div>
                 <div class="d-flex justify-content-center ">
                   <span class=" fontr pt-1 " dir="rtl">
-                    {c.price} هزار تومن
+                    {c.price} هزار تومان
                   </span>
                 </div>
               </div>
@@ -174,11 +186,16 @@ function Products() {
               </a>
             </div>
           ))}
+          {NoResult ? <></> :
+            <div class="col-md-12 pt-5 pb-5 d-flex justify-content-center">
+              <div class="col-md-6"><button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={HandleShow} disabled={ButtDisable}><span class="h5">{ButtContent}</span>
+              </button></div>
+            </div>}
         </div>
         <div class="col-md-3 col-9 remove pb-3 justify-content-center">
           <Filter onFilterChange={handleFilterChange} />
         </div>
-      </div>
+      </div >
     </>
   );
 }

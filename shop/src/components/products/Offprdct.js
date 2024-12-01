@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import img1 from "../../assets/media/p1.jpg";
 import img2 from "../../assets/media/t1.jpg";
@@ -16,7 +16,7 @@ import "../../assets/css/home/category.css";
 
 
 const ProductCarousel = () => {
-  const sliderRef = useRef(null); 
+  const sliderRef = useRef(null);
 
   const products = [
     { Name: "تی شرت", Category: "تی شرت", pic: img2 },
@@ -31,46 +31,37 @@ const ProductCarousel = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, 
+    slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true, 
+    autoplay: true,
     autoplaySpeed: 3000,
   };
-  
+
   return (
     <div className="carousel-container">
       <Button
-        className="carousel-button left"
-        onClick={() => sliderRef.current.slickPrev()} 
+        className="carousel-button border-0 left"
+        onClick={() => sliderRef.current.slickPrev()}
       >
-        &#9664; 
+        {"<"}
       </Button>
-      <div>
-      <div className=" ">  
-            <div class="twelve " >
-  <h1>تخفیف ویژه</h1>
-  </div>
-</div>
-  
-</div>
-
       <Slider ref={sliderRef} {...settings}>
         {products.map((product) => (
           <div className="row m-0">
-          <div className="d-flex justify-content-center ">
-            <img src={product.pic} className="d-block col-md-11 p-2 w-100" alt={product.Name} />
+            <div className="d-flex justify-content-center ">
+              <img src={product.pic} className="d-block col-md-11 p-2 w-100" alt={product.Name} />
+            </div>
+            <div className="d-flex justify-content-center pt-2">
+              <span className="h4 fontr">{product.Name}</span>
+            </div>
           </div>
-          <div className="d-flex justify-content-center pt-2">
-            <span className="h4 fontr">{product.Name}</span>
-          </div>
-        </div>
         ))}
       </Slider>
       <Button
-        className="carousel-button right"
-        onClick={() => sliderRef.current.slickNext()} 
+        className="carousel-button border-0 right"
+        onClick={() => sliderRef.current.slickNext()}
       >
-        &#9664; 
+        {">"}
 
       </Button>
     </div>
