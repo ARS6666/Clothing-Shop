@@ -119,12 +119,13 @@ const Comments = () => {
       >
         <div class="col-md-12 row m-0 p-5">
           <div class=" col-md-6  pt-2 col-12 p-0 m-0">
-            {comments?.slice(comments.length - ShowCount, comments.length).map((c, index) => (
-              <div className="mt-1 bg-light fontr p-3 border-bottom ">
-                <div className="text-muted h5">{c.name}:</div>
-                <div className="h5">{c.text}</div>
-              </div>
-            ))}
+            {Array.isArray(comments) && comments.length > 0 &&
+              comments.slice(Math.max(comments.length - ShowCount, 0), comments.length).map((c, index) => (
+                <div key={index} className="mt-1 bg-light fontr p-3 border-bottom">
+                  <div className="text-muted h5">{c.name}:</div>
+                  <div className="h5">{c.text}</div>
+                </div>
+              ))}
             <div class="col-md-12 pt-3">
               <button class="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
               </button>

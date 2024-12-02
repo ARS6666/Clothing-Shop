@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
-import logo from "../assets/media/logo.png";
+import logo from "../assets/media/logo.jpg";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
@@ -97,7 +97,7 @@ const CustomNavbar = () => {
       {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 " dir="rtl">
         <div class="col-md-7 col-sm-7 row m-0">
           <div class="col-md-3 col-sm-3 pt-1">
-              <a class="hrefb" href="/"><img style={{ height: "35px" }} src={logo} class="col" /></a>
+              <a class="hrefb" href="/"><img style={{ height: "35px" , marginRight:"30px"}} src={logo} class="col" /></a>
           </div>
           <div class="col-md-8 col-sm-8 align-self-center d-flex justify-content-between">
             <a class="hrefb " href="/"><span class="col-md-3 col-sm-3 h5 ah">خانه </span></a>

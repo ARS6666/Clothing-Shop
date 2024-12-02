@@ -124,7 +124,7 @@ function ProductInfo() {
           <div class="col-md-6 d-flex flex-column">
             <div class="row m-0">
               <div class="col-md-2 remove d-flex flex-column align-items-end romove">
-                {IMG.slice(0, 3).map((c) => (
+                {IMG?.slice(0, 3).map((c) => (
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
                 ))}
               </div>

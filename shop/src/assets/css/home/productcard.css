@@ -1,14 +1,14 @@
 .Imge {
     object-fit: cover;
-    height: 400px;
+    height: 300px;
 }
 
 .bpe {
-    height: 450px;
+    height: 350px;
 }
 
 .product-carde {
-    height: 500px;
+    height: 400px;
     transition: transform .5s;
 }
 
@@ -24,7 +24,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
-    height: 500px;
+    height: 400px;
     display: none;
     /* Initially hidden */
 }
@@ -39,20 +39,20 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 300px;
+        height: 250px;
 
     }
 
     .Imge {
-        height: 200px;
+        height: 150px;
     }
 
     .product-carde {
-        height: 300px;
+        height: 250px;
     }
 
     .bpe {
-        height: 250px;
+        height: 200px;
     }
 
 
