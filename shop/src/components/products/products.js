@@ -159,7 +159,7 @@ function Products() {
                 <div class="d-flex justify-content-center ">
                   <img
                     src={c.pic}
-                    class="Img col-md-11"
+                    class="Img col-md-12"
                   />
                 </div>
                 <div class="d-flex justify-content-center pt-3">

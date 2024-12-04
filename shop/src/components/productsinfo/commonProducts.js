@@ -59,7 +59,7 @@ const CommonProducts = () => {
 
 
   useEffect(() => {
-    fetch(`${url.baseUrl}/api/products/`, requestOptions)
+    fetch(`${url.baseUrl}/api/products/` + Cat, requestOptions)
       .then((response) => response.json())
       .then((result) => { setPRoduct(result); console.log(Productss) })
       .catch((error) => console.error(error));
@@ -138,7 +138,7 @@ const CommonProducts = () => {
                       />
                     </div>
                     <div class="d-flex justify-content-center pt-2">
-                      <span class="h3 fontr">{c.name}</span>
+                      <span class="h5 fontr text-center">{c.name}</span>
                     </div>
                     <div class="d-flex justify-content-center ">
                       <span class="h5 fontr pt-1" dir="rtl">
