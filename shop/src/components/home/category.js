@@ -12,7 +12,7 @@ const ProductSlider = () => {
   const [State, setState] = useState(6)
   const [width, setWidth] = useState(window.innerWidth);
   const [width2, setWidth2] = useState(window.innerWidth);
-  const [Categories , setCategories] = useState([]);
+  const [Categories, setCategories] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,22 +30,23 @@ const ProductSlider = () => {
     };
   });
 
-// dasdsa
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "oWF4BYWZ2asUOabk8VBGC7SJcARquNg0HPyW3byriP71zUPgj0cYctxVFZRPwB6m");
 
-  const myHeaders = new Headers();
-  myHeaders.append("accept", "application/json");
-  myHeaders.append("X-CSRFToken", "oWF4BYWZ2asUOabk8VBGC7SJcARquNg0HPyW3byriP71zUPgj0cYctxVFZRPwB6m");
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
 
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
-  };
+    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setCategories(result))
+      .catch((error) => console.error(error));
+  }, []);
 
-  fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
-    .then((response) => response.json())
-    .then((result) => setCategories(result))
-    .catch((error) => console.error(error));
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
