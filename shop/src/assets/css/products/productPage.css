@@ -1,3 +1,4 @@
+/* Base Styles */
 .Img {
     object-fit: cover;
     height: 250px;
@@ -8,7 +9,7 @@
 }
 
 .productt-card {
-    height: 360px;
+    height: 420px; /* Increased height */
     transition: transform .5s;
 }
 
@@ -18,13 +19,11 @@
 
 .remove {
     display: block;
-
 }
 
 .add {
     display: none;
 }
-
 
 .hoverr-details {
     position: absolute;
@@ -34,7 +33,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
-    height: 360px;
+    height: 420px; /* Increased height */
     display: none;
     /* Initially hidden */
 }
@@ -44,26 +43,62 @@
     /* Show on hover */
 }
 
-@media (max-width: 1024px) {
+/* Responsive Styles */
+@media (max-width: 1400px) and (min-width: 1200px) {
+    .Img,
+    .bp,
+    .productt-card,
     .hoverr-details {
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 250px;
-
+        height: 380px;
     }
+}
 
-    .Img {
-        height: 150px;
+@media (max-width: 1200px) and (min-width: 992px) {
+    .Img,
+    .bp,
+    .productt-card,
+    .hoverr-details {
+        height: 350px;
+    }
+    .productt-card {
+        font-size: 0.9rem; /* Smaller text size */
+    }
+}
+
+@media (max-width: 992px) and (min-width: 800px) {
+    .Img,
+    .bp,
+    .productt-card,
+    .hoverr-details {
+        height: 300px;
+    }
+    .productt-card {
+        font-size: 0.8rem; /* Smaller text size */
+    }
+}
+
+@media (max-width: 800px) and (min-width: 576px) {
+    .Img,
+    .bp,
+    .productt-card,
+    .hoverr-details {
+        height: 250px;
+    }
+    .productt-card {
+        font-size: 0.7rem; /* Smaller text size */
+    }
+}
+
+@media (max-width: 576px) {
+    .Img,
+    .bp,
+    .productt-card,
+    .hoverr-details {
+        height: 200px;
     }
 
     .productt-card {
-        height: 250px;
-        text-align: center;
-    }
-
-    .bp {
-        height: 250px;
+        font-size: 0.6rem; /* Smaller text size */
     }
 
     .remove {
@@ -73,33 +108,8 @@
     .add {
         display: block;
     }
-
-
 }
 
-@media (max-width: 756px) {
-    .hoverr-details {
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 250px;
-
-    }
-
-    .Img {
-        height: 250px;
-    }
-
-    .productt-card {
-        height: 250px;
-    }
-
-    .bp {
-        height: 250px;
-    }
-
-
-}
 
 .Anim {
     animation: appear linear;
