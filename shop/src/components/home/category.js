@@ -12,6 +12,8 @@ const ProductSlider = () => {
   const [State, setState] = useState(6)
   const [width, setWidth] = useState(window.innerWidth);
   const [width2, setWidth2] = useState(window.innerWidth);
+  const [Categories , setCategories] = useState([]);
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -30,15 +32,20 @@ const ProductSlider = () => {
 
 
 
-  const Categories = [
-    { Name: "تی شرت", Category: "تی شرت", pic: img2 },
-    { Name: "شلوار", Category: "شلوار", pic: img1 },
-    { Name: "کفش", Category: "کفش", pic: img3 },
-    { Name: "پیراهن", Category: "پیراهن", pic: img4 },
-    { Name: "کلاه", Category: "کلاه", pic: img5 },
-    { Name: "دامن", Category: "پیراهن", pic: img6 },
-  ];
+  const myHeaders = new Headers();
+  myHeaders.append("accept", "application/json");
+  myHeaders.append("X-CSRFToken", "oWF4BYWZ2asUOabk8VBGC7SJcARquNg0HPyW3byriP71zUPgj0cYctxVFZRPwB6m");
 
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+    .then((response) => response.json())
+    .then((result) => setCategories(result))
+    .catch((error) => console.error(error));
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -81,14 +88,14 @@ const ProductSlider = () => {
         <div className="slider-container col-md-12 row m-0 pt-2" dir="rtl">
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / State)}%)` }}>
             {Categories.map((c, index) => (
-              <div className="col-md-2 col-4" key={index} style={{ minWidth:`(-${(100 / State)}%)` }}>
+              <div className="col-md-2 col-4" key={index} style={{ minWidth: `(-${(100 / State)}%)` }}>
                 <a className="hrefb align-self-center" href={"/products?category=" + c.Category}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">
-                      <img src={c.pic} className="d-block col-md-11 p-2 w-100" alt={c.Name} />
+                      <img src={c.image} className="d-block col-md-11 p-2 w-100" alt={c.category} />
                     </div>
                     <div className="d-flex justify-content-center pt-2">
-                      <span className="h4 fontr">{c.Name}</span>
+                      <span className="h4 fontr">{c.category}</span>
                     </div>
                   </div>
                 </a>
