@@ -30,7 +30,7 @@ const ProductSlider = () => {
     };
   });
 
-
+  // fsdfdefwdfsfwd
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
