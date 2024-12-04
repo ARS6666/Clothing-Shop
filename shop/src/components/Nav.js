@@ -4,11 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/font/font.css";
 import "../assets/css/href.css";
 import logo from "../assets/media/logo.jpg";
-import "https://kit.fontawesome.com/6c2a0de8a3.js"
 import Prdctlist from "./Features/PrdctList";
 import "../assets/css/buttonn.css"
 import url from "../config.json"
-
 
 const CustomNavbar = () => {
   const [CartItems, setCartItem] = useState([])
@@ -20,18 +18,19 @@ const CustomNavbar = () => {
   const [Login, setlogin] = useState(true)
   const [isVisible, setIsVisible] = useState(true);
   const token = localStorage.getItem('token');
+
   useEffect(() => {
     if (token && token.length !== 0) {
       setlogin(false)
     }
-  }, [])
-
+  }, [token])
 
   const logout = () => {
     localStorage.removeItem('token');
     setlogin(true)
     navigate('/login');
   };
+
   const handleResize = () => {
     if (window.innerWidth < 1024) {
       setIsVisible(false);
@@ -64,13 +63,14 @@ const CustomNavbar = () => {
       .then((response) => response.json())
       .then((result) => setLogo(result))
       .catch((error) => console.error(error));
-  }, []);
+  }, [requestOptions]);
+
   useEffect(() => {
     if (Logo.length > 0) {
       setI(Logo[0].image);
-
     }
   }, [Logo]);
+
   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
@@ -86,137 +86,131 @@ const CustomNavbar = () => {
       .then((response) => response.json())
       .then((result) => { setCartItem(result.items) })
       .catch((error) => console.error(error));
+  }, [token]);
 
-  }, []);
   function HandleNav() {
     setCollapse(!Collapse)
   }
 
   return (
     <>
-      {isVisible ? <div class="col-md-12 col-sm-12 fontr row m-0 " dir="rtl">
-        <div class="col-md-7 col-sm-7 row m-0">
-          <div class="col-md-3 col-sm-3 pt-1">
-              <a class="hrefb" href="/"><img style={{ height: "35px" , marginRight:"30px"}} src={logo} class="col" /></a>
-          </div>
-          <div class="col-md-8 col-sm-8 align-self-center d-flex justify-content-between">
-            <a class="hrefb " href="/"><span class="col-md-3 col-sm-3 h5 ah">خانه </span></a>
-            <a class="hrefb" href="/products"><span class="col-md-3 col-sm-3 h5  ah">محصولات </span></a>
-            <a className="hrefb"><Prdctlist /></a>
-            <a class="hrefb" href="/about"><span class="col-md-3 h5 col-sm-3 ah">درباره ما </span></a>
-          </div >
-        </div>
-
-        <div class="col-md-5 col-sm-5 row m-0">
-          <div class="col-md-5 col-sm-5 align-self-center">
-            <input
-              class="form-control fontr"
-              placeholder="جست وجو ..."
-              onChange={(e) => setSearch(e.target.value)}
-              style={{ backgroundColor: "#D9D9D9" }}
-            />
-          </div>
-          <div class="col-md-1 col-sm-1 align-self-center ">
-            <a href={"/products?search=" + search}>
-              <button
-                class="rounded-circle btn bg-transparent align-self-center"
-                alt="جست و جو"
-                style={{ backgroundColor: "#E8E7E7" }}
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </a>
-          </div>
-          <div class="col-md-2 col-sm-2 h5 mt-2 d-flex justify-content-center align-self-center">
+      {isVisible ? (
+        <div className="col-12 fontr row m-0" dir="rtl">
+          <div className="col-7 row m-0">
+            <div className="col-3 pt-1">
+              <a className="hrefb" href="/"><img style={{ height: "35px", marginRight: "30px" }} src={logo} alt="logo" className="col" /></a>
+            </div>
+            <div className="col-8 align-self-center d-flex justify-content-between">
+              <a className="hrefb" href="/"><span className="col-3 h5 ah">خانه</span></a>
+              <a className="hrefb" href="/products"><span className="col-3 h5 ah">محصولات</span></a>
+              <a className="hrefb" href="/products"><span className="col-3 h5 ah">دسته بندی</span></a>
+              <a className="hrefb" href="/about"><span className="col-3 h5 ah">درباره ما</span></a>
+            </div>
           </div>
 
-          <div class="col-md-4 col-sm-4 align-self-center">
-            <span>
-              {Login ? (
-                <>
-                  <a href="/login" class="hrefb h5 ah">
-                    ورود
-                  </a>
-                  <span>{" "}|{" "}</span>
-                </>
-              ) :
-                null
-              }
-              <a href="/account" class="hrefb h5 ah">
-                حساب کاربری
+          <div className="col-5 row m-0">
+            <div className="col-5 align-self-center">
+              <input
+                className="form-control fontr"
+                placeholder="جست وجو ..."
+                onChange={(e) => setSearch(e.target.value)}
+                style={{ backgroundColor: "#D9D9D9" }}
+              />
+            </div>
+            <div className="col-1 align-self-center">
+              <a href={`/products?search=${search}`}>
+                <button
+                  className="rounded-circle btn bg-transparent align-self-center"
+                  alt="جست و جو"
+                  style={{ backgroundColor: "#E8E7E7" }}
+                >
+                  <i className="fa-solid fa-magnifying-glass" style={{ fontSize: "1.1 rem" }}></i>
+                </button>
               </a>
-              {Login ? (
-                null
-              ) : <>
-                <button class="btn border-0 bg-transparent" onClick={logout} ><i class="fas fa-sign-out-alt ah"></i></button>
-                <span>{" "}|{" "}</span>
-                <button class="btn border-0 bg-transparent cart-icon"><a class="hrefb" href="/cart"><i class="fa-solid fa-cart-shopping ah"></i><span class="cart-count text-dark">{CartItems?.length}</span></a></button>
-              </>
-              }
-            </span>
+            </div>
+          <div class="col-1"></div>
+            <div className="col-5 align-self-center">
+              <span>
+                {Login ? (
+                  <>
+                    <a href="/login" className="hrefb h5 ah">ورود</a>
+                    <span>{" "}|{" "}</span>
+                  </>
+                ) : null}
+                <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
+                {!Login && (
+                  <>
+                    <button className="btn border-0 bg-transparent" onClick={logout}><i className="fas fa-sign-out-alt ah"></i></button>
+                    <span>{" "}|{" "}</span>
+                    <button className="btn border-0 bg-transparent cart-icon">
+                      <a className="hrefb" href="/cart">
+                        <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1 rem" }}></i>
+                        <span className="cart-count text-dark">{CartItems?.length}</span>
+                      </a>
+                    </button>
+                  </>
+                )}
+              </span>
+            </div>
           </div>
         </div>
-      </div> : null}
-      <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
-        <div class="col-12 m-0 d-flex">
-          <div class="col-6 d-flex justify-content-start">
-            <button class="btn bg-transparent rounded-3 p-2" onClick={HandleNav}>
-              <i class={` ${Collapse ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}`}></i>
+      ) : null}
+      <div className="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
+        <div className="col-12 m-0 d-flex">
+          <div className="col-6 d-flex justify-content-start">
+            <button className="btn bg-transparent rounded-3 p-2" onClick={HandleNav}>
+              <i className={`${Collapse ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}`} style={{ fontSize: "1.1 rem" }}></i>
             </button>
-            {Collapse ? (
-              <div class="burger-menu">
-                <div class="col-12 border-top border-bottom d-flex justify-content-center p-3  align-self-center">
-                  <div><a class="hrefb h5 p-3 align-self-center" href="/" >خانه</a></div>
-                  <div><a class="hrefb h5 p-3 align-self-center" href="/products" >محصولات</a></div>
-                  <div><a class="hrefb h5 p-3 align-self-center" href="/about" >درباره ی ما</a></div>
-                  <div class="col-4 align-self-center">
+            {Collapse && (
+              <div className="burger-menu">
+                <div className="col-12 border-top border-bottom d-flex justify-content-center p-3 align-self-center">
+                  <div><a className="hrefb h5 p-3 align-self-center" href="/">خانه</a></div>
+                  <div><a className="hrefb h5 p-3 align-self-center" href="/products">محصولات</a></div>
+                  <div><a className="hrefb h5 p-3 align-self-center" href="/about">درباره ی ما</a></div>
+                  <div className="col-4 align-self-center">
                     <input
-                      class="form-control fontr"
+                      className="form-control fontr"
                       placeholder="جست وجو ..."
                       onChange={(e) => setSearch(e.target.value)}
                       style={{ backgroundColor: "#D9D9D9" }}
                     />
                   </div>
-                  <div class="col-1 align-self-center ">
-                    <a href={"/products?search=" + search}>
+                  <div className="col-1 align-self-center">
+                    <a href={`/products?search=${search}`}>
                       <button
-                        class="rounded-circle btn bg-transparent align-self-center"
+                        className="rounded-circle btn bg-transparent align-self-center"
                         alt="جست و جو"
                         style={{ backgroundColor: "#E8E7E7" }}
                       >
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i className="fa-solid fa-magnifying-glass" style={{ fontSize: "1.1 rem" }}></i>
                       </button>
                     </a>
                   </div>
                 </div>
               </div>
-            ) : null}
+            )}
           </div>
-          <div class="col-6 d-flex justify-content-end">
+          <div className="col-6 d-flex justify-content-center">
             <span>
               {Login ? (
                 <>
-                  <a href="/login" class="hrefb h5 ah">
-                    ورود
-                  </a>
+                  <a href="/login" className="hrefb h5 ah">ورود</a>
                   <span>{" "}|{" "}</span>
                 </>
               ) : null}
-              <a href="/account" class="hrefb h5 ah">
-                حساب کاربری
-              </a>
-              {Login ? (
-                null
-              ) : (<>
-                <button class="btn border-0 bg-transparent" onClick={logout}><i class="fas fa-sign-out-alt ah"></i></button>
-                <span>{" "}|{" "}</span>
-                <button class="btn border-0 bg-transparent cart-icon">
-                  <a class="hrefb" href="/cart">
-                    <i class="fa-solid fa-cart-shopping ah"></i>
-                    <span class="cart-count text-dark">{CartItems?.length}</span>
-                  </a>
-                </button>
-              </>)}
+              <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
+              {!Login && (
+                <>
+                  <button className="btn border-0 bg-transparent" onClick={logout}><i className="fas fa-sign-out-alt ah"></i></button>
+                  <span>{" "}|{" "}</span>
+                  <button className="btn border-0 bg-transparent cart-icon">
+                    <a className="hrefb" href="/cart">
+                      <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1 rem" }}></i>
+                      <span className="cart-count text-dark">{CartItems?.length}</span>
+                    </a>
+                  </button>
+                </>
+              )}
             </span>
           </div>
         </div>
