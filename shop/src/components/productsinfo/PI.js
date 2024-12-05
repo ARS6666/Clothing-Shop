@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 import "../../assets/css/hide.css";
-import Comment from './CommentBox';
 import Loading from "../loading/loading";
 import url from "../../config.json"
 
@@ -102,14 +101,20 @@ function ProductInfo() {
 
   }
 
-    const addCommas = (number) => {
+  const addCommas = (number) => {
     // let [integer] = number.toString().split('.');
 
     // integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
     return number;
   };
-
+  const [transformOrigin, setTransformOrigin] = useState('center center');
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setTransformOrigin(`${x}% ${y}%`);
+  };
 
   return (
     <>
@@ -123,11 +128,11 @@ function ProductInfo() {
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
                 ))}
               </div>
-              <div className="col-md-10">
-                <Carousel>
+              <div className="col-md-10 d-flex justify-content-center">
+                <Carousel class="magnify-container">
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>
-                      <img className="d-block w-100 Image" src={Pic.image} alt="" />
+                      <img className="d-block Image magnify-image" src={Pic.image} alt="" onMouseMove={handleMouseMove} style={{ transformOrigin }} />
                     </Carousel.Item>
                   ))}
                 </Carousel>
