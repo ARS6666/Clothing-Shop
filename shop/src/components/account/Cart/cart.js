@@ -50,7 +50,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/cart/add_item/`, requestOptions)
+        fetch(`${url.baseUrl}/cart/cart/add_item/`, requestOptions)
             .then((response) => response.text())
             .then((result) => { setButtonDisabled(false); show() })
             .catch((error) => { console.error(error); setButtonDisabled(false) });
@@ -75,7 +75,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/cart/remove_item/`, requestOptions)
+        fetch(`${url.baseUrl}/cart/cart/remove_item/`, requestOptions)
             .then((response) => response.text())
             .then((result) => { setButtonDisabled(false); show() })
             .catch((error) => { setButtonDisabled(false); console.error(error) });
@@ -98,7 +98,7 @@ function Cart() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/cart/remove_all/`, requestOptions)
+        fetch(`${url.baseUrl}/cart/cart/remove_all/`, requestOptions)
             .then((response) => response.text())
             .then((result) => show())
             .catch((error) => console.error(error));
@@ -117,7 +117,7 @@ function Cart() {
         <div class="col-md-12 col-12 vh-100 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
             <div class="col-md-12 col-12 pt-5">
                 <div class="col-md-12 col-12 row m-0 bg-white">
-                    <div class="col-md-3 col-12 col-5 pb-4 pt-4" dir="rtl">
+                    <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
                         <div class="col-md-12 col-12 p-1" >
                             <div class="col-md-12 col-12" style={{ backgroundColor: "#f8f9fa" }}>
                                 <div class="col-md-12 col-12 pt-3 pb-2 d-flex justify-content-center">
@@ -164,7 +164,7 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 col-12 " dir="rtl">
+                    <div class="col-md-8 col-12 " dir="rtl">
                         <div class="col-md-12 col-12 pt-4 ">
                             <div class="col-md-12 col-12 border row m-0">
                                 <div class="col-md-2 col-1 p-3"></div>

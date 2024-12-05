@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../../assets/css/hide.css";
-import "../../assets/css/home/productcard.css";
+import "../../assets/css/productsinfo/commonprod.css";
 import url from "../../config.json"
 
 
