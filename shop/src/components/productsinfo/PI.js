@@ -15,22 +15,9 @@ function ProductInfo() {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [IMG, setIMG] = useState([]);
   const [added, setAdded] = useState(false);
-  const [product, setProduct] = useState({ colors: [] });
+  const [product, setProduct] = useState({});
   const location = useLocation();
   const [id, setId] = useState('');
-  const [isChecked, setIsChecked] = React.useState(false);
-  const [selectedColor, setSelectedColor] = useState("#ffffff");
-  const [selectedSize, setSelectedSize] = useState();
-
-
-  const color = [
-    { name: "Red", value: "#ff0000" },
-    { name: "Green", value: "#00ff00" },
-    { name: "Blue", value: "#0000ff" },
-    { name: "Yellow", value: "#ffff00" },
-    { name: "Purple", value: "#800080" },
-  ];
-
 
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
