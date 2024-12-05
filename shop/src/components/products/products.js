@@ -14,7 +14,7 @@ function Products() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [category, setCategory] = useState('');
-  const [ShowCount, setShowCount] = useState(9)
+  const [visibleProducts, setVisibleProducts] = useState(9);
   const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
   const [ButtDisable, setButtDisable] = useState(false)
   const location = useLocation();
@@ -119,16 +119,24 @@ function Products() {
     }
 
   }, [displayedProducts]);
-  function HandleShow() {
-    if (displayedProducts.length - ShowCount > 0) {
+  const showMoreProducts = () => {
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 9);
+    if (displayedProducts.length - visibleProducts > 0) {
       setButtContent("مشاهده بیشتر ...")
-      setShowCount(ShowCount + 9)
     }
-    if (0 >= displayedProducts.length - ShowCount) {
+    else {
       setButtContent("محصولات به پایان رسیدند ...")
     }
+  };
 
-  }
+  const addCommas = (number) => {
+    let [integer] = number.toString().split('.');
+
+    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    return integer;
+  };
+
   return (
     <>
       {IsLoading ? <Loading /> : null}
@@ -152,7 +160,7 @@ function Products() {
               </div>
             </>
             : null}
-          {displayedProducts?.slice(displayedProducts.length - ShowCount, displayedProducts.length).map((c) => (
+          {displayedProducts?.slice(0, visibleProducts).map((c) => (
             <div className={`col-md-3 col-4 col-sm-4 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
               <div class="row m-0">
                 {c.discount != 0 && c.count != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
@@ -167,7 +175,7 @@ function Products() {
                 </div>
                 <div class="d-flex justify-content-center ">
                   <span class=" fontr pt-1 " dir="rtl">
-                    {c.price} هزار تومان
+                    {addCommas(c.price)}  تومان
                   </span>
                 </div>
               </div>
@@ -188,7 +196,7 @@ function Products() {
           ))}
           {NoResult ? <></> :
             <div class="col-md-12 pt-5 pb-5 d-flex justify-content-center">
-              <div class="col-md-6"><button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={HandleShow} disabled={ButtDisable}><span class="h5">{ButtContent}</span>
+              <div class="col-md-6"><button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={showMoreProducts} disabled={ButtDisable}><span class="h5">{ButtContent}</span>
               </button></div>
             </div>}
         </div>

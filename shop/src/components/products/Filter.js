@@ -52,8 +52,8 @@ const Filter = ({ onFilterChange }) => {
 
   return (
     <div className="col-md-12 fontr d-flex justify-content-end " dir='rtl'>
-      <div class="border rounded fix col-md-11">
-        <div class="p-3">
+      <div class="rounded fix col-md-11">
+        <div class="p-1">
           <div className="filter-header ">فیلتر محصولات</div>
           <div className="filter-input">
             <label className="filter-label">جستجو</label>
@@ -70,7 +70,7 @@ const Filter = ({ onFilterChange }) => {
             />
           </div>
           <div className="filter-input">
-            <label className="filter-label"> قیمت (هزار تومان)</label>
+            <label className="filter-label"> قیمت (تومان)</label>
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter")
