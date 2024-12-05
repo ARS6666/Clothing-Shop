@@ -1,6 +1,6 @@
 
 import "../../assets/css/products/offprdct.css"
-import React, { useRef } from 'react';
+import React, { useRef, useState ,useEffect } from 'react';
 import Slider from 'react-slick';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,14 +18,34 @@ import "../../assets/css/home/category.css";
 const ProductCarousel = () => {
   const sliderRef = useRef(null);
 
-  const products = [
+  const [products, setproducts] = useState([
     { Name: "تی شرت", Category: "تی شرت", pic: img2 },
     { Name: "شلوار", Category: "شلوار", pic: img1 },
     { Name: "کفش", Category: "کفش", pic: img3 },
     { Name: "پیراهن", Category: "پیراهن", pic: img4 },
     { Name: "کلاه", Category: "کلاه", pic: img5 },
     { Name: "دامن", Category: "پیراهن", pic: img6 },
-  ];
+  ]);
+
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "TvTvUiu7cUpi5lZNbZ9NjKJskwxoCrkncoMnmv6zsz4pQ5DJm4K5T6oENVxNEfaJ");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("http://127.0.0.1:8000/api/products/top-discounts/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setproducts(result))
+      .catch((error) => console.error(error));
+  }, []);
+
+
+
 
   const settings = {
     dots: false,

@@ -15,19 +15,7 @@ const CommonProducts = () => {
   const [id, setId] = useState('');
   const [Filter, setFilter] = useState([]);
 
-
-
   useEffect(() => {
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
-    myHeaders.append("X-CSRFToken", "tc6gv0BlCSEVzaDY2DEUFDyvHxAouuuWnjsAM5wngQp4psjqQKsZfKhJ0eopXCA7");
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    };
     const searchParams = new URLSearchParams(location.search);
     const paramId = searchParams.get('id');
     if (paramId) {
@@ -36,47 +24,25 @@ const CommonProducts = () => {
   }, [location.search]);
 
   useEffect(() => {
-    if (id) {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "TvTvUiu7cUpi5lZNbZ9NjKJskwxoCrkncoMnmv6zsz4pQ5DJm4K5T6oENVxNEfaJ");
+    
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+    if (id){
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-          setCat(result.category); setisLoading(false);
-        })
-        .catch((error) => console.error(error));
-    }
+        .then((result) => setCat(result.category))
+        .catch((error) => console.error(error));}
   }, [id]);
 
-  const myHeaders = new Headers();
-  myHeaders.append("accept", "application/json");
-  myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
-  myHeaders.append("X-CSRFToken", "krMY06dKPZfPJAhssIix8Yjkc9BgJfTCrx6NCcOUN154E9d3tW4npwnd7MvWUz01");
-
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
-  };
-
-
-  useEffect(() => {
-    fetch(`${url.baseUrl}/api/products/` + Cat, requestOptions)
-      .then((response) => response.json())
-      .then((result) => { setPRoduct(result); console.log(Productss) })
-      .catch((error) => console.error(error));
-  }, []);
-
-
-
-
-  useEffect(() => {
-    if (Cat) {
-      const filteredProducts = Productss.filter(product => product.category === Cat);
-      setFilter(filteredProducts);
-      console.log(Filter)
-      console.log(21323)
-    }
-  }, [Productss, Cat]);
-
+useEffect(() => {
+  
+}, []);
 
 
 

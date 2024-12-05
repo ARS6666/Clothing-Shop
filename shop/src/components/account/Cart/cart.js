@@ -104,13 +104,20 @@ function Cart() {
             .catch((error) => console.error(error));
     }
 
+    const addCommas = (number) => {
+        let [integer] = number.toString().split('.');
+
+        integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        return integer;
+    };
 
 
     return (<>
         <div class="col-md-12 col-12 vh-100 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
-            <div class="col-md-11 col-11 pt-5">
+            <div class="col-md-12 col-12 pt-5">
                 <div class="col-md-12 col-12 row m-0 bg-white">
-                    <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
+                    <div class="col-md-3 col-12 col-5 pb-4 pt-4" dir="rtl">
                         <div class="col-md-12 col-12 p-1" >
                             <div class="col-md-12 col-12" style={{ backgroundColor: "#f8f9fa" }}>
                                 <div class="col-md-12 col-12 pt-3 pb-2 d-flex justify-content-center">
@@ -157,7 +164,7 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 col-12 " dir="rtl">
+                    <div class="col-md-9 col-12 " dir="rtl">
                         <div class="col-md-12 col-12 pt-4 ">
                             <div class="col-md-12 col-12 border row m-0">
                                 <div class="col-md-2 col-1 p-3"></div>
@@ -175,13 +182,13 @@ function Cart() {
                                         <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
-                                    <div class="col-md-2 col-3 p-3">{c.product.price},000تومان</div>
+                                    <div class="col-md-2 col-3 p-3">{addCommas(c.product.price)}تومان</div>
                                     <div class="col-md-2 col-4 p-3">
                                         <button class="btn-circle btn btn-light border" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}>-</button>
                                         <span class="border-bottom p-2">{c.quantity}</span>
                                         <button class="btn-circle btn btn-light border" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}>+</button>
                                     </div>
-                                    <div class="col-md-2 col-2 p-3">{c.product.price * c.quantity}تومان</div>
+                                    <div class="col-md-2 col-2 p-3">{addCommas(c.product.price * c.quantity)}تومان</div>
                                 </div>
                             </div>
                         </>))}

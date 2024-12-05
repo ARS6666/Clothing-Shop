@@ -27,6 +27,14 @@ function HProducts() {
       .catch((error) => console.error(error));
   }, []);
 
+  const addCommas = (number) => {
+    let [integer] = number.toString().split('.');
+
+    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    return integer;
+  };
+
   return (
     <>
       {IsLoading ? <Loading /> : null}
@@ -37,7 +45,7 @@ function HProducts() {
         </span>
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
-        {Product?.slice(0,9).map((c) => (
+        {Product?.slice(0, 9).map((c) => (
           <div className={` col-md-3 col-4 col-sm-4 m-3 product-carde Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
             <div class="row m-0">
               {c.discount != 0 && c.count != 0 ? <div class="discountDisplay">{c.discount}%</div> : null}
@@ -52,7 +60,7 @@ function HProducts() {
               </div>
               <div class="d-flex justify-content-center ">
                 <span class=" fontr pt-1 " dir="rtl">
-                  {c.price} هزار تومان
+                {addCommas(c.price)} هزار تومان
                 </span>
               </div>
             </div>

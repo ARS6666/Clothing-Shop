@@ -95,7 +95,7 @@ function ProductInfo() {
       myHeaders.append("Authorization", `Bearer ${token}`);
 
       const raw = JSON.stringify({
-        "product": productId
+        "product_id": productId
       });
 
       const requestOptions = {
@@ -107,13 +107,21 @@ function ProductInfo() {
 
       fetch(`${url.baseUrl}/cart/cart/add_item/`, requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log())
+        .then((result) => console.log(""))
         .catch((error) => console.error(error));
     } else {
       navigate('/login');;
     }
 
   }
+
+  const addCommas = (number) => {
+    let [integer] = number.toString().split('.');
+
+    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    return integer;
+  };
 
 
   return (
@@ -144,8 +152,8 @@ function ProductInfo() {
             <div class=" col-md-10 col-sm-11 col-11">
               <div><span class="text-dark h2">{product.name}</span></div>
               <div class="col-md-12 col-12 col-sm row m-0">
-                <div class="pt-2"><span class={`${product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}`}>{product.price}  تومان</span></div>
-                <div>{product.discount != 0 ? <span class="text-dark h3 ">{(product.price) - ((product.price) * (product.discount / 100))} تومان</span> : null}</div>
+                <div class="pt-2"><span class={`${product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}`}>{addCommas(product.price)}  تومان</span></div>
+                <div>{product.discount != 0 ? <span class="text-dark h3 ">{addCommas((product.price) - ((product.price) * (product.discount / 100)))} تومان</span> : null}</div>
               </div>
               <div class="pt-2">
                 <span class="h4">توضیحات:</span>
