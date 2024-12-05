@@ -53,7 +53,7 @@ const Comments = () => {
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTEwNjA1LCJpYXQiOjE3MzI5MDQ2MDUsImp0aSI6ImRjNmU5MmU0N2NlMTQ5Mzc5M2Q2NWU5MzJkOGZlMWU2IiwidXNlcl9pZCI6MX0.sx-RZx5EZX42HlVG4tiuRbNJXXZVAL5Ll6r0oxucYWg");
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
 
     const raw = JSON.stringify({
