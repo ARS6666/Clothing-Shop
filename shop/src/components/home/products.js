@@ -46,7 +46,7 @@ function HProducts() {
       </div>
       <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
         {Product?.slice(0, 9).map((c) => (
-          <div className={` col-md-3 col-4 col-sm-4 m-3 product-carde Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+          <div className={` col-md-3 col-4 col-sm-4 m-3 product-cardee Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
             <div class="row m-0">
               {c.discount != 0 && c.count != 0 ? <div class="discountDisplay">{c.discount}%</div> : null}
               <div class="d-flex justify-content-center ">
@@ -65,7 +65,7 @@ function HProducts() {
               </div>
             </div>
             <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-              <div className="hover-detailse col-md-12 ">
+              <div className="hover-detailsee col-md-12 ">
                 <div
                   class="d-flex justify-content-center bpe"
                 >

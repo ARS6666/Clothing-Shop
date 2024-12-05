@@ -18,14 +18,7 @@ import "../../assets/css/home/category.css";
 const ProductCarousel = () => {
   const sliderRef = useRef(null);
 
-  const [products, setproducts] = useState([
-    { Name: "تی شرت", Category: "تی شرت", pic: img2 },
-    { Name: "شلوار", Category: "شلوار", pic: img1 },
-    { Name: "کفش", Category: "کفش", pic: img3 },
-    { Name: "پیراهن", Category: "پیراهن", pic: img4 },
-    { Name: "کلاه", Category: "کلاه", pic: img5 },
-    { Name: "دامن", Category: "پیراهن", pic: img6 },
-  ]);
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -69,10 +62,10 @@ const ProductCarousel = () => {
         {products.map((product) => (
           <div className="row m-0">
             <div className="d-flex justify-content-center ">
-              <img src={product.pic} className="d-block col-md-11 p-2 w-100" alt={product.Name} />
+              <img src={product.pic} className="d-block col-md-11 p-2 w-100" alt={product.name} />
             </div>
             <div className="d-flex justify-content-center pt-2">
-              <span className="h4 fontr">{product.Name}</span>
+              <span className="h4 fontr">{product.name}</span>
             </div>
           </div>
         ))}
