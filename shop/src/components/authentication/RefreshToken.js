@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 function RefreshToken() {
   const token = localStorage.getItem('token');
@@ -11,9 +10,8 @@ function RefreshToken() {
   useEffect(() => {
     const verifyToken = async () => {
       const myHeaders = new Headers();
-      myHeaders.append("accept", "application/json");
+      myHeaders.append("Accept", "application/json");
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
 
       const raw = JSON.stringify({ "token": token });
 
@@ -30,9 +28,8 @@ function RefreshToken() {
 
         if (result.code === "token_not_valid") {
           const myHeadersRefresh = new Headers();
-          myHeaders.append("accept", "application/json");
-          myHeaders.append("Content-Type", "application/json");
-          myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
+          myHeadersRefresh.append("Accept", "application/json");
+          myHeadersRefresh.append("Content-Type", "application/json");
 
           const rawRefresh = JSON.stringify({ "refresh": refresh });
 

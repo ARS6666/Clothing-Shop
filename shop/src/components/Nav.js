@@ -48,29 +48,6 @@ const CustomNavbar = () => {
     };
   }, []);
 
-  const myHeaders = new Headers();
-  myHeaders.append("accept", "application/json");
-  myHeaders.append("X-CSRFToken", "7x82a1WNLT9ulCcznShlrJoy85HoXsYTKKfGEX6LQRAUtZa24a2oD9O5GHsjvut3");
-
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
-  };
-
-  useEffect(() => {
-    fetch(`${url.baseUrl}/navbar/logo/1`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => setLogo(result))
-      .catch((error) => console.error(error));
-  }, [requestOptions]);
-
-  useEffect(() => {
-    if (Logo.length > 0) {
-      setI(Logo[0].image);
-    }
-  }, [Logo]);
-
   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");

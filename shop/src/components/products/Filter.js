@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/products/Filter.css';
 
@@ -31,9 +31,28 @@ const Filter = ({ onFilterChange }) => {
     });
   };
 
+  const [Categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "oWF4BYWZ2asUOabk8VBGC7SJcARquNg0HPyW3byriP71zUPgj0cYctxVFZRPwB6m");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setCategories(result))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
-    <div className="col-md-12 fontr " dir='rtl'>
-      <div class="border rounded fix">
+    <div className="col-md-12 fontr d-flex justify-content-end " dir='rtl'>
+      <div class="border rounded fix col-md-11">
         <div class="p-3">
           <div className="filter-header ">فیلتر محصولات</div>
           <div className="filter-input">
@@ -83,9 +102,7 @@ const Filter = ({ onFilterChange }) => {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">انتخاب دسته بندی</option>
-              <option value="تیشرت">تی شرت</option>
-              <option value="شلوار">شلوار</option>
-              <option value="کفش">کفش</option>
+              {Categories.map((c) => (<option value={c.category}>{c.category}</option>))}
             </select>
           </div>
           <button className="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>

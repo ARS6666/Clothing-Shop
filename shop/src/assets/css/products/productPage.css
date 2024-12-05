@@ -1,4 +1,4 @@
-/* Base Styles */
+
 .Img {
     object-fit: cover;
     height: 250px;
@@ -9,7 +9,7 @@
 }
 
 .productt-card {
-    height: 420px; /* Increased height */
+    height: 370px; 
     transition: transform .5s;
 }
 
@@ -33,17 +33,14 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
-    height: 420px; /* Increased height */
+    height: 370px;
     display: none;
-    /* Initially hidden */
 }
 
 .productt-card:hover .hoverr-details {
     display: block;
-    /* Show on hover */
 }
 
-/* Responsive Styles */
 @media (max-width: 1400px) and (min-width: 1200px) {
     .Img,
     .bp,
@@ -61,7 +58,7 @@
         height: 350px;
     }
     .productt-card {
-        font-size: 0.9rem; /* Smaller text size */
+        font-size: 0.9rem; 
     }
 }
 
@@ -73,7 +70,7 @@
         height: 300px;
     }
     .productt-card {
-        font-size: 0.8rem; /* Smaller text size */
+        font-size: 0.8rem;
     }
 }
 
@@ -85,7 +82,7 @@
         height: 250px;
     }
     .productt-card {
-        font-size: 0.7rem; /* Smaller text size */
+        font-size: 0.7rem; 
     }
 }
 
@@ -98,7 +95,7 @@
     }
 
     .productt-card {
-        font-size: 0.6rem; /* Smaller text size */
+        font-size: 0.6rem; 
     }
 
     .remove {
