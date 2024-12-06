@@ -3,37 +3,34 @@ import { useLocation } from "react-router-dom";
 import Loading from "../loading/loading";
 import "../../assets/css/products/productPage.css";
 import Filter from "./Filter";
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 function Products() {
-  const [IsLoading, setisLoading] = useState(true)
+  const [IsLoading, setIsLoading] = useState(true);
   const [detail, setDetail] = useState([]);
-  const [NoResult, setNoResult] = useState(false)
+  const [NoResult, setNoResult] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [category, setCategory] = useState('');
   const [visibleProducts, setVisibleProducts] = useState(9);
-  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
-  const [ButtDisable, setButtDisable] = useState(false)
+  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...");
+  const [ButtDisable, setButtDisable] = useState(false);
   const location = useLocation();
-
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const paramId = searchParams.get('category');
     if (paramId) {
       setCategory(paramId);
-
     }
   }, [location.search]);
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const paramId = searchParams.get('search');
     if (paramId) {
       setSearchTerm(paramId);
-
     }
   }, [location.search]);
 
@@ -54,15 +51,14 @@ function Products() {
         const response = await fetch(`${url.baseUrl}/api/products/`, requestOptions);
         const result = await response.json();
         setDetail(result);
-        setisLoading(false);
-        console.log(result)
+        setIsLoading(false);
+        console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchProducts();
-
   }, []);
 
   const handleFilterChange = (filters) => {
@@ -90,120 +86,112 @@ function Products() {
     return acc;
   }, {});
 
-  const displayedProducts = Object.values(groupedProducts).flatMap(products =>
-    products
-  );
+  const displayedProducts = Object.values(groupedProducts).flatMap(products => products);
 
   const [content, setContent] = useState(<button
-    class="btn btn-dark col-md-11 col-11 add"
+    className="btn btn-dark col-md-11 col-11 add"
     onClick={() => {
       handleClick(); changeContent(
         <Filter onFilterChange={handleFilterChange} />
       )
     }}
-  ><span class="h5">اعمال فیلتر</span>
+  ><span className="h5">اعمال فیلتر</span>
   </button>);
+  
   const changeContent = (newContent) => {
     setContent(newContent);
   };
+
   const [isChecked, setIsChecked] = useState(true);
   const handleClick = () => {
     setIsChecked(prevChecked => !prevChecked);
   };
+
   useEffect(() => {
     if (displayedProducts.length === 0) {
-      setNoResult(true)
+      setNoResult(true);
+    } else {
+      setNoResult(false);
     }
-    else {
-      setNoResult(false)
-    }
-
   }, [displayedProducts]);
+
   const showMoreProducts = () => {
     setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 9);
     if (displayedProducts.length - visibleProducts > 0) {
-      setButtContent("مشاهده بیشتر ...")
-    }
-    else {
-      setButtContent("محصولات به پایان رسیدند ...")
+      setButtContent("مشاهده بیشتر ...");
+    } else {
+      setButtContent("محصولات به پایان رسیدند ...");
     }
   };
 
   const addCommas = (number) => {
     let [integer] = number.toString().split('.');
-
     integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
     return integer;
   };
 
   return (
     <>
       {IsLoading ? <Loading /> : null}
-      <div class="col-md-12 col-12 d-flex justify-content-center fontr row m-0 p-3">
-        <div class="col-10 col-md-10 ">
-          {content}
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center col-md-12">
-        <span class="h1 fontr border-bottom border-4 border-danger p-3">
-          محصولات
-        </span>
-      </div>
-      <div class="col-md-12 row m-0  d-flex justify-content-center pt-5 " dir="ltr">
-        <div class="col-md-9 col-12 row m-0 d-flex justify-content-center fontr">
-          {NoResult ?
-            <>
-              <div class="col-md-12 d-flex justify-content-center">
-                <span class="text-dark h1 pb-2 ">!محصولی یافت نشد</span>
-              </div>
-            </>
-            : null}
-          {displayedProducts?.slice(0, visibleProducts).map((c) => (
-            <div className={`col-md-3 col-4 col-sm-4 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
-              <div class="row m-0">
-                {c.discount != 0 && c.count != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
-                <div class="d-flex justify-content-center ">
-                  <img
-                    src={c.pic}
-                    class="Img col-md-12"
-                  />
+      <div className="container-fluid p-3">
+        <div className="row m-0 d-flex justify-content-center">
+          <div className="col-12 col-md-10 mb-3">
+            {content}
+          </div>
+          <div className="col-12 text-center">
+            <span className="display-4 fontr border-bottom border-4 border-danger py-3">
+              محصولات
+            </span>
+          </div>
+          <div className="row m-0 d-flex justify-content-center pt-5" dir="ltr">
+            <div className="col-12 col-md-9 row m-0 d-flex justify-content-center fontr">
+              {NoResult ? (
+                <div className="col-12 text-center">
+                  <span className="text-dark display-4">!محصولی یافت نشد</span>
                 </div>
-                <div class="d-flex justify-content-center pt-3">
-                  <span class="h5 fontr text-center">{c.name}</span>
-                </div>
-                <div class="d-flex justify-content-center ">
-                  <span class=" fontr pt-1 " dir="rtl">
-                    {addCommas(c.price)}  تومان
-                  </span>
-                </div>
-              </div>
-              <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                <div className="hoverr-details col-md-12 ">
-                  <div
-                    class="d-flex justify-content-center bp"
-                  >
-                    <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                      <button className="btn btn-light hover  fontr ">
-                        مشاهده محصول
-                      </button>
+              ) : (
+                displayedProducts.slice(0, visibleProducts).map((c) => (
+                  <div key={c.id} className={`col-6 col-md-3 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+                    <div className="row m-0">
+                      {c.discount !== 0 && c.count !== 0 && (
+                        <div className="discountDisplay">
+                          <span>{c.discount}%</span>
+                        </div>
+                      )}
+                      <div className="d-flex justify-content-center">
+                        <img src={c.pic} className="Img col-12" alt={c.name} />
+                      </div>
+                      <div className="d-flex justify-content-center pt-3">
+                        <span className="h5 fontr text-center">{c.name}</span>
+                      </div>
+                      <div className="d-flex justify-content-center">
+                        <span className="fontr pt-1">{addCommas(c.price)} تومان</span>
+                      </div>
+                    </div>
+                    <a href={`pi?id=${c.id}`} className="hrefb align-self-center">
+                      <div className="hoverr-details col-12">
+                        <div className="d-flex justify-content-center bp">
+                          <button className="btn btn-transparent border-0 hover fontr pt-5">مشاهده محصول</button>
+                        </div>
+                      </div>
                     </a>
                   </div>
+                ))
+              )}
+              {!NoResult && (
+                <div className="col-12 text-center py-5">
+                  <button className="btn btn-dark hover rounded-0 col-md-6" dir="rtl" onClick={showMoreProducts} disabled={ButtDisable}>
+                    <span className="h5">{ButtContent}</span>
+                  </button>
                 </div>
-              </a>
+              )}
             </div>
-          ))}
-          {NoResult ? <></> :
-            <div class="col-md-12 pt-5 pb-5 d-flex justify-content-center">
-              <div class="col-md-6"><button class="btn btn-dark hover rounded-0 col-md-12" dir="rtl" onClick={showMoreProducts} disabled={ButtDisable}><span class="h5">{ButtContent}</span>
-              </button></div>
-            </div>}
+            <div className="col-12 col-md-3 remove pb-3 justify-content-center">
+              <Filter onFilterChange={handleFilterChange} />
+            </div>
+          </div>
         </div>
-        <div class="col-md-3 col-9 remove pb-3 justify-content-center">
-          <Filter onFilterChange={handleFilterChange} />
-        </div>
-      </div >
+      </div>
     </>
   );
 }

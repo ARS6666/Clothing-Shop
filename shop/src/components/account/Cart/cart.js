@@ -114,7 +114,7 @@ function Cart() {
 
 
     return (<>
-        <div class="col-md-12 col-12 vh-100 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
+        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
             <div class="col-md-12 col-12 pt-5">
                 <div class="col-md-12 col-12 row m-0 bg-white">
                     <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
@@ -132,7 +132,7 @@ function Cart() {
                                                 <span>جمع جزء</span>
                                             </div>
                                             <div class="col-md-8 col-8 d-flex justify-content-start pb-2">
-                                                <span>{TotalPrice}تومان</span>
+                                                <span>{addCommas(TotalPrice)} تومان</span>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0 border-bottom">
@@ -141,7 +141,6 @@ function Cart() {
                                             </div>
                                             <div class="col-md-8 col-8 d-flex justify-content-start pt-2">
                                                 <div class="col-md-12 col-12">
-                                                    <div class="pb-2">هزینه پست:58,000 تومان</div>
                                                     <div class="pb-2">حمل و نقل به <span class="text-primary">گلستان.</span></div>
                                                     <div class="pb-2  text-primary">تغییرآدرس<i class="fa fa-truck" aria-hidden="true"></i>
                                                         .</div>
@@ -153,7 +152,7 @@ function Cart() {
                                                 <span>مجموع</span>
                                             </div>
                                             <div class="col-md-8 col-8 d-flex justify-content-start pb-2">
-                                                <span>{TotalPrice + 58}هزار تومان</span>
+                                                <span>{addCommas(TotalPrice)} تومان</span>
                                             </div>
                                         </div>
                                     </div>
@@ -179,16 +178,17 @@ function Cart() {
                                 <div class="col-md-12 col-12 border rounded-0 align-items-center row m-0">
                                     <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle" onClick={() => RemoveAll(c.product.id)}><i class="fa-solid fa-trash-can"></i></button></div>
                                     <div class="col-md-2 p-3 remove">
-                                        <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
+                                        <img src={`http://127.0.0.1:8000/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
+                                    {/* ${url.baseUrl}/ */}
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
                                     <div class="col-md-2 col-3 p-3">{addCommas(c.product.price)}تومان</div>
-                                    <div class="col-md-2 col-4 p-3">
-                                        <button class="btn-circle btn btn-light border" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}>-</button>
-                                        <span class="border-bottom p-2">{c.quantity}</span>
-                                        <button class="btn-circle btn btn-light border" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}>+</button>
+                                    <div class="col-md-1 col-2 p-3 row m-0 text-center d-flex justify-content-center">
+                                        <button class="btn-circle btn" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}><i class="fa-solid fa-arrow-up"></i></button>
+                                        <span class=" p-2">{c.quantity}</span>
+                                        <button class="btn-circle btn" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}><i class="fa-solid fa-arrow-down"></i></button>
                                     </div>
-                                    <div class="col-md-2 col-2 p-3">{addCommas(c.product.price * c.quantity)}تومان</div>
+                                    <div class="col-md-2 col-3 p-3">{addCommas(c.product.price * c.quantity)}تومان</div>
                                 </div>
                             </div>
                         </>))}

@@ -1,7 +1,7 @@
-
 .Img {
     object-fit: cover;
     height: 250px;
+    width: 100%; /* Ensure image scales with container */
 }
 
 .bp {
@@ -41,6 +41,7 @@
     display: block;
 }
 
+/* Responsive Design */
 @media (max-width: 1400px) and (min-width: 1200px) {
     .Img,
     .bp,
@@ -107,7 +108,6 @@
     }
 }
 
-
 .Anim {
     animation: appear linear;
     animation-timeline: view();
@@ -119,7 +119,6 @@
         opacity: 0;
         transform: translateY(100px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0px);
