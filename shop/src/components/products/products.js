@@ -171,7 +171,7 @@ function Products() {
                         <span className="fontr pt-1">{addCommas(c.price)} تومان</span>
                       </div>
                     </div>
-                    <a href={`pi?id=${c.id}`} className="hrefb align-self-center">
+                    <a href={`pi?id=${c.id}#${c.name}`} className="hrefb align-self-center">
                       <div className="hoverr-details col-12 pt-5">
                         <div className="d-flex justify-content-center bp pt-5">
                           <button className="btn btn-light border-0 hover fontr">مشاهده محصول</button>
