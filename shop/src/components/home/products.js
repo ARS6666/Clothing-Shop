@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/css/home/productcard.css";
+import "../../assets/css/home/Homeproduct.css";
 import Loading from "../loading/loading";
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 function HProducts() {
-  const [IsLoading, setisLoading] = useState(true)
-  const [Product, setPRoduct] = useState([]);
+  const [IsLoading, setIsLoading] = useState(true);
+  const [Product, setProduct] = useState([]);
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
   myHeaders.append(
@@ -23,7 +22,10 @@ function HProducts() {
   useEffect(() => {
     fetch(`${url.baseUrl}/api/products/`, requestOptions)
       .then((response) => response.json())
-      .then((result) => { setPRoduct(result); setisLoading(false) })
+      .then((result) => {
+        setProduct(result);
+        setIsLoading(false);
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -39,38 +41,33 @@ function HProducts() {
     <>
       {IsLoading ? <Loading /> : null}
 
-      <div class="d-flex justify-content-center m-0">
-        <span class="h2 fontr border-bottom border-4 border-danger p-3">
+      <div className="d-flex justify-content-center m-0">
+        <span className="h2 fontr border-bottom border-4 border-danger p-3">
           محصولات
         </span>
       </div>
-      <div class="col-md-12 row m-0 d-flex justify-content-center fontr">
+      <div className="col-md-12 row m-0 d-flex justify-content-center fontr">
         {Product?.slice(0, 9).map((c) => (
-          <div className={` col-md-3 col-4 col-sm-4 m-3 product-cardee Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
-            <div class="row m-0">
-              {c.discount != 0 && c.count != 0 ? <div class="discountDisplay">{c.discount}%</div> : null}
-              <div class="d-flex justify-content-center ">
-                <img
-                  src={c.pic}
-                  class="Imge col-md-11"
-                />
+          <div key={c.id} className={`col-md-3 col-sm-8 col-10 m-3 product-cardee Anim pt-5 ${c.count === 0 ? 'out-of-stock' : ''}`}>
+            <div className="row m-0">
+              {c.discount !== 0 && c.count !== 0 ? <div className="discountDisplay">{c.discount}%</div> : null}
+              <div className="d-flex justify-content-center">
+                <img src={c.pic} className="Imgee col-12" alt={c.name} />
               </div>
-              <div class="d-flex justify-content-center pt-3">
-                <span class="h5 fontr text-center col-md-8">{c.name}</span>
+              <div className="d-flex justify-content-center pt-3">
+                <span className="h5 fontr text-center col-md-8">{c.name}</span>
               </div>
-              <div class="d-flex justify-content-center ">
-                <span class=" fontr pt-1 " dir="rtl">
-                {addCommas(c.price)} هزار تومان
+              <div className="d-flex justify-content-center">
+                <span className="fontr pt-1" dir="rtl">
+                  {addCommas(c.price)} هزار تومان
                 </span>
               </div>
             </div>
-            <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-              <div className="hover-detailsee col-md-12 ">
-                <div
-                  class="d-flex justify-content-center bpe"
-                >
-                  <a class="hrefb align-self-center" href={"pi?id=" + c.id + "#" + c.name}>
-                    <button className="btn btn-light hover  fontr ">
+            <a className="hrefb align-self-center" href={`pi?id=${c.id}`}>
+              <div className="hover-detailsee col-12">
+                <div className="d-flex justify-content-center bpee">
+                  <a className="hrefb align-self-center" href={`pi?id=${c.id}#${c.name}`}>
+                    <button className="btn btn-light hover fontr">
                       مشاهده محصول
                     </button>
                   </a>
@@ -79,8 +76,8 @@ function HProducts() {
             </a>
           </div>
         ))}
-        <div class="d-flex justify-content-center pt-4 mb-4">
-          <a class="hrefw col-md-6 col-6" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-12">مشاهده همه</button></a>
+        <div className="d-flex justify-content-center pt-4 mb-4">
+          <a className="hrefw col-md-6 col-12" href="/products"><button className="btn btn-lg btn-dark col-md-12">مشاهده همه</button></a>
         </div>
       </div>
     </>

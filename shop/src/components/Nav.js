@@ -141,8 +141,8 @@ const CustomNavbar = () => {
             {Collapse && (
               <div className="burger-menu">
                 <div className="col-12 border-top border-bottom d-flex justify-content-center p-3 align-self-center">
-                  <div><a className="hrefb h5 p-3 align-self-center" href="/">خانه</a></div>
-                  <div><a className="hrefb h5 p-3 align-self-center" href="/products">محصولات</a></div>
+                  <div><a className="hrefb h5 m-3 align-self-center" href="/">خانه</a></div>
+                  <div><a className="hrefb h5 m-3 align-self-center" href="/products">محصولات</a></div>
                   <div className="col-4 align-self-center">
                     <input
                       className="form-control fontr"

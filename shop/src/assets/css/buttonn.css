@@ -61,6 +61,7 @@
   position:absolute;
   overflow: hidden;
 }
+
 .remove {
   display: flex;
   flex-wrap: wrap;

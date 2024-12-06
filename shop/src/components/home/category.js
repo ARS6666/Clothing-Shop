@@ -9,26 +9,7 @@ import "../../assets/css/home/category.css";
 
 const ProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [State, setState] = useState(6)
-  const [width, setWidth] = useState(window.innerWidth);
-  const [width2, setWidth2] = useState(window.innerWidth);
   const [Categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-      if (window.innerWidth < 765) {
-        setState(3);
-      } else {
-        setState(6);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -68,7 +49,7 @@ const ProductSlider = () => {
               <button
                 class="btn border-0"
                 onClick={nextSlide}
-                disabled={currentIndex >= Categories.length - 3}
+                disabled={currentIndex === 3}
               >
                 {`<`}
               </button>
@@ -87,9 +68,9 @@ const ProductSlider = () => {
         </div>
 
         <div className="slider-container col-md-12 row m-0 pt-2" dir="rtl">
-          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / State)}%)` }}>
+          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
             {Categories.map((c, index) => (
-              <div className="col-md-2 col-4" key={index} style={{ minWidth: `(-${(100 / State)}%)` }}>
+              <div className="col-md-2 col-6" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
                 <a className="hrefb align-self-center" href={"/products?category=" + c.category}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">
