@@ -47,7 +47,7 @@ function AddressDisplay() {
 
         fetch(`${url.baseUrl}/auth/address/` + id + "/", requestOptions)
             .then((response) => response.text())
-            .then((result) =>show())
+            .then((result) => show())
             .catch((error) => console.error(error));
     }
 
@@ -71,7 +71,6 @@ function AddressDisplay() {
                         <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
                     </div>
                     <div class="col-md-12 row m-0 fontr pt-2 p-2">
-                        <div class="col-md-6 text-end h5 ">تلفن همراه :{c.phone_number}</div>
                         <div class="col-md-12 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => RemoveAddress(c.id)}>حذف</button></div>
                     </div>
 

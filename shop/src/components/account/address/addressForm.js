@@ -227,12 +227,6 @@ function Address() {
                         </div>
                         <div class="co-md-12 row m-0">
                             <div class="col-md-6">
-                                <span class="text-dark h5">شماره موبایل*</span>
-                                <div class="pt-2 col-md-12 p-1">
-                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={handlePhone} dir="ltr"></input>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
                                 <span class="text-dark h5">کد پستی*</span>
                                 <div class="pt-2 col-md-12 p-1">
                                     <input class="form-control form-control-lg border-dark rounded-0" onChange={HandlePostCode} dir="ltr"></input>
