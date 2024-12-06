@@ -1,6 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/products/Filter.css';
+import url from "../../config.json";
 
 const Filter = ({ onFilterChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,15 +45,15 @@ const Filter = ({ onFilterChange }) => {
       redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+    fetch(`${url.baseUrl}/api/products/category/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setCategories(result))
       .catch((error) => console.error(error));
   }, []);
 
   return (
-    <div className="col-md-12 fontr d-flex justify-content-end " dir='rtl'>
-      <div class="rounded fix col-md-11">
+    <div className="col-md-12  fontr d-flex justify-content-end " dir='rtl'>
+      <div class="rounded fix col-md-12 col-12">
         <div class="p-1">
           <div className="filter-header ">فیلتر محصولات</div>
           <div className="filter-input">

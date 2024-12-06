@@ -1,15 +1,16 @@
 .Img {
     object-fit: cover;
-    height: 250px;
+    height: auto; /* Let height adjust automatically */
     width: 100%; /* Ensure image scales with container */
+    max-height: 300px; /* Increase maximum height */
 }
 
 .bp {
-    height: 250px;
+    width: 100%; /* Ensure container scales with image */
 }
 
 .productt-card {
-    height: 370px; 
+    height: auto; /* Let height adjust automatically */
     transition: transform .5s;
 }
 
@@ -32,9 +33,10 @@
     background: rgba(255, 255, 255, 0.17);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
-    -webkit-backdrop-filter: blur(8.4px);
-    height: 370px;
+    -webkit-backdrop-filter: blur(100px);
     display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .productt-card:hover .hoverr-details {
@@ -43,20 +45,14 @@
 
 /* Responsive Design */
 @media (max-width: 1400px) and (min-width: 1200px) {
-    .Img,
-    .bp,
-    .productt-card,
-    .hoverr-details {
-        height: 380px;
+    .Img {
+        max-height: 280px; /* Adjust max height */
     }
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {
-    .Img,
-    .bp,
-    .productt-card,
-    .hoverr-details {
-        height: 350px;
+    .Img {
+        max-height: 260px; /* Adjust max height */
     }
     .productt-card {
         font-size: 0.9rem; 
@@ -64,11 +60,8 @@
 }
 
 @media (max-width: 992px) and (min-width: 800px) {
-    .Img,
-    .bp,
-    .productt-card,
-    .hoverr-details {
-        height: 300px;
+    .Img {
+        max-height: 240px; /* Adjust max height */
     }
     .productt-card {
         font-size: 0.8rem;
@@ -76,29 +69,29 @@
 }
 
 @media (max-width: 800px) and (min-width: 576px) {
-    .Img,
-    .bp,
-    .productt-card,
-    .hoverr-details {
-        height: 250px;
+    .Img {
+        max-height: 320px; /* Increase max height for mid-sized screens */
     }
     .productt-card {
         font-size: 0.7rem; 
     }
+    .remove {
+        display: none;
+    }
+
+    .add {
+        display: block;
+    }
 }
 
 @media (max-width: 576px) {
-    .Img,
-    .bp,
-    .productt-card,
-    .hoverr-details {
-        height: 200px;
+    .Img {
+        max-height: 400px; /* Increase max height for mobile view */
     }
 
     .productt-card {
         font-size: 0.6rem; 
     }
-
     .remove {
         display: none;
     }

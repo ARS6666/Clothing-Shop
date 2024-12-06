@@ -24,11 +24,12 @@ const AppContent = () => {
   const hideFooterPaths = ['/login', '/register', '*', '/panel ', '/test', '/cart'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
+
   return (
     <>
-      <div className="main-content  scrollable">
+      <div className="main-content scrollable ">
         <Nav />
-        
+
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='*' element={<NotFoundPage />} />

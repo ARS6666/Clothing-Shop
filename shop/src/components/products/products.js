@@ -88,16 +88,19 @@ function Products() {
 
   const displayedProducts = Object.values(groupedProducts).flatMap(products => products);
 
-  const [content, setContent] = useState(<button
-    className="btn btn-dark col-md-11 col-11 add"
+  const [content, setContent] = useState( 
+<button
+    className="btn btn-dark col-md-12 col-12 add "
     onClick={() => {
       handleClick(); changeContent(
-        <Filter onFilterChange={handleFilterChange} />
+        <div class="col-md-12 col-12">
+          <Filter onFilterChange={handleFilterChange} />
+        </div>
       )
     }}
-  ><span className="h5">اعمال فیلتر</span>
+  ><span className="h5 fontr">اعمال فیلتر</span>
   </button>);
-  
+
   const changeContent = (newContent) => {
     setContent(newContent);
   };
@@ -151,7 +154,7 @@ function Products() {
                 </div>
               ) : (
                 displayedProducts.slice(0, visibleProducts).map((c) => (
-                  <div key={c.id} className={`col-6 col-md-3 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+                  <div key={c.id} className={`col-sm-8 col-10 col-md-3 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
                     <div className="row m-0">
                       {c.discount !== 0 && c.count !== 0 && (
                         <div className="discountDisplay">
@@ -169,9 +172,9 @@ function Products() {
                       </div>
                     </div>
                     <a href={`pi?id=${c.id}`} className="hrefb align-self-center">
-                      <div className="hoverr-details col-12">
-                        <div className="d-flex justify-content-center bp">
-                          <button className="btn btn-transparent border-0 hover fontr pt-5">مشاهده محصول</button>
+                      <div className="hoverr-details col-12 pt-5">
+                        <div className="d-flex justify-content-center bp pt-5">
+                          <button className="btn btn-light border-0 hover fontr">مشاهده محصول</button>
                         </div>
                       </div>
                     </a>

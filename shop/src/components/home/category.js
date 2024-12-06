@@ -90,7 +90,7 @@ const ProductSlider = () => {
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / State)}%)` }}>
             {Categories.map((c, index) => (
               <div className="col-md-2 col-4" key={index} style={{ minWidth: `(-${(100 / State)}%)` }}>
-                <a className="hrefb align-self-center" href={"/products?category=" + c.Category}>
+                <a className="hrefb align-self-center" href={"/products?category=" + c.category}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">
                       <img src={c.image} className="d-block col-md-11 p-2 w-100" alt={c.category} />

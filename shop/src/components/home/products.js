@@ -69,7 +69,7 @@ function HProducts() {
                 <div
                   class="d-flex justify-content-center bpe"
                 >
-                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
+                  <a class="hrefb align-self-center" href={"pi?id=" + c.id + "#" + c.name}>
                     <button className="btn btn-light hover  fontr ">
                       مشاهده محصول
                     </button>
