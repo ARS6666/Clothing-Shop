@@ -108,6 +108,7 @@ function ProductInfo() {
 
     return number;
   };
+  // image zoom 
   const [transformOrigin, setTransformOrigin] = useState('center center');
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
@@ -115,6 +116,8 @@ function ProductInfo() {
     const y = ((e.clientY - top) / height) * 100;
     setTransformOrigin(`${x}% ${y}%`);
   };
+
+
 
   return (
     <>

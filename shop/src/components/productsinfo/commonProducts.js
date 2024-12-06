@@ -9,7 +9,8 @@ import url from "../../config.json"
 const CommonProducts = () => {
   const [Productss, setPRoduct] = useState([]);
   const [IsLoading, setisLoading] = useState(true)
-  const [Cat, setCat] = useState([]);
+  const [Categories, setCategories] = useState([]);
+  const [ProdCat, setProdCat] = useState(['']);
   const [currentIndex, setCurrentIndex] = useState(0);
   const location = useLocation();
   const [id, setId] = useState('');
@@ -26,24 +27,63 @@ const CommonProducts = () => {
   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "TvTvUiu7cUpi5lZNbZ9NjKJskwxoCrkncoMnmv6zsz4pQ5DJm4K5T6oENVxNEfaJ");
-    
+    myHeaders.append("X-CSRFToken", "nPEsr7w2mqQzktFwLpHw3rEY1K5G87LRWPjqk1jHSyBr4MRblo9J4rnbKFzGaq5s");
+
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
       redirect: "follow"
     };
-    if (id){
-      fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
+    if (id) {
+      fetch("http://127.0.0.1:8000/api/products/" + id, requestOptions)
         .then((response) => response.json())
-        .then((result) => setCat(result.category))
-        .catch((error) => console.error(error));}
+        .then((result) => setProdCat(result.category))
+        .catch((error) => console.error(error));
+    }
   }, [id]);
 
-useEffect(() => {
-  
-}, []);
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "d8O1pNOqW7Tn2RmKYHjFMdl4L1JBk0gIM8tZiHB5sfEfMaypyGLSNd4huWdBmjAj");
 
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setCategories(result))
+      .catch((error) => console.error(error));
+  }, []);
+
+  function getIdByCategory(category) {
+    const item = Categories.find(item => item.category === category);
+    return item ? item.id : "2";
+  }
+
+  const Catid = getIdByCategory(ProdCat[0]);
+
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("accept", "application/json");
+    myHeaders.append("X-CSRFToken", "nPEsr7w2mqQzktFwLpHw3rEY1K5G87LRWPjqk1jHSyBr4MRblo9J4rnbKFzGaq5s");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+    if (Catid){
+      fetch("http://127.0.0.1:8000/api/products/?category=" + Catid, requestOptions)
+        .then((response) => response.json())
+        .then((result) => setPRoduct(result))
+        .catch((error) => console.error(error));
+    }
+
+  }, [Catid]);
 
 
   const nextSlide = () => {
