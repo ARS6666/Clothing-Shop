@@ -37,7 +37,7 @@ const Comments = () => {
         headers: myHeaders,
         redirect: "follow"
       };
-      fetch(`${url.baseUrl}/comments/comment/` + productId + "/", requestOptions)
+      fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId , requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setComments(result);
@@ -69,7 +69,7 @@ const Comments = () => {
       redirect: "follow",
     };
 
-    fetch(`${url.baseUrl}/comments/comment/` + productId + "/", requestOptionss)
+    fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId , requestOptionss)
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => {
@@ -81,7 +81,7 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-        fetch(`${url.baseUrl}/comments/comment/` + productId + "/")
+        fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId )
           .then((response) => response.json())
           .then((result) => {
             setComments(result);
