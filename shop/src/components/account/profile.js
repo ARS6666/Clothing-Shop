@@ -106,17 +106,17 @@ function ProfProp() {
                                 <div className="pt-2 col-md-12">
                                     <input className="form-control form-control-lg border-dark rounded-0" onChange={handleName} value={Name} required />
                                 </div>
+                                <span className="text-dark pt-5">نام خانوادگی:</span>
+                                <div className="pt-2 col-md-12">
+                                    <input className="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required />
+                                </div>
+                            </div>
+                            <div className="col-md-5">
                                 <div className="pt-3">
                                     <span className="text-dark pt-5">عکس پروفایل:</span>
                                 </div>
                                 <div className="pt-2 pb-5 col-md-12">
                                     <input type="file" id="imageInput" accept="image/*" dir="rtl" className="form-control form-control-lg border-dark rounded-0" onChange={handleFileChange} required />
-                                </div>
-                            </div>
-                            <div className="col-md-5">
-                                <span className="text-dark pt-5">نام خانوادگی:</span>
-                                <div className="pt-2 col-md-12">
-                                    <input className="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required />
                                 </div>
                             </div>
                             <div className="col-md-12 col-12 d-flex justify-content-center pt-2">
