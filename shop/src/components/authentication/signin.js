@@ -77,7 +77,7 @@ function SignIn() {
                             </span>
                         </div>
                         <div class="pt-3">
-                            <label class="h5 ">ایمیل:</label>
+                            <label class="h5 ">تلفن همراه:</label>
                         </div>
 
                         <div class="pt-1">

@@ -35,7 +35,7 @@ const CommonProducts = () => {
       redirect: "follow"
     };
     if (id) {
-      fetch("http://127.0.0.1:8000/api/products/" + id, requestOptions)
+      fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => setProdCat(result.category))
         .catch((error) => console.error(error));
@@ -53,7 +53,7 @@ const CommonProducts = () => {
       redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+    fetch(`${url.baseUrl}/api/products/category/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setCategories(result))
       .catch((error) => console.error(error));
@@ -76,8 +76,8 @@ const CommonProducts = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-    if (Catid){
-      fetch("http://127.0.0.1:8000/api/products/?category=" + Catid, requestOptions)
+    if (Catid) {
+      fetch(`${url.baseUrl}/api/products/?category=` + Catid, requestOptions)
         .then((response) => response.json())
         .then((result) => setPRoduct(result))
         .catch((error) => console.error(error));
