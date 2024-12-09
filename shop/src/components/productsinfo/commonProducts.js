@@ -10,7 +10,7 @@ const CommonProducts = () => {
   const [Productss, setPRoduct] = useState([]);
   const [IsLoading, setisLoading] = useState(true)
   const [Categories, setCategories] = useState([]);
-  const [ProdCat, setProdCat] = useState(['']);
+  const [Catid, setCatid] = useState(['']);
   const [currentIndex, setCurrentIndex] = useState(0);
   const location = useLocation();
   const [id, setId] = useState('');
@@ -37,34 +37,10 @@ const CommonProducts = () => {
     if (id) {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
-        .then((result) => setProdCat(result.category))
+        .then((result) => Catid(result.category))
         .catch((error) => console.error(error));
     }
   }, [id]);
-
-  useEffect(() => {
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "d8O1pNOqW7Tn2RmKYHjFMdl4L1JBk0gIM8tZiHB5sfEfMaypyGLSNd4huWdBmjAj");
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    };
-
-    fetch(`${url.baseUrl}/api/products/category/`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => setCategories(result))
-      .catch((error) => console.error(error));
-  }, []);
-
-  function getIdByCategory(category) {
-    const item = Categories.find(item => item.category === category);
-    return item ? item.id : "2";
-  }
-
-  const Catid = getIdByCategory(ProdCat[0]);
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -77,7 +53,7 @@ const CommonProducts = () => {
       redirect: "follow"
     };
     if (Catid) {
-      fetch(`${url.baseUrl}/api/products/?category=` + Catid, requestOptions)
+      fetch(`${url.baseUrl}/api/products/?category=2`, requestOptions)
         .then((response) => response.json())
         .then((result) => setPRoduct(result))
         .catch((error) => console.error(error));

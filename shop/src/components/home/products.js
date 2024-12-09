@@ -63,7 +63,6 @@ function HProducts() {
                 </span>
               </div>
             </div>
-            <a className="hrefb align-self-center" href={`pi?id=${c.id}`}>
               <div className="hover-detailsee col-12">
                 <div className="d-flex justify-content-center bpee">
                   <a className="hrefb align-self-center" href={`pi?id=${c.id}#${c.name}`}>
@@ -73,7 +72,6 @@ function HProducts() {
                   </a>
                 </div>
               </div>
-            </a>
           </div>
         ))}
         <div className="d-flex justify-content-center pt-4 mb-4">

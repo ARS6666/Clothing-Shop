@@ -102,11 +102,16 @@ function ProductInfo() {
   }
 
   const addCommas = (number) => {
-    // let [integer] = number.toString().split('.');
 
-    // integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    if (number != undefined){
+      let [integer] = number.toString().split('.');
 
-    return number;
+      integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return integer;
+
+    }
+    return null;
+
   };
   // image zoom 
   const [transformOrigin, setTransformOrigin] = useState('center center');
@@ -131,8 +136,8 @@ function ProductInfo() {
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
                 ))}
               </div>
-              <div className="col-md-10 d-flex justify-content-center">
-                <Carousel class="magnify-container">
+              <div className="magnify-container col-md-10 d-flex justify-content-center">
+                <Carousel>
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>
                       <img className="d-block Image magnify-image" src={Pic.image} alt="" onMouseMove={handleMouseMove} style={{ transformOrigin }} />
