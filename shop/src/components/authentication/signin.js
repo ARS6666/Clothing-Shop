@@ -6,7 +6,7 @@ import url from "../../config.json"
 
 function SignIn() {
     const [IsLoading, setisLoading] = useState(false)
-    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
     const [error, setError] = useState(null);
@@ -26,12 +26,11 @@ function SignIn() {
 
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
-        myHeaders.append("authorization", "Basic YWRtaW5AYWRtaW4uY29tOjEyMw==");
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("X-CSRFToken", "S9ziK45gGaKNq54vL0xyaYBmlmv9oN6fgKoYYiBBuiZWoitosXmdQbFv3wW0t1CJ");
+        myHeaders.append("X-CSRFToken", "xaq7upJZfan36kIjSP8xwhH878FOroVe6a55njwELi8VQDUYsOAKxhqlQ39OtHfP");
 
         const raw = JSON.stringify({
-            "email": email,
+            "phone": phone,
             "password": password,
             "password1": password1
         });
@@ -44,12 +43,12 @@ function SignIn() {
         };
 
         try {
-            const response = await fetch(`${url.baseUrl}/account/api/v1/registration/`, requestOptions);
+            const response = await fetch(`${url.baseUrl}/auth/register/`, requestOptions);
             const result = await response.json();
 
             if (response.ok) {
                 navigate('/login');
-                setEmail("");
+                setPhone("");
                 setPassword("");
                 setPassword1("");
                 setisLoading(false)
@@ -81,7 +80,7 @@ function SignIn() {
                         </div>
 
                         <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setEmail(e.target.value)} dir="ltr" />
+                            <input class="form-control form-control-lg" onChange={e => setPhone(e.target.value)} dir="ltr" />
                         </div>
                         <div class="pt-3">
                             <label class="h5 ">رمز عبور:</label>
