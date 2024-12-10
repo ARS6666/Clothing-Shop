@@ -18,36 +18,37 @@ function ProfProp() {
     const handleLastName = (event) => setLastName(event.target.value);
 
     const reset = () => {
-        if (Prop.length > 0) {
-            setName(Prop[0].name);
-            setPhone(Prop[0].phone);
-            setLastName(Prop[0].family);
+        if (Prop) {
+            setName(Prop.name);
+            setPhone(Prop.phone);
+            setLastName(Prop.family);
         }
     };
 
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "SjMmaTXAj0X5A8Z7PTGMws8sPzdC2JD3O0JBo5EZQsSLHwEcJdVSdai0gt3vYEqF");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    const requestOptions = {
+    const getHeaders = new Headers();
+    getHeaders.append("accept", "application/json");
+    getHeaders.append("X-CSRFToken", "CwzY3EwCSRt5G4VhDX5uOcuOLTEQPnkhmj7qi4re2aD8u2EHWiLHoWxQumMEoJWh");
+    getHeaders.append("Authorization", `Bearer ${token}`);
+
+    const getRequestOptions = {
         method: "GET",
-        headers: myHeaders,
+        headers: getHeaders,
         redirect: "follow",
     };
 
     useEffect(() => {
-        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/1/`, getRequestOptions)
             .then((response) => response.json())
             .then((result) => { setProp(result); setisLoading(false); })
             .catch((error) => console.error(error));
     }, []);
 
     useEffect(() => {
-        if (Prop.length > 0) {
-            setName(Prop[0].name);
-            setId(Prop[0].id);
-            setPhone(Prop[0].phone);
-            setLastName(Prop[0].family);
+        if (Prop) {
+            setName(Prop.name);
+            setId(Prop.id);
+            setPhone(Prop.phone);
+            setLastName(Prop.family);
         }
     }, [Prop]);
 
@@ -56,37 +57,32 @@ function ProfProp() {
     };
 
     const handleSubmit = () => {
-        console.log(Id)
-        if (!selectedFile || !selectedFile.type.startsWith("image/")) {
-            console.error("Selected file is not a valid image.");
-            return;
-        }
-
         const formData = new FormData();
-        formData.append('image', selectedFile);
-        formData.append('id', Id);
-        formData.append('user_id', Id);
+        if (selectedFile && selectedFile.type.startsWith("image/")) {
+            formData.append('image', selectedFile);
+        }
         formData.append('name', Name);
         formData.append('family', LastName);
         formData.append('description', "");
 
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
-        myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
-        myHeaders.append("X-CSRFToken", "q57iInNu2kSPMTmMGoYoDFw5mtQ32POz684Hl0QVQIieFoQIqnwwjg2izEvANEgE");
+        myHeaders.append("X-CSRFToken", "CwzY3EwCSRt5G4VhDX5uOcuOLTEQPnkhmj7qi4re2aD8u2EHWiLHoWxQumMEoJWh");
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
-            method: "POST",
+            method: "PUT",
             headers: myHeaders,
             body: formData,
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
-            .then((response) => response.text())
+        fetch(`${url.baseUrl}/auth/profile/1/`, requestOptions)
+            .then((response) => response.json())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));
     };
+
 
     return (
         <>
@@ -106,17 +102,17 @@ function ProfProp() {
                                 <div className="pt-2 col-md-12">
                                     <input className="form-control form-control-lg border-dark rounded-0" onChange={handleName} value={Name} required />
                                 </div>
-                                <span className="text-dark pt-5">نام خانوادگی:</span>
-                                <div className="pt-2 col-md-12">
-                                    <input className="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required />
-                                </div>
-                            </div>
-                            <div className="col-md-5">
                                 <div className="pt-3">
                                     <span className="text-dark pt-5">عکس پروفایل:</span>
                                 </div>
                                 <div className="pt-2 pb-5 col-md-12">
                                     <input type="file" id="imageInput" accept="image/*" dir="rtl" className="form-control form-control-lg border-dark rounded-0" onChange={handleFileChange} required />
+                                </div>
+                            </div>
+                            <div className="col-md-5">
+                                <span className="text-dark pt-5">نام خانوادگی:</span>
+                                <div className="pt-2 col-md-12">
+                                    <input className="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required />
                                 </div>
                             </div>
                             <div className="col-md-12 col-12 d-flex justify-content-center pt-2">

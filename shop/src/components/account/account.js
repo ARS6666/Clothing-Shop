@@ -30,18 +30,11 @@ function Panel() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/1/`, requestOptions)
             .then((response) => response.json())
             .then((result) => setProp(result))
             .catch((error) => console.error(error));
     }, []);
-    useEffect(() => {
-        if (Prop.length > 0) {
-            setN(Prop[0].name);
-            setI(Prop[0].image);
-
-        }
-    }, [Prop]);
 
 
     const [content, setContent] = useState(<Profile />);
@@ -84,10 +77,10 @@ function Panel() {
         <div class=" fontr col-md-12 row m-0 pb-2 pt-2" dir="rtl">
             <div class="col-md-3 border" style={{ borderRadius: "10px" }}>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <img src={Img} class="pfp rounded-circle" />
+                    <img src={Prop.image} class="pfp rounded-circle" />
                 </div>
                 <div class="d-flex justify-content-center  pt-4 ">
-                    <span class=" h4">{Name}</span>
+                    <span class=" h4">{Prop.name}</span>
                 </div>
                 <div class="pt-3">
                     <div class=" col-md-12 border-top border-bottom part">
