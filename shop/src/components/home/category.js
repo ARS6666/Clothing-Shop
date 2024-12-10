@@ -71,13 +71,13 @@ const ProductSlider = () => {
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
             {Categories.map((c, index) => (
               <div className="col-md-2 col-6" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
-                <a className="hrefb align-self-center" href={"/products?category=" + c.category}>
+                <a className="hrefb align-self-center" href={"/products?category=" + c.name}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">
-                      <img src={c.image} className="d-block col-md-11 p-2 w-100" alt={c.category} />
+                      <img src={c.image} title ={c.name} className="d-block col-md-11 p-2 w-100" alt={c.name} />
                     </div>
                     <div className="d-flex justify-content-center pt-2">
-                      <span className="h4 fontr">{c.category}</span>
+                      <span className="h4 fontr">{c.name}</span>
                     </div>
                   </div>
                 </a>

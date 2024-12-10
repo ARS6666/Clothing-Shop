@@ -23,10 +23,10 @@
     background: rgba(255, 255, 255, 0.17);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);
-    -webkit-backdrop-filter: blur(8.4px);
-    height: 375px;
+    -webkit-backdrop-filter: blur(100px);
     display: none;
-    /* Initially hidden */
+    width: 100%;
+    height: 100%;
 }
 
 .product-carde:hover .hover-detailse {

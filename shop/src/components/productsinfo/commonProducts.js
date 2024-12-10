@@ -37,7 +37,7 @@ const CommonProducts = () => {
     if (id) {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
-        .then((result) => Catid(result.category))
+        .then((result) => setCatid(result.category_id))
         .catch((error) => console.error(error));
     }
   }, [id]);
@@ -53,7 +53,7 @@ const CommonProducts = () => {
       redirect: "follow"
     };
     if (Catid) {
-      fetch(`${url.baseUrl}/api/products/?category=2`, requestOptions)
+      fetch(`${url.baseUrl}/api/products/?category=` + Catid, requestOptions)
         .then((response) => response.json())
         .then((result) => setPRoduct(result))
         .catch((error) => console.error(error));
@@ -135,7 +135,7 @@ const CommonProducts = () => {
                         style={{ height: "400px" }}
                       >
                         <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                          <button className="btn btn-light hover  fontr ">
+                          <button className="btn btn-light hover fontr">
                             مشاهده محصول
                           </button>
                         </a>
