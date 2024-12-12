@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../assets/css/productsinfo/Comment.css";
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -11,9 +10,9 @@ const Comments = () => {
   const [name, setName] = useState("");
   const [productId, setProductId] = useState("");
   const location = useLocation();
-  const [ShowCount, setShowCount] = useState(3)
-  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...")
-  const [ButtDisable, setButtDisable] = useState(false)
+  const [ShowCount, setShowCount] = useState(3);
+  const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...");
+  const [ButtDisable, setButtDisable] = useState(false);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -28,17 +27,22 @@ const Comments = () => {
     if (productId) {
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
-      myHeaders.append("Authorization", `Bearer ${token}`);
+      if (token) {
+        myHeaders.append("Authorization", `Bearer ${token}`);
+      }
 
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow"
       };
-      fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId , requestOptions)
-        .then((response) => response.json())
+      fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId, requestOptions)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
         .then((result) => {
           setComments(result);
         })
@@ -46,15 +50,15 @@ const Comments = () => {
           console.log("Error fetching comments:", error);
         });
     }
-  }, [productId]);
+  }, [productId, token]);
 
-  function sendToServer() {
+  const sendToServer = () => {
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-
+    if (token) {
+      myHeaders.append("Authorization", `Bearer ${token}`);
+    }
 
     const raw = JSON.stringify({
       "name": name,
@@ -62,14 +66,14 @@ const Comments = () => {
       "product": productId
     });
 
-    const requestOptionss = {
+    const requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: raw,
-      redirect: "follow",
+      redirect: "follow"
     };
 
-    fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId , requestOptionss)
+    fetch(`${url.baseUrl}/comments/comment/`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => {
@@ -81,8 +85,13 @@ const Comments = () => {
       .then((result) => {
         setComment("");
         setName("");
-        fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId )
-          .then((response) => response.json())
+        fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
           .then((result) => {
             setComments(result);
           })
@@ -93,9 +102,9 @@ const Comments = () => {
       .catch((error) => {
         console.log("Error posting comment:", error);
       });
-  }
+  };
 
-  function HandleShow() {
+  const HandleShow = () => {
     if (comments.length === 0) {
       setButtContent("کامنتی وجود ندارد ...");
     } else {
@@ -107,45 +116,39 @@ const Comments = () => {
         setButtContent("مشاهده کمتر ...");
       }
     }
-  }
-
-
+  };
 
   return (
-    <div class="container-xl col-12 d-flex justify-content-center pt-5">
-      <div
-        class="col-md-11 col-11  fontr shadow "
-        dir="rtl"
-      >
-        <div class="col-md-12 row m-0 p-5">
-          <div class=" col-md-6  pt-2 col-12 p-0 m-0">
+    <div className="container-xl col-12 d-flex justify-content-center pt-5">
+      <div className="col-md-11 col-11 fontr shadow" dir="rtl">
+        <div className="col-md-12 row m-0 p-5">
+          <div className="col-md-6 pt-2 col-12 p-0 m-0">
             {Array.isArray(comments) && comments.length > 0 &&
               comments.slice(Math.max(comments.length - ShowCount, 0), comments.length).map((c, index) => (
-                <div key={index} class="mt-1 bg-light fontr p-3 border-bottom">
-                  <div class="text-muted h5">{c.name}:</div>
-                  <div class="h5">{c.text}</div>
+                <div key={index} className="mt-1 bg-light fontr p-3 border-bottom">
+                  <div className="text-muted h5">{c.name}:</div>
+                  <div className="h5">{c.text}</div>
                 </div>
               ))}
-            <div class="col-md-12 pt-3">
-              <button class="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
+            <div className="col-md-12 pt-3">
+              <button className="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
               </button>
             </div>
-
           </div>
-          <div class="col-md-6 col-12 pt-4">
-            <div class="d-flex justify-content-start">
-              <div class="col-md-11 col-12 d-flex align-items-center pt-3">
+          <div className="col-md-6 col-12 pt-4">
+            <div className="d-flex justify-content-start">
+              <div className="col-md-11 col-12 d-flex align-items-center pt-3">
                 <input
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  class="form-control form-control-solid form-control-lg bg-lightform-control form-control-lg border-dark rounded-0"
+                  className="form-control form-control-solid form-control-lg bg-light form-control form-control-lg border-dark rounded-0"
                   placeholder="نام و نام خانوادگی:"
                 />
               </div>
             </div>
-            <div class="d-flex justify-content-start">
-              <div class="col-md-11 col-12 rounded pt-3 d-flex align-items-center">
+            <div className="d-flex justify-content-start">
+              <div className="col-md-11 col-12 rounded pt-3 d-flex align-items-center">
                 <textarea
                   id="comment"
                   rows="4"
@@ -154,15 +157,15 @@ const Comments = () => {
                     if (e.key === "Enter") sendToServer();
                   }}
                   onChange={(e) => setComment(e.target.value)}
-                  class="form-control form-control-lg border-dark rounded-0 textarea"
+                  className="form-control form-control-lg border-dark rounded-0 textarea"
                   placeholder="نظر شما:"
                 />
               </div>
             </div>
-            <div class="d-flex justify-content-end p-2">
+            <div className="d-flex justify-content-end p-2">
               <button
                 onClick={sendToServer}
-                class="col-md-3 col-3 btn btn-success"
+                className="col-md-3 col-3 btn btn-success"
               >
                 ثبت
               </button>
