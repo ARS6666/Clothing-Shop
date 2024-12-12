@@ -68,9 +68,9 @@
 }
 
 .inner-border {
-  width: 80%; /* تنظیم سایز کادر زرشکی */
+  width: 80%; 
   height: 80%;
-  border: 4px solid #800000; /* رنگ و ضخامت کادر زرشکی */
+  border: 4px solid #800000; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,24 +90,24 @@
 
 .button {
   display: inline-block;
-  width: 150px; /* عرض دکمه */
-  height: 150px; /* ارتفاع دکمه */
-  background-color: #333; /* رنگ پس‌زمینه (مشکی) */
-  color: white; /* رنگ متن */
+  width: 150px; 
+  height: 150px; 
+  background-color: #333; 
+  color: white; 
   text-align: center;
-  line-height: 150px; /* متن را وسط‌چین می‌کند */
-  font-size: 18px; /* اندازه متن */
-  font-weight: bold; /* متن پررنگ */
-  border-radius: 10px; /* گوشه‌های دکمه */
-  border: none; /* بدون حاشیه */
-  transition: all 0.3s ease-in-out; /* انیمیشن نرم */
-  cursor: pointer; /* تغییر شکل نشانگر */
+  line-height: 150px; 
+  font-size: 18px; 
+  font-weight: bold; 
+  border-radius: 10px; 
+  border: none; 
+  transition: all 0.3s ease-in-out; 
+  cursor: pointer; 
 }
 
 .button:hover {
-  background-color: #6200ea; /* تغییر رنگ پس‌زمینه هنگام Hover */
-  transform: scale(1.1); /* بزرگ شدن دکمه */
-  color: #fff; /* رنگ متن */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* سایه زیبا */
+  background-color: #6200ea; 
+  transform: scale(1.1); 
+  color: #fff; 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
 }
 
