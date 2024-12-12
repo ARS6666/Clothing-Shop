@@ -51,27 +51,27 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="carousel-container">
+    <div class="carousel-container">
       <Button
-        className="carousel-button border-0 left"
+        class="carousel-button border-0 left"
         onClick={() => sliderRef.current.slickPrev()}
       >
         {"<"}
       </Button>
       <Slider ref={sliderRef} {...settings}>
         {products.map((product) => (
-          <div className="row m-0">
-            <div className="d-flex justify-content-center ">
-              <img src={product.pic} className="d-block col-md-11 p-2 w-100" alt={product.name} />
+          <div class="row m-0">
+            <div class="d-flex justify-content-center ">
+              <img src={product.pic} class="d-block col-md-11 p-2 w-100" alt={product.name} />
             </div>
-            <div className="d-flex justify-content-center pt-2">
-              <span className="h4 fontr">{product.name}</span>
+            <div class="d-flex justify-content-center pt-2">
+              <span class="h4 fontr">{product.name}</span>
             </div>
           </div>
         ))}
       </Slider>
       <Button
-        className="carousel-button border-0 right"
+        class="carousel-button border-0 right"
         onClick={() => sliderRef.current.slickNext()}
       >
         {">"}

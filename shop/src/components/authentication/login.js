@@ -65,32 +65,32 @@ function Login() {
     return (
         <>
             {IsLoading ? <Loading /> : null}
-            <div className="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
-                <div className="col-md-12 d-flex justify-content-center pt-5">
-                    <div className="col-md-4 pt-5">
-                        <div className="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>
-                            <div className="d-flex justify-content-center">
-                                <span className="h2 col-md-12 border-bottom border-dark text-center p-1"> ورود </span>
+            <div class="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
+                <div class="col-md-12 d-flex justify-content-center pt-5">
+                    <div class="col-md-4 pt-5">
+                        <div class="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>
+                            <div class="d-flex justify-content-center">
+                                <span class="h2 col-md-12 border-bottom border-dark text-center p-1"> ورود </span>
                             </div>
-                            <div className="pt-3">
-                                <label className="h5">شماره تلفن همراه:</label>
+                            <div class="pt-3">
+                                <label class="h5">شماره تلفن همراه:</label>
                             </div>
-                            <div className="pt-1" dir="ltr">
+                            <div class="pt-1" dir="ltr">
                                 <input
                                     type="Phone"
-                                    className="form-control form-control-lg"
+                                    class="form-control form-control-lg"
                                     value={Phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     id="phone"
                                 />
                             </div>
-                            <div className="pt-3">
-                                <label className="h5">رمز عبور:</label>
+                            <div class="pt-3">
+                                <label class="h5">رمز عبور:</label>
                             </div>
-                            <div className="pt-1" dir="ltr">
+                            <div class="pt-1" dir="ltr">
                                 <input
                                     type="password"
-                                    className="form-control form-control-lg"
+                                    class="form-control form-control-lg"
                                     value={Password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     onKeyDown={(e) => {
@@ -100,13 +100,13 @@ function Login() {
                                     id="password"
                                 />
                             </div>
-                            <div className="col-md-12 d-flex justify-content-center pt-4">
-                                <button className="col-md-6 col-6 btn btn-outline-success" onClick={handleLogin}>ورود</button>
+                            <div class="col-md-12 d-flex justify-content-center pt-4">
+                                <button class="col-md-6 col-6 btn btn-outline-success" onClick={handleLogin}>ورود</button>
                             </div>
-                            {errorMessage && <div className="text-danger pt-3" dir="ltr">{errorMessage}</div>}
-                            {successMessage && <div className="text-success pt-3" dir="ltr">{successMessage}</div>}
+                            {errorMessage && <div class="text-danger pt-3" dir="ltr">{errorMessage}</div>}
+                            {successMessage && <div class="text-success pt-3" dir="ltr">{successMessage}</div>}
 
-                            <div className="col-md-12 d-flex justify-content-end pt-2">
+                            <div class="col-md-12 d-flex justify-content-end pt-2">
                                 <span>اکانت ندارید؟</span>
                                 <a href="/signin">ثبت نام کنید</a>
                             </div>

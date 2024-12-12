@@ -21,12 +21,12 @@ const Prdctlist = () => {
 
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} dir="rtl">
-    <span className="col-md-3 h5  ah">
+    <span class="col-md-3 h5  ah">
         دسته بندی
     </span>
       {showMenu && (
         <div
-          className="mega-menu border p-3"
+          class="mega-menu border p-3"
           style={{
             position: "fixed",
             backgroundColor: "#fff",
@@ -42,7 +42,7 @@ const Prdctlist = () => {
             <Row>
               <Col md={3}>
                 <h6>زنانه</h6>
-                <ul className="list-unstyled">
+                <ul class="list-unstyled">
                   <li>تیشرت</li>
                   <li>پیراهن </li>
                   <li>شلوار</li>
@@ -51,7 +51,7 @@ const Prdctlist = () => {
               </Col>
               <Col md={3}>
                 <h6>مردانه</h6>
-                <ul className="list-unstyled">
+                <ul class="list-unstyled">
                   <li>تیشرت </li>
                   <li>شلوار</li>
                   <li>کت</li>
@@ -60,7 +60,7 @@ const Prdctlist = () => {
               </Col>
               <Col md={3}>
                 <h6>بچگانه</h6>
-                <ul className="list-unstyled">
+                <ul class="list-unstyled">
                   <li>تیشرت</li>
                   <li>پیراهن</li>
                   <li>شلوارک </li>
@@ -69,7 +69,7 @@ const Prdctlist = () => {
               </Col>
               <Col md={3}>
                 <h6>اکسسوری</h6>
-                <ul className="list-unstyled">
+                <ul class="list-unstyled">
                   <li>انگشتر</li>
                   <li>کمربند</li>
                   <li>گردنبند</li>

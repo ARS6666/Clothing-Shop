@@ -89,7 +89,7 @@ function Products() {
 
   const [content, setContent] = useState( 
 <button
-    className="btn btn-dark col-md-12 col-12 add "
+    class="btn btn-dark col-md-12 col-12 add "
     onClick={() => {
       handleClick(); changeContent(
         <div class="col-md-12 col-12">
@@ -97,7 +97,7 @@ function Products() {
         </div>
       )
     }}
-  ><span className="h5 fontr">اعمال فیلتر</span>
+  ><span class="h5 fontr">اعمال فیلتر</span>
   </button>);
 
   const changeContent = (newContent) => {
@@ -135,45 +135,45 @@ function Products() {
   return (
     <>
       {IsLoading ? <Loading /> : null}
-      <div className="container-fluid p-3">
-        <div className="row m-0 d-flex justify-content-center">
-          <div className="col-12 col-md-10 mb-3">
+      <div class="container-fluid p-3">
+        <div class="row m-0 d-flex justify-content-center">
+          <div class="col-12 col-md-10 mb-3">
             {content}
           </div>
-          <div className="col-12 text-center">
-            <span className="display-4 fontr border-bottom border-4 border-danger py-3">
+          <div class="col-12 text-center">
+            <span class="display-4 fontr border-bottom border-4 border-danger py-3">
               محصولات
             </span>
           </div>
-          <div className="row m-0 d-flex justify-content-center pt-5" dir="ltr">
-            <div className="col-12 col-md-9 row m-0 d-flex justify-content-center fontr">
+          <div class="row m-0 d-flex justify-content-center pt-5" dir="ltr">
+            <div class="col-12 col-md-9 row m-0 d-flex justify-content-center fontr">
               {NoResult ? (
-                <div className="col-12 text-center">
-                  <span className="text-dark display-4">!محصولی یافت نشد</span>
+                <div class="col-12 text-center">
+                  <span class="text-dark display-4">!محصولی یافت نشد</span>
                 </div>
               ) : (
                 displayedProducts.slice(0, visibleProducts).map((c) => (
-                  <div key={c.id} className={`col-sm-8 col-10 col-md-3 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
-                    <div className="row m-0">
+                  <div key={c.id} class={`col-sm-8 col-10 col-md-3 m-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+                    <div class="row m-0">
                       {c.discount !== 0 && c.count !== 0 && (
-                        <div className="discountDisplay">
+                        <div class="discountDisplay">
                           <span>{c.discount}%</span>
                         </div>
                       )}
-                      <div className="d-flex justify-content-center">
-                        <img src={c.pic} className="Img col-12" alt={c.name} />
+                      <div class="d-flex justify-content-center">
+                        <img src={c.pic} class="Img col-12" alt={c.name} />
                       </div>
-                      <div className="d-flex justify-content-center pt-3">
-                        <span className="h5 fontr text-center">{c.name}</span>
+                      <div class="d-flex justify-content-center pt-3">
+                        <span class="h5 fontr text-center">{c.name}</span>
                       </div>
-                      <div className="d-flex justify-content-center">
-                        <span className="fontr pt-1">{addCommas(c.price)} تومان</span>
+                      <div class="d-flex justify-content-center">
+                        <span class="fontr pt-1">{addCommas(c.price)} تومان</span>
                       </div>
                     </div>
-                    <a href={`pi?id=${c.id}#${c.name}`} className="hrefb align-self-center">
-                      <div className="hoverr-details col-12 pt-5">
-                        <div className="d-flex justify-content-center bp pt-5">
-                          <button className="btn btn-light border-0 hover fontr">مشاهده محصول</button>
+                    <a href={`pi?id=${c.id}#${c.name}`} class="hrefb align-self-center">
+                      <div class="hoverr-details col-12 pt-5">
+                        <div class="d-flex justify-content-center bp pt-5">
+                          <button class="btn btn-light border-0 hover fontr">مشاهده محصول</button>
                         </div>
                       </div>
                     </a>
@@ -181,14 +181,14 @@ function Products() {
                 ))
               )}
               {!NoResult && (
-                <div className="col-12 text-center py-5">
-                  <button className="btn btn-dark hover rounded-0 col-md-6" dir="rtl" onClick={showMoreProducts} disabled={ButtDisable}>
-                    <span className="h5">{ButtContent}</span>
+                <div class="col-12 text-center py-5">
+                  <button class="btn btn-dark hover rounded-0 col-md-6" dir="rtl" onClick={showMoreProducts} disabled={ButtDisable}>
+                    <span class="h5">{ButtContent}</span>
                   </button>
                 </div>
               )}
             </div>
-            <div className="col-12 col-md-3 remove pb-3 justify-content-center">
+            <div class="col-12 col-md-3 remove pb-3 justify-content-center">
               <Filter onFilterChange={handleFilterChange} />
             </div>
           </div>

@@ -97,7 +97,7 @@ function SignIn() {
                         <div class="pt-1">
                             <input class="form-control form-control-lg" onChange={e => setPassword1(e.target.value)} dir="ltr" />
                         </div>
-                        {error && <div className="alert alert-danger" role="alert">{error}</div>}
+                        {error && <div class="alert alert-danger" role="alert">{error}</div>}
 
                         <div class="col-md-12 d-flex justify-content-center pt-4">
                             <button type="submit" class=" col-md-6 col-6 btn btn-outline-success">ثبت نام</button>

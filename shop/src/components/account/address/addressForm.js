@@ -207,7 +207,7 @@ function Address() {
             </div>
         </div>
         {isOverlayOpen && (
-            <div className="overlay row m-0 fontr" dir="rtl">
+            <div class="overlay row m-0 fontr" dir="rtl">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class=" col-md-8 " style={{ backgroundColor: "#ffffff" }}>
                         <div class="col-md-12">
@@ -272,7 +272,7 @@ function Address() {
                             <span class="text-dark h5">آدرس پستی *</span>
                             <textarea
                                 rows="4"
-                                className="form-control border-dark rounded-0 textarea pt-3"
+                                class="form-control border-dark rounded-0 textarea pt-3"
                                 placeholder="آدرس تحویل گیرنده را وارد کنید"
                                 onChange={handleAddress}
                             />

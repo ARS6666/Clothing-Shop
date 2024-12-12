@@ -78,7 +78,7 @@ const CommonProducts = () => {
     return () => clearInterval(intervalId);
   }, [Productss]);
   return (
-    <div className="slider-container pt-5 remove p-4">
+    <div class="slider-container pt-5 remove p-4">
       <div class="border-bottom border-dark col-md-12 row m-0">
         <div class="d-flex justify-content-start col-md-6">
           <div class="m-1 fontr">
@@ -105,9 +105,9 @@ const CommonProducts = () => {
         </div>
       </div>
 
-      <div className="product-sl">
+      <div class="product-sl">
         <div class="col-md-12 row m-0 " dir="rtl">
-          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
+          <div class="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
             {Productss?.map((c, index) => (
               <div class="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
                 <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-carde'}`}>
@@ -129,13 +129,13 @@ const CommonProducts = () => {
                     </div>
                   </div>
                   <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                    <div className="hover-detailse col-md-12 ">
+                    <div class="hover-detailse col-md-12 ">
                       <div
                         class="d-flex justify-content-center "
                         style={{ height: "400px" }}
                       >
                         <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                          <button className="btn btn-light hover fontr">
+                          <button class="btn btn-light hover fontr">
                             مشاهده محصول
                           </button>
                         </a>

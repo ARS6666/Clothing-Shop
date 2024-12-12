@@ -52,33 +52,33 @@ const Filter = ({ onFilterChange }) => {
   }, []);
 
   return (
-    <div className="col-md-12  fontr d-flex justify-content-end " dir='rtl'>
+    <div class="col-md-12  fontr d-flex justify-content-end " dir='rtl'>
       <div class="rounded fix col-md-12 col-12">
         <div class="p-1">
-          <div className="filter-header ">فیلتر محصولات</div>
-          <div className="filter-input">
-            <label className="filter-label">جستجو</label>
+          <div class="filter-header ">فیلتر محصولات</div>
+          <div class="filter-input">
+            <label class="filter-label">جستجو</label>
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter")
                   handleApplyFilter();
               }}
               type="text"
-              className="form-control"
+              class="form-control"
               placeholder="کلمه مورد نظر را وارد نمایید"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className="filter-input">
-            <label className="filter-label"> قیمت (تومان)</label>
+          <div class="filter-input">
+            <label class="filter-label"> قیمت (تومان)</label>
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter")
                   handleApplyFilter();
               }}
               type="number"
-              className="form-control"
+              class="form-control"
               placeholder="کمترین قیمت مد نظر"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
@@ -89,16 +89,16 @@ const Filter = ({ onFilterChange }) => {
                   handleApplyFilter();
               }}
               type="number"
-              className="form-control mt-2"
+              class="form-control mt-2"
               placeholder="بیشترین قیمت مد نظر"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
             />
           </div>
-          <div className="filter-inpu fontv">
-            <label className="filter-label ">دسته بندی</label>
+          <div class="filter-inpu fontv">
+            <label class="filter-label ">دسته بندی</label>
             <select
-              className="form-control"
+              class="form-control"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
@@ -106,10 +106,10 @@ const Filter = ({ onFilterChange }) => {
               {Categories.map((c) => (<option value={c.name}>{c.name}</option>))}
             </select>
           </div>
-          <button className="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>
+          <button class="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>
             اعمال فیلتر
           </button>
-          <button className="btn btn-danger w-100 mt-2" onClick={handleClearFilter}>
+          <button class="btn btn-danger w-100 mt-2" onClick={handleClearFilter}>
             حذف فیلترها
           </button>
         </div>

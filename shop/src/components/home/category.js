@@ -41,10 +41,10 @@ const ProductSlider = () => {
 
 
   return (<>
-    <div className="col-md-12 col-12 p-3 pb-3 m-0 ">
-      <div className="fontr">
-        <div className="col-md-12 row m-0 border-bottom border-2 ">
-          <div className="d-flex justify-content-start col-md-6">
+    <div class="col-md-12 col-12 p-3 pb-3 m-0 ">
+      <div class="fontr">
+        <div class="col-md-12 row m-0 border-bottom border-2 ">
+          <div class="d-flex justify-content-start col-md-6">
             <div class="m-1 fontr">
               <button
                 class="btn border-0"
@@ -67,17 +67,17 @@ const ProductSlider = () => {
           <div class="align-self-center text-end h3 d-flex justify-content-end col-md-6">دسته بندی ها</div>
         </div>
 
-        <div className="slider-container col-md-12 row m-0 pt-2" dir="rtl">
-          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
+        <div class="slider-container col-md-12 row m-0 pt-2" dir="rtl">
+          <div class="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
             {Categories.map((c, index) => (
-              <div className="col-md-2 col-6" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
-                <a className="hrefb align-self-center" href={"/products?category=" + c.name}>
-                  <div className="row m-0">
-                    <div className="d-flex justify-content-center ">
-                      <img src={c.image} title ={c.name} className="d-block col-md-11 p-2 w-100" alt={c.name} />
+              <div class="col-md-2 col-6" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
+                <a class="hrefb align-self-center" href={"/products?category=" + c.name}>
+                  <div class="row m-0">
+                    <div class="d-flex justify-content-center ">
+                      <img src={c.image} title ={c.name} class="d-block col-md-11 p-2 w-100" alt={c.name} />
                     </div>
-                    <div className="d-flex justify-content-center pt-2">
-                      <span className="h4 fontr">{c.name}</span>
+                    <div class="d-flex justify-content-center pt-2">
+                      <span class="h4 fontr">{c.name}</span>
                     </div>
                   </div>
                 </a>
