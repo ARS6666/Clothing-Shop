@@ -79,7 +79,7 @@ function ProfProp() {
 
         fetch(`${url.baseUrl}/auth/profile/1/`, requestOptions)
             .then((response) => response.json())
-            .then((result) => console.log(result))
+            .then((result) => window.location.reload())
             .catch((error) => console.error(error));
     };
 

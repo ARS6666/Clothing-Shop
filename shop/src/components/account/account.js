@@ -108,7 +108,7 @@ function Panel() {
                         </button>
                     </div>
                     <div class=" col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick3(); changeContent(<div class="col-md-12" dir="ltr"><Address /></div>) }}
+                        <button onClick={() => { handleClick3(); changeContent(<div class="col-md-12" dir="rtl"><Address /></div>) }}
                             class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '' }}>
                             <h5 class="p-2">

@@ -45,8 +45,8 @@ const RecentOrders = () => {
       ) : (
         <div className="order-list">
           <h2>Recently Purchased Orders</h2>
-          <ul className="order-summary-list">
-            <li key="{order.id}" className="order-summary" onClick={() => handleOrderClick("sda")}>
+          <ul className="order-summaryy-list">
+            <li key="{order.id}" className="order-summaryy" onClick={() => handleOrderClick("sda")}>
               <p>Order ID: <span className="order-id">34</span></p>
               <p>Total Amount: <span className="order-amount">$34244</span></p>
               <p>Date: <span className="order-date">324 2 53 53</span></p>

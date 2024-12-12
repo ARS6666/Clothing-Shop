@@ -183,7 +183,7 @@ function Address() {
         fetch(`${url.baseUrl}/auth/address/`, requestOptions)
             .then((response) => response.text())
             .then((result) => {
-                setIsOverlayOpen(false);
+                setIsOverlayOpen(false); window.location.reload();
             })
             .catch((error) => console.error(error));
     }
@@ -214,28 +214,20 @@ function Address() {
 
                         </div>
                         <div class="col-md-12  text-center p-1 h4 row m-0">
-                            <div class="justify-content-end col-md-12 d-flex" style={{ height: "25px" }}>
-                                <button class="btn  btn-lg border-0" onClick={closeOverlay}><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <div class="justify-content-end col-12 col-md-12 d-flex" style={{ height: "25px" }}>
+                                <button class="btn btn-lg border-0" onClick={closeOverlay}><i class="fa fa-times" aria-hidden="true"></i></button>
                             </div>
                             <span class="text-dark">افزودن آدرس جدید</span>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-end">
                             <span class="text-dark h5 p-1">نام آدرس مورد نظر:*</span>
                             <div class="pt-2 col-md-12 p-3">
                                 <input class="form-control form-control-lg border-dark rounded-0" onChange={handleName}></input>
                             </div>
                         </div>
-                        <div class="co-md-12 row m-0">
-                            <div class="col-md-6">
-                                <span class="text-dark h5">کد پستی*</span>
-                                <div class="pt-2 col-md-12 p-1">
-                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={HandlePostCode} dir="ltr"></input>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12">
                             <div class="fontr row m-0 pt-2" dir="rtl" style={{ color: "#000000" }}>
-                                <div class="col-md-6 col-6">
+                                <div class="col-md-6 col-6 ">
                                     <label class="h5">
                                         انتخاب استان:
                                         <div class="pt-2">
@@ -268,7 +260,15 @@ function Address() {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 p-3">
+                        <div class="co-md-12 row m-0">
+                            <div class="col-md-6 text-end">
+                                <span class="text-dark h5">کد پستی*</span>
+                                <div class="pt-2 col-md-12 p-1">
+                                    <input class="form-control form-control-lg border-dark rounded-0" onChange={HandlePostCode} dir="ltr"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 p-3 text-end">
                             <span class="text-dark h5">آدرس پستی *</span>
                             <textarea
                                 rows="4"

@@ -103,7 +103,7 @@ const Filter = ({ onFilterChange }) => {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">انتخاب دسته بندی</option>
-              {Categories.map((c) => (<option value={c.category}>{c.category}</option>))}
+              {Categories.map((c) => (<option value={c.name}>{c.name}</option>))}
             </select>
           </div>
           <button className="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>

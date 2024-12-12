@@ -52,7 +52,6 @@ function Products() {
         const result = await response.json();
         setDetail(result);
         setIsLoading(false);
-        console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

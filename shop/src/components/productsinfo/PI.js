@@ -43,7 +43,7 @@ function ProductInfo() {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          setProduct(result); setIMG(result.images); setisLoading(false); console.log(2132213)
+          setProduct(result); setIMG(result.images); setisLoading(false);
         })
         .catch((error) => console.error(error));
     }
@@ -93,7 +93,7 @@ function ProductInfo() {
 
       fetch(`${url.baseUrl}/cart/cart/add_item/`, requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(""))
+        // .then((result) => console.log(""))
         .catch((error) => console.error(error));
     } else {
       navigate('/login');;
