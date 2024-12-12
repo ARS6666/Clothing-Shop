@@ -1,46 +1,107 @@
+.order-summary {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  background-color: #f9f9f9;
+}
+
+.order-summary:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .order-header {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.order-products {
+  margin-top: 20px;
+}
+
+.order-products h3 {
+  margin-bottom: 10px;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.product-item:hover {
+  transform: scale(1.02);
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+.product-details p {
+  margin: 0;
+  color: #555;
+  padding: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .order-header p {
+    flex: 1 1 100%;
+    text-align: center;
+    margin-bottom: 10px;
   }
-  
-  .product-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-  }
-  x
-  .product-item:hover {
-    transform: scale(1.02);
-  }
-  
+
   .product-image {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 10px;
   }
-  
-  .product-details {
-    display: flex;
-    flex-direction: column;
+
+  .toggle-button {
+    margin-top: 10px;
+    width: 100%;
   }
-  
-  .product-details h4 {
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
-  }
-  
-  .product-details p {
-    margin: 0;
-    color: #555;
-  }
-  
+}
