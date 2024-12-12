@@ -1,48 +1,9 @@
-.app {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  
-  .order-summary {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .order-summary:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .order-header {
+
+.order-header {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .toggle-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .toggle-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .order-products {
-    margin-top: 0px;
-  }
-  
-  .order-products h3 {
-    margin-bottom: 10px;
   }
   
   .product-item {
@@ -54,7 +15,7 @@
     border-radius: 8px;
     transition: transform 0.3s ease-in-out;
   }
-  
+  x
   .product-item:hover {
     transform: scale(1.02);
   }
