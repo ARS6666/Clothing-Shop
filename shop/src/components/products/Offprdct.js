@@ -1,6 +1,6 @@
 
 import "../../assets/css/products/offprdct.css"
-import React, { useRef, useState ,useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

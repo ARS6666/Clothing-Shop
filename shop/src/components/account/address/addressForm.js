@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import "../../../assets/css/account/address.css";
+import Loading from "../../loading/loading";
 import url from "../../../config.json"
 
 
 function Address() {
     const token = localStorage.getItem('token');
+    const [IsLoading, setisLoading] = useState(false)
+    const [Error, setError] = useState("")
     const data = {
         تهران: {
             cities: ['تهران', 'شهریار', 'ملارد', 'ری', 'اسلامشهر', 'پردیس'],
@@ -56,8 +59,8 @@ function Address() {
             counties: ['سمنان']
         },
         سیستان_و_بلوچستان: {
-            cities: ['زاهدان', 'زابل', 'خاش'],
-            counties: ['زاهدان']
+            cities: ['زاهدان', 'زابل', 'خاش', 'ایرانشهر', 'چابهار'],
+            counties: ['زاهدان', 'زابل', 'خاش', 'ایرانشهر', 'چابهار']
         },
         قزوین: {
             cities: ['قزوین', 'البرز', 'بوئین‌زهرا'],
@@ -72,38 +75,51 @@ function Address() {
             counties: ['سنندج']
         },
         کرمان: {
-            cities: ['کرمان', 'رفسنجان', 'زرند'],
-            counties: ['کرمان']
+            cities: ['کرمان', 'رفسنجان', 'زرند', 'بم', 'سیرجان'],
+            counties: ['کرمان', 'رفسنجان', 'زرند', 'بم', 'سیرجان']
         },
         کرمانشاه: {
             cities: ['کرمانشاه', 'سنقر و کلیایی'],
             counties: ['کرمانشاه']
         },
         کهگیلویه_و_بویراحمد: {
-            cities: ['یاسوج', 'گچساران'],
-            counties: ['یاسوج']
+            cities: ['یاسوج', 'گچساران', 'دوگنبدان'],
+            counties: ['یاسوج', 'گچساران', 'دوگنبدان']
         },
         گلستان: {
-            cities: ['گرگان', 'گنبد کاووس'],
-            counties: ['گرگان']
+            cities: ['گرگان', 'گنبد کاووس', 'علی‌آباد', 'آق‌قلا', 'کلاله'],
+            counties: ['گرگان', 'گنبد کاووس', 'علی‌آباد', 'آق‌قلا', 'کلاله']
         },
         گیلان: {
-            cities: ['رشت', 'لاهیجان', 'آستارا'],
-            counties: ['رشت']
+            cities: ['رشت', 'لاهیجان', 'آستارا', 'بندر انزلی', 'رودسر'],
+            counties: ['رشت', 'لاهیجان', 'آستارا', 'بندر انزلی', 'رودسر']
         },
         مازندران: {
-            cities: ['ساری', 'بابل', 'آمل'],
-            counties: ['ساری']
+            cities: ['ساری', 'بابل', 'آمل', 'قائم‌شهر', 'بهشهر'],
+            counties: ['ساری', 'بابل', 'آمل', 'قائم‌شهر', 'بهشهر']
         },
         هرمزگان: {
-            cities: ['بندرعباس', 'قشم'],
-            counties: ['بندرعباس']
+            cities: ['بندرعباس', 'قشم', 'میناب', 'بندر لنگه', 'کیش'],
+            counties: ['بندرعباس', 'قشم', 'میناب', 'بندر لنگه', 'کیش']
         },
         یزد: {
-            cities: ['یزد', 'اردکان'],
-            counties: ['یزد']
+            cities: ['یزد', 'اردکان', 'میبد', 'مهریز', 'ابرکوه'],
+            counties: ['یزد', 'اردکان', 'میبد', 'مهریز', 'ابرکوه']
+        },
+        همدان: {
+            cities: ['همدان', 'ملایر', 'نهاوند', 'کبودرآهنگ', 'رزن'],
+            counties: ['همدان', 'ملایر', 'نهاوند', 'کبودرآهنگ', 'رزن']
+        },
+        لرستان: {
+            cities: ['خرم‌آباد', 'بروجرد', 'دورود', 'کوهدشت', 'الیگودرز'],
+            counties: ['خرم‌آباد', 'بروجرد', 'دورود', 'کوهدشت', 'الیگودرز']
+        },
+        خوزستان: {
+            cities: ['اهواز', 'آبادان', 'خرمشهر', 'دزفول', 'ماهشهر'],
+            counties: ['اهواز', 'آبادان', 'خرمشهر', 'دزفول', 'ماهشهر']
         }
     };
+
     const [Profile_id, setProfile_id] = useState("")
     useEffect(() => {
         const myHeaders = new Headers();
@@ -117,11 +133,12 @@ function Address() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/profile/`, requestOptions)
+        fetch(`${url.baseUrl}/auth/profile/1/`, requestOptions)
             .then((response) => response.json())
-            .then((result) => setProfile_id(result[0].id))
+            .then((result) => setProfile_id(result.id))
             .catch((error) => console.error(error));
     }, []);
+
     const [selectedProvince, setSelectedProvince] = useState('');
     const [cities, setCities] = useState([]);
     const [counties, setCounties] = useState([]);
@@ -156,34 +173,42 @@ function Address() {
         setPostCode(event.target.value);
     };
 
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-
-
-    const raw = JSON.stringify({
-        "profile": Profile_id,
-        "name": Name,
-        "address": Address,
-        "ostan": Ostan,
-        "shahr": Shahr,
-        "postcode": PostCode,
-    });
-
-    const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
-    };
-
     function STS() {
+        if (!Profile_id || !Name || !Address || !Ostan || !Shahr || !PostCode) {
+            setError("اطلاعات خواسته شده را تکمیل کنید!");
+            return;
+        }
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+
+        const raw = JSON.stringify({
+            "profile": Profile_id,
+            "name": Name,
+            "address": Address,
+            "ostan": Ostan,
+            "shahr": Shahr,
+            "postcode": PostCode,
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        setisLoading(true)
         fetch(`${url.baseUrl}/auth/address/`, requestOptions)
             .then((response) => response.text())
             .then((result) => {
-                setIsOverlayOpen(false); window.location.reload();
+                setIsOverlayOpen(false);
+                window.location.reload();
+                setisLoading(false)
+
             })
             .catch((error) => console.error(error));
     }
@@ -201,6 +226,7 @@ function Address() {
 
 
     return (<>
+        {IsLoading ? <Loading /> : null}
         <div class="col-md-12 pt-2 fontr" >
             <div class="col-md-12" style={{ borderStyle: "dashed" }}>
                 <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={openOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
@@ -260,7 +286,8 @@ function Address() {
                                 </div>
                             </div>
                         </div>
-                        <div class="co-md-12 row m-0">
+                        <div class="col-md-12"><span class="text-dark" style={{ paddingRight: "10px" }}>اگر شهر مورد نظر شما در لیست نیست آن ر در آدرس پستی درج کنید.</span></div>
+                        <div class="co-md-12 row m-0 pt-2">
                             <div class="col-md-6 text-end">
                                 <span class="text-dark h5">کد پستی*</span>
                                 <div class="pt-2 col-md-12 p-1">
@@ -277,6 +304,7 @@ function Address() {
                                 onChange={handleAddress}
                             />
                         </div>
+                        {Error ? <div class="col-md-12 d-flex justify-content-center" style={{ paddingRight: "10px" }} dir=" rtl"><h4 class="text-light bg-danger">{Error}</h4></div> : <></>}
                         <div class="col-md-12 col-12 row m-1">
                             <div class="col-md-10 col-8"></div>
                             <div class="col-md-1 col-2 "><button class="btn rounded-0  text-light" style={{ backgroundColor: "#000000" }} onClick={closeOverlay}>انصراف</button></div>
