@@ -183,7 +183,7 @@ function Address() {
         fetch(`${url.baseUrl}/auth/address/`, requestOptions)
             .then((response) => response.text())
             .then((result) => {
-                setIsOverlayOpen(false); window.location.reload();;
+                setIsOverlayOpen(false);
             })
             .catch((error) => console.error(error));
     }

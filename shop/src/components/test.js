@@ -1,37 +1,57 @@
-import React, { useState } from "react";
-import "./test.css";
+import React, { useState, useEffect } from 'react';
+import './test.css';
+import Img from "../assets/media/logo.jpg"
 
-const OrderSummary = ({ order }) => {
-  const [showProducts, setShowProducts] = useState(false);
+const RecentOrders = () => {
+  const [orders, setOrders] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
-  const toggleProducts = () => {
-    setShowProducts(!showProducts);
+  useEffect(() => {
+    // Fetch orders from an API or use a static list for demo purposes
+    const fetchOrders = async () => {
+      const response = await fetch('/api/recent-orders'); // Replace with your API endpoint
+      const data = await response.json();
+      setOrders(data);
+    };
+
+    fetchOrders();
+  }, []);
+
+  const handleOrderClick = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const handleBackClick = () => {
+    setSelectedOrder(null);
   };
 
   return (
-    <div className="order-summary">
-      <div className="order-header" onClick={toggleProducts}>
-        <h2>Order Summary</h2>
-        <p>Order ID: {order.id}</p>
-        <p>Total Amount: ${order.totalAmount}</p>
-        <button className="toggle-button">
-          {showProducts ? "Hide Products" : "Show Products"}
-        </button>
-      </div>
-      {showProducts && (
-        <div className="order-products">
-          <h3>Products in Order:</h3>
-          <ul>
-            {order.products.map((product) => (
-              <li key={product.id} className="product-item">
-                <img src={product.image} alt={product.name} className="product-image" />
-                <div className="product-details">
-                  <h4>{product.name}</h4>
-                  <p>Quantity: {product.quantity}</p>
-                  <p>Price: ${product.price}</p>
-                </div>
-              </li>
-            ))}
+    <div className="recent-orders">
+      {selectedOrder ? (
+        <div className="order-details">
+          <h2>Order Details</h2>
+          <button className="back-button" onClick={handleBackClick}>Back to Orders</button>
+          <ul className="product-list">
+            <li key="{product.id} " className="product-item">
+              <img src={Img} alt="{product.name} " className="product-image" />
+              <div className="product-details">
+                <h4>tret  ter</h4>
+                <p>Quantity: 342</p>
+                <p>Price: $423434</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <div className="order-list">
+          <h2>Recently Purchased Orders</h2>
+          <ul className="order-summary-list">
+            <li key="{order.id}" className="order-summary" onClick={() => handleOrderClick("sda")}>
+              <p>Order ID: <span className="order-id">34</span></p>
+              <p>Total Amount: <span className="order-amount">$34244</span></p>
+              <p>Date: <span className="order-date">324 2 53 53</span></p>
+              <button className="view-button">View Details</button>
+            </li>
           </ul>
         </div>
       )}
@@ -39,21 +59,4 @@ const OrderSummary = ({ order }) => {
   );
 };
 
-const App = () => {
-  const sampleOrder = {
-    id: 12345,
-    totalAmount: 100.0,
-    products: [
-      { id: 1, name: "Product 1", quantity: 2, price: 25.0, image: "https://via.placeholder.com/100" },
-      { id: 2, name: "Product 2", quantity: 1, price: 50.0, image: "https://via.placeholder.com/100" },
-    ],
-  };
-
-  return (
-    <div className="app">
-      <OrderSummary order={sampleOrder} />
-    </div>
-  );
-};
-
-export default App;
+export default RecentOrders;
