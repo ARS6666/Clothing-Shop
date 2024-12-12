@@ -65,10 +65,10 @@ function AddressDisplay() {
                         <div class="col-md-6 text-end h5 ">شهرستان : {c.shahr}</div>
                     </div>
                     <div class="col-md-12 pt-2 text-end">
-                        <span class="h5 p-4 " style={{ lineHeight: "1.9rem" }}>آدرس :{c.address}.</span>
+                        <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
                     </div>
                     <div class="col-md-12 pt-2 text-end">
-                        <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
+                        <span class="h5 p-4 " style={{ lineHeight: "1.9rem" }}>آدرس :{c.address}.</span>
                     </div>
                     <div class="col-md-12 row m-0 fontr pt-2 p-2 ">
                         <div class="col-md-12 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => RemoveAddress(c.id)}>حذف</button></div>

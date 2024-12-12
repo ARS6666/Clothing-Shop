@@ -63,7 +63,7 @@ function HProducts() {
                 </span>
               </div>
             </div>
-            <div class="hover-detailsee col-12">
+            <div class="hover-detailsee col-12 ">
               <div class="d-flex justify-content-center bpee">
                 <a class="hrefb align-self-center" href={`pi?id=${c.id}#${c.name}`}>
                   <button class="btn btn-light hover fontr">

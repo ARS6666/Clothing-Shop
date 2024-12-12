@@ -7,12 +7,11 @@
 }
 
 .bpee {
-    height: 400px;
+    padding-top: 45%;
 }
 
 .product-cardee {
     height: auto;
-    /* Let height adjust automatically */
     transition: transform .5s;
 }
 
@@ -30,7 +29,7 @@
     -webkit-backdrop-filter: blur(100px);
     display: none;
     width: 100%;
-    height: 100% + 500px;
+    height: 100%;
 }
 
 .product-cardee:hover .hover-detailsee {
