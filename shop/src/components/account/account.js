@@ -3,6 +3,7 @@ import "../../assets/css/account/panel.css"
 import pfp from "../../assets/media/pfp.jpg"
 import Profile from "./profile"
 import Address from './address';
+import RPP from './orders/RPP';
 import Order from './orders/order';
 import "../../assets/css/href.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js"
@@ -118,7 +119,7 @@ function Panel() {
                         </button>
                     </div>
                     <div class=" col-md-12  border-top border-bottom part">
-                        <button onClick={() => { handleClick4(); changeContent("sssoooon") }}
+                        <button onClick={() => { handleClick4(); changeContent(<RPP />) }}
                             class="btn  col-md-12 col-12 btn-lg hover d-flex justify-content-start border-0"
                             style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '' }}>
                             <h5 class="p-2">
