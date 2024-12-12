@@ -51,7 +51,7 @@ const ProductCarousel = () => {
 
   return (<>
 
-    {OffDis ? <></> :<><div class="col-md-12 d-flex justify-content-center">
+    {OffDis ? <></> : <><div class="col-md-12 d-flex justify-content-center">
       <div class="d-flex justify-content-end col-md-11 border-bottom">
         <span class=" fontr h3  align-self-center">تخفیف ها</span>
       </div>
@@ -67,7 +67,7 @@ const ProductCarousel = () => {
           {products?.map((c, index) => (
             <div class="p-3 col-md-3 fontr" style={{ minWidth: `(-${(100 / 4)}%)` }}>
               <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-carde'}`}>
-                <div class="row m-0">
+                <div class="row m-0 d-flex justify-content-end">
                   {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
                   <div class="d-flex justify-content-center ">
                     <img
@@ -88,7 +88,7 @@ const ProductCarousel = () => {
                   <div className="hover-detailse col-md-12 ">
                     <div
                       class="d-flex justify-content-center "
-                      style={{ height: "400px" }}
+                      style={{ paddingTop: "45%" }}
                     >
                       <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
                         <button className="btn btn-light fontr ">
