@@ -103,11 +103,11 @@ function ProductInfo() {
 
   const addCommas = (number) => {
 
-    if (number != undefined){
+    if (number != undefined) {
       let [integer] = number.toString().split('.');
 
       integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return integer;
+      return integer;
 
     }
     return null;
