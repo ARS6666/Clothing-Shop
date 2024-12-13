@@ -1,20 +1,17 @@
 import { useState, React, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/font/font.css";
-import "../assets/css/href.css";
-import logo from "../assets/media/logo.jpg";
-import Prdctlist from "./Features/PrdctList";
-import "../assets/css/buttonn.css"
-import url from "../config.json"
+import "../../assets/font/font.css";
+import "../../assets/css/href.css";
+import BurgerMenu from "./Burgermenu";
+import logo from "../../assets/media/logo.jpg";
+import "../../assets/css/nav/buttonn.css"
+import url from "../../config.json"
 
 const CustomNavbar = () => {
   const [CartItems, setCartItem] = useState([])
-  const [Collapse, setCollapse] = useState(false)
   const navigate = useNavigate();
   const [search, setSearch] = useState();
-  const [Logo, setLogo] = useState([])
-  const [Image, setI] = useState([])
   const [Login, setlogin] = useState(true)
   const [isVisible, setIsVisible] = useState(true);
   const token = localStorage.getItem('token');
@@ -65,9 +62,7 @@ const CustomNavbar = () => {
       .catch((error) => console.error(error));
   }, [token]);
 
-  function HandleNav() {
-    setCollapse(!Collapse)
-  }
+
 
   return (
     <>
@@ -105,7 +100,7 @@ const CustomNavbar = () => {
                 </button>
               </a>
             </div>
-          <div class="col-1"></div>
+            <div class="col-1"></div>
             <div class="col-5 align-self-center">
               <span>
                 {Login ? (
@@ -135,38 +130,9 @@ const CustomNavbar = () => {
       <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
         <div class="col-12 m-0 d-flex">
           <div class="col-6 d-flex justify-content-start">
-            <button class="btn bg-transparent rounded-3 p-2" onClick={HandleNav}>
-              <i class={`${Collapse ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}`} style={{ fontSize: "1.1 rem" }}></i>
-            </button>
-            {Collapse && (
-              <div class="burger-menu">
-                <div class="col-12 border-top border-bottom d-flex justify-content-center p-3 align-self-center">
-                  <div><a class="hrefb h5 m-3 align-self-center" href="/">خانه</a></div>
-                  <div><a class="hrefb h5 m-3 align-self-center" href="/products">محصولات</a></div>
-                  <div class="col-4 align-self-center">
-                    <input
-                      class="form-control fontr"
-                      placeholder="جست وجو ..."
-                      onChange={(e) => setSearch(e.target.value)}
-                      style={{ backgroundColor: "#D9D9D9" }}
-                    />
-                  </div>
-                  <div class="col-1 align-self-center">
-                    <a href={`/products?search=${search}`}>
-                      <button
-                        class="rounded-circle btn bg-transparent align-self-center"
-                        alt="جست و جو"
-                        style={{ backgroundColor: "#E8E7E7" }}
-                      >
-                        <i class="fa-solid fa-magnifying-glass" style={{ fontSize: "1.1 rem" }}></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div class="col-6 d-flex justify-content-center">
+            <BurgerMenu />
+          </div>  
+          <div class="col-6 m-0 d-flex justify-content-end">
             <span>
               {Login ? (
                 <>

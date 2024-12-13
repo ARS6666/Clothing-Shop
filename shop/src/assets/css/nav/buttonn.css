@@ -35,6 +35,7 @@
 .cart-icon {
   position: relative;
   font-size: 50px;
+  margin: 0;
 }
 
 .cart-icon .cart-count {
@@ -49,17 +50,6 @@
   justify-content: center;
   align-items: center;
   font-size: 12px;
-}
-
-.burger-menu{
-  background-color: white;
-  z-index: 10;
-  left :0;
-  right: 0;
-  top: 60px;
-  width: 100vw;
-  position:absolute;
-  overflow: hidden;
 }
 
 .remove {

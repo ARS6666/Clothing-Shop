@@ -63,15 +63,15 @@ function HProducts() {
                 </span>
               </div>
             </div>
-            <div class="hover-detailsee col-12 ">
-              <div class="d-flex justify-content-center bpee">
-                <a class="hrefb align-self-center" href={`pi?id=${c.id}#${c.name}`}>
-                  <button class="btn btn-light hover fontr">
-                    مشاهده محصول
-                  </button>
-                </a>
-              </div>
+          <div class="hover-detailsee col-12 ">
+            <div class="d-flex justify-content-center bpee">
+              <a class="hrefb align-self-center" href={`pi?id=${c.id}#${c.name}`}>
+                <button class="btn btn-light hover fontr">
+                  مشاهده محصول
+                </button>
+              </a>
             </div>
+          </div>
           </div>
         ))}
         <div class="d-flex justify-content-center pt-4 mb-4">

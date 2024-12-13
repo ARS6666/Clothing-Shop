@@ -1,16 +1,17 @@
 .Img {
     object-fit: cover;
-    height: auto; /* Let height adjust automatically */
-    width: 100%; /* Ensure image scales with container */
-    max-height: 300px; /* Increase maximum height */
+    height: auto;
+    width: 100%;
+    max-height: 300px;
 }
 
 .bp {
-    width: 100%; /* Ensure container scales with image */
+
+    padding-top: 40%;
 }
 
 .productt-card {
-    height: auto; /* Let height adjust automatically */
+    height: auto;
     transition: transform .5s;
 }
 
@@ -46,23 +47,28 @@
 /* Responsive Design */
 @media (max-width: 1400px) and (min-width: 1200px) {
     .Img {
-        max-height: 280px; /* Adjust max height */
+        max-height: 280px;
+        /* Adjust max height */
     }
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {
     .Img {
-        max-height: 260px; /* Adjust max height */
+        max-height: 260px;
+        /* Adjust max height */
     }
+
     .productt-card {
-        font-size: 0.9rem; 
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 992px) and (min-width: 800px) {
     .Img {
-        max-height: 240px; /* Adjust max height */
+        max-height: 240px;
+        /* Adjust max height */
     }
+
     .productt-card {
         font-size: 0.8rem;
     }
@@ -70,11 +76,14 @@
 
 @media (max-width: 800px) and (min-width: 576px) {
     .Img {
-        max-height: 320px; /* Increase max height for mid-sized screens */
+        max-height: 320px;
+        /* Increase max height for mid-sized screens */
     }
+
     .productt-card {
-        font-size: 0.7rem; 
+        font-size: 0.7rem;
     }
+
     .remove {
         display: none;
     }
@@ -86,12 +95,14 @@
 
 @media (max-width: 576px) {
     .Img {
-        max-height: 400px; /* Increase max height for mobile view */
+        max-height: 400px;
+        /* Increase max height for mobile view */
     }
 
     .productt-card {
-        font-size: 0.6rem; 
+        font-size: 0.6rem;
     }
+
     .remove {
         display: none;
     }
@@ -112,6 +123,7 @@
         opacity: 0;
         transform: translateY(100px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0px);

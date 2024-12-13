@@ -7,7 +7,7 @@
 }
 
 .bpee {
-    padding-top: 45%;
+    padding-top: 50%;
 }
 
 .product-cardee {
@@ -34,21 +34,18 @@
 
 .product-cardee:hover .hover-detailsee {
     display: block;
-    /* Show on hover */
 }
 
-/* Responsive Design */
+
 @media (max-width: 1400px) and (min-width: 1200px) {
     .Imgee {
         max-height: 280px;
-        /* Adjust max height */
     }
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {
     .Imgee {
         max-height: 260px;
-        /* Adjust max height */
     }
 
     .product-cardee {
@@ -59,7 +56,6 @@
 @media (max-width: 992px) and (min-width: 800px) {
     .Imgee {
         max-height: 240px;
-        /* Adjust max height */
     }
 
     .product-cardee {
@@ -70,7 +66,6 @@
 @media (max-width: 800px) and (min-width: 576px) {
     .Imgee {
         max-height: 320px;
-        /* Increase max height for mid-sized screens */
     }
 
     .product-cardee {
@@ -81,7 +76,6 @@
 @media (max-width: 576px) {
     .Imgee {
         max-height: 400px;
-        /* Increase max height for mobile view */
     }
 
     .product-cardee {
@@ -90,11 +84,9 @@
 
     .hover-detailsee {
         height: 350px;
-        /* Increase max height for mobile view */
     }
 }
 
-/* Animation */
 .Anim {
     animation: appear linear;
     animation-timeline: view();

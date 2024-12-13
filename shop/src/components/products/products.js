@@ -171,8 +171,8 @@ function Products() {
                       </div>
                     </div>
                     <a href={`pi?id=${c.id}#${c.name}`} class="hrefb align-self-center">
-                      <div class="hoverr-details col-12 pt-5">
-                        <div class="d-flex justify-content-center bp pt-5">
+                      <div class="hoverr-details col-12">
+                        <div class="d-flex justify-content-center bp">
                           <button class="btn btn-light border-0 hover fontr">مشاهده محصول</button>
                         </div>
                       </div>

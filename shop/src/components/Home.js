@@ -1,4 +1,3 @@
-import Nav from './Nav';
 import Cat from './home/category';
 import Example from './home/slider';
 import Prod from './home/products';
@@ -10,7 +9,7 @@ function Home() {
     <Example />
     <Cat />
     <Prod />
-    <OFF />
+    {/* <OFF /> */}
   </>);
 }
 
