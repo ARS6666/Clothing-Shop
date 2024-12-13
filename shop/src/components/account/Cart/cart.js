@@ -28,7 +28,7 @@ function Cart() {
     function show() {
         fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
             .then((response) => response.json())
-            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) ;setIsLoading(false)})
+            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items); setIsLoading(false) })
             .catch((error) => console.error(error));
     }
 
@@ -131,7 +131,7 @@ function Cart() {
 
         fetch(`${url.baseUrl}/order/order/create_order/`, requestOptions)
             .then((response) => response.text())
-            .then((result) =>{setIsLoading(false); show() })
+            .then((result) => { setIsLoading(false); show() })
             .catch((error) => console.error(error));
 
     }
@@ -184,7 +184,7 @@ function Cart() {
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-12 d-flex justify-content-center pt-4 pb-5">
-                                    <button class="btn btn-lg col-md-10 col-10 text-white rounded-0" onClick={CreateOrder} style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button>
+                                    <a class=" col-md-10 col-10 hrefw d-flex justify-content-center" href="#path/to/dargah/pardakht"><button class="btn btn-lg text-white rounded-0" onClick={CreateOrder} style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button></a>
                                 </div>
                             </div>
                         </div>
