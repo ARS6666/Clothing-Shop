@@ -3,9 +3,10 @@ import "../../../assets/css/href.css";
 import "../../../assets/css/account/order.css";
 import Img from "../../../assets/media/logo.jpg";
 import url from "../../../config.json";
-import jalaali from 'jalaali-js';
+
 
 function Order() {
+    var jalaali = require('jalaali-js')
     const [isOrder, setisOrder] = useState(false);
     const [showProducts, setShowProducts] = useState(false);
     const token = localStorage.getItem('token');
