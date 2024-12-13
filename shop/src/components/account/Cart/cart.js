@@ -3,6 +3,8 @@ import IMg from "../../../assets/media/s1.jpg"
 import "../../../assets/css/account/cart.css"
 import "../../../assets/css/hide.css"
 import url from "../../../config.json"
+import Loading from "../../loading/loading";
+
 
 
 function Cart() {
@@ -10,6 +12,8 @@ function Cart() {
     const [TotalPrice, setTotalPrice] = useState([])
     const token = localStorage.getItem('token');
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [IsLoading, setIsLoading] = useState(true);
+
 
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
@@ -24,7 +28,7 @@ function Cart() {
     function show() {
         fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
             .then((response) => response.json())
-            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) })
+            .then((result) => { setTotalPrice(result.total_price); setCartItem(result.items) ;setIsLoading(false)})
             .catch((error) => console.error(error));
     }
 
@@ -112,10 +116,32 @@ function Cart() {
         return integer;
     };
 
+    function CreateOrder() {
+        setIsLoading(true)
+        const myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+        myHeaders.append("X-CSRFToken", "76KkTuMhRX6NLeCSdl3YkkhW0U0bE9RYN9n94qYAGuBwAUjIPycXSiQvSgsXEx0o");
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+
+        fetch(`${url.baseUrl}/order/order/create_order/`, requestOptions)
+            .then((response) => response.text())
+            .then((result) =>{setIsLoading(false); show() })
+            .catch((error) => console.error(error));
+
+    }
+
+
 
     return (<>
-        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5" style={{ backgroundColor: "#f8f9fa" }}>
-            <div class="col-md-12 col-12 pt-5">
+        {IsLoading ? <Loading /> : null}
+        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5 pb-5" style={{ backgroundColor: "#f8f9fa" }}>
+            <div class="col-md-12 col-12 pt-5 pb-5">
                 <div class="col-md-12 col-12 row m-0 bg-white">
                     <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
                         <div class="col-md-12 col-12 p-1" >
@@ -142,8 +168,8 @@ function Cart() {
                                             <div class="col-md-8 col-8 d-flex justify-content-start pt-2">
                                                 <div class="col-md-12 col-12">
                                                     <div class="pb-2">حمل و نقل به <span class="text-primary">گلستان.</span></div>
-                                                    <div class="pb-2  text-primary">تغییرآدرس<i class="fa fa-truck" aria-hidden="true"></i>
-                                                        .</div>
+                                                    <a class="pb-2 text-primary" href='/account'>تغییرآدرس<i class="fa fa-truck" aria-hidden="true"></i>
+                                                        .</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +184,7 @@ function Cart() {
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-12 d-flex justify-content-center pt-4 pb-5">
-                                    <button class="btn btn-lg col-md-10 col-10 text-white rounded-0" style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button>
+                                    <button class="btn btn-lg col-md-10 col-10 text-white rounded-0" onClick={CreateOrder} style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button>
                                 </div>
                             </div>
                         </div>
@@ -180,7 +206,6 @@ function Cart() {
                                     <div class="col-md-2 p-3 remove">
                                         <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
-                                    {/* ${url.baseUrl}/ */}
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
                                     <div class="col-md-2 col-3 p-3">{addCommas(c.product.price)}تومان</div>
                                     <div class="col-md-1 col-2 p-3 row m-0 text-center d-flex justify-content-center">
