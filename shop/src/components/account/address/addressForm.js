@@ -213,15 +213,12 @@ function Address() {
             .catch((error) => console.error(error));
     }
 
-    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+    const [isOverlayOpen, setIsOverlayOpen] = useState(true);
 
-    const openOverlay = () => {
-        setIsOverlayOpen(true);
+    const handleOverlay = () => {
+        setIsOverlayOpen(!isOverlayOpen);
     };
 
-    const closeOverlay = () => {
-        setIsOverlayOpen(false);
-    };
 
 
 
@@ -229,19 +226,18 @@ function Address() {
         {IsLoading ? <Loading /> : null}
         <div class="col-md-12 pt-2 fontr" >
             <div class="col-md-12" style={{ borderStyle: "dashed" }}>
-                <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={openOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
+                <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={handleOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
             </div>
         </div>
-        {isOverlayOpen && (
+        {isOverlayOpen ? <>
             <div class="overlay row m-0 fontr" dir="rtl">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class=" col-md-8 " style={{ backgroundColor: "#ffffff" }}>
-                        <div class="col-md-12">
-
+                        <div class="col-md-12">()
                         </div>
                         <div class="col-md-12  text-center p-1 h4 row m-0">
                             <div class="justify-content-end col-12 col-md-12 d-flex" style={{ height: "25px" }}>
-                                <button class="btn btn-lg border-0" onClick={closeOverlay}><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <button class="btn btn-lg border-0" onClick={handleOverlay}><i class="fa fa-times" aria-hidden="true"></i></button>
                             </div>
                             <span class="text-dark">افزودن آدرس جدید</span>
                         </div>
@@ -307,7 +303,7 @@ function Address() {
                         {Error ? <div class="col-md-12 d-flex justify-content-center" style={{ paddingRight: "10px" }} dir=" rtl"><h4 class="text-light bg-danger">{Error}</h4></div> : <></>}
                         <div class="col-md-12 col-12 row m-1">
                             <div class="col-md-10 col-8"></div>
-                            <div class="col-md-1 col-2 "><button class="btn rounded-0  text-light" style={{ backgroundColor: "#000000" }} onClick={closeOverlay}>انصراف</button></div>
+                            <div class="col-md-1 col-2 "><button class="btn rounded-0  text-light" style={{ backgroundColor: "#000000" }} onClick={handleOverlay}>انصراف</button></div>
                             <div class="col-md-1 col-2 "><button class="btn  rounded-0  text-light" style={{ backgroundColor: "#000000" }} onClick={STS}>ثبت</button></div>
 
                         </div>
@@ -315,8 +311,7 @@ function Address() {
 
                 </div>
             </div>
-        )
-        }
+        </> : <></>}
     </>);
 }
 

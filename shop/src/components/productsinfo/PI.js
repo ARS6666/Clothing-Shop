@@ -4,12 +4,11 @@ import { Carousel } from "react-bootstrap";
 import "../../assets/css/productsinfo/PI.css";
 import "../../assets/css/hide.css";
 import Loading from "../loading/loading";
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 function ProductInfo() {
   const navigate = useNavigate();
-  const [IsLoading, setisLoading] = useState(true)
+  const [IsLoading, setIsLoading] = useState(true);
   const token = localStorage.getItem('token');
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [IMG, setIMG] = useState([]);
@@ -28,7 +27,6 @@ function ProductInfo() {
     redirect: "follow"
   };
 
-
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const paramId = searchParams.get('id');
@@ -37,13 +35,14 @@ function ProductInfo() {
     }
   }, [location.search]);
 
-
   useEffect(() => {
     if (id) {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          setProduct(result); setIMG(result.images); setisLoading(false);
+          setProduct(result);
+          setIMG(result.images);
+          setIsLoading(false);
         })
         .catch((error) => console.error(error));
     }
@@ -56,7 +55,6 @@ function ProductInfo() {
       const dot = document.createElement('div');
       dot.className = 'dot';
       document.body.appendChild(dot);
-
 
       const x = event.clientX;
       const y = event.clientY;
@@ -93,27 +91,21 @@ function ProductInfo() {
 
       fetch(`${url.baseUrl}/cart/cart/add_item/`, requestOptions)
         .then((response) => response.text())
-        // .then((result) => console.log(""))
         .catch((error) => console.error(error));
     } else {
-      navigate('/login');;
+      navigate('/login');
     }
-
   }
 
   const addCommas = (number) => {
-
-    if (number != undefined) {
+    if (number !== undefined) {
       let [integer] = number.toString().split('.');
-
       integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       return integer;
-
     }
     return null;
-
   };
-  // image zoom 
+
   const [transformOrigin, setTransformOrigin] = useState('center center');
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
@@ -122,70 +114,63 @@ function ProductInfo() {
     setTransformOrigin(`${x}% ${y}%`);
   };
 
-
-
   return (
     <>
       {IsLoading ? <Loading /> : null}
-      <div class="p-4 container-xxl pt-2" dir="rtl">
-        <div class="row m-0 col-md-12">
-          <div class="col-md-6 d-flex flex-column">
-            <div class="row m-0">
-              <div class="col-md-2 remove d-flex flex-column align-items-end romove">
-                {IMG?.slice(0, 3).map((c) => (
-                  <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="" />
+      <div className="p-4 container-xxl pt-2" dir="rtl">
+        <div className="row m-0 col-md-12">
+          <div className="col-md-6 d-flex flex-column">
+            <div className="row m-0">
+              <div className="col-md-2 remove d-flex flex-column align-items-end romove">
+                {IMG?.slice(0,4).map((c) => (
+                  <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="Product Thumbnail" />
                 ))}
               </div>
               <div className="magnify-container col-md-10 d-flex justify-content-center">
                 <Carousel>
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>
-                      <img className="d-block Image magnify-image" src={Pic.image} alt="" onMouseMove={handleMouseMove} style={{ transformOrigin }} />
+                      <img className="d-block Image magnify-image" src={Pic.image} alt={`Product Image ${index + 1}`} onMouseMove={handleMouseMove} style={{ transformOrigin }} />
                     </Carousel.Item>
                   ))}
                 </Carousel>
               </div>
             </div>
           </div>
-
-          <div class="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
-            <div class=" col-md-10 col-sm-11 col-11">
-              <div><span class="text-dark h2">{product.name}</span></div>
-              <div class="col-md-12 col-12 col-sm row m-0">
-                <div class="pt-2"><span class={`${product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}`}>{addCommas(product.price)}  تومان</span></div>
-                <div>{product.discount != 0 ? <span class="text-dark h3 ">{addCommas((product.price) - ((product.price) * (product.discount / 100)))} تومان</span> : null}</div>
+          <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
+            <div className="col-md-10 col-sm-11 col-11">
+              <div><span className="text-dark h2">{product.name}</span></div>
+              <div className="col-md-12 col-12 col-sm row m-0">
+                <div className="pt-2"><span className={product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}>{addCommas(product.price)} تومان</span></div>
+                <div>{product.discount !== 0 ? <span className="text-dark h3 ">{addCommas(product.price - (product.price * (product.discount / 100)))} تومان</span> : null}</div>
               </div>
-              <div class="pt-2">
-                <span class="h4">توضیحات:</span>
-                <p class="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
+              <div className="pt-2">
+                <span className="h4">توضیحات:</span>
+                <p className="h5" style={{ lineHeight: "1.9rem" }}>{product.description}</p>
               </div>
-
-              <div class="pt-4">
-                <span class="h4">دسته بندی:</span>
-                <div class="d-flex justify-content-end">
-                  <span class="h5">{product.category}</span>
+              <div className="pt-4">
+                <span className="h4">دسته بندی:</span>
+                <div className="d-flex justify-content-end">
+                  <span className="h5">{product.category}</span>
                 </div>
               </div>
-
-              <div class="pt-4">
-                <span class="h4">برند:</span>
-                <div class="d-flex justify-content-end">
-                  <span class="h5">مس هنر</span>
+              <div className="pt-4">
+                <span className="h4">برند:</span>
+                <div className="d-flex justify-content-end">
+                  <span className="h5">مس هنر</span>
                 </div>
               </div>
-
-              <div class="pt-4">
-                <button class="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
+              <div className="pt-4">
+                <button className="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
                   {buttonDisabled ?
-                    <span class="text-success">به سبد خرید اضافه شد!</span>
+                    <span className="text-success">به سبد خرید اضافه شد!</span>
                     :
                     <span>افزودن به سبد خرید</span>}</button>
               </div>
             </div>
           </div>
-        </div >
-      </div >
-
+        </div>
+      </div>
     </>
   );
 }

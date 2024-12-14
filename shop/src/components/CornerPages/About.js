@@ -1,68 +1,52 @@
 import React from 'react';
+import Img from '../../assets/media/aboutus.png'
 
 const AboutUs = () => {
   return (
-    <section class="py-5 fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
-      <div class="container">
-        <div class="row m-0 align-items-center mb-5">
-          <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+    <section className="py-5 fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
+      <div className="container">
+        <div className="row m-0 align-items-center mb-5">
+          <div className="col-12 col-lg-6 mb-4 mb-lg-0">
             <img
-              src="https://via.placeholder.com/500"
-              alt="About Us"
-              class="img-fluid rounded"
+              src={Img}
+              alt="About Our Copperware Store"
+              className="img-fluid rounded"
               style={{ maxWidth: '100%' }}
             />
           </div>
-          <div class="col-12 col-lg-6 p-4 " >
-            <h2 class="display-4 mb-4 fw-bold" style={{
-             color: '#8B0000'
-            }}>درباره ی ما</h2>
-            <p class="lead mb-4 fw-bold" >
-              <h style={{
-             color: '#8B0000'
-            }}>              سلام خو ش آمدید ما عالی هستیم خفن و پرطرفدار ماه عسل فدامون بشم خیلی خوب کردی اومدی به مغازه ی ما
-              </h>
+          <div className="col-12 col-lg-6 p-4">
+            <h2 className="display-4 mb-4 fw-bold" style={{ color: '#DB5C28' }}>درباره ی ما</h2>
+            <p className="lead mb-4 fw-bold" style={{ color: '#DB5C28' }}>
+              به فروشگاه ما خوش آمدید! ما تخصصی در زمینه فروش ظروف مسی با کیفیت بالا داریم. محصولات ما با دقت ساخته شده و با طراحی‌های متنوع عرضه می‌شوند.
             </p>
-            <p >
-              <h style={{
-             color: '#8B0000'
-            }} >              عشقی مشتی هستی بهترین چیزا رو دریاب لباس بخر حالشو ببر تیپ بزن ببین چه می کنیم با استایلت. یه تماس با ما داشته باشی حله همه چی اگه بلد نیستی بهت میگیم چطور زنگ بزنی ماشالا 
-              </h>
+            <p style={{ color: '#DB5C28' }}>
+              ما مفتخریم که بهترین ظروف مسی را به شما ارائه دهیم که نه تنها زیبا بلکه کارآمد و با دوام هستند. شما می‌توانید با خرید از فروشگاه ما زیبایی و اصالت را به آشپزخانه‌ی خود بیاورید.
             </p>
-            <button class="btn btn-outline-danger mt-3 fw-bold">تماس با ما</button>
+            <a className='hrefw' href="tel:+989128414413"><div class="col-md-12 d-flex justify-content-end"><button className="btn btn-outline-danger mt-3 fw-bold">تماس با ما</button></div></a>
           </div>
         </div>
 
         {/* Services Section */}
-        <div class="row m-0 text-center">
-          <div class="col-12 col-md-4 shadow">
-            <div class="p-4  text-white rounded" style={{
-              backgroundColor: "#8B0000"
-            }}>
-              <i class="bi bi-bag-fill display-4 "></i>
-              <h3 class="h5">کیفیت بالای محصولات</h3>
-              <p>محصولات رو با بهترین کیفیت از ما بخرید سه تا بخر یکی ببر تضمینی</p>
+        <div className="row m-0 text-center">
+          <div className="col-12 col-md-4 ">
+            <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
+              <i className="bi bi-bag-fill display-4"></i>
+              <h3 className="h5">کیفیت بالای محصولات</h3>
+              <p>محصولات ما با بالاترین کیفیت ساخته می‌شوند و تضمین کیفیت دارند.</p>
             </div>
           </div>
-          <div class="col-12 col-md-4 shadow">
-            <div class="p-4  text-white rounded" style={{
-              backgroundColor: "#8B0000"
-            }}>
-              <i class="bi bi-people-fill display-4 "></i>
-              <h3 class="h5">لذت شیک پوشی</h3>
-              <p> ما تضمین می کنیم که زندگی شما پس از ورود به سایت ما به دو قسمت نصف میشه
-                بعد ما قبل ما
-              </p>
+          <div className="col-12 col-md-4 ">
+            <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
+              <i className="bi bi-people-fill display-4"></i>
+              <h3 className="h5">رضایت مشتریان</h3>
+              <p>رضایت مشتریان هدف اصلی ماست و ما با ارائه بهترین خدمات در این زمینه تلاش می‌کنیم.</p>
             </div>
           </div>
-          <div class="col-12 col-md-4 shadow ">
-            <div class="p-4  text-white rounded" style={{
-              backgroundColor: "#8B0000"
-            }}>
-              <i class="bi bi-lightbulb-fill display-4 "></i>
-              <h3 class="h5">ارسال سریع</h3>
-              <p>ما به محصولامون یاد میدیم چجوری دم در خونتون تلپورت کنن. 
-                دکمه واریزو بزنی لباس دستته  </p>
+          <div className="col-12 col-md-4 ">
+            <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
+              <i className="bi bi-lightbulb-fill display-4"></i>
+              <h3 className="h5">ارسال سریع</h3>
+              <p>محصولات شما را با سریع‌ترین و امن‌ترین روش‌ها به دستتان می‌رسانیم.</p>
             </div>
           </div>
         </div>

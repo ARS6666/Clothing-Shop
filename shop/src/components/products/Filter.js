@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/products/Filter.css';
 import url from "../../config.json";
@@ -15,7 +15,6 @@ const Filter = ({ onFilterChange }) => {
       minPrice,
       maxPrice,
       category,
-
     });
   };
 
@@ -52,64 +51,67 @@ const Filter = ({ onFilterChange }) => {
   }, []);
 
   return (
-    <div class="col-md-12  fontr d-flex justify-content-end " dir='rtl'>
-      <div class="rounded fix col-md-12 col-12">
-        <div class="p-1">
-          <div class="filter-header ">فیلتر محصولات</div>
-          <div class="filter-input">
-            <label class="filter-label">جستجو</label>
+    <div className="col-md-12 fontr d-flex justify-content-end" dir='rtl'>
+      <div className="rounded fix col-md-12 col-12">
+        <div className="p-1">
+          <div className="filter-header">فیلتر محصولات</div>
+          <div className="filter-input">
+            <label className="filter-label">جستجو</label>
             <input
               onKeyDown={(e) => {
-                if (e.key === "Enter")
-                  handleApplyFilter();
+                if (e.key === "Enter") handleApplyFilter();
               }}
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="کلمه مورد نظر را وارد نمایید"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Search Term"
             />
           </div>
-          <div class="filter-input">
-            <label class="filter-label"> قیمت (تومان)</label>
+          <div className="filter-input">
+            <label className="filter-label">قیمت (تومان)</label>
             <input
               onKeyDown={(e) => {
-                if (e.key === "Enter")
-                  handleApplyFilter();
+                if (e.key === "Enter") handleApplyFilter();
               }}
               type="number"
-              class="form-control"
+              className="form-control"
               placeholder="کمترین قیمت مد نظر"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
+              aria-label="Minimum Price"
             />
             <input
               onKeyDown={(e) => {
-                if (e.key === "Enter")
-                  handleApplyFilter();
+                if (e.key === "Enter") handleApplyFilter();
               }}
               type="number"
-              class="form-control mt-2"
+              className="form-control mt-2"
               placeholder="بیشترین قیمت مد نظر"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
+              aria-label="Maximum Price"
             />
           </div>
-          <div class="filter-inpu fontv">
-            <label class="filter-label ">دسته بندی</label>
+          <div className="filter-inpu fontv">
+            <label className="filter-label">دسته بندی</label>
             <select
-              class="form-control"
+              className="form-control"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              aria-label="Category"
             >
               <option value="">انتخاب دسته بندی</option>
-              {Categories.map((c) => (<option value={c.name}>{c.name}</option>))}
+              {Categories.map((c) => (
+                <option key={c.name} value={c.name}>{c.name}</option>
+              ))}
             </select>
           </div>
-          <button class="btn btn-primary w-100 mt-3" onClick={handleApplyFilter}>
+          <button className="btn btn-primary w-100 mt-3" onClick={handleApplyFilter} aria-label="Apply Filters">
             اعمال فیلتر
           </button>
-          <button class="btn btn-danger w-100 mt-2" onClick={handleClearFilter}>
+          <button className="btn btn-danger w-100 mt-2" onClick={handleClearFilter} aria-label="Clear Filters">
             حذف فیلترها
           </button>
         </div>

@@ -62,62 +62,70 @@ const CustomNavbar = () => {
       .catch((error) => console.error(error));
   }, [token]);
 
-
-
   return (
     <>
       {isVisible ? (
-        <div class="col-12 fontr row m-0" dir="rtl">
-          <div class="col-7 row m-0">
-            <div class="col-3 pt-1">
-              <a class="hrefb" href="/"><img style={{ height: "35px", marginRight: "30px" }} src={logo} alt="logo" class="col" /></a>
+        <div className="col-12 fontr row m-0" dir="rtl">
+          <div className="col-7 row m-0">
+            <div className="col-3 pt-1">
+              <a className="hrefb" href="/">
+                <img
+                  style={{ height: "35px", marginRight: "30px" }}
+                  src={logo}
+                  alt="Company Logo"
+                  className="col"
+                />
+              </a>
             </div>
-            <div class="col-8 align-self-center d-flex justify-content-between">
-              <a class="hrefb" href="/"><span class="col-3 h5 ah">خانه</span></a>
-              <a class="hrefb" href="/products"><span class="col-3 h5 ah">محصولات</span></a>
-              <a class="hrefb" href="/products"><span class="col-3 h5 ah">دسته بندی</span></a>
-              <a class="hrefb" href="/about"><span class="col-3 h5 ah">درباره ما</span></a>
+            <div className="col-8 align-self-center d-flex justify-content-between">
+              <a className="hrefb" href="/"><span className="col-3 h5 ah">خانه</span></a>
+              <a className="hrefb" href="/products"><span className="col-3 h5 ah">محصولات</span></a>
+              <a className="hrefb" href="/categories"><span className="col-3 h5 ah">دسته بندی</span></a>
+              <a className="hrefb" href="/about"><span className="col-3 h5 ah">درباره ما</span></a>
             </div>
           </div>
 
-          <div class="col-5 row m-0">
-            <div class="col-5 align-self-center">
+          <div className="col-5 row m-0">
+            <div className="col-5 align-self-center">
               <input
-                class="form-control fontr"
+                className="form-control fontr"
                 placeholder="جست وجو ..."
                 onChange={(e) => setSearch(e.target.value)}
                 style={{ backgroundColor: "#D9D9D9" }}
+                aria-label="Search"
               />
             </div>
-            <div class="col-1 align-self-center">
+            <div className="col-1 align-self-center">
               <a href={`/products?search=${search}`}>
                 <button
-                  class="rounded-circle btn bg-transparent align-self-center"
-                  alt="جست و جو"
+                  className="rounded-circle btn bg-transparent align-self-center"
+                  aria-label="Search Button"
                   style={{ backgroundColor: "#E8E7E7" }}
                 >
-                  <i class="fa-solid fa-magnifying-glass" style={{ fontSize: "1.1 rem" }}></i>
+                  <i className="fa-solid fa-magnifying-glass" style={{ fontSize: "1.1rem" }}></i>
                 </button>
               </a>
             </div>
-            <div class="col-1"></div>
-            <div class="col-5 align-self-center">
+            <div className="col-1"></div>
+            <div className="col-5 align-self-center">
               <span>
                 {Login ? (
                   <>
-                    <a href="/login" class="hrefb h5 ah">ورود</a>
-                    <span>{" "}|{" "}</span>
+                    <a href="/login" className="hrefb h5 ah">ورود</a>
+                    <span> | </span>
                   </>
                 ) : null}
-                <a href="/account" class="hrefb h5 ah">حساب کاربری</a>
+                <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
                 {!Login && (
                   <>
-                    <button class="btn border-0 bg-transparent" onClick={logout}><i class="fas fa-sign-out-alt ah"></i></button>
-                    <span>{" "}|{" "}</span>
-                    <button class="btn border-0 bg-transparent cart-icon">
-                      <a class="hrefb" href="/cart">
-                        <i class="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1 rem" }}></i>
-                        <span class="cart-count text-dark">{CartItems?.length}</span>
+                    <button className="btn border-0 bg-transparent" onClick={logout} aria-label="Logout">
+                      <i className="fas fa-sign-out-alt ah"></i>
+                    </button>
+                    <span> | </span>
+                    <button className="btn border-0 bg-transparent cart-icon" aria-label="Cart">
+                      <a className="hrefb" href="/cart">
+                        <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1rem" }}></i>
+                        <span className="cart-count text-dark">{CartItems?.length}</span>
                       </a>
                     </button>
                   </>
@@ -127,28 +135,30 @@ const CustomNavbar = () => {
           </div>
         </div>
       ) : null}
-      <div class="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
-        <div class="col-12 m-0 d-flex">
-          <div class="col-6 d-flex justify-content-start">
+      <div className="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
+        <div className="col-12 m-0 d-flex">
+          <div className="col-6 d-flex justify-content-start">
             <BurgerMenu />
           </div>  
-          <div class="col-6 m-0 d-flex justify-content-end">
+          <div className="col-6 m-0 d-flex justify-content-end">
             <span>
               {Login ? (
                 <>
-                  <a href="/login" class="hrefb h5 ah">ورود</a>
-                  <span>{" "}|{" "}</span>
+                  <a href="/login" className="hrefb h5 ah">ورود</a>
+                  <span> | </span>
                 </>
               ) : null}
-              <a href="/account" class="hrefb h5 ah">حساب کاربری</a>
+              <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
               {!Login && (
                 <>
-                  <button class="btn border-0 bg-transparent" onClick={logout}><i class="fas fa-sign-out-alt ah"></i></button>
-                  <span>{" "}|{" "}</span>
-                  <button class="btn border-0 bg-transparent cart-icon">
-                    <a class="hrefb" href="/cart">
-                      <i class="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1 rem" }}></i>
-                      <span class="cart-count text-dark">{CartItems?.length}</span>
+                  <button className="btn border-0 bg-transparent" onClick={logout} aria-label="Logout">
+                    <i className="fas fa-sign-out-alt ah"></i>
+                  </button>
+                  <span> | </span>
+                  <button className="btn border-0 bg-transparent cart-icon" aria-label="Cart">
+                    <a className="hrefb" href="/cart">
+                      <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1rem" }}></i>
+                      <span className="cart-count text-dark">{CartItems?.length}</span>
                     </a>
                   </button>
                 </>

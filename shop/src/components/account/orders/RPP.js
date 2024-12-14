@@ -15,16 +15,16 @@ const RecentOrders = () => {
   };
 
   return (
-    <div class="bg-white p-3 shadow-0 fontr border" dir="rtl" style={{borderRadius:"10px"}}>
+    <div className="bg-white p-3 shadow-0 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
       {selectedOrder ? (
-        <div class="recent-order-details">
-          <div class="col-md-12 col-12 d-flex justify-content-end">
-            <button class="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
+        <div className="recent-order-details">
+          <div className="col-md-12 col-12 d-flex justify-content-end">
+            <button className="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
           </div>
-          <ul class="recent-product-list">
-            <li key="{product.id}" class="recent-product-item">
-              <img src={Img} alt="{product.name}" class="recent-product-image" />
-              <div class="recent-product-details">
+          <ul className="recent-product-list">
+            <li key="{product.id}" className="recent-product-item">
+              <img src={Img} alt="Copper Product" className="recent-product-image" />
+              <div className="recent-product-details">
                 <h4>مس رونالدو</h4>
                 <p>تعداد: 10</p>
                 <p>قیمت: 45000 تومان</p>
@@ -33,15 +33,15 @@ const RecentOrders = () => {
           </ul>
         </div>
       ) : (
-        <div class="recent-orders-list">
+        <div className="recent-orders-list">
           <h2>سفارشات گذشته</h2>
-          <ul class="recent-order-summary-list">
-            <li key="{order.id}" class="recent-order-summary row m-0" onClick={() => handleOrderClick("sda")}>
-              <div class="col"><p>آیدی سفارش: <span class="order-id">34</span></p></div>
-              <div class="col"><p>قیمت کل: <span class="order-amount">450900 تومان</span></p></div>
-              <div class="col"><p>تاریخ سفارش: <span class="order-date">1402/12/1</span></p></div>
-              <div class="col d-flex justify-content-end">
-                <button class="btn btn-outline-primary">مشاهده جزییات</button>
+          <ul className="recent-order-summary-list">
+            <li key="{order.id}" className="recent-order-summary row m-0" onClick={() => handleOrderClick("sda")}>
+              <div className="col"><p>آیدی سفارش: <span className="order-id">34</span></p></div>
+              <div className="col"><p>قیمت کل: <span className="order-amount">450900 تومان</span></p></div>
+              <div className="col"><p>تاریخ سفارش: <span className="order-date">1402/12/1</span></p></div>
+              <div className="col d-flex justify-content-end">
+                <button className="btn btn-outline-primary">مشاهده جزییات</button>
               </div>
             </li>
           </ul>

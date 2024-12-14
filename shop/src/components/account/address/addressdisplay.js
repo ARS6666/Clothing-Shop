@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Loading from "../../loading/loading";
-import url from "../../../config.json"
-
+import url from "../../../config.json";
 
 function AddressDisplay() {
-    const [IsLoading, setisLoading] = useState(true)
-    const [Prop, setProp] = useState([])
+    const [IsLoading, setIsLoading] = useState(true);
+    const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
 
-    function show() {
+    const fetchAddresses = () => {
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
         myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
@@ -24,16 +23,16 @@ function AddressDisplay() {
             .then((response) => response.json())
             .then((result) => {
                 setProp(result);
-                setisLoading(false)
+                setIsLoading(false);
             })
             .catch((error) => console.error(error));
-
     }
+
     useEffect(() => {
-        show()
+        fetchAddresses();
     }, []);
 
-    function RemoveAddress(id) {
+    const removeAddress = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
         myHeaders.append("X-CSRFToken", "K3pUKlDKLUZFsL3nSzrm8K6VQ5uoTWNXA6mlMlJcCjJUTl7n1qpLebKqIMXdQnUg");
@@ -45,39 +44,41 @@ function AddressDisplay() {
             redirect: "follow"
         };
 
-        fetch(`${url.baseUrl}/auth/address/` + id + "/", requestOptions)
+        fetch(`${url.baseUrl}/auth/address/${id}/`, requestOptions)
             .then((response) => response.text())
-            .then((result) => show())
+            .then(() => fetchAddresses())
             .catch((error) => console.error(error));
     }
 
-
-    return (<>
-        {IsLoading ? <Loading /> : null}
-        {Prop.map((c) => (
-            <div class="col-md-6 p-1 fontr text-end" dir="rtl" style={{ color: "gray" }}>
-                <div class=" border border-3 border-dark text-end" style={{ borderStyle: "double" }}>
-                    <div class="col-md-12 p-3">
-                        <span class="h3">{c.name}</span>
+    return (
+        <>
+            {IsLoading ? <Loading /> : null}
+            {Prop.map((c) => (
+                <div className="col-md-6 p-1 fontr text-end" dir="rtl" style={{ color: "gray" }} key={c.id}>
+                    <div className="border border-3 border-dark text-end" style={{ borderStyle: "double" }}>
+                        <div className="col-md-12 p-3">
+                            <span className="h3">{c.name}</span>
+                        </div>
+                        <div className="col-md-12 row m-0 fontr pt-2">
+                            <div className="col-md-6 text-end h5">استان: {c.ostan}</div>
+                            <div className="col-md-6 text-end h5">شهرستان: {c.shahr}</div>
+                        </div>
+                        <div className="col-md-12 pt-2 text-end">
+                            <span className="h5 p-4">کد پستی: {c.postcode}</span>
+                        </div>
+                        <div className="col-md-12 pt-2 text-end">
+                            <span className="h5 p-4" style={{ lineHeight: "1.9rem" }}>آدرس: {c.address}</span>
+                        </div>
+                        <div className="col-md-12 row m-0 fontr pt-2 p-2">
+                            <div className="col-md-12 text-start h5">
+                                <button className="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => removeAddress(c.id)}>حذف</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-12 row m-0 fontr pt-2">
-                        <div class="col-md-6 text-end h5 ">استان : {c.ostan}</div>
-                        <div class="col-md-6 text-end h5 ">شهرستان : {c.shahr}</div>
-                    </div>
-                    <div class="col-md-12 pt-2 text-end">
-                        <span class="h5 p-4 ">کد پستی :{c.postcode}</span>
-                    </div>
-                    <div class="col-md-12 pt-2 text-end">
-                        <span class="h5 p-4 " style={{ lineHeight: "1.9rem" }}>آدرس :{c.address}.</span>
-                    </div>
-                    <div class="col-md-12 row m-0 fontr pt-2 p-2 ">
-                        <div class="col-md-12 text-start h5 "><button class="btn rounded-0 text-light" style={{ backgroundColor: "#000000" }} onClick={() => RemoveAddress(c.id)}>حذف</button></div>
-                    </div>
-
                 </div>
-            </div>
-        ))}
-    </>);
+            ))}
+        </>
+    );
 }
 
 export default AddressDisplay;

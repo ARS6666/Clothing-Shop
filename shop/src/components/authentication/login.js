@@ -24,7 +24,6 @@ function Login() {
             "password": Password
         });
 
-
         const requestOptions = {
             method: "POST",
             headers: myHeaders,
@@ -38,7 +37,7 @@ function Login() {
             if (!response.ok) {
                 const errorResponse = await response.json();
                 console.log(errorResponse);
-                setErrorMessage("Login failed:" `${errorResponse.detail || response.statusText}`);
+                setErrorMessage("Login failed: " + (errorResponse.detail || response.statusText));
                 setSuccessMessage("");
                 setisLoading(false)
                 return;
@@ -49,14 +48,14 @@ function Login() {
             localStorage.setItem('token', result.access);
             localStorage.setItem('refresh', result.refresh);
 
-            setSuccessMessage("Login successful!");
+            setSuccessMessage("ورود موفقیت‌آمیز بود!");
             setErrorMessage("");
             setPhone("");
             setPassword("");
             navigate('/account');
         } catch (error) {
             console.error(error);
-            setErrorMessage("An error occurred during login.");
+            setErrorMessage("در هنگام ورود مشکلی پیش آمد.");
             setSuccessMessage("");
             setisLoading(false)
         }
@@ -65,32 +64,33 @@ function Login() {
     return (
         <>
             {IsLoading ? <Loading /> : null}
-            <div class="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
-                <div class="col-md-12 d-flex justify-content-center pt-5">
-                    <div class="col-md-4 pt-5">
-                        <div class="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>
-                            <div class="d-flex justify-content-center">
-                                <span class="h2 col-md-12 border-bottom border-dark text-center p-1"> ورود </span>
+            <div className="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
+                <div className="col-md-12 d-flex justify-content-center pt-5">
+                    <div className="col-md-4 pt-5">
+                        <div className="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>
+                            <div className="d-flex justify-content-center">
+                                <span className="h2 col-md-12 border-bottom border-dark text-center p-1"> ورود </span>
                             </div>
-                            <div class="pt-3">
-                                <label class="h5">شماره تلفن همراه:</label>
+                            <div className="pt-3">
+                                <label className="h5">شماره تلفن همراه:</label>
                             </div>
-                            <div class="pt-1" dir="ltr">
+                            <div className="pt-1" dir="ltr">
                                 <input
                                     type="Phone"
-                                    class="form-control form-control-lg"
+                                    className="form-control form-control-lg"
                                     value={Phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     id="phone"
+                                    aria-label="Phone Number"
                                 />
                             </div>
-                            <div class="pt-3">
-                                <label class="h5">رمز عبور:</label>
+                            <div className="pt-3">
+                                <label className="h5">رمز عبور:</label>
                             </div>
-                            <div class="pt-1" dir="ltr">
+                            <div className="pt-1" dir="ltr">
                                 <input
                                     type="password"
-                                    class="form-control form-control-lg"
+                                    className="form-control form-control-lg"
                                     value={Password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     onKeyDown={(e) => {
@@ -98,15 +98,16 @@ function Login() {
                                             handleLogin();
                                     }}
                                     id="password"
+                                    aria-label="Password"
                                 />
                             </div>
-                            <div class="col-md-12 d-flex justify-content-center pt-4">
-                                <button class="col-md-6 col-6 btn btn-outline-success" onClick={handleLogin}>ورود</button>
+                            <div className="col-md-12 d-flex justify-content-center pt-4">
+                                <button className="col-md-6 col-6 btn btn-outline-success" onClick={handleLogin}>ورود</button>
                             </div>
-                            {errorMessage && <div class="text-danger pt-3" dir="ltr">{errorMessage}</div>}
-                            {successMessage && <div class="text-success pt-3" dir="ltr">{successMessage}</div>}
+                            {errorMessage && <div className="text-danger pt-3" dir="ltr">{errorMessage}</div>}
+                            {successMessage && <div className="text-success pt-3" dir="ltr">{successMessage}</div>}
 
-                            <div class="col-md-12 d-flex justify-content-end pt-2">
+                            <div className="col-md-12 d-flex justify-content-end pt-2">
                                 <span>اکانت ندارید؟</span>
                                 <a href="/signin">ثبت نام کنید</a>
                             </div>

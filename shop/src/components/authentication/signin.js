@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loading/loading";
-import url from "../../config.json"
-
+import url from "../../config.json";
 
 function SignIn() {
-    const [IsLoading, setisLoading] = useState(false)
+    const [IsLoading, setIsLoading] = useState(false);
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
@@ -14,14 +13,13 @@ function SignIn() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        setisLoading(true)
+        setIsLoading(true);
         event.preventDefault();
         setError(null);
         setLoading(true);
         if (password !== password1) {
-            setError("Passwords do not match.");
-            setLoading(false);
-            return;
+            setError("رمزهای عبور مطابقت ندارند.");
+            setIsLoading(false);
         }
 
         const myHeaders = new Headers();
@@ -51,10 +49,10 @@ function SignIn() {
                 setPhone("");
                 setPassword("");
                 setPassword1("");
-                setisLoading(false)
+                setIsLoading(false);
             } else {
-                setError(result.message || "Registration failed.");
-                setisLoading(false)
+                setError(result.message || "ثبت نام ناموفق بود.");
+                setIsLoading(false);
             }
         } catch (error) {
             setError(error.toString());
@@ -63,52 +61,45 @@ function SignIn() {
         }
     };
 
-    return (<>
-        {IsLoading ? <Loading /> : null}
-        <div class="col-md-12  fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
-            <form onSubmit={handleSubmit} class="col-md-12 d-flex justify-content-center pt-5">
-
-                <div class="col-md-4 ">
-                    <div class="col-md-12 p-5  shadow bg-light" style={{ borderRadius: "20px" }}>
-                        <div class="d-flex justify-content-center">
-                            <span class="h2 col-md-12 border-bottom border-dark text-center p-1">
-                                ثبت نام
-                            </span>
-                        </div>
-                        <div class="pt-3">
-                            <label class="h5 ">تلفن همراه:</label>
-                        </div>
-
-                        <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setPhone(e.target.value)} dir="ltr" />
-                        </div>
-                        <div class="pt-3">
-                            <label class="h5 ">رمز عبور:</label>
-                        </div>
-
-                        <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setPassword(e.target.value)} dir="ltr" />
-                        </div>
-                        <small id="emailHelp" class="form-text text-muted">رمز عبور شما باید دارای 8 کرکتر باشد.</small>
-                        <div class="pt-3">
-                            <label class="h5 ">تکرار رمز عبور: </label>
-                        </div>
-
-                        <div class="pt-1">
-                            <input class="form-control form-control-lg" onChange={e => setPassword1(e.target.value)} dir="ltr" />
-                        </div>
-                        {error && <div class="alert alert-danger" role="alert">{error}</div>}
-
-                        <div class="col-md-12 d-flex justify-content-center pt-4">
-                            <button type="submit" class=" col-md-6 col-6 btn btn-outline-success">ثبت نام</button>
+    return (
+        <>
+            {IsLoading ? <Loading /> : null}
+            <div className="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
+                <form onSubmit={handleSubmit} className="col-md-12 d-flex justify-content-center pt-5">
+                    <div className="col-md-4">
+                        <div className="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>
+                            <div className="d-flex justify-content-center">
+                                <span className="h2 col-md-12 border-bottom border-dark text-center p-1">ثبت نام</span>
+                            </div>
+                            <div className="pt-3">
+                                <label className="h5">تلفن همراه:</label>
+                            </div>
+                            <div className="pt-1">
+                                <input className="form-control form-control-lg" onChange={e => setPhone(e.target.value)} dir="ltr" aria-label="Phone Number" />
+                            </div>
+                            <div className="pt-3">
+                                <label className="h5">رمز عبور:</label>
+                            </div>
+                            <div className="pt-1">
+                                <input className="form-control form-control-lg" onChange={e => setPassword(e.target.value)} dir="ltr" aria-label="Password" />
+                            </div>
+                            <small id="emailHelp" className="form-text text-muted">رمز عبور شما باید دارای 8 کرکتر باشد.</small>
+                            <div className="pt-3">
+                                <label className="h5">تکرار رمز عبور:</label>
+                            </div>
+                            <div className="pt-1">
+                                <input className="form-control form-control-lg" onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
+                            </div>
+                            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+                            <div className="col-md-12 d-flex justify-content-center pt-4">
+                                <button type="submit" className="col-md-6 col-6 btn btn-outline-success">ثبت نام</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-
-
-    </>);
+                </form>
+            </div>
+        </>
+    );
 }
 
 export default SignIn;

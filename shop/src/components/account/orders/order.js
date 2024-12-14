@@ -100,8 +100,8 @@ function Order() {
                         <p>تعداد محصولات : {Orderdetail.items.length}</p>
                         <p>تاریخ سفارش : <span dir="rtl">{iranianDate}</span></p>
                         <p>در حال ارسال</p>
-                        <button class="btn btn-outline-primary">
-                            {showProducts ? <i className="fa-solid fa-chevron-up"><span className="fontr">بستن</span></i> : <i className="fa-solid fa-chevron-down "><span className="fontr">مشاهده سفارشات</span></i>}
+                        <button className="btn btn-outline-primary">
+                            {showProducts ? <i className="fa-solid fa-chevron-up"><span className="fontr">بستن</span></i> : <i className="fa-solid fa-chevron-down"><span className="fontr">مشاهده سفارشات</span></i>}
                         </button>
                     </div>
                     {showProducts && (

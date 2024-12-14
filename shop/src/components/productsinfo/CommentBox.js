@@ -61,9 +61,9 @@ const Comments = () => {
     }
 
     const raw = JSON.stringify({
-      "name": name,
-      "text": comment,
-      "product": productId
+      name: name,
+      text: comment,
+      product: productId
     });
 
     const requestOptions = {
@@ -82,7 +82,7 @@ const Comments = () => {
         }
         return response.json();
       })
-      .then((result) => {
+      .then(() => {
         setComment("");
         setName("");
         fetch(`${url.baseUrl}/comments/comment/?product_id=` + productId)
@@ -131,7 +131,8 @@ const Comments = () => {
                 </div>
               ))}
             <div className="col-md-12 pt-3">
-              <button className="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable}>{ButtContent}
+              <button className="btn btn-dark hover rounded-0 col-md-12" onClick={HandleShow} disabled={ButtDisable} aria-label="Show More Comments">
+                {ButtContent}
               </button>
             </div>
           </div>
@@ -142,8 +143,9 @@ const Comments = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-control form-control-solid form-control-lg bg-light form-control form-control-lg border-dark rounded-0"
+                  className="form-control form-control-solid form-control-lg bg-light border-dark rounded-0"
                   placeholder="نام و نام خانوادگی:"
+                  aria-label="Name"
                 />
               </div>
             </div>
@@ -159,6 +161,7 @@ const Comments = () => {
                   onChange={(e) => setComment(e.target.value)}
                   className="form-control form-control-lg border-dark rounded-0 textarea"
                   placeholder="نظر شما:"
+                  aria-label="Comment"
                 />
               </div>
             </div>
@@ -166,6 +169,7 @@ const Comments = () => {
               <button
                 onClick={sendToServer}
                 className="col-md-3 col-3 btn btn-success"
+                aria-label="Submit Comment"
               >
                 ثبت
               </button>

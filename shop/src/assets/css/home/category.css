@@ -9,6 +9,13 @@
     }
 
 }
+.cat-hover{
+    transition: transform 0.3s ease-in-out;
+}
+.cat-hover:hover{
+    transform: scale(1.05);
+
+}
 
 .slider-container {
     position: relative;

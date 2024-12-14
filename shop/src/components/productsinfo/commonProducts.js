@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../../assets/css/hide.css";
 import "../../assets/css/productsinfo/commonprod.css";
-import url from "../../config.json"
-
-
+import url from "../../config.json";
 
 const CommonProducts = () => {
-  const [Productss, setPRoduct] = useState([]);
-  const [IsLoading, setisLoading] = useState(true)
-  const [Categories, setCategories] = useState([]);
-  const [Catid, setCatid] = useState(['']);
+  const [products, setProducts] = useState([]);
+  const [categoryId, setCategoryId] = useState(['']);
   const [currentIndex, setCurrentIndex] = useState(0);
   const location = useLocation();
   const [id, setId] = useState('');
-  const [Filter, setFilter] = useState([]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -37,7 +32,7 @@ const CommonProducts = () => {
     if (id) {
       fetch(`${url.baseUrl}/api/products/` + id, requestOptions)
         .then((response) => response.json())
-        .then((result) => setCatid(result.category_id))
+        .then((result) => setCategoryId(result.category_id))
         .catch((error) => console.error(error));
     }
   }, [id]);
@@ -52,19 +47,17 @@ const CommonProducts = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-    if (Catid) {
-      fetch(`${url.baseUrl}/api/products/?category=` + Catid, requestOptions)
+    if (categoryId) {
+      fetch(`${url.baseUrl}/api/products/?category=` + categoryId, requestOptions)
         .then((response) => response.json())
-        .then((result) => setPRoduct(result))
+        .then((result) => setProducts(result))
         .catch((error) => console.error(error));
     }
-
-  }, [Catid]);
-
+  }, [categoryId]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      Math.min(prevIndex + 1, Productss.length - 1)
+      Math.min(prevIndex + 1, products.length - 1)
     );
   };
 
@@ -74,71 +67,72 @@ const CommonProducts = () => {
 
   useEffect(() => {
     const intervalId = setInterval(nextSlide, 20000);
-
     return () => clearInterval(intervalId);
-  }, [Productss]);
+  }, [products]);
+
   return (
-    <div class="slider-container pt-5 remove p-4 fontr">
-      <div class="border-bottom border-dark col-md-12 row m-0">
-        <div class="d-flex justify-content-start col-md-6">
-          <div class="m-1 fontr">
+    <div className="slider-container pt-5 remove p-4 fontr">
+      <div className="border-bottom border-dark col-md-12 row m-0">
+        <div className="d-flex justify-content-start col-md-6">
+          <div className="m-1 fontr">
             <button
-              class="btn btn-outline-dark"
+              className="btn btn-outline-dark"
               onClick={nextSlide}
-              disabled={currentIndex >= Productss.length - 3}
+              disabled={currentIndex >= products.length - 3}
+              aria-label="Next"
             >
               بعدی
             </button>
           </div>
-          <div class="m-1 fontr">
+          <div className="m-1 fontr">
             <button
-              class="btn btn-outline-dark"
+              className="btn btn-outline-dark"
               onClick={prevSlide}
               disabled={currentIndex === 0}
+              aria-label="Previous"
             >
               قبلی
             </button>
           </div>
         </div>
-        <div class="d-flex justify-content-end col-md-6">
-          <span class=" fontr h3  align-self-center">محصولات مشابه</span>
+        <div className="d-flex justify-content-end col-md-6">
+          <span className="fontr h3 align-self-center">محصولات مشابه</span>
         </div>
       </div>
-
-      <div class="product-sl">
-        <div class="col-md-12 row m-0 " dir="rtl">
-          <div class="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
-            {Productss?.map((c, index) => (
-              <div class="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
-                <div class={`${c.count === 0 ? 'out-of-stock col-md-12' : ' product-carde'}`}>
-                  <div class="row m-0 d-flex justify-content-end">
-                    {c.discount != 0 ? <div class="discountDisplay"><span class="">{c.discount}%</span></div> : null}
-                    <div class="d-flex justify-content-center ">
+      <div className="product-sl">
+        <div className="col-md-12 row m-0" dir="rtl">
+          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
+            {products?.map((product) => (
+              <div key={product.id} className="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
+                <div className={product.count === 0 ? 'out-of-stock col-md-12' : 'product-carde'}>
+                  <div className="row m-0 d-flex justify-content-end">
+                    {product.discount !== 0 && (
+                      <div className="discountDisplay">
+                        <span>{product.discount}%</span>
+                      </div>
+                    )}
+                    <div className="d-flex justify-content-center">
                       <img
-                        src={c.pic}
-                        class="Img col-md-11 p-2"
+                        src={product.pic}
+                        className="Img col-md-11 p-2"
+                        alt={product.name}
                       />
                     </div>
-                    <div class="d-flex justify-content-center pt-2">
-                      <span class="h5 fontr text-center">{c.name}</span>
+                    <div className="d-flex justify-content-center pt-2">
+                      <span className="h5 fontr text-center">{product.name}</span>
                     </div>
-                    <div class="d-flex justify-content-center ">
-                      <span class="h5 fontr pt-1" dir="rtl">
-                        {c.price} هزار تومن
+                    <div className="d-flex justify-content-center">
+                      <span className="h5 fontr pt-1" dir="rtl">
+                        {product.price} هزار تومن
                       </span>
                     </div>
                   </div>
-                  <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                    <div class="hover-detailse col-md-12 ">
-                      <div
-                        class="d-flex justify-content-center "
-                        style={{ paddingTop:"45%" }}
-                      >
-                        <a class="hrefb align-self-center" href={"pi?id=" + c.id}>
-                          <button class="btn btn-light hover fontr">
-                            مشاهده محصول
-                          </button>
-                        </a>
+                  <a className="hrefb align-self-center" href={`pi?id=${product.id}`} aria-label={`View ${product.name}`}>
+                    <div className="hover-detailse col-md-12">
+                      <div className="d-flex justify-content-center" style={{ paddingTop: "45%" }}>
+                        <button className="btn btn-light hover fontr" aria-label="View Product">
+                          مشاهده محصول
+                        </button>
                       </div>
                     </div>
                   </a>

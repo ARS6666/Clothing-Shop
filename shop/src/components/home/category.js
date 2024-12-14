@@ -50,6 +50,7 @@ const ProductSlider = () => {
                 class="btn border-0"
                 onClick={nextSlide}
                 disabled={currentIndex === 3}
+                aria-label="Next"
               >
                 {`<`}
               </button>
@@ -59,6 +60,7 @@ const ProductSlider = () => {
                 class="btn border-0"
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
+                aria-label="Previous"
               >
                 {`>`}
               </button>
@@ -69,15 +71,15 @@ const ProductSlider = () => {
 
         <div class="slider-container col-md-12 row m-0 pt-2" dir="rtl">
           <div class="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
-            {Categories.map((c, index) => (
-              <div class="col-md-2 col-6" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
-                <a class="hrefb align-self-center" href={"/products?category=" + c.name}>
+            {Categories.map((categories, index) => (
+              <div class="col-md-2 col-6 cat-hover" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
+                <a class="hrefb align-self-center" href={"/products?category=" + categories.name}>
                   <div class="row m-0">
                     <div class="d-flex justify-content-center ">
-                      <img src={c.image} title ={c.name} class="d-block col-md-11 p-2 w-100" alt={c.name} />
+                      <img src={categories.image} title ={categories.name} class="d-block col-md-11 p-2 w-100" alt={categories.name} />
                     </div>
                     <div class="d-flex justify-content-center pt-2">
-                      <span class="h4 fontr">{c.name}</span>
+                      <h4 class="h4 fontr">{categories.name}</h4>
                     </div>
                   </div>
                 </a>
