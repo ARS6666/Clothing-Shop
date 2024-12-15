@@ -213,7 +213,7 @@ function Address() {
             .catch((error) => console.error(error));
     }
 
-    const [isOverlayOpen, setIsOverlayOpen] = useState(true);
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
     const handleOverlay = () => {
         setIsOverlayOpen(!isOverlayOpen);
