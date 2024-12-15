@@ -12,7 +12,7 @@ const RecentOrders = () => {
   const token = localStorage.getItem('token');
   const [Orderhistory, setOrderhistory] = useState([{ items: [] }])
   const [OrderItems, setOrderItems] = useState([])
-  const [ISOrderhistory, setISOrderhistory] = useState(false)
+  const [ISOrderhistory, setISOrderhistory] = useState(true)
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -29,7 +29,7 @@ const RecentOrders = () => {
       .then((response) => response.json())
       .then((result) => setOrderhistory(result))
       .catch((error) => console.error(error));
-    if (Orderhistory.length != 0) {
+    if (Orderhistory.length > 0) {
       setISOrderhistory(true)
     }
   }, []);
@@ -93,8 +93,6 @@ const RecentOrders = () => {
   return (
     <div className={ISOrderhistory ? "bg-white p-3 shadow-0 fontr" : "bg-white p-3 shadow-0 fontr border"} dir="rtl" style={{ borderRadius: "10px" }}>
       {ISOrderhistory ?
-        <div className='col-md-12 col-12 d-flex justify-content-center'><h3 className='text-dark'>تاریخچه ای وجود ندارد!</h3></div>
-        :
         <>{selectedOrder ? (
           <div className="recent-order-details">
             <div className="col-md-12 col-12 d-flex justify-content-end">
@@ -132,7 +130,8 @@ const RecentOrders = () => {
 
           </div>
         )}
-        </>}
+        </> : <div className='col-md-12 col-12 d-flex justify-content-center'><h3 className='text-dark'>تاریخچه ای وجود ندارد!</h3></div>
+      }
     </div>
   );
 };
