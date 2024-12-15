@@ -9,7 +9,7 @@ function Home() {
     <Example />
     <Cat />
     <Prod />
-    {/* <OFF /> */}
+    <OFF />
   </>);
 }
 

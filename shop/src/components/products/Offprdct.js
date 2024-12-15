@@ -64,7 +64,7 @@ const ProductCarousel = () => {
             <Slider ref={sliderRef} {...settings}>
               {products.map((c) => (
                 <div key={c.id} className="p-3 col-md-3 fontr" style={{ minWidth: `calc(100% / 4)` }}>
-                  <div className={c.count === 0 ? 'out-of-stock col-md-12' : 'product-carde'}>
+                  <div className={c.count === 0 ? 'out-of-stock col-md-12' : 'pproduct-carde'}>
                     <div className="row m-0 d-flex justify-content-end">
                       {c.discount !== 0 && (
                         <div className="discountDisplay">
@@ -92,7 +92,7 @@ const ProductCarousel = () => {
                       href={`pi?id=${c.id}`}
                       aria-label={`View ${c.name}`}
                     >
-                      <div className="hover-detailse col-md-12">
+                      <div className="hhover-detailse col-md-12">
                         <div
                           className="d-flex justify-content-center"
                           style={{ paddingTop: "45%" }}
@@ -127,3 +127,4 @@ const ProductCarousel = () => {
 };
 
 export default ProductCarousel;
+
