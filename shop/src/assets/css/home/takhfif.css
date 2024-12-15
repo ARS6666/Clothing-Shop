@@ -1,14 +1,10 @@
 .IImge {
     object-fit: cover;
-    height: 350px;
-}
-
-.bbpe {
-    height: 350px;
+    height: 300px;
 }
 
 .pproduct-carde {
-    height: 375px;
+    height: 350px;
     transition: transform .5s;
 }
 
@@ -30,18 +26,7 @@
 }
 
 .pproduct-carde:hover .hhover-detailse {
-    display: block;
-    /* Show on hover */
-}
-
-.slider-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.slider {
-    display: flex;
-    transition: transform 0.5s ease;
+    display: block; /* Show on hover */
 }
 
 @media (max-width: 1024px) {
@@ -49,8 +34,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 250px;
-
+        height: 100%;
     }
 
     .IImge {
@@ -61,35 +45,41 @@
         height: 250px;
     }
 
-    .bbpe {
-        height: 200px;
-    }
-
-
 }
 
-@media (max-width: 756px) {
+@media (max-width: 768px) {
     .hhover-detailse {
         top: 0;
         left: 0;
         right: 0;
-        height: 300px;
-
+        height: 100%;
     }
 
     .IImge {
-        height: 200px;
+        height: 150px;
     }
 
     .pproduct-carde {
-        height: 300px;
+        height: 200px;
     }
 
-    .bbpe {
-        height: 300px;
+}
+
+@media (max-width: 576px) {
+    .hhover-detailse {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
     }
 
+    .IImge {
+        height: 100px;
+    }
 
+    .pproduct-carde {
+        height: 150px;
+    }
 }
 
 .Anim {

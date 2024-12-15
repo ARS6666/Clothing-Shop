@@ -12,6 +12,7 @@ const ProductCarousel = () => {
   const sliderRef = useRef(null);
   const [products, setproducts] = useState([]);
   const [OffDis, setOffDis] = useState(false);
+  const[Isvisible,setIsvisible] = useState(true)
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -28,11 +29,11 @@ const ProductCarousel = () => {
       .then((response) => response.json())
       .then((result) => setproducts(result))
       .catch((error) => console.error(error));
-      
+
     if (products.length === 5) {
       setOffDis(true);
     }
-  }, [products]);
+  }, []);
 
   const settings = {
     dots: false,
@@ -43,10 +44,27 @@ const ProductCarousel = () => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+  const handleResize = () => {
+    if (window.innerWidth < 1024) {
+      setIsvisible(false);
+    } else {
+      setIsvisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
-      {!OffDis && (
+    {Isvisible ?
+      <>{!OffDis && (
         <>
           <div className="col-md-12 d-flex justify-content-center">
             <div className="d-flex justify-content-end col-md-11 border-bottom">
@@ -63,9 +81,9 @@ const ProductCarousel = () => {
             </Button>
             <Slider ref={sliderRef} {...settings}>
               {products.map((c) => (
-                <div key={c.id} className="p-3 col-md-3 fontr" style={{ minWidth: `calc(100% / 4)` }}>
-                  <div className={c.count === 0 ? 'out-of-stock col-md-12' : 'pproduct-carde'}>
-                    <div className="row m-0 d-flex justify-content-end">
+                <div key={c.id} className="p-3 col-md-3 col-12 fontr" style={{ minWidth: `calc(100% / 4)` }}>
+                  <div className={c.count === 0 ? 'out-of-stock col-md-12 col-12' : 'product-carde'}>
+                    <div className="row m-0 d-flex justify-content-start">
                       {c.discount !== 0 && (
                         <div className="discountDisplay">
                           <span>{c.discount}%</span>
@@ -92,7 +110,7 @@ const ProductCarousel = () => {
                       href={`pi?id=${c.id}`}
                       aria-label={`View ${c.name}`}
                     >
-                      <div className="hhover-detailse col-md-12">
+                      <div className="hover-detailse col-md-12">
                         <div
                           className="d-flex justify-content-center"
                           style={{ paddingTop: "45%" }}
@@ -121,10 +139,9 @@ const ProductCarousel = () => {
             </Button>
           </div>
         </>
-      )}
+      )}</> : <></>}
     </>
   );
 };
 
 export default ProductCarousel;
-

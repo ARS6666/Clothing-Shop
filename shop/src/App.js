@@ -4,6 +4,7 @@ import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
 import PI from './components/ProductPage';
 import Products from './components/ProductList';
+import Test from "./components/products/Offprdct"
 import Cart from './components/account/Cart/cart';
 import Signin from './components/authentication/signin';
 import Login from './components/authentication/login';
@@ -20,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/signin', '*', '/panel ', '/cart'];
+  const hideFooterPaths = ['/login', '/signin', '/test', '/panel ', '/cart'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
 
@@ -34,6 +35,7 @@ const AppContent = () => {
           <Route path='*' element={<NotFoundPage />} />
           <Route path='/pi' element={<PI />} />
           <Route path='/products' element={<Products />} />
+          <Route path='/test' element={<Test />} />
           <Route path='/account' element={
             <PrivateRoute>
               <Panel />
