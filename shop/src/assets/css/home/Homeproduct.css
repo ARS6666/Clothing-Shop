@@ -1,9 +1,7 @@
 .Imgee {
     object-fit: cover;
     width: 100%;
-    /* Ensure image scales with container */
     max-height: 300px;
-    /* Initial height */
 }
 
 .bpee {
@@ -22,7 +20,8 @@
 .hover-detailsee {
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
+    padding-top: 10%;
     background: rgba(255, 255, 255, 0.17);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.4px);

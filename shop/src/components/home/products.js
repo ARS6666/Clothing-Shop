@@ -58,7 +58,7 @@ function HProducts() {
                 <span class="h5 fontr text-center col-md-8">{c.name}</span>
               </div>
               <div class="d-flex justify-content-center">
-                <span class="fontr pt-1" dir="rtl">
+                <span class="fontr h5 pt-1" dir="rtl">
                   {addCommas(c.price)} هزار تومان
                 </span>
               </div>
@@ -74,8 +74,8 @@ function HProducts() {
           </div>
           </div>
         ))}
-        <div class="d-flex justify-content-center pt-4 mb-4">
-          <a class="hrefw col-md-6 col-12" href="/products"><button class="btn btn-lg btn-dark col-md-12">مشاهده همه</button></a>
+        <div class="d-flex justify-content-center pt-4 pb-4">
+          <a class="hrefw col-md-6 col-12" href="/products"><button class="btn btn-lg btn-dark col-md-12 col-10">مشاهده همه</button></a>
         </div>
       </div>
     </>
