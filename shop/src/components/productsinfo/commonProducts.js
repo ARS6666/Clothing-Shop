@@ -70,6 +70,15 @@ const CommonProducts = () => {
     return () => clearInterval(intervalId);
   }, [products]);
 
+  const addCommas = (number) => {
+    if (number !== undefined) {
+      let [integer] = number.toString().split('.');
+      integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return integer;
+    }
+    return null;
+  };
+
   return (
     <div className="slider-container pt-5 remove p-4 fontr">
       <div className="border-bottom border-dark col-md-12 row m-0">
@@ -123,7 +132,7 @@ const CommonProducts = () => {
                     </div>
                     <div className="d-flex justify-content-center">
                       <span className="h5 fontr pt-1" dir="rtl">
-                        {product.price} هزار تومن
+                        {addCommas(product.price)} هزار تومن
                       </span>
                     </div>
                   </div>

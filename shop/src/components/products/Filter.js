@@ -51,8 +51,8 @@ const Filter = ({ onFilterChange }) => {
   }, []);
 
   return (
-    <div className="col-md-12 fontr d-flex justify-content-end" dir='rtl'>
-      <div className="rounded fix col-md-12 col-12">
+    <div className="col-md-12 fontr d-flex justify-content-center border" style={{borderRadius:"10px"}} dir='rtl'>
+      <div className="rounded fix col-md-12 col-12 p-3">
         <div className="p-1">
           <div className="filter-header">فیلتر محصولات</div>
           <div className="filter-input">

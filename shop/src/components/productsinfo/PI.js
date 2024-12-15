@@ -122,11 +122,12 @@ function ProductInfo() {
           <div className="col-md-6 d-flex flex-column">
             <div className="row m-0">
               <div className="col-md-2 remove d-flex flex-column align-items-end romove">
-                {IMG?.slice(0,4).map((c) => (
+                {IMG?.slice(0, 4).map((c) => (
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="Product Thumbnail" />
                 ))}
               </div>
               <div className="magnify-container col-md-10 d-flex justify-content-center">
+                <div className="d-flex justify-content-start">{product.discount !== 0 && product.count !== 0 ? <div class="discountDisplay">{product.discount}%</div> : null}</div>
                 <Carousel>
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>

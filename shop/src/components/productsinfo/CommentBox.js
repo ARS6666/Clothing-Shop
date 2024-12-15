@@ -162,6 +162,7 @@ const Comments = () => {
                   className="form-control form-control-lg border-dark rounded-0 textarea"
                   placeholder="نظر شما:"
                   aria-label="Comment"
+                  style={{maxHeight:"250px"}}
                 />
               </div>
             </div>

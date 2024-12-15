@@ -12,6 +12,7 @@ const RecentOrders = () => {
   const token = localStorage.getItem('token');
   const [Orderhistory, setOrderhistory] = useState([{ items: [] }])
   const [OrderItems, setOrderItems] = useState([])
+  const [ISOrderhistory, setISOrderhistory] = useState(false)
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -24,11 +25,13 @@ const RecentOrders = () => {
       headers: myHeaders,
       redirect: "follow"
     };
-
     fetch(`${url.baseUrl}/order/order-history`, requestOptions)
       .then((response) => response.json())
       .then((result) => setOrderhistory(result))
       .catch((error) => console.error(error));
+    if (Orderhistory.length != 0) {
+      setISOrderhistory(true)
+    }
   }, []);
 
   function fetchOrderItems(orderId) {
@@ -88,43 +91,48 @@ const RecentOrders = () => {
 
 
   return (
-    <div className="bg-white p-3 shadow-0 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
-      {selectedOrder ? (
-        <div className="recent-order-details">
-          <div className="col-md-12 col-12 d-flex justify-content-end">
-            <button className="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
+    <div className={ISOrderhistory ? "bg-white p-3 shadow-0 fontr" : "bg-white p-3 shadow-0 fontr border"} dir="rtl" style={{ borderRadius: "10px" }}>
+      {ISOrderhistory ?
+        <div className='col-md-12 col-12 d-flex justify-content-center'><h3 className='text-dark'>تاریخچه ای وجود ندارد!</h3></div>
+        :
+        <>{selectedOrder ? (
+          <div className="recent-order-details">
+            <div className="col-md-12 col-12 d-flex justify-content-end">
+              <button className="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
+            </div>
+            <ul className="recent-product-list">
+              {OrderItems.map((c) => (
+                <a className="hrefb" href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
+                  <li className="product-item">
+                    <img src={`${c.product.pic}`} alt={c.product.name} className="product-image" />
+                    <div className="product-details">
+                      <h4>{truncateString(c.product.name)}</h4>
+                      <p>{c.product.category}</p>
+                      <p>قیمت: {addCommas(c.product.price)} تومان</p>
+                      <p>تعداد: {c.quantity}</p>
+                    </div>
+                  </li>
+                </a>
+              ))}
+            </ul>
           </div>
-          <ul className="recent-product-list">
-            {OrderItems.map((c) => (
-              <a className="hrefb" href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
-                <li className="product-item">
-                  <img src={`${c.product.pic}`} alt={c.product.name} className="product-image" />
-                  <div className="product-details">
-                    <h4>{truncateString(c.product.name)}</h4>
-                    <p>{c.product.category}</p>
-                    <p>قیمت: {addCommas(c.product.price)} تومان</p>
-                    <p>تعداد: {c.quantity}</p>
-                  </div>
-                </li>
-              </a>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <div className="recent-orders-list">
-          <h2>سفارشات گذشته</h2>
-          <ul className="recent-order-summary-list">
-            {Orderhistory.map((order) => (<li key={order.id} className="recent-order-summary row m-0" onClick={() => handleOrderClick(order.id)}>
-              <div className="col"><p>آیدی سفارش: <span className="order-id">{order.id}</span></p></div>
-              <div className="col"><p>قیمت کل: <span className="order-amount">{addCommas(order.total)} تومان</span></p></div>
-              <div className="col"><p>تاریخ سفارش: <span className="order-date">{convertToIranianDate(order.created_at)}</span></p></div>
-              <div className="col d-flex justify-content-end">
-                <button className="btn btn-outline-primary">مشاهده جزییات</button>
-              </div>
-            </li>))}
-          </ul>
-        </div>
-      )}
+        ) : (
+          <div className="recent-orders-list">
+            <h2>سفارشات گذشته</h2>
+            <ul className="recent-order-summary-list">
+              {Orderhistory?.map((order) => (<li key={order.id} className="recent-order-summary row m-0" onClick={() => handleOrderClick(order.id)}>
+                <div className="col"><p>آیدی سفارش: <span className="order-id">{order.id}</span></p></div>
+                <div className="col"><p>قیمت کل: <span className="order-amount">{addCommas(order.total)} تومان</span></p></div>
+                <div className="col"><p>تاریخ سفارش: <span className="order-date">{convertToIranianDate(order.created_at)}</span></p></div>
+                <div className="col d-flex justify-content-end">
+                  <button className="btn btn-outline-primary">مشاهده جزییات</button>
+                </div>
+              </li>))}
+            </ul>
+
+          </div>
+        )}
+        </>}
     </div>
   );
 };
