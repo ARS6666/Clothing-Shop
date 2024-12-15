@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../../assets/css/account/RPP.css';
 import Img from "../../../assets/media/logo.jpg";
 import url from "../../../config.json";
+import "../../../assets/css/account/order.css"
 
 
 const RecentOrders = () => {
@@ -11,15 +12,6 @@ const RecentOrders = () => {
   const token = localStorage.getItem('token');
   const [Orderhistory, setOrderhistory] = useState([{ items: [] }])
   const [OrderItems, setOrderItems] = useState([])
-
-
-  const handleOrderClick = (order) => {
-    setSelectedOrder(order);
-  };
-
-  const handleBackClick = () => {
-    setSelectedOrder(null);
-  };
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -37,8 +29,25 @@ const RecentOrders = () => {
       .then((response) => response.json())
       .then((result) => setOrderhistory(result))
       .catch((error) => console.error(error));
-    console.log(Orderhistory)
   }, []);
+
+  function fetchOrderItems(orderId) {
+    const order = Orderhistory.find(order => order.id === orderId);
+    if (order) {
+      setOrderItems(order.items);
+    }
+  };
+
+  const handleOrderClick = (order) => {
+    setSelectedOrder(order);
+    fetchOrderItems(order);
+  };
+
+  const handleBackClick = () => {
+    setSelectedOrder(null);
+  };
+
+
   function convertToIranianDate(isoDate) {
     if (!isoDate) {
       return 'Invalid date';
@@ -68,12 +77,15 @@ const RecentOrders = () => {
     }
     return null;
   };
-  function fetchOrderItems(orderId) {
-    const order = orders.find(order => order.id === orderId);
-    if (order) {
-      setOrderItems(order.items);
+  function truncateString(str) {
+    const words = str.split(' ');
+    if (words.length <= 6) {
+      return str;
     }
-  };
+    const truncated = words.slice(0, 6).join(' ');
+    return `${truncated}...`;
+  }
+
 
   return (
     <div className="bg-white p-3 shadow-0 fontr border" dir="rtl" style={{ borderRadius: "10px" }}>
@@ -83,14 +95,19 @@ const RecentOrders = () => {
             <button className="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
           </div>
           <ul className="recent-product-list">
-            <li key="{product.id}" className="recent-product-item">
-              <img src={Img} alt="Copper Product" className="recent-product-image" />
-              <div className="recent-product-details">
-                <h4>مس رونالدو</h4>
-                <p>تعداد: 10</p>
-                <p>قیمت: 45000 تومان</p>
-              </div>
-            </li>
+            {OrderItems.map((c) => (
+              <a className="hrefb" href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
+                <li className="product-item">
+                  <img src={`${c.product.pic}`} alt={c.product.name} className="product-image" />
+                  <div className="product-details">
+                    <h4>{truncateString(c.product.name)}</h4>
+                    <p>{c.product.category}</p>
+                    <p>قیمت: {addCommas(c.product.price)} تومان</p>
+                    <p>تعداد: {c.quantity}</p>
+                  </div>
+                </li>
+              </a>
+            ))}
           </ul>
         </div>
       ) : (
