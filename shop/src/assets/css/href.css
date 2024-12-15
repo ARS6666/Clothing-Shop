@@ -6,3 +6,12 @@
     text-decoration: none;
     color: white;
 }
+.eye{
+    position: absolute;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+
+}
+.eye:hover{
+    transform: scale(1.05);
+}

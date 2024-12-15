@@ -11,6 +11,11 @@ function Login() {
     const [IsLoading, setisLoading] = useState(false)
     const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
 
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
@@ -87,9 +92,13 @@ function Login() {
                             <div className="pt-3">
                                 <label className="h5">رمز عبور:</label>
                             </div>
-                            <div className="pt-1" dir="ltr">
+                            <div className="pt-1">
+                                <button className="btn btn-outline-transparent eye" onClick={toggleShowPassword} type="button">
+                                    {showPassword ? <i class="fa-solid fa-eye-slash"></i> : <i class="fa-solid fa-eye"></i>}
+                                </button>
                                 <input
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    dir="ltr"
                                     className="form-control form-control-lg"
                                     value={Password}
                                     onChange={(e) => setPassword(e.target.value)}

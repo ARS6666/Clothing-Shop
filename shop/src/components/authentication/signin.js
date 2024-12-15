@@ -11,6 +11,10 @@ function SignIn() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     const handleSubmit = async (event) => {
         setIsLoading(true);
@@ -72,7 +76,7 @@ function SignIn() {
                                 <span className="h2 col-md-12 border-bottom border-dark text-center p-1">ثبت نام</span>
                             </div>
                             <div className="pt-3">
-                                <label className="h5">تلفن همراه:</label>
+                                <label className="h5">شماره تلفن همراه:</label>
                             </div>
                             <div className="pt-1">
                                 <input className="form-control form-control-lg" onChange={e => setPhone(e.target.value)} dir="ltr" aria-label="Phone Number" />
@@ -81,14 +85,17 @@ function SignIn() {
                                 <label className="h5">رمز عبور:</label>
                             </div>
                             <div className="pt-1">
-                                <input className="form-control form-control-lg" onChange={e => setPassword(e.target.value)} dir="ltr" aria-label="Password" />
+                                <button className="btn btn-outline-transparent eye" onClick={toggleShowPassword} type="button">
+                                    {showPassword ? <i class="fa-solid fa-eye-slash"></i> : <i class="fa-solid fa-eye"></i>}
+                                </button>
+                                <input className="form-control form-control-lg" type={showPassword ? 'text' : 'password'} onChange={e => setPassword(e.target.value)} dir="ltr" aria-label="Password" />
                             </div>
                             <small id="emailHelp" className="form-text text-muted">رمز عبور شما باید دارای 8 کرکتر باشد.</small>
                             <div className="pt-3">
                                 <label className="h5">تکرار رمز عبور:</label>
                             </div>
                             <div className="pt-1">
-                                <input className="form-control form-control-lg" onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
+                                <input className="form-control form-control-lg" type={showPassword ? 'text' : 'password'} onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
                             </div>
                             {error && <div className="alert alert-danger" role="alert">{error}</div>}
                             <div className="col-md-12 d-flex justify-content-center pt-4">
@@ -103,3 +110,5 @@ function SignIn() {
 }
 
 export default SignIn;
+
+
