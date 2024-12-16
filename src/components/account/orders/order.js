@@ -95,11 +95,11 @@ function Order() {
                     <div className="col-md-12 d-flex justify-content-center">
                         <h2 className="border-bottom border-4 border-danger p-3 col-md-3 col-6 text-center">سفارش در جریان</h2>
                     </div>
-                    <div className="order-header p-3" onClick={toggleProducts}>
-                        <p className="p-1"><i className="fa-solid fa-cart-shopping m-2"></i>آیدی سفارش : {Orderdetail.id}</p>
+                    <div className="order-header p-3" onClick={toggleProducts} dir="ltr">
+                        <p className="p-1">آیدی سفارش : {Orderdetail.id}<i className="fa-solid fa-cart-shopping m-2"></i></p>
                         <p>قیمت کل: {addCommas(Orderdetail.total)} تومان</p>
                         <p>تعداد محصولات : {Orderdetail.items.length}</p>
-                        <p>تاریخ سفارش : <span dir="rtl">{iranianDate}</span></p>
+                        <p><span dir="rtl">{iranianDate}</span> : تاریخ سفارش </p>
                         <p>در حال ارسال</p>
                         <button className="btn btn-outline-primary">
                             {showProducts ? <i className="fa-solid fa-chevron-up"><span className="fontr">بستن</span></i> : <i className="fa-solid fa-chevron-down"><span className="fontr">مشاهده سفارشات</span></i>}

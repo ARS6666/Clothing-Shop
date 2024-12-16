@@ -38,8 +38,7 @@ function Products() {
     const fetchProducts = async () => {
       const myHeaders = new Headers();
       myHeaders.append("accept", "application/json");
-      myHeaders.append("authorization", "Basic MDkxMDQ4NDU3NDk6MTIz");
-      myHeaders.append("X-CSRFToken", "krMY06dKPZfPJAhssIix8Yjkc9BgJfTCrx6NCcOUN154E9d3tW4npwnd7MvWUz01");
+      myHeaders.append("X-CSRFToken", "ILg6BalvqqJgB7hTVi0Pws5c4Nalxq1GnucwFC7yoZa5gHDVxXVcvPsZKmqIH0yb");
 
       const requestOptions = {
         method: "GET",
@@ -49,6 +48,12 @@ function Products() {
 
       try {
         const response = await fetch(`${url.baseUrl}/api/products/`, requestOptions);
+
+        if (!response.ok) {
+          console.error('Error fetching data:', response.status, response.statusText);
+          return;
+        }
+
         const result = await response.json();
         setDetail(result);
         setIsLoading(false);
@@ -59,6 +64,8 @@ function Products() {
 
     fetchProducts();
   }, []);
+
+
 
   const handleFilterChange = (filters) => {
     setSearchTerm(filters.searchTerm);
@@ -87,19 +94,19 @@ function Products() {
 
   const displayedProducts = Object.values(groupedProducts).flatMap(products => products);
 
-  const [content, setContent] = useState( 
-<button
-    className="btn btn-dark col-md-12 col-12 add"
-    onClick={() => {
-      handleClick(); changeContent(
-        <div className="col-md-12 col-12">
-          <Filter onFilterChange={handleFilterChange} />
-        </div>
-      )
-    }}
-    aria-label="Apply Filters"
-  ><span className="h5 fontr">اعمال فیلتر</span>
-  </button>);
+  const [content, setContent] = useState(
+    <button
+      className="btn btn-dark col-md-12 col-12 add"
+      onClick={() => {
+        handleClick(); changeContent(
+          <div className="col-md-12 col-12">
+            <Filter onFilterChange={handleFilterChange} />
+          </div>
+        )
+      }}
+      aria-label="Apply Filters"
+    ><span className="h5 fontr">اعمال فیلتر</span>
+    </button>);
 
   const changeContent = (newContent) => {
     setContent(newContent);

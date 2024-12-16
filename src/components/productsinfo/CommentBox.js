@@ -119,7 +119,7 @@ const Comments = () => {
   };
 
   return (
-    <div className="container-xl col-12 d-flex justify-content-center pt-5">
+    <div className="container-xl col-12 d-flex justify-content-center pt-5 pb-5">
       <div className="col-md-11 col-11 fontr shadow" dir="rtl">
         <div className="col-md-12 row m-0 p-5">
           <div className="col-md-6 pt-2 col-12 p-0 m-0">

@@ -135,12 +135,12 @@ const CustomNavbar = () => {
           </div>
         </div>
       ) : null}
-      <div className="col-12 row m-0 add fontr pb-3 pt-3" dir="rtl">
+      <div className="col-12 row m-0 add fontr" dir="rtl">
         <div className="col-12 m-0 d-flex">
           <div className="col-6 d-flex justify-content-start">
             <BurgerMenu />
           </div>  
-          <div className="col-6 m-0 d-flex justify-content-end">
+          <div className="col-6 m-0 d-flex justify-content-end align-self-center">
             <span>
               {Login ? (
                 <>

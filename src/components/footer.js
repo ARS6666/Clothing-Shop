@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/media/logo.png";
+import logo from "../assets/media/logo.jpg";
 import eight from "../assets/media/85.png";
 import eighto from "../assets/media/86.PNG";
 import "../assets/css/href.css";

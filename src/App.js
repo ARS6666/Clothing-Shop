@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AppContent = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/signin', '/test', '/panel ', '/cart'];
+  const hideFooterPaths = ['/login', '/signin', '/test', '/account ', '/cart'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
 

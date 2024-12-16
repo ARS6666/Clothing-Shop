@@ -98,7 +98,7 @@ const RecentOrders = () => {
             <div className="col-md-12 col-12 d-flex justify-content-end">
               <button className="btn btn-outline-primary" onClick={handleBackClick}>برگشت</button>
             </div>
-            <ul className="recent-product-list">
+            <ul className="recent-product-list col-12">
               {OrderItems.map((c) => (
                 <a className="hrefb" href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
                   <li className="product-item">
@@ -115,17 +115,18 @@ const RecentOrders = () => {
             </ul>
           </div>
         ) : (
-          <div className="recent-orders-list">
+          <div className="recent-orders-list col-12">
             <h2>سفارشات گذشته</h2>
-            <ul className="recent-order-summary-list">
-              {Orderhistory?.map((order) => (<li key={order.id} className="recent-order-summary row m-0" onClick={() => handleOrderClick(order.id)}>
-                <div className="col"><p>آیدی سفارش: <span className="order-id">{order.id}</span></p></div>
-                <div className="col"><p>قیمت کل: <span className="order-amount">{addCommas(order.total)} تومان</span></p></div>
-                <div className="col"><p>تاریخ سفارش: <span className="order-date">{convertToIranianDate(order.created_at)}</span></p></div>
-                <div className="col d-flex justify-content-end">
-                  <button className="btn btn-outline-primary">مشاهده جزییات</button>
-                </div>
-              </li>))}
+            <ul className="recent-order-summary-list col-12">
+              {Orderhistory?.map((order) => (
+                <li key={order.id} className="recent-order-summary col-12" onClick={() => handleOrderClick(order.id)}>
+                  <div className="col pt-1"><p>آیدی سفارش: <span className="order-id">{order.id}</span></p></div>
+                  <div className="col pt-1"><p>قیمت کل: <span className="order-amount">{addCommas(order.total)} تومان</span></p></div>
+                  <div className="col pt-1"><p>تاریخ سفارش: <span className="order-date ">{convertToIranianDate(order.created_at)}</span></p></div>
+                  <div className="col pt-1 d-flex justify-content-end">
+                    <button className="btn btn-outline-primary">مشاهده جزییات</button>
+                  </div>
+                </li>))}
             </ul>
 
           </div>

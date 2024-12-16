@@ -1,10 +1,4 @@
 import React, { useState, useEffect } from "react";
-import img1 from "../../assets/media/p1.jpg";
-import img2 from "../../assets/media/t1.jpg";
-import img3 from "../../assets/media/s1.jpg";
-import img4 from "../../assets/media/pirahan.jpg";
-import img5 from "../../assets/media/t2.jpg";
-import img6 from "../../assets/media/s2.jpg";
 import "../../assets/css/home/category.css";
 import url from "../../config.json";
 
@@ -46,7 +40,7 @@ const ProductSlider = () => {
     <div class="col-md-12 col-12 p-3 pb-3 m-0 ">
       <div class="fontr">
         <div class="col-md-12 row m-0 border-bottom border-2 ">
-          <div class="d-flex justify-content-start col-md-6">
+          <div class="d-flex justify-content-start col-md-6 col-6">
             <div class="m-1 fontr">
               <button
                 class="btn border-0"
@@ -68,7 +62,7 @@ const ProductSlider = () => {
               </button>
             </div>
           </div>
-          <div class="align-self-center text-end h3 d-flex justify-content-end col-md-6">دسته بندی ها</div>
+          <div class="align-self-center text-end h3 d-flex justify-content-start col-md-6 col-6">دسته بندی ها</div>
         </div>
 
         <div class="slider-container col-md-12 row m-0 pt-2" dir="rtl">

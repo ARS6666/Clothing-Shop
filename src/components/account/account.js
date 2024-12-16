@@ -79,7 +79,7 @@ function Panel() {
                     <div className="col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick(); changeContent(<Profile />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked ? '#7a7a7a' : '' }}>
+                            style={{ backgroundColor: isChecked ? '#7a7a7a' : '',width:"100%" }}>
                             <h5 className="p-2">
                                 <i className="p-1 fa fa-user" aria-hidden="true"></i>
                                 تغییر جزییات حساب کاربری
@@ -89,7 +89,7 @@ function Panel() {
                     <div className="col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick2(); changeContent(<Order />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked2 ? '#7a7a7a' : '' }}>
+                            style={{ backgroundColor: isChecked2 ? '#7a7a7a' : '' ,width:"100%" }}>
                             <h5 className="p-2">
                                 <i className="fas fa-shopping-basket p-1"></i>
                                 سفارشات
@@ -99,7 +99,7 @@ function Panel() {
                     <div className="col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick3(); changeContent(<Address />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '' }}>
+                            style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '',width:"100%"  }}>
                             <h5 className="p-2">
                                 <i className="fas fa-map p-1"></i>
                                 آدرس‌ها
@@ -109,7 +109,7 @@ function Panel() {
                     <div className="col-md-12 border-top border-bottom part">
                         <button onClick={() => { handleClick4(); changeContent(<RPP />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '' }}>
+                            style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '' ,width:"100%" }}>
                             <h5 className="p-2">
                                 <i className="fas fa-folder-open p-1"></i>
                                 سفارشات گذشته
