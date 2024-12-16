@@ -6,6 +6,8 @@ import img4 from "../../assets/media/pirahan.jpg";
 import img5 from "../../assets/media/t2.jpg";
 import img6 from "../../assets/media/s2.jpg";
 import "../../assets/css/home/category.css";
+import url from "../../config.json";
+
 
 const ProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,7 +24,7 @@ const ProductSlider = () => {
       redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8000/api/products/category/", requestOptions)
+    fetch(`${url.baseUrl}/api/products/category/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setCategories(result))
       .catch((error) => console.error(error));
