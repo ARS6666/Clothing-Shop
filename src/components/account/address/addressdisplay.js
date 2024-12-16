@@ -59,15 +59,15 @@ function AddressDisplay() {
                         <div className="col-md-12 p-3">
                             <span className="h3">{c.name}</span>
                         </div>
-                        <div className="col-md-12 row m-0 fontr pt-2">
-                            <div className="col-md-6 text-end h5">استان: {c.ostan}</div>
-                            <div className="col-md-6 text-end h5">شهرستان: {c.shahr}</div>
+                        <div className="col-md-12 col-12 row m-0 fontr pt-2">
+                            <div className="col-md-6 col-6 text-end h5 p-1">استان: {c.ostan}</div>
+                            <div className="col-md-6 col-6 text-end h5">شهرستان: {c.shahr}</div>
                         </div>
-                        <div className="col-md-12 pt-2 text-end">
-                            <span className="h5 p-4">کد پستی: {c.postcode}</span>
+                        <div className="col-md-11 col-12 pt-2 text-end">
+                            <span className="h5 p-2">کد پستی: {c.postcode}</span>
                         </div>
-                        <div className="col-md-12 pt-2 text-end">
-                            <span className="h5 p-4" style={{ lineHeight: "1.9rem" }}>آدرس: {c.address}</span>
+                        <div className="col-md-11 col-12 pt-2 text-end">
+                            <span className="h5 p-2" style={{ lineHeight: "1.9rem" }}>آدرس: {c.address}</span>
                         </div>
                         <div className="col-md-12 row m-0 fontr pt-2 p-2">
                             <div className="col-md-12 text-start h5">

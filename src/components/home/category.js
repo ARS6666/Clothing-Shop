@@ -40,7 +40,7 @@ const ProductSlider = () => {
     <div class="col-md-12 col-12 p-3 pb-3 m-0 ">
       <div class="fontr">
         <div class="col-md-12 row m-0 border-bottom border-2 ">
-          <div class="d-flex justify-content-start col-md-6 col-6">
+          <div class="d-flex justify-content-start col-md-6 col-7">
             <div class="m-1 fontr">
               <button
                 class="btn border-0"
@@ -62,7 +62,7 @@ const ProductSlider = () => {
               </button>
             </div>
           </div>
-          <div class="align-self-center text-end h3 d-flex justify-content-start col-md-6 col-6">دسته بندی ها</div>
+          <div class="align-self-center text-end h3 d-flex justify-content-start col-md-6 col-5">دسته بندی ها</div>
         </div>
 
         <div class="slider-container col-md-12 row m-0 pt-2" dir="rtl">

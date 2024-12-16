@@ -46,7 +46,7 @@ const BurgerMenu = () => {
                     <li className="col-12 row m-0">
                         <div className="col-9 align-self-center">
                             <input
-                                className="form-control fontr"
+                                className="form-control fontr col-12"
                                 placeholder="جست وجو ..."
                                 onChange={(e) => setSearch(e.target.value)}
                                 style={{ backgroundColor: "#D9D9D9" }}
@@ -56,7 +56,7 @@ const BurgerMenu = () => {
                         <div className="col-1 align-self-center">
                             <a href={`/products?search=${search}`}>
                                 <button
-                                    className="rounded-circle btn bg-transparent align-self-center"
+                                    className="rounded-circle btn bg-transparent align-self-center col-6"
                                     aria-label="Search Button"
                                     style={{ backgroundColor: "#E8E7E7" }}
                                 >

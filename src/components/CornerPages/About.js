@@ -3,7 +3,7 @@ import Img from '../../assets/media/aboutus.png'
 
 const AboutUs = () => {
   return (
-    <section className="py-5 fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
+    <section className=" fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
       <div className="container">
         <div className="row m-0 align-items-center mb-5">
           <div className="col-12 col-lg-6 mb-4 mb-lg-0">
@@ -28,21 +28,21 @@ const AboutUs = () => {
 
         {/* Services Section */}
         <div className="row m-0 text-center">
-          <div className="col-12 col-md-4 ">
+          <div className="col-12 col-md-4 pt-2">
             <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
               <i className="bi bi-bag-fill display-4"></i>
               <h3 className="h5">کیفیت بالای محصولات</h3>
               <p>محصولات ما با بالاترین کیفیت ساخته می‌شوند و تضمین کیفیت دارند.</p>
             </div>
           </div>
-          <div className="col-12 col-md-4 ">
+          <div className="col-12 col-md-4 pt-2">
             <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
               <i className="bi bi-people-fill display-4"></i>
               <h3 className="h5">رضایت مشتریان</h3>
               <p>رضایت مشتریان هدف اصلی ماست و ما با ارائه بهترین خدمات در این زمینه تلاش می‌کنیم.</p>
             </div>
           </div>
-          <div className="col-12 col-md-4 ">
+          <div className="col-12 col-md-4 pt-2 pb-2">
             <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
               <i className="bi bi-lightbulb-fill display-4"></i>
               <h3 className="h5">ارسال سریع</h3>

@@ -15,26 +15,27 @@ function SignIn() {
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
-
     const handleSubmit = async (event) => {
         setIsLoading(true);
         event.preventDefault();
         setError(null);
         setLoading(true);
+
         if (password !== password1) {
             setError("رمزهای عبور مطابقت ندارند.");
             setIsLoading(false);
+            return;
         }
 
         const myHeaders = new Headers();
         myHeaders.append("accept", "application/json");
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("X-CSRFToken", "xaq7upJZfan36kIjSP8xwhH878FOroVe6a55njwELi8VQDUYsOAKxhqlQ39OtHfP");
+        myHeaders.append("X-CSRFToken", "VkjvJm3FQFtMrH8UGFwnVOSHru5JEOmyA3fVNOPIOeUB6huWikrKUbfu73l6OoT3");
 
         const raw = JSON.stringify({
-            "phone": phone,
-            "password": password,
-            "password1": password1
+            phone: phone,
+            password: password,
+            password1: password1
         });
 
         const requestOptions = {
@@ -45,21 +46,33 @@ function SignIn() {
         };
 
         try {
-            const response = await fetch(`${url.baseUrl}/auth/register/`, requestOptions);
-            const result = await response.json();
+            const response = await fetch("https://backendtest.liara.run/auth/register/", requestOptions);
 
-            if (response.ok) {
-                navigate('/login');
-                setPhone("");
-                setPassword("");
-                setPassword1("");
-                setIsLoading(false);
+            const contentType = response.headers.get("content-type");
+
+            let result;
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                result = await response.json();
             } else {
-                setError(result.message || "ثبت نام ناموفق بود.");
-                setIsLoading(false);
+                result = await response.text();
             }
+
+            if (!response.ok) {
+                console.error('Error response from server:', result);
+                setError(result.non_field_errors || "phone number : " + result.phone);
+                setIsLoading(false);
+                return;
+            }
+
+            setIsLoading(false);
+            setPhone("");
+            setPassword("");
+            setPassword1("");
+            navigate('/login');
         } catch (error) {
-            setError(error.toString());
+            console.error('Error during registration:', error);
+            setError("در هنگام ثبت‌نام مشکلی پیش آمد.");
+            setIsLoading(false);
         } finally {
             setLoading(false);
         }
@@ -75,30 +88,30 @@ function SignIn() {
                             <div className="d-flex justify-content-center">
                                 <span className="h2 col-md-12 border-bottom border-dark text-center p-1">ثبت نام</span>
                             </div>
-                            <div className="pt-3">
+                            <div className="pt-2">
                                 <label className="h5">شماره تلفن همراه:</label>
                             </div>
                             <div className="pt-1">
                                 <input className="form-control form-control-lg" onChange={e => setPhone(e.target.value)} dir="ltr" aria-label="Phone Number" />
                             </div>
-                            <div className="pt-3">
+                            <div className="pt-2">
                                 <label className="h5">رمز عبور:</label>
                             </div>
-                            <div className="pt-1">
+                            <div className="pt-1" style={{ position: "relative" }}>
                                 <button className="btn btn-outline-transparent eye" onClick={toggleShowPassword} type="button">
                                     {showPassword ? <i class="fa-solid fa-eye-slash"></i> : <i class="fa-solid fa-eye"></i>}
                                 </button>
                                 <input className="form-control form-control-lg" type={showPassword ? 'text' : 'password'} onChange={e => setPassword(e.target.value)} dir="ltr" aria-label="Password" />
                             </div>
                             <small id="emailHelp" className="form-text text-muted">رمز عبور شما باید دارای 8 کرکتر باشد.</small>
-                            <div className="pt-3">
+                            <div className="pt-2">
                                 <label className="h5">تکرار رمز عبور:</label>
                             </div>
                             <div className="pt-1">
-                                <input className="form-control form-control-lg" type={showPassword ? 'text' : 'password'} onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
+                                <input className="form-control form-control-lg" type='password' onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
                             </div>
-                            {error && <div className="alert alert-danger" role="alert">{error}</div>}
-                            <div className="col-md-12 d-flex justify-content-center pt-4">
+                            <div class="col-md-12 col-12 pt-2">{error && <div className="alert alert-danger" dir="ltr" role="alert">{error}</div>}</div>
+                            <div className="col-md-12 d-flex justify-content-center pt-1">
                                 <button type="submit" className="col-md-6 col-6 btn btn-outline-success">ثبت نام</button>
                             </div>
                         </div>

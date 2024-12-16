@@ -127,7 +127,7 @@ function ProductInfo() {
                 ))}
               </div>
               <div className="magnify-container col-md-10 d-flex justify-content-center">
-                <div className="d-flex justify-content-start">{product.discount !== 0 && product.count !== 0 ? <div class="discountDisplay">{product.discount}%</div> : null}</div>
+                <div className="justify-content-start">{product.discount !== 0 && product.count !== 0 ? <div class="discountDisplay">{product.discount}%</div> : null}</div>
                 <Carousel>
                   {IMG.map((Pic, index) => (
                     <Carousel.Item key={index}>

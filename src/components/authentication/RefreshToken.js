@@ -9,6 +9,11 @@ function RefreshToken() {
 
   useEffect(() => {
     const verifyToken = async () => {
+      if (!token || !refresh) {
+        navigate('/login');
+        return;
+      }
+
       const myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
       myHeaders.append("Content-Type", "application/json");
@@ -24,34 +29,38 @@ function RefreshToken() {
 
       try {
         const response = await fetch(`${url.baseUrl}/auth/jwt/verify/`, requestOptions);
-        const result = await response.json();
 
-        if (result.code === "token_not_valid") {
-          const myHeadersRefresh = new Headers();
-          myHeadersRefresh.append("Accept", "application/json");
-          myHeadersRefresh.append("Content-Type", "application/json");
+        if (!response.ok) {
+          const result = await response.json();
+          if (result.code === "token_not_valid") {
+            const myHeadersRefresh = new Headers();
+            myHeadersRefresh.append("Accept", "application/json");
+            myHeadersRefresh.append("Content-Type", "application/json");
 
-          const rawRefresh = JSON.stringify({ "refresh": refresh });
+            const rawRefresh = JSON.stringify({ "refresh": refresh });
 
-          const requestOptionsRefresh = {
-            method: "POST",
-            headers: myHeadersRefresh,
-            body: rawRefresh,
-            redirect: "follow"
-          };
+            const requestOptionsRefresh = {
+              method: "POST",
+              headers: myHeadersRefresh,
+              body: rawRefresh,
+              redirect: "follow"
+            };
 
-          const refresResponse = await fetch(`${url.baseUrl}/auth/jwt/refresh/`, requestOptionsRefresh);
-          const refresResult = await refresResponse.json();
+            const refreshResponse = await fetch(`${url.baseUrl}/auth/jwt/refresh/`, requestOptionsRefresh);
+            const refreshResult = await refreshResponse.json();
 
-          if (refresResponse.ok) {
-            localStorage.removeItem("token");
-            localStorage.setItem('token', refresResult.access);
+            if (refreshResponse.ok) {
+              localStorage.setItem('token', refreshResult.access);
+            } else {
+              navigate('/login');
+            }
           } else {
             navigate('/login');
           }
         }
       } catch (error) {
         console.error(error);
+        navigate('/login');
       }
     };
 

@@ -93,9 +93,9 @@ function Order() {
             {isOrder ? (
                 <div className="container border-bottom border fontr" dir="rtl" style={{ borderRadius: "10px" }}>
                     <div className="col-md-12 d-flex justify-content-center">
-                        <h2 className="border-bottom border-4 border-danger p-3 col-md-3 col-6 text-center">سفارش در جریان</h2>
+                        <h2 className="border-bottom border-4 border-danger p-3 col-md-3 col-9 text-center">سفارش در جریان</h2>
                     </div>
-                    <div className="order-header p-3" onClick={toggleProducts} dir="ltr">
+                    <div className="order-header p-2" onClick={toggleProducts} dir="ltr">
                         <p className="p-1">آیدی سفارش : {Orderdetail.id}<i className="fa-solid fa-cart-shopping m-2"></i></p>
                         <p>قیمت کل: {addCommas(Orderdetail.total)} تومان</p>
                         <p>تعداد محصولات : {Orderdetail.items.length}</p>

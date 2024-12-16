@@ -115,6 +115,14 @@ function Cart() {
 
         return integer;
     };
+    function truncateString(str) {
+        const words = str.split(' ');
+        if (words.length <= 4) {
+            return str;
+        }
+        const truncated = words.slice(0, 4).join(' ');
+        return `${truncated}...`;
+    }
 
     function CreateOrder() {
         setIsLoading(true)
@@ -183,8 +191,8 @@ function Cart() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-12 d-flex justify-content-center pt-4 pb-5">
-                                    <a class=" col-md-10 col-10 hrefw d-flex justify-content-center" href="#path/to/dargah/pardakht"><button class="btn btn-lg text-white rounded-0" onClick={CreateOrder} style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button></a>
+                                <div class="col-md-12 col-12 d-flex justify-content-center pt-3 pb-3">
+                                    <a class=" col-md-10 col-10 hrefw d-flex justify-content-center pt-" href="#path/to/dargah/pardakht"><button class="btn btn-lg text-white rounded-0" onClick={CreateOrder} style={{ backgroundColor: "#007bff" }}>ادامه جهت تسویه حساب</button></a>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +214,7 @@ function Cart() {
                                     <div class="col-md-2 p-3 remove">
                                         <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
-                                    <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{c.product.name}</a></div>
+                                    <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{truncateString(c.product.name)}</a></div>
                                     <div class="col-md-2 col-3 p-3">{addCommas(c.product.price)}تومان</div>
                                     <div class="col-md-1 col-2 p-3 row m-0 text-center d-flex justify-content-center">
                                         <button class="btn-circle btn" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}><i class="fa-solid fa-arrow-up"></i></button>

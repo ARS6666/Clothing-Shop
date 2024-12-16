@@ -46,20 +46,22 @@ const CustomNavbar = () => {
   }, []);
 
   useEffect(() => {
-    const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json");
-    myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    if (token) {
+      const myHeaders = new Headers();
+      myHeaders.append("accept", "application/json");
+      myHeaders.append("X-CSRFToken", "5teHG5lzFJM4CD8QwLdXzrrvjxmRqWl91abWUh2YcbHKJ1NVq5s3g9B3KrcKmR8L");
+      myHeaders.append("Authorization", `Bearer ${token}`);
 
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    };
-    fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => { setCartItem(result.items) })
-      .catch((error) => console.error(error));
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+      };
+      fetch(`${url.baseUrl}/cart/cart/`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => { setCartItem(result.items) })
+        .catch((error) => console.error(error));
+    }
   }, [token]);
 
   return (
@@ -139,7 +141,7 @@ const CustomNavbar = () => {
         <div className="col-12 m-0 d-flex">
           <div className="col-6 d-flex justify-content-start">
             <BurgerMenu />
-          </div>  
+          </div>
           <div className="col-6 m-0 d-flex justify-content-end align-self-center">
             <span>
               {Login ? (
