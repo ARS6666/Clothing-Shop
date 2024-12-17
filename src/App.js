@@ -36,7 +36,7 @@ const AppContent = () => {
 
   return (
     <>
-      <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"}>
+      <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"} style={{position:"relative"}}>
         <button className="btn btn-lg btn-transparent border-0" onClick={toggleTheme} style={{ left: "20px", top: "0", position: "absolute" }}>{theme === 'dark' ? "☀️" : "🌕"}</button>
         <Nav theme={theme} />
         <Routes>

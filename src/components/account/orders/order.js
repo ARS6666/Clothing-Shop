@@ -130,7 +130,7 @@ function Order(theme) {
                     <h3 className="fontr text-dark">سفارش در جریانی ندارید!</h3>
                     <div className="col-md-12 pt-3">
                         <button className="btn btn-outline-success col-md-2">
-                            <a className="hrefb p-2" href="/products"> سفارش بدهید :{")"}</a>
+                            <a className={theme.theme === "dark" ? "hrefw p-2" : "hrefb p-2"} href="/products"> سفارش بدهید :{")"}</a>
                         </button>
                     </div>
                 </div>
