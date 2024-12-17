@@ -7,7 +7,7 @@ import Loading from "../../loading/loading";
 
 
 
-function Cart() {
+function Cart(theme) {
     const [CartItems, setCartItem] = useState([])
     const [TotalPrice, setTotalPrice] = useState([])
     const token = localStorage.getItem('token');
@@ -148,19 +148,19 @@ function Cart() {
 
     return (<>
         {IsLoading ? <Loading /> : null}
-        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5 pb-5" style={{ backgroundColor: "#f8f9fa" }}>
-            <div class="col-md-12 col-12 pt-5 pb-5">
-                <div class="col-md-12 col-12 row m-0 bg-white">
+        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5 pb-5" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>
+            <div class="col-md-12 col-12 pt-5 pb-5" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>
+                <div class="col-md-12 col-12 row m-0 " style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
                     <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
-                        <div class="col-md-12 col-12 p-1" >
-                            <div class="col-md-12 col-12" style={{ backgroundColor: "#f8f9fa" }}>
+                        <div class="col-md-12 col-12 " >
+                            <div class="col-md-12 col-12 border" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
                                 <div class="col-md-12 col-12 pt-3 pb-2 d-flex justify-content-center">
                                     <span class="h5">
                                         جمع کل سبد خرید
                                     </span>
                                 </div>
                                 <div class="col-md-12 col-12 d-flex justify-content-center">
-                                    <div class=" col-md-11 col-11 bg-white rounded">
+                                    <div class=" col-md-11 col-11 rounded" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
                                         <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0 border-bottom">
                                             <div class="col-md-4 col-4 d-flex justify-content-start pb-2">
                                                 <span>جمع جزء</span>
@@ -200,26 +200,26 @@ function Cart() {
                     <div class="col-md-8 col-12 " dir="rtl">
                         <div class="col-md-12 col-12 pt-4 ">
                             <div class="col-md-12 col-12 border row m-0">
-                                <div class="col-md-2 col-1 p-3"></div>
-                                <div class="col-md-4 col-2 p-3"><span>محصول</span></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5 col-2 p-3"><span>محصول</span></div>
                                 <div class="col-md-2 col-3 p-3"><span>قیمت</span></div>
-                                <div class="col-md-2 col-3 p-3"><span>تعداد</span></div>
-                                <div class="col-md-2 col-3 p-3"><span>جمع جزء</span></div>
+                                <div class="col-md-1 col-3 p-3"><span>تعداد</span></div>
+                                <div class="col-md-3 col-3 p-3"><span>جمع جزء</span></div>
                             </div>
                         </div>
                         {CartItems?.map((c) => (<>
                             <div class="col-md-12 col-12">
                                 <div class="col-md-12 col-12 border rounded-0 align-items-center row m-0">
-                                    <div class="col-md-1 col-1 p-3 "><button class="btn btn-light rounded-circle btn-circle" onClick={() => RemoveAll(c.product.id)}><i class="fa-solid fa-trash-can"></i></button></div>
+                                    <div class="col-md-1 col-1 p-3 "><button className={theme.theme === "dark" ? "btn btn-dark rounded-circle btn-circle" : "btn btn-light rounded-circle btn-circle"} onClick={() => RemoveAll(c.product.id)}><i class="fa-solid fa-trash-can"></i></button></div>
                                     <div class="col-md-2 p-3 remove">
                                         <img src={`${url.baseUrl}/${c.product.pic}`} alt="" class="col-md-12" style={{ height: "70px", objectFit: "cover" }} />
                                     </div>
                                     <div class="col-md-3 col-2 p-3"><a href={"pi?id=" + c.product.id}>{truncateString(c.product.name)}</a></div>
                                     <div class="col-md-2 col-3 p-3">{addCommas(c.product.price)}تومان</div>
                                     <div class="col-md-1 col-2 p-3 row m-0 text-center d-flex justify-content-center">
-                                        <button class="btn-circle btn" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}><i class="fa-solid fa-arrow-up"></i></button>
+                                        <button class="btn-circle btn" onClick={() => AddItem(c.product.id)} disabled={buttonDisabled}><i className={theme.theme === "dark" ? "fa-solid fa-arrow-up text-white" : "fa-solid fa-arrow-up"}></i></button>
                                         <span class=" p-2">{c.quantity}</span>
-                                        <button class="btn-circle btn" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}><i class="fa-solid fa-arrow-down"></i></button>
+                                        <button class="btn-circle btn" onClick={() => RemoveItem(c.product.id)} disabled={buttonDisabled}><i className={theme.theme === "dark" ? "fa-solid fa-arrow-down text-white" : "fa-solid fa-arrow-down"}></i></button>
                                     </div>
                                     <div class="col-md-2 col-3 p-3">{addCommas(c.product.price * c.quantity)}تومان</div>
                                 </div>

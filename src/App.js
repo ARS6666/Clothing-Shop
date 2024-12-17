@@ -36,7 +36,7 @@ const AppContent = () => {
 
   return (
     <>
-      <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"} style={{position:"relative"}}>
+      <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"} style={{ position: "relative" }}>
         <button className="btn btn-lg btn-transparent border-0" onClick={toggleTheme} style={{ left: "20px", top: "0", position: "absolute" }}>{theme === 'dark' ? "☀️" : "🌕"}</button>
         <Nav theme={theme} />
         <Routes>
@@ -53,9 +53,9 @@ const AppContent = () => {
           <Route path='/prdct' element={<Prdctlist />} />
           <Route path='/cart' element={
             <PrivateRoute>
-              <div class="col-md-12 justify-content-center d-flex " style={{ backgroundColor: "#f8f9fa" }}>
-                <div class="col-md-8 ">
-                  <Cart />
+              <div class="col-md-12 col-12 justify-content-center d-flex" >
+                <div class="col-md-8 col-11" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
+                  <Cart theme={theme} />
                 </div>
               </div>
             </PrivateRoute>} />
