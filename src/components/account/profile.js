@@ -4,7 +4,7 @@ import IMg from "../../assets/media/pfp.jpg";
 import url from "../../config.json";
 
 const ProfProp = (theme) => {
-    const [IsLoading, setIsLoading] = useState(true);
+    const [IsLoading, setIsLoading] = useState(false);
     const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
     const [Id, setId] = useState("");
@@ -57,6 +57,7 @@ const ProfProp = (theme) => {
     };
 
     const handleSubmit = () => {
+        setIsLoading(true)
         const formData = new FormData();
         if (selectedFile && selectedFile.type.startsWith("image/")) {
             formData.append('image', selectedFile);
@@ -82,7 +83,6 @@ const ProfProp = (theme) => {
             .then((result) => window.location.reload())
             .catch((error) => console.error(error));
     };
-    console.log(theme.theme.theme)
     return (
         <>
             {IsLoading ? <Loading /> : null}

@@ -3,9 +3,6 @@ import '../../assets/css/loading.css';
 
 const Loading = () => {
         return (
-                // <div class="loading-container">
-                //     <div class="spinner"></div>
-                // </div>
                 <>
                         <div class="loading">
                                 <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
