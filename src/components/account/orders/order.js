@@ -5,7 +5,7 @@ import Img from "../../../assets/media/logo.jpg";
 import url from "../../../config.json";
 
 
-function Order() {
+function Order(theme) {
     var jalaali = require('jalaali-js')
     const [isOrder, setisOrder] = useState(false);
     const [showProducts, setShowProducts] = useState(false);
@@ -95,7 +95,7 @@ function Order() {
                     <div className="col-md-12 d-flex justify-content-center">
                         <h2 className="border-bottom border-4 border-danger p-3 col-md-3 col-9 text-center">سفارش در جریان</h2>
                     </div>
-                    <div className="order-header p-2" onClick={toggleProducts} dir="ltr">
+                    <div className="order-header p-2" onClick={toggleProducts}>
                         <p className="p-1">آیدی سفارش : {Orderdetail.id}<i className="fa-solid fa-cart-shopping m-2"></i></p>
                         <p>قیمت کل: {addCommas(Orderdetail.total)} تومان</p>
                         <p>تعداد محصولات : {Orderdetail.items.length}</p>
@@ -109,8 +109,8 @@ function Order() {
                         <div className="order-products pt-2 border-top">
                             <ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
                                 {Orderdetail.items.map((c) => (
-                                    <a className="hrefb" href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
-                                        <li className="product-item">
+                                    <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
+                                        <li className="product-item" style={{backgroundColor : theme.theme === "dark" ? "white" : "#121212"}}>
                                             <img src={`${url.baseUrl}/${c.product.pic}`} alt={c.product.name} className="product-image" />
                                             <div className="product-details">
                                                 <h4>{truncateString(c.product.name)}</h4>

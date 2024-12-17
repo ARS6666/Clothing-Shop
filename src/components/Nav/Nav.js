@@ -141,27 +141,27 @@ const CustomNavbar = (theme) => {
       ) : null}
       <div className="col-12 row m-0 add fontr" dir="rtl">
         <div className="col-12 m-0 d-flex">
-          <div className="col-6 d-flex justify-content-start">
-            <BurgerMenu />
+          <div className="col-5 d-flex justify-content-start">
+            <BurgerMenu theme={theme}/>
           </div>
           <div className="col-6 m-0 d-flex justify-content-end align-self-center">
             <span>
               {Login ? (
                 <>
-                  <a href="/login" className="hrefb h5 ah">ورود</a>
+                  <a href="/login" className={theme.theme === "dark" ? "hrefw h5 ah" : "hrefb h5 ah"}>ورود</a>
                   <span> | </span>
                 </>
               ) : null}
-              <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
+              <a href="/account" className={theme.theme === "dark" ? "hrefw h5 ah" : "hrefb h5 ah"}>حساب کاربری</a>
               {!Login && (
                 <>
                   <button className="btn border-0 bg-transparent" onClick={logout} aria-label="Logout">
-                    <i className="fas fa-sign-out-alt ah"></i>
+                    <i className={theme.theme === "dark" ? "text-white fas fa-sign-out-alt ah" : "text-dark fas fa-sign-out-alt ah"}></i>
                   </button>
                   <span> | </span>
                   <button className="btn border-0 bg-transparent cart-icon" aria-label="Cart">
                     <a className="hrefb" href="/cart">
-                      <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1rem" }}></i>
+                      <i className={theme.theme === "dark" ? "text-white fa-solid fa-cart-shopping ah" : "text-dark fa-solid fa-cart-shopping ah"} style={{ fontSize: "1.1rem" }}></i>
                       <span className="cart-count text-dark">{CartItems?.length}</span>
                     </a>
                   </button>
@@ -169,6 +169,7 @@ const CustomNavbar = (theme) => {
               )}
             </span>
           </div>
+          <div className="col-1"></div>
         </div>
       </div>
     </>

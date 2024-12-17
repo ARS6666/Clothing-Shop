@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../assets/css/nav/burger.css';
 
-const BurgerMenu = () => {
+const BurgerMenu = (theme) => {
     const [isOpen, setIsOpen] = useState(false);
     const [search, setSearch] = useState('');
 
@@ -14,32 +14,32 @@ const BurgerMenu = () => {
         <div dir="rtl" className="fontr">
             <div className={`overlayy ${isOpen ? 'show' : ''}`}></div>
             <button className="btn btn-transparent" onClick={toggleMenu} aria-label="Toggle Menu">
-                <i className="fa-solid fa-bars" style={{ fontSize: "1.4rem" }}></i>
+                <i className={theme.theme.theme === "dark" ? "text-white fa-solid fa-bars" : "text-dark fa-solid fa-bars"} style={{ fontSize: "1.4rem" }}></i>
             </button>
-            <div className={`menu ${isOpen ? 'open' : ''}`}>
+            <div className={theme.theme.theme === "dark" ? `menu ${isOpen ? 'open' : ''}` : `text-dark menu ${isOpen ? 'open' : ''}`} style={{ backgroundColor: theme.theme.theme === "dark" ? "#121212" : "white" }}>
                 <div className="col-12 d-flex justify-content-start">
                     <button className="btn btn-transparent" onClick={toggleMenu} aria-label="Close Menu">
-                        <i className="fa-solid fa-xmark" style={{ fontSize: "1.1rem" }}></i>
+                        <i className={theme.theme.theme === "dark" ? "text-white fa-solid fa-xmark" : "text-dark fa-solid fa-xmark"} style={{ fontSize: "1.1rem" }}></i>
                     </button>
                 </div>
                 <ul>
                     <li className="col-12 d-flex justify-content-start">
-                        <a className="hrefb" href="/">
+                        <a className={theme.theme.theme === "dark" ? "hrefw" : "hrefb"} href="/">
                             <span className="col-3 h5 ah">خانه</span>
                         </a>
                     </li>
                     <li className="col-12 d-flex justify-content-start">
-                        <a className="hrefb" href="/products">
+                        <a className={theme.theme.theme === "dark" ? "hrefw" : "hrefb"} href="/products">
                             <span className="col-3 h5 ah">محصولات</span>
                         </a>
                     </li>
                     <li className="col-12 d-flex justify-content-start">
-                        <a className="hrefb" href="/categories">
+                        <a className={theme.theme.theme === "dark" ? "hrefw" : "hrefb"} href="/categories">
                             <span className="col-3 h5 ah">دسته بندی</span>
                         </a>
                     </li>
                     <li className="col-12 d-flex justify-content-start">
-                        <a className="hrefb" href="/about">
+                        <a className={theme.theme.theme === "dark" ? "hrefw" : "hrefb"} href="/about">
                             <span className="col-3 h5 ah">درباره ما</span>
                         </a>
                     </li>
@@ -54,9 +54,9 @@ const BurgerMenu = () => {
                             />
                         </div>
                         <div className="col-1 align-self-center">
-                            <a href={`/products?search=${search}`}>
+                            <a href={`/products?search=${search}`} className={theme.theme.theme === "dark" ? "hrefw" : "hrefb"}>
                                 <button
-                                    className="rounded-circle btn bg-transparent align-self-center col-6"
+                                    className={theme.theme.theme === "dark" ? "rounded-circle btn bg-transparent align-self-center col-6 text-white" : "rounded-circle btn bg-transparent align-self-center col-6"}
                                     aria-label="Search Button"
                                     style={{ backgroundColor: "#E8E7E7" }}
                                 >

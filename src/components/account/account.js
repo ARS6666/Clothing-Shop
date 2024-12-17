@@ -9,10 +9,10 @@ import "../../assets/css/href.css";
 import "https://kit.fontawesome.com/6c2a0de8a3.js";
 import url from "../../config.json";
 
-function Panel() {
+const Panel = ({theme}) => {
     const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
-    const [content, setContent] = useState(<Profile />);
+    const [content, setContent] = useState(<Profile theme={theme}/>);
     const [isChecked, setIsChecked] = useState(true);
     const [isChecked2, setIsChecked2] = useState(false);
     const [isChecked3, setIsChecked3] = useState(false);
@@ -65,7 +65,6 @@ function Panel() {
         setIsChecked3(false);
         setIsChecked4(true);
     };
-
     return (
         <div className="fontr col-md-12 row m-0 pb-2 pt-2" dir="rtl">
             <div className="col-md-3 border" style={{ borderRadius: "10px" }}>
@@ -77,9 +76,9 @@ function Panel() {
                 </div>
                 <div className="pt-3">
                     <div className="col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick(); changeContent(<Profile />); }}
+                        <button onClick={() => { handleClick(); changeContent(<Profile theme={theme.theme}/>); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked ? '#7a7a7a' : '',width:"100%" }}>
+                            style={{ backgroundColor: isChecked ? '#7a7a7a' : '', width: "100%" }}>
                             <h5 className="p-2">
                                 <i className="p-1 fa fa-user" aria-hidden="true"></i>
                                 تغییر جزییات حساب کاربری
@@ -87,9 +86,9 @@ function Panel() {
                         </button>
                     </div>
                     <div className="col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick2(); changeContent(<Order />); }}
+                        <button onClick={() => { handleClick2(); changeContent(<Order theme={theme.theme} />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked2 ? '#7a7a7a' : '' ,width:"100%" }}>
+                            style={{ backgroundColor: isChecked2 ? '#7a7a7a' : '', width: "100%" }}>
                             <h5 className="p-2">
                                 <i className="fas fa-shopping-basket p-1"></i>
                                 سفارشات
@@ -97,9 +96,9 @@ function Panel() {
                         </button>
                     </div>
                     <div className="col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick3(); changeContent(<Address />); }}
+                        <button onClick={() => { handleClick3(); changeContent(<Address theme={theme.theme} />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '',width:"100%"  }}>
+                            style={{ backgroundColor: isChecked3 ? '#7a7a7a' : '', width: "100%" }}>
                             <h5 className="p-2">
                                 <i className="fas fa-map p-1"></i>
                                 آدرس‌ها
@@ -107,9 +106,9 @@ function Panel() {
                         </button>
                     </div>
                     <div className="col-md-12 border-top border-bottom part">
-                        <button onClick={() => { handleClick4(); changeContent(<RPP />); }}
+                        <button onClick={() => { handleClick4(); changeContent(<RPP theme={theme.theme} />); }}
                             className="btn col-md-12 btn-lg hover d-flex justify-content-start border-0"
-                            style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '' ,width:"100%" }}>
+                            style={{ backgroundColor: isChecked4 ? '#7a7a7a' : '', width: "100%" }}>
                             <h5 className="p-2">
                                 <i className="fas fa-folder-open p-1"></i>
                                 سفارشات گذشته

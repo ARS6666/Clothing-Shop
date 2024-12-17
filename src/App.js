@@ -37,16 +37,16 @@ const AppContent = () => {
   return (
     <>
       <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"}>
-        <button className="btn btn-lg" onClick={toggleTheme}>dssscsdfds</button>
+        <button className="btn btn-lg btn-transparent border-0" onClick={toggleTheme} style={{ left: "20px", top: "0", position: "absolute" }}>{theme === 'dark' ? "☀️" : "🌕"}</button>
         <Nav theme={theme} />
         <Routes>
-          <Route path='' element={<Home theme={theme}/>} />
+          <Route path='' element={<Home theme={theme} />} />
           <Route path='*' element={<NotFoundPage />} />
-          <Route path='/pi' element={<PI theme={theme}/>} />
+          <Route path='/pi' element={<PI theme={theme} />} />
           <Route path='/products' element={<Products />} />
           <Route path='/account' element={
             <PrivateRoute>
-              <Panel />
+              <Panel theme={theme} />
             </PrivateRoute>} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
@@ -61,7 +61,7 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
         </Routes>
-        {showFooter ? <Footer theme={theme}/> : null}
+        {showFooter ? <Footer theme={theme} /> : null}
       </div>
     </>
   );
