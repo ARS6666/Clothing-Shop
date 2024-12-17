@@ -1,11 +1,11 @@
 import React from 'react';
 import Form from "./address/addressForm"
 import Display from "./address/addressdisplay"
-function Address() {
+function Address(theme) {
     return (<>
-        <Form />
+        <Form theme={theme}/>
         <div class="pt-2 row m-0">
-            <Display />
+            <Display theme={theme}/>
         </div>
     </>);
 }

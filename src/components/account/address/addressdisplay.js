@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from "../../loading/loading";
 import url from "../../../config.json";
 
-function AddressDisplay() {
+function AddressDisplay(theme) {
     const [IsLoading, setIsLoading] = useState(true);
     const [Prop, setProp] = useState([]);
     const token = localStorage.getItem('token');
@@ -54,7 +54,7 @@ function AddressDisplay() {
         <>
             {IsLoading ? <Loading /> : null}
             {Prop.map((c) => (
-                <div className="col-md-6 p-1 fontr text-end" dir="rtl" style={{ color: "gray" }} key={c.id}>
+                <div className="col-md-6 p-1 fontr text-end" dir="rtl" style={{color : theme.theme === "dark" ? "#000000" : "gray"}} key={c.id}>
                     <div className="border border-3 border-dark text-end" style={{ borderStyle: "double" }}>
                         <div className="col-md-12 p-3">
                             <span className="h3">{c.name}</span>

@@ -4,7 +4,7 @@ import Loading from "../loading/loading";
 import SignIn from "./signin";
 import url from "../../config.json"
 
-function Login() {
+function Login(theme) {
     const [Phone, setPhone] = useState("");
     const [Password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -69,7 +69,7 @@ function Login() {
     return (
         <>
             {IsLoading ? <Loading /> : null}
-            <div className="col-md-12 fontr vh-100" dir="rtl" style={{ backgroundColor: "#D9D9D9" }}>
+            <div className="col-md-12 fontr vh-100" dir="rtl" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "3D9D9D9"}}>
                 <div className="col-md-12 d-flex justify-content-center pt-5">
                     <div className="col-md-4 pt-5">
                         <div className="col-md-12 p-5 shadow bg-light" style={{ borderRadius: "20px" }}>

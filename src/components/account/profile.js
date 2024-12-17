@@ -82,6 +82,7 @@ const ProfProp = (theme) => {
             .then((result) => window.location.reload())
             .catch((error) => console.error(error));
     };
+    console.log(theme.theme.theme)
     return (
         <>
             {IsLoading ? <Loading /> : null}
@@ -92,23 +93,23 @@ const ProfProp = (theme) => {
                             <span className="h4 col-md-2 border-bottom border-2 border-dark p-2">پروفایل</span>
                         </div>
                         <div className="col-md-6 d-flex justify-content-end col-3">
-                            <button className="btn btn-dark btn-sm rounded-0" onClick={reset}>بازیابی</button>
+                            <button className={theme.theme.theme === "dark" ? "btn btn-light btn-sm rounded-0" : "btn btn-dark btn-sm rounded-0"} onClick={reset}>بازیابی</button>
                         </div>
                         <div className="col-md-12 row m-0 pt-3 d-flex justify-content-center">
                             <div className="col-md-12">
-                                <span className={theme.theme === "dark" ? "text-white" : "text-dark"}>نام:</span>
+                                <span className={theme.theme.theme === "dark" ? "text-white" : "text-dark"}>نام:</span>
                                 <div className="pt-2 col-md-12">
                                     <input className="form-control form-control-lg border-dark rounded-0" onChange={handleName} value={Name} required />
                                 </div>
                                 <div className="col-md-12 col-12 pt-3">
-                                    <span className={theme.theme === "dark" ? "text-white pt-1" : "text-dark pt-1"}>نام خانوادگی:</span>
+                                    <span className={theme.theme.theme === "dark" ? "text-white pt-1" : "text-dark pt-1"}>نام خانوادگی:</span>
                                     <div className="pt-2 col-md-12">
                                         <input className="form-control form-control-lg border-dark rounded-0" onChange={handleLastName} value={LastName} required />
                                     </div>
                                 </div>
                             </div>
                             <div className="pt-3">
-                                <span className={theme.theme === "dark" ? "text-white pt-1" : "text-dark pt-1"}>عکس پروفایل:</span>
+                                <span className={theme.theme.theme === "dark" ? "text-white pt-1" : "text-dark pt-1"}>عکس پروفایل:</span>
                             </div>
                             <div className="pt-2 col-md-12 col-12">
                                 <input type="file" id="imageInput" accept="image/*" dir="rtl" className="form-control form-control-lg border-dark rounded-0" onChange={handleFileChange} required />

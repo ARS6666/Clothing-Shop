@@ -109,11 +109,11 @@ function Order(theme) {
                         <div className="order-products pt-2 border-top">
                             <ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
                                 {Orderdetail.items.map((c) => (
-                                    <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id}>
-                                        <li className="product-item" style={{backgroundColor : theme.theme === "dark" ? "white" : "#121212"}}>
+                                    <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href={`pi?id=${c.product.id}#${c.product.name}`} key={c.product.id} style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>
+                                        <li className="product-item" >
                                             <img src={`${url.baseUrl}/${c.product.pic}`} alt={c.product.name} className="product-image" />
-                                            <div className="product-details">
-                                                <h4>{truncateString(c.product.name)}</h4>
+                                            <div className="product-details" >
+                                                <h4 className={theme.theme === "dark" ? "text-light" : "text-dark"}>{truncateString(c.product.name)}</h4>
                                                 <p>{c.product.category}</p>
                                                 <p>قیمت: {addCommas(c.product.price)} تومان</p>
                                                 <p>تعداد: {c.quantity}</p>
@@ -126,8 +126,8 @@ function Order(theme) {
                     )}
                 </div>
             ) : (
-                <div className="col-md-12 text-center pt-3 d-flex justify-content-center row p-0 m-0 pt-5">
-                    <h3 className="fontr text-dark">سفارش در جریانی ندارید!</h3>
+                <div className="col-md-12 text-center pt-3 d-flex justify-content-center row p-0 m-0 pt-5 fontr">
+                    <h3 className={theme.theme === "dark" ? "fontr text-light" : "text-dark"}>سفارش در جریانی ندارید!</h3>
                     <div className="col-md-12 pt-3">
                         <button className="btn btn-outline-success col-md-2">
                             <a className={theme.theme === "dark" ? "hrefw p-2" : "hrefb p-2"} href="/products"> سفارش بدهید :{")"}</a>

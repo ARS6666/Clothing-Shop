@@ -37,7 +37,7 @@ const AppContent = () => {
   return (
     <>
       <div className={theme === "dark" ? "main-content scrollable dark" : "main-content scrollable"} style={{ position: "relative" }}>
-        <button className="btn btn-lg btn-transparent border-0" onClick={toggleTheme} style={{ left: "20px", top: "0", position: "absolute" }}>{theme === 'dark' ? "☀️" : "🌕"}</button>
+        <div className='button-container'><button className="btn btn-lg btn-transparent border-0" onClick={toggleTheme} style={{ left: "20px", top: "0", position: "absolute" }}>{theme === 'dark' ? "☀️" : "🌕"}</button><div className="description fontr" dir="rtl">بعد از هر تغییر تم ریلود کنید .</div></div>
         <Nav theme={theme} />
         <Routes>
           <Route path='' element={<Home theme={theme} />} />
@@ -48,13 +48,13 @@ const AppContent = () => {
             <PrivateRoute>
               <Panel theme={theme} />
             </PrivateRoute>} />
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/signin' element={<Signin theme={theme} />} />
+          <Route path='/login' element={<Login theme={theme} />} />
           <Route path='/prdct' element={<Prdctlist />} />
           <Route path='/cart' element={
             <PrivateRoute>
               <div class="col-md-12 col-12 justify-content-center d-flex" >
-                <div class="col-md-8 col-11" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
+                <div class="col-md-8 col-11" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "#f8f9fa" }}>
                   <Cart theme={theme} />
                 </div>
               </div>

@@ -5,7 +5,7 @@ import url from "../../../config.json";
 import "../../../assets/css/account/order.css"
 
 
-const RecentOrders = () => {
+const RecentOrders = (theme) => {
   var jalaali = require('jalaali-js')
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -89,9 +89,8 @@ const RecentOrders = () => {
     return `${truncated}...`;
   }
 
-
   return (
-    <div className={ISOrderhistory ? "bg-white p-3 shadow-0 fontr" : "bg-white p-3 shadow-0 fontr border"} dir="rtl" style={{ borderRadius: "10px" }}>
+    <div className={ISOrderhistory ? "p-3 shadow-0 fontr" : " p-3 shadow-0 fontr border"} dir="rtl" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "white", borderRadius: "10px" }}>
       {ISOrderhistory ?
         <>{selectedOrder ? (
           <div className="recent-order-details">

@@ -5,7 +5,7 @@ import Loading from "../../loading/loading";
 import url from "../../../config.json"
 
 
-function Address() {
+function Address(theme) {
     const token = localStorage.getItem('token');
     const [IsLoading, setisLoading] = useState(false)
     const [Error, setError] = useState("")
@@ -221,12 +221,11 @@ function Address() {
 
 
 
-
     return (<>
         {IsLoading ? <Loading /> : null}
         <div class="col-md-12 pt-2 fontr" >
             <div class="col-md-12" style={{ borderStyle: "dashed" }}>
-                <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={handleOverlay}><h4 class="text-dark">افزودن آدرس</h4></buttton>
+                <buttton class="col-md-12 btn btn-lg col-12 border-0" onClick={handleOverlay}><h4 className={theme.theme.theme === "dark" ? "text-light" : "text-dark"}>افزودن آدرس</h4></buttton>
             </div>
         </div>
         {isOverlayOpen ? <>

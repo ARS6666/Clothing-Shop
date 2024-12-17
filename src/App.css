@@ -2,10 +2,39 @@
   text-align: center;
 }
 
-.dark{
+.dark {
   background-color: #121212 !important;
   color: #E0E0E0 !important;
 }
+
+.button-container {
+  height: 0;
+  position: absolute;
+  display: inline-block;
+}
+
+.description {
+  visibility: hidden;
+  width: 200px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 0%;
+  margin-left: 50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.button-container:hover .description {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 body {
   overflow: hidden;
