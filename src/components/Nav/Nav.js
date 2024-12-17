@@ -8,13 +8,15 @@ import logo from "../../assets/media/logo.jpg";
 import "../../assets/css/nav/buttonn.css"
 import url from "../../config.json"
 
-const CustomNavbar = () => {
+const CustomNavbar = (theme) => {
   const [CartItems, setCartItem] = useState([])
   const navigate = useNavigate();
   const [search, setSearch] = useState();
   const [Login, setlogin] = useState(true)
   const [isVisible, setIsVisible] = useState(true);
   const token = localStorage.getItem('token');
+
+  console.log(theme.theme)
 
   useEffect(() => {
     if (token && token.length !== 0) {
@@ -80,10 +82,10 @@ const CustomNavbar = () => {
               </a>
             </div>
             <div className="col-8 align-self-center d-flex justify-content-between">
-              <a className="hrefb" href="/"><span className="col-3 h5 ah">خانه</span></a>
-              <a className="hrefb" href="/products"><span className="col-3 h5 ah">محصولات</span></a>
-              <a className="hrefb" href="/categories"><span className="col-3 h5 ah">دسته بندی</span></a>
-              <a className="hrefb" href="/about"><span className="col-3 h5 ah">درباره ما</span></a>
+              <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href="/"><span className="col-3 h5 ah">خانه</span></a>
+              <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href="/products"><span className="col-3 h5 ah">محصولات</span></a>
+              <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href="/categories"><span className="col-3 h5 ah">دسته بندی</span></a>
+              <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href="/about"><span className="col-3 h5 ah">درباره ما</span></a>
             </div>
           </div>
 
@@ -100,7 +102,7 @@ const CustomNavbar = () => {
             <div className="col-1 align-self-center">
               <a href={`/products?search=${search}`}>
                 <button
-                  className="rounded-circle btn bg-transparent align-self-center"
+                  className={theme.theme === "dark" ? "rounded-circle btn bg-transparent align-self-center text-white" : "rounded-circle btn bg-transparent align-self-center"}
                   aria-label="Search Button"
                   style={{ backgroundColor: "#E8E7E7" }}
                 >
@@ -120,14 +122,14 @@ const CustomNavbar = () => {
                 <a href="/account" className="hrefb h5 ah">حساب کاربری</a>
                 {!Login && (
                   <>
-                    <button className="btn border-0 bg-transparent" onClick={logout} aria-label="Logout">
+                    <button className={theme.theme === "dark" ? "btn border-0 bg-transparent text-white" : "btn border-0 bg-transparent text-dark"} onClick={logout} aria-label="Logout">
                       <i className="fas fa-sign-out-alt ah"></i>
                     </button>
                     <span> | </span>
                     <button className="btn border-0 bg-transparent cart-icon" aria-label="Cart">
-                      <a className="hrefb" href="/cart">
+                      <a className={theme.theme === "dark" ? "hrefw" : "hrefb"} href="/cart">
                         <i className="fa-solid fa-cart-shopping ah" style={{ fontSize: "1.1rem" }}></i>
-                        <span className="cart-count text-dark">{CartItems?.length}</span>
+                        <span className={theme.theme === "dark" ? "cart-count text-white" : "cart-count text-dark"} style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>{CartItems?.length}</span>
                       </a>
                     </button>
                   </>

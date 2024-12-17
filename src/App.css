@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.dark{
+  background-color: #121212 !important;
+  color: #E0E0E0 !important;
+}
+
 body {
   overflow: hidden;
 }

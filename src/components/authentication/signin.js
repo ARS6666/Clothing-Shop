@@ -46,7 +46,7 @@ function SignIn() {
         };
 
         try {
-            const response = await fetch("https://backendtest.liara.run/auth/register/", requestOptions);
+            const response = await fetch(`${url.baseUrl}/auth/register/`, requestOptions);
 
             const contentType = response.headers.get("content-type");
 

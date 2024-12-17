@@ -4,12 +4,12 @@ import Prod from './home/products';
 import OFF from './products/Offprdct';
 
 
-function Home() {
+function Home(theme) {
   return (<>
     <Example />
-    <Cat />
-    <Prod />
-    <OFF />
+    <Cat theme={theme}/>
+    <Prod theme={theme}/>
+    <OFF theme={theme}/>
   </>);
 }
 

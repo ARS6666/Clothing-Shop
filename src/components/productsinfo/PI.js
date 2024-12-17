@@ -6,7 +6,7 @@ import "../../assets/css/hide.css";
 import Loading from "../loading/loading";
 import url from "../../config.json";
 
-function ProductInfo() {
+function ProductInfo(theme) {
   const navigate = useNavigate();
   const [IsLoading, setIsLoading] = useState(true);
   const token = localStorage.getItem('token');
@@ -140,10 +140,10 @@ function ProductInfo() {
           </div>
           <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
             <div className="col-md-10 col-sm-11 col-11">
-              <div><span className="text-dark h2">{product.name}</span></div>
+              <div><h2 className={theme.theme.theme === "dark" ? "text-white" : "text-dark"}>{product.name}</h2></div>
               <div className="col-md-12 col-12 col-sm row m-0">
-                <div className="pt-2"><span className={product.discount === 0 ? "text-dark h3" : "redFont col-md-2"}>{addCommas(product.price)} تومان</span></div>
-                <div>{product.discount !== 0 ? <span className="text-dark h3 ">{addCommas(product.price - (product.price * (product.discount / 100)))} تومان</span> : null}</div>
+                <div className="pt-2"><span className={product.discount === 0 ? theme.theme.theme === "dark" ? "text-white h3" : "text-dark h3" : "redFont col-md-2"}>{addCommas(product.price)} تومان</span></div>
+                <div>{product.discount !== 0 ? <span className={theme.theme.theme === "dark" ? "text-white h3" : "text-dark h3"}>{addCommas(product.price - (product.price * (product.discount / 100)))} تومان</span> : null}</div>
               </div>
               <div className="pt-2">
                 <span className="h4">توضیحات:</span>
@@ -162,7 +162,7 @@ function ProductInfo() {
                 </div>
               </div>
               <div className="pt-4">
-                <button className="btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart" onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
+                <button className={theme.theme.theme === "dark" ? "btn rounded-0 btn-lg btn-outline-light w-100 add-to-cart" : "btn rounded-0 btn-lg btn-outline-dark w-100 add-to-cart"} onClick={(event) => AddItem(product.id, event)} disabled={buttonDisabled}>
                   {buttonDisabled ?
                     <span className="text-success">به سبد خرید اضافه شد!</span>
                     :

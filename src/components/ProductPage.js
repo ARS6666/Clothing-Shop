@@ -3,11 +3,11 @@ import CommentBox from './productsinfo/CommentBox';
 import CommonProducts from './productsinfo/commonProducts';
 
 
-function ProductPage() {
+function ProductPage(theme) {
   return (<>
-    <PI />
-    <CommentBox />
-    <CommonProducts />
+    <PI theme={theme} />
+    <CommentBox theme={theme}/>
+    <CommonProducts theme={theme}/>
   </>);
 }
 

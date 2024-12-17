@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../../assets/css/productsinfo/Comment.css";
 import url from "../../config.json";
 
-const Comments = () => {
+const Comments = (theme) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
@@ -119,19 +119,19 @@ const Comments = () => {
   };
 
   return (
-    <div className="container-xl col-12 d-flex justify-content-center pt-5 pb-5">
-      <div className="col-md-11 col-11 fontr shadow" dir="rtl">
+    <div className="container-xl col-12 d-flex justify-content-center pt-5 pb-5" >
+      <div className="col-md-11 col-11 fontr shadow" dir="rtl" >
         <div className="col-md-12 row m-0 p-5">
           <div className="col-md-6 pt-2 col-12 p-0 m-0">
             {Array.isArray(comments) && comments.length > 0 &&
               comments.slice(Math.max(comments.length - ShowCount, 0), comments.length).map((c, index) => (
                 <div key={index} className="mt-1 bg-light fontr p-3 border-bottom">
                   <div className="text-muted h5">{c.name}:</div>
-                  <div className="h5">{c.text}</div>
+                  <div className="h5 text-dark">{c.text}</div>
                 </div>
               ))}
             <div className="col-md-12 pt-3 col-12">
-              <button className="btn btn-dark hover rounded-0 col-md-12 col-12" onClick={HandleShow} disabled={ButtDisable} aria-label="Show More Comments">
+              <button className={theme.theme.theme === "dark" ? "btn btn-light hover rounded-0 col-md-12 col-12" : "btn btn-dark hover rounded-0 col-md-12 col-12"} onClick={HandleShow} disabled={ButtDisable} aria-label="Show More Comments">
                 {ButtContent}
               </button>
             </div>

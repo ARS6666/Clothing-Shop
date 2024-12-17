@@ -4,7 +4,7 @@ import "../../assets/css/hide.css";
 import "../../assets/css/productsinfo/commonprod.css";
 import url from "../../config.json";
 
-const CommonProducts = () => {
+const CommonProducts = (theme) => {
   const [products, setProducts] = useState([]);
   const [categoryId, setCategoryId] = useState(['']);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -85,7 +85,7 @@ const CommonProducts = () => {
         <div className="d-flex justify-content-start col-md-6">
           <div className="m-1 fontr">
             <button
-              className="btn btn-outline-dark"
+              className={theme.theme.theme === "dark" ? "btn btn-outline-light" : "btn btn-outline-dark"}
               onClick={nextSlide}
               disabled={currentIndex >= products.length - 3}
               aria-label="Next"
@@ -95,7 +95,7 @@ const CommonProducts = () => {
           </div>
           <div className="m-1 fontr">
             <button
-              className="btn btn-outline-dark"
+              className={theme.theme.theme === "dark" ? "btn btn-outline-light" : "btn btn-outline-dark"}
               onClick={prevSlide}
               disabled={currentIndex === 0}
               aria-label="Previous"
