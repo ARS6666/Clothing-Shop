@@ -9,10 +9,10 @@ function RefreshToken() {
 
   useEffect(() => {
     const verifyToken = async () => {
-      if (!token || !refresh) {
-        navigate('/login');
-        return;
-      }
+      // if (window.location.href.includes('account') && !token || !refresh) {
+      //   navigate('/login');
+      //   return;
+      // }
 
       const myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
@@ -54,9 +54,7 @@ function RefreshToken() {
             } else {
               navigate('/login');
             }
-          } else {
-            navigate('/login');
-          }
+          } 
         }
       } catch (error) {
         console.error(error);
