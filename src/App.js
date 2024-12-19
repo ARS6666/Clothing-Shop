@@ -3,8 +3,6 @@ import Nav from '../src/components/Nav/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
 import PI from './components/ProductPage';
-import Test from "./components/test"
-import Test1 from "./components/test1"
 import Products from './components/ProductList';
 import Cart from './components/account/Cart/cart';
 import Signin from './components/authentication/signin';
@@ -69,8 +67,6 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/signin' element={<Signin theme={theme} />} />
           <Route path='/login' element={<Login theme={theme} />} />
-          <Route path='/test' element={<Test />} />
-          <Route path='/test1' element={<Test1 />} />
           <Route path='/cart' element={
             <PrivateRoute>
               <div class="col-md-12 col-12 justify-content-center d-flex">
