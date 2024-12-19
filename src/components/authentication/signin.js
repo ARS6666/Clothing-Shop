@@ -15,6 +15,10 @@ function SignIn() {
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+    const [showPassword1, setShowPassword1] = useState(false);
+    const toggleShowPassword1 = () => {
+        setShowPassword1(!showPassword1);
+    };
     const handleSubmit = async (event) => {
         setIsLoading(true);
         event.preventDefault();
@@ -107,8 +111,11 @@ function SignIn() {
                             <div className="pt-2">
                                 <label className="h5">تکرار رمز عبور:</label>
                             </div>
-                            <div className="pt-1">
-                                <input className="form-control form-control-lg" type='password' onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
+                            <div className="pt-1" style={{ position: "relative" }}>
+                                <button className="btn btn-outline-transparent eye" onClick={toggleShowPassword1} type="button">
+                                    {showPassword1 ? <i class="fa-solid fa-eye-slash"></i> : <i class="fa-solid fa-eye"></i>}
+                                </button>
+                                <input className="form-control form-control-lg" type={showPassword1 ? 'text' : 'password'} onChange={e => setPassword1(e.target.value)} dir="ltr" aria-label="Confirm Password" />
                             </div>
                             <div class="col-md-12 col-12 pt-2">{error && <div className="alert alert-danger" dir="ltr" role="alert">{error}</div>}</div>
                             <div className="col-md-12 d-flex justify-content-center pt-1">

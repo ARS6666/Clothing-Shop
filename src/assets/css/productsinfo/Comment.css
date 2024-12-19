@@ -2,55 +2,55 @@
     font-family: arial;
     font-size: 14px
   }
-  
+
   h3 {
     color: white;
     font-size: 2em;
     font-weight: bold;
     margin-top: 5px;
   }
-  
+
   h4 {
     margin: 0;
   }
-  
-  .div50{
+
+  .div50 {
     width: 50%;
     display: block;
   }
-  
-  .app{
+
+  .app {
     background-color: #ccc;
     border: 1px solid gray;
     margin-bottom: 10px;
     padding: 10px;
   }
-  
+
   .comment-box {
     padding: 10px;
     background-color: #69a2ab;
-  
+
   }
-  
-  .comment{
+
+  .comment {
     padding-top: 10px;
     padding-bottom: 10px;
     color: #e7e7e7;
   }
-  
-  .comment-count-container{
+
+  .comment-count-container {
     width: 50%;
     float: left;
     padding-top: 6px;
   }
-  
+
   .comment-count {
     color: white;
     font-size: 1.6em;
     font-weight: normal;
   }
-  
-  .comment-header{
+
+  .comment-header {
     color: white;
     border-bottom-width: 2px;
     border-bottom-style: solid;
@@ -60,29 +60,29 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-  
-  .comment-list-header{
+
+  .comment-list-header {
     height: 40px;
   }
-  
-  .comment-body{
+
+  .comment-body {
     font-size: 1.1em;
   }
-  
-  .comment-footer-delete{
+
+  .comment-footer-delete {
     color: #ccd9da;
     float: right;
     margin-top: -75px;
     text-transform: uppercase;
   }
-  
-  .toggle-container{
+
+  .toggle-container {
     float: left;
     width: 50%;
     text-align: right;
   }
-  
-  button.comments-toggle{
+
+  button.comments-toggle {
     padding: 10px;
     background-color: #547279;
     border: 0;
@@ -90,20 +90,21 @@
     text-transform: uppercase;
     font-size: 1.1em;
   }
-  
-  .comment-form{
+
+  .comment-form {
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: #aad2db;
     padding: 10px;
   }
-  
-  .comment-form label{
+
+  .comment-form label {
     color: white;
     font-size: 1.2em;
   }
-  
-  .comment-form-fields input,textarea{
+
+  .comment-form-fields input,
+  textarea {
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -111,20 +112,20 @@
     width: 100%;
     border: none;
   }
-  
-  .comment-form-actions button{
+
+  .comment-form-actions button {
     border: none;
     background-color: #fceb88;
     font-size: 1em;
   }
-  
-  .anger-level{
+
+  .anger-level {
     color: blue;
     font-size: 1em;
     margin-top: 10px;
   }
 
-  .loadingCenter{
+  .loadingCenter {
     opacity: 100%;
     position: absolute;
     top: 50%;
@@ -133,15 +134,69 @@
     padding: 10px;
   }
 
-  .loadingPage{
+  .loadingPage {
     background-color: #4b4b4b;
-    width: 100%;   
+    width: 100%;
     min-height: 100vh;
     opacity: 80%;
   }
-  .contain{
+
+  .contain {
     display: grid;
     gap: 10px;
     max-height: 300px;
     overflow-y: auto;
+  }
+
+  .notlogin {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+    filter: grayscale(100%);
+  
+  }
+
+  .notlogin::after {
+    content: "برای دسترسی به این بخش نیاز به ورود دارید !";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+  }
+
+  .noName {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+    filter: grayscale(100%);
+  
+  }
+
+  .noName::after {
+    content: "برای دسترسی به این بخش در بخش حساب کاربری , جزییات حساب کاربری خود را کامل کنید ! ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+  }
+  @media (max-width: 1024px) {
+    .notlogin{
+      font-size: 0.1 rem;
+    }
+    .noName{
+      font-size: 1rem;
+    }
+
   }

@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 
 const AppContent = () => {
-  
+
   const location = useLocation();
   const hideFooterPaths = ['/login', '/signin', '/test', '/account ', '/cart'];
   const showFooter = !hideFooterPaths.includes(location.pathname);
@@ -33,7 +33,7 @@ const AppContent = () => {
       } else if (userPrefersLight) {
         setTheme('light');
       } else {
-        setTheme('light'); 
+        setTheme('light');
       }
     }
   }, [theme]);
@@ -65,8 +65,16 @@ const AppContent = () => {
             <PrivateRoute>
               <Panel theme={theme} />
             </PrivateRoute>} />
-          <Route path='/signin' element={<Signin theme={theme} />} />
-          <Route path='/login' element={<Login theme={theme} />} />
+          <Route path='/signin' element={
+            <PrivateRoute>
+              <Signin theme={theme} />
+            </PrivateRoute>
+          } />
+          <Route path='/login' element={
+            <PrivateRoute>
+              <Login theme={theme} />
+            </PrivateRoute>
+          } />
           <Route path='/cart' element={
             <PrivateRoute>
               <div class="col-md-12 col-12 justify-content-center d-flex">
@@ -76,9 +84,10 @@ const AppContent = () => {
               </div>
             </PrivateRoute>} />
           <Route path='/about' element={<About />} />
-        </Routes>
-        {showFooter ? <Footer theme={theme} /> : null}
-      </div>
+        </Routes >
+        {showFooter ? <Footer theme={theme} /> : null
+        }
+      </div >
     </>
   );
 };

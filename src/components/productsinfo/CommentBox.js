@@ -14,6 +14,8 @@ const Comments = (theme) => {
   const [ButtContent, setButtContent] = useState("مشاهده بیشتر ...");
   const [ButtDisable, setButtDisable] = useState(false);
   const token = localStorage.getItem('token');
+  const [Islogin, setIslogin] = useState(true)
+  const [hasName, sethasName] = useState(true)
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -22,6 +24,30 @@ const Comments = (theme) => {
       setProductId(paramId);
     }
   }, [location.search]);
+  useEffect(() => {
+    if (token) {
+      const myHeaders = new Headers();
+      myHeaders.append("accept", "application/json");
+      myHeaders.append("X-CSRFToken", "1fTGS6TTndWCquhfeQ1p8MfIfRjf4VjUW4Bdbjea2NHSuYlKaiUJWwo0lknZ68nq");
+      myHeaders.append("Authorization", `Bearer ${token}`);
+
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+      };
+
+      fetch(`${url.baseUrl}/auth/profile/1/`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => setName(result.name))
+        .catch((error) => console.error(error));
+      if (name === null) {
+        sethasName(false)
+      }
+    } else {
+      setIslogin(false)
+    }
+  }, []);
 
   useEffect(() => {
     if (productId) {
@@ -104,6 +130,9 @@ const Comments = (theme) => {
       });
   };
 
+
+
+
   const HandleShow = () => {
     if (comments.length === 0) {
       setButtContent("کامنتی وجود ندارد ...");
@@ -117,10 +146,12 @@ const Comments = (theme) => {
       }
     }
   };
+  console.log(name)
+  console.log(hasName)
 
   return (
-    <div className="container-xl col-12 d-flex justify-content-center pt-5 pb-5" >
-      <div className="col-md-11 col-11 fontr shadow" dir="rtl" >
+    <div className="container-xl col-12 d-flex justify-content-center pt-5 pb-5 " >
+      <div className={Islogin ? hasName ? "col-md-11 col-11 fontr shadow noName" : "col-md-11 col-11 fontr shadow " : "col-md-11 col-11 fontr shadow notlogin"} dir="rtl" >
         <div className="col-md-12 row m-0 p-5">
           <div className="col-md-6 pt-2 col-12 p-0 m-0">
             {Array.isArray(comments) && comments.length > 0 &&
@@ -138,13 +169,13 @@ const Comments = (theme) => {
           </div>
           <div className="col-md-6 col-12">
             <div className="d-flex justify-content-center">
-              <div className="col-md-11 col-11 d-flex align-items-center pt-3">
+              <div className="col-md-11 col-11 d-flex align-items-center pt-3 row m-0">
+                <span className="col-md-12 col-12 pb-1">نام :</span>
                 <input
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-control form-control-solid form-control-lg bg-light border-dark rounded-0"
-                  placeholder="نام و نام خانوادگی:"
+                  className="form-control form-control-solid form-control-lg bg-light border-dark rounded-0 col-md-12 col-12"
                   aria-label="Name"
                 />
               </div>
@@ -162,7 +193,7 @@ const Comments = (theme) => {
                   className="form-control form-control-lg border-dark rounded-0 textarea"
                   placeholder="نظر شما:"
                   aria-label="Comment"
-                  style={{maxHeight:"250px"}}
+                  style={{ maxHeight: "250px" }}
                 />
               </div>
             </div>
