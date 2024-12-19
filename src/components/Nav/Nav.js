@@ -16,7 +16,6 @@ const CustomNavbar = (theme) => {
   const [isVisible, setIsVisible] = useState(true);
   const token = localStorage.getItem('token');
 
-  console.log(theme.theme)
 
   useEffect(() => {
     if (token && token.length !== 0) {
