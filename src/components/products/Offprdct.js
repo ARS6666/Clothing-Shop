@@ -48,6 +48,7 @@ const ProductCarousel = () => {
     infinite: true,
     speed: 500,
     slidesToShow: slidesToShow,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -71,7 +72,7 @@ const ProductCarousel = () => {
   return (
     <>
       {!OffDis && (
-        <>
+        <div className="container">
           <div className="col-md-12 col-12 d-flex justify-content-center remove p-3">
             <div className="d-flex justify-content-end col-md-11 col-11 border-bottom remove">
               <span className="fontr h3 align-self-center">تخفیف ها</span>
@@ -122,7 +123,7 @@ const ProductCarousel = () => {
               {">"}
             </Button>
           </div>
-        </>
+        </div>
       )}
     </>
   );
