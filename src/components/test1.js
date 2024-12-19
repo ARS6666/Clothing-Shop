@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import './App.css';
 
-const socket = io('http://localhost:5000'); // Update with your server URL
+const socket = io('https://meshonarzanjan.liara.run/:5000'); // Update with your server URL
 
 const Client = () => {
   const remoteVideoRef = useRef(null);
   const [peerConnection, setPeerConnection] = useState(null);
-  const [isConnected, setIsConnected] = useState(false);
+  const [connectionState, setConnectionState] = useState('closed');
 
   useEffect(() => {
     const pc = new RTCPeerConnection();
@@ -20,32 +21,17 @@ const Client = () => {
 
     pc.ontrack = (event) => {
       console.log('Track received:', event);
-      remoteVideoRef.current.srcObject = event.streams[0];
-    };
-
-    pc.onconnectionstatechange = () => {
-      if (pc.connectionState === 'connected') {
-        setIsConnected(true);
-        console.log('Peer connection established');
-      } else if (pc.connectionState === 'closed' || pc.connectionState === 'failed') {
-        setIsConnected(false);
-        console.log('Peer connection closed or failed');
+      if (remoteVideoRef.current) {
+        remoteVideoRef.current.srcObject = event.streams[0];
       }
     };
 
     setPeerConnection(pc);
+    console.log('Peer connection created');
 
     socket.on('offer', async (data) => {
       console.log('Offer received:', data);
       try {
-        if (pc.signalingState === 'closed') {
-          console.log('Re-initializing peer connection');
-          const newPc = new RTCPeerConnection();
-          setPeerConnection(newPc);
-          newPc.onicecandidate = pc.onicecandidate;
-          newPc.ontrack = pc.ontrack;
-          newPc.onconnectionstatechange = pc.onconnectionstatechange;
-        }
         await pc.setRemoteDescription(new RTCSessionDescription(data));
         console.log('Remote description set');
         const answer = await pc.createAnswer();
@@ -60,10 +46,8 @@ const Client = () => {
     socket.on('candidate', async (data) => {
       console.log('ICE candidate received:', data);
       try {
-        if (isConnected) {
-          await pc.addIceCandidate(new RTCIceCandidate(data));
-          console.log('ICE candidate added');
-        }
+        await pc.addIceCandidate(new RTCIceCandidate(data));
+        console.log('ICE candidate added');
       } catch (e) {
         console.error('Error adding received ICE candidate', e);
       }
@@ -71,12 +55,13 @@ const Client = () => {
 
     return () => {
       pc.close();
+      setConnectionState('closed');
       console.log('Peer connection closed');
     };
-  }, [isConnected]);
+  }, [connectionState]);
 
   const handleConnectionOpen = () => {
-    setIsConnected(true);
+    setConnectionState('open');
     console.log('Connection state set to open');
   };
 
@@ -91,4 +76,4 @@ const Client = () => {
   );
 };
 
-export default Client
+export default Client;

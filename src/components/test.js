@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import './App.css';
 
-const socket = io('http://localhost:5000'); // Update with your server URL
+const socket = io('https://meshonarzanjan.liara.run/:5000'); // Update with your server URL
 
 const Streamer = () => {
   const localVideoRef = useRef(null);
