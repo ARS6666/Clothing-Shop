@@ -1,10 +1,10 @@
 .Imge {
-    object-fit: cover;
-    height: 350px;
+    object-fit: contain;
+    height: 300px;
 }
 
 .bpe {
-    height: 350px;
+    padding-top: 45%;
 }
 
 .product-carde {
@@ -31,7 +31,6 @@
 
 .product-carde:hover .hover-detailse {
     display: block;
-    /* Show on hover */
 }
 
 @media (max-width: 1024px) {
@@ -39,7 +38,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 250px;
+        height: 100%;
 
     }
 
@@ -63,7 +62,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 300px;
+        height: 100%;
 
     }
 

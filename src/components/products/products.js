@@ -157,7 +157,7 @@ function Products() {
             <div className="col-12 col-md-9 row m-0 d-flex justify-content-center fontr">
               {NoResult ? (
                 <div className="col-12 text-center">
-                  <span className="text-dark display-4">!محصولی یافت نشد</span>
+                  <span className="display-4">!محصولی یافت نشد</span>
                 </div>
               ) : (
                 displayedProducts.slice(0, visibleProducts).map((c) => (
@@ -175,7 +175,7 @@ function Products() {
                         <span className="h5 fontr text-center">{c.name}</span>
                       </div>
                       <div className="d-flex justify-content-center">
-                        <span className="fontr h5 pt-1">{addCommas(c.price)} تومان</span>
+                        <span className="fontr pt-1">{addCommas(c.price)} تومان</span>
                       </div>
                     </div>
                     <a href={`pi?id=${c.id}#${c.name}`} className="hrefb align-self-center" aria-label={`View ${c.name}`}>

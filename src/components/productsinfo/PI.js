@@ -121,7 +121,7 @@ function ProductInfo(theme) {
         <div className="row m-0 col-md-12">
           <div className="col-md-6 d-flex flex-column">
             <div className="row m-0">
-              <div className="col-md-2 remove d-flex flex-column align-items-end romove">
+              <div className="col-md-2 d-flex flex-column align-items-end romove">
                 {IMG?.slice(0, 4).map((c) => (
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="Product Thumbnail" />
                 ))}
@@ -140,7 +140,7 @@ function ProductInfo(theme) {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-start">
+          <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex proddescription">
             <div className="col-md-10 col-sm-11 col-11">
               <div><h2 className={theme.theme.theme === "dark" ? "text-white" : "text-dark"}>{product.name}</h2></div>
               <div className="col-md-12 col-12 col-sm row m-0">

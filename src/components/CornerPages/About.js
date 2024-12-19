@@ -5,8 +5,8 @@ const AboutUs = () => {
   return (
     <section className=" fontr" style={{ backgroundColor: '#0000', color: '#fff' }} dir='rtl'>
       <div className="container">
-        <div className="row m-0 align-items-center mb-5">
-          <div className="col-12 col-lg-6 mb-4 mb-lg-0">
+        <div className="row m-0 align-items-center mb-2">
+          <div className="col-12 col-lg-6 mb-1 mb-lg-0">
             <img
               src={Img}
               alt="About Our Copperware Store"
@@ -27,7 +27,7 @@ const AboutUs = () => {
         </div>
 
         {/* Services Section */}
-        <div className="row m-0 text-center">
+        <div className="row m-0 text-center mb-3">
           <div className="col-12 col-md-4 pt-2">
             <div className="p-4 text-white rounded" style={{ backgroundColor: "#DB5C28" }}>
               <i className="bi bi-bag-fill display-4"></i>

@@ -8,7 +8,6 @@ const CommonProducts = (theme) => {
   const [products, setProducts] = useState([]);
   const [categoryId, setCategoryId] = useState(['']);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [Movementrange, setMovementrange] = useState(4);
   const location = useLocation();
   const [id, setId] = useState('');
 
@@ -71,22 +70,6 @@ const CommonProducts = (theme) => {
     return () => clearInterval(intervalId);
   }, [products]);
 
-  const handleResize = () => {
-    if (window.innerWidth < 1024) {
-      setMovementrange(1);
-    } else {
-      setMovementrange(4);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   const addCommas = (number) => {
     if (number !== undefined) {
       let [integer] = number.toString().split('.');
@@ -97,14 +80,14 @@ const CommonProducts = (theme) => {
   };
 
   return (
-    <div className="slider-container pt-5 p-4 fontr pb-5">
-      <div className="border-bottom border-dark col-md-12 col-12 row m-0">
-        <div className="d-flex justify-content-start col-md-6 col-6">
+    <div className="slider-container pt-5 remove p-4 fontr">
+      <div className="border-bottom border-dark col-md-12 row m-0">
+        <div className="d-flex justify-content-start col-md-6">
           <div className="m-1 fontr">
             <button
               className={theme.theme.theme === "dark" ? "btn btn-outline-light" : "btn btn-outline-dark"}
               onClick={nextSlide}
-              disabled={currentIndex >= products.length - (Movementrange - 1)}
+              disabled={currentIndex >= products.length - 3}
               aria-label="Next"
             >
               بعدی
@@ -121,15 +104,15 @@ const CommonProducts = (theme) => {
             </button>
           </div>
         </div>
-        <div className="d-flex justify-content-end col-md-6 col-6">
+        <div className="d-flex justify-content-end col-md-6">
           <span className="fontr h3 align-self-center">محصولات مشابه</span>
         </div>
       </div>
       <div className="product-sl">
-        <div className="col-md-12 col-12 row m-0" dir="rtl">
-          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / Movementrange)}%)` }}>
+        <div className="col-md-12 row m-0" dir="rtl">
+          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 4)}%)` }}>
             {products?.map((product) => (
-              <div key={product.id} className="p-3 col-md-3 col-12" style={{ minWidth: `(-${(100 / Movementrange)}%)` }}>
+              <div key={product.id} className="p-3 col-md-3" style={{ minWidth: `(-${(100 / 4)}%)` }}>
                 <div className={product.count === 0 ? 'out-of-stock col-md-12' : 'product-carde'}>
                   <div className="row m-0 d-flex justify-content-end">
                     {product.discount !== 0 && (

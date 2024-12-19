@@ -27,7 +27,7 @@ const ProductSlider = (theme) => {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      Math.min(prevIndex + 1, Categories.length - 1)
+      Math.min(prevIndex + 1, Categories.length -1)
     );
   };
 
@@ -45,7 +45,6 @@ const ProductSlider = (theme) => {
               <button
                 className="btn border-0"
                 onClick={nextSlide}
-                disabled={currentIndex === 5}
                 aria-label="Next"
               >
                 {`<`}
@@ -66,9 +65,9 @@ const ProductSlider = (theme) => {
         </div>
 
         <div className="slider-container col-md-12 row m-0 pt-2" dir="rtl">
-          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
+          <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 2)}%)` }}>
             {Categories.map((categories, index) => (
-              <div className="col-md-2 col-7 cat-hover" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
+              <div className="col-md-2 col-8 cat-hover" key={index} style={{ minWidth: `(-${(100 / 2)}%)` }}>
                 <a className="hrefb align-self-center" href={"/products?category=" + categories.name}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">

@@ -72,12 +72,12 @@ const ProductCarousel = () => {
     <>
       {!OffDis && (
         <>
-          <div className="col-md-12 col-12 d-flex justify-content-end">
-            <div className="d-flex justify-content-end col-md-12 col-12 border-bottom">
+          <div className="col-md-12 col-12 d-flex justify-content-center remove p-3">
+            <div className="d-flex justify-content-end col-md-11 col-11 border-bottom remove">
               <span className="fontr h3 align-self-center">تخفیف ها</span>
             </div>
           </div>
-          <div className="carousel-container">
+          <div className="carousel-container m-0">
             <Button
               className="carousel-button border-0 left"
               onClick={() => sliderRef.current.slickPrev()}
@@ -87,7 +87,7 @@ const ProductCarousel = () => {
             </Button>
             <Slider ref={sliderRef} {...settings}>
               {products.map((c) => (
-                <div key={c.id} className={`col-12 col-md-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+                <div key={c.id} className={`col-1 col-md-3 productt-card Anim m-0 ${c.count === 0 ? 'out-of-stock' : ''}`}>
                   <div className="row m-0">
                     {c.discount !== 0 && c.count !== 0 && (
                       <div className="discountDisplay">
