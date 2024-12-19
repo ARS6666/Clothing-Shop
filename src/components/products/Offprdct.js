@@ -10,9 +10,9 @@ import url from "../../config.json";
 
 const ProductCarousel = () => {
   const sliderRef = useRef(null);
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [OffDis, setOffDis] = useState(false);
-  const[Isvisible,setIsvisible] = useState(true)
+  const [slidesToShow, setSlidesToShow] = useState(4);
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -27,29 +27,30 @@ const ProductCarousel = () => {
 
     fetch(`${url.baseUrl}/api/products/top-discounts/`, requestOptions)
       .then((response) => response.json())
-      .then((result) => setproducts(result))
+      .then((result) => setProducts(result))
       .catch((error) => console.error(error));
 
     if (products.length === 5) {
       setOffDis(true);
     }
-  }, []);
+  }, [products.length]);
+
+  const handleResize = () => {
+    if (window.innerWidth < 1024) {
+      setSlidesToShow(1);
+    } else {
+      setSlidesToShow(4);
+    }
+  };
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-  };
-  const handleResize = () => {
-    if (window.innerWidth < 1024) {
-      setIsvisible(false);
-    } else {
-      setIsvisible(true);
-    }
   };
 
   useEffect(() => {
@@ -61,13 +62,18 @@ const ProductCarousel = () => {
     };
   }, []);
 
+  const addCommas = (number) => {
+    let [integer] = number.toString().split('.');
+    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return integer;
+  };
+
   return (
     <>
-    {Isvisible ?
-      <>{!OffDis && (
+      {!OffDis && (
         <>
-          <div className="col-md-12 d-flex justify-content-center">
-            <div className="d-flex justify-content-end col-md-11 border-bottom">
+          <div className="col-md-12 col-12 d-flex justify-content-end">
+            <div className="d-flex justify-content-end col-md-12 col-12 border-bottom">
               <span className="fontr h3 align-self-center">تخفیف ها</span>
             </div>
           </div>
@@ -81,52 +87,30 @@ const ProductCarousel = () => {
             </Button>
             <Slider ref={sliderRef} {...settings}>
               {products.map((c) => (
-                <div key={c.id} className="p-3 col-md-3 col-12 fontr" style={{ minWidth: `calc(100% / 4)` }}>
-                  <div className={c.count === 0 ? 'out-of-stock col-md-12 col-12' : 'product-carde'}>
-                    <div className="row m-0 d-flex justify-content-start">
-                      {c.discount !== 0 && (
-                        <div className="discountDisplay">
-                          <span>{c.discount}%</span>
-                        </div>
-                      )}
-                      <div className="d-flex justify-content-center">
-                        <img
-                          src={c.pic}
-                          className="Img col-md-11 p-2"
-                          alt={c.name}
-                        />
+                <div key={c.id} className={`col-12 col-md-3 productt-card Anim ${c.count === 0 ? 'out-of-stock' : ''}`}>
+                  <div className="row m-0">
+                    {c.discount !== 0 && c.count !== 0 && (
+                      <div className="discountDisplay">
+                        <span>{c.discount}%</span>
                       </div>
-                      <div className="d-flex justify-content-center pt-2">
-                        <span className="h3 fontr text-center h5">{c.name}</span>
-                      </div>
-                      <div className="d-flex justify-content-center">
-                        <span className="h5 fontr pt-1" dir="rtl">
-                          {c.price} هزار تومن
-                        </span>
+                    )}
+                    <div className="d-flex justify-content-center">
+                      <img src={c.pic} className="Image col-12" alt={c.name} />
+                    </div>
+                    <div className="d-flex justify-content-center pt-3">
+                      <span className="h5 fontr text-center">{c.name}</span>
+                    </div>
+                    <div className=" d-flex justify-content-center">
+                      <span className=" fontr h5 pt-1">{addCommas(c.price)} تومان</span>
+                    </div>
+                  </div>
+                  <a href={`pi?id=${c.id}#${c.name}`} className=" hrefb align-self-center" aria-label={`View ${c.name}`}>
+                    <div className=" hoverr-details col-12">
+                      <div className=" d-flex justify-content-center bp">
+                        <button className=" btn btn-light border-0 hover fontr" aria-label="View Product">مشاهده محصول</button>
                       </div>
                     </div>
-                    <a
-                      className="hrefb align-self-center"
-                      href={`pi?id=${c.id}`}
-                      aria-label={`View ${c.name}`}
-                    >
-                      <div className="hover-detailse col-md-12">
-                        <div
-                          className="d-flex justify-content-center"
-                          style={{ paddingTop: "45%" }}
-                        >
-                          <a
-                            className="hrefb align-self-center"
-                            href={`pi?id=${c.id}`}
-                          >
-                            <button className="btn btn-light fontr" aria-label="View Product">
-                              مشاهده محصول
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+                  </a>
                 </div>
               ))}
             </Slider>
@@ -139,7 +123,7 @@ const ProductCarousel = () => {
             </Button>
           </div>
         </>
-      )}</> : <></>}
+      )}
     </>
   );
 };

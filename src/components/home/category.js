@@ -45,7 +45,7 @@ const ProductSlider = (theme) => {
               <button
                 className="btn border-0"
                 onClick={nextSlide}
-                disabled={currentIndex === 3}
+                disabled={currentIndex === 5}
                 aria-label="Next"
               >
                 {`<`}
@@ -68,11 +68,11 @@ const ProductSlider = (theme) => {
         <div className="slider-container col-md-12 row m-0 pt-2" dir="rtl">
           <div className="slider" style={{ transform: `translateX(${currentIndex * (100 / 3)}%)` }}>
             {Categories.map((categories, index) => (
-              <div className="col-md-2 col-6 cat-hover" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
+              <div className="col-md-2 col-7 cat-hover" key={index} style={{ minWidth: `(-${(100 / 3)}%)` }}>
                 <a className="hrefb align-self-center" href={"/products?category=" + categories.name}>
                   <div className="row m-0">
                     <div className="d-flex justify-content-center ">
-                      <img src={categories.image} title ={categories.name} className="d-block col-md-11 p-2 w-100" alt={categories.name} />
+                      <img src={categories.image} title ={categories.name} className="d-block col-md-11 p-2" style={{height: "200px" , width: "auto" }} alt={categories.name} />
                     </div>
                     <div className="d-flex justify-content-center pt-2">
                       <h4 className={theme.theme.theme === "dark" ? "h4 fontr text-white" : "h4 fontr text-black"}>{categories.name}</h4>

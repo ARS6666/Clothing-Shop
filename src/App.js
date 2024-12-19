@@ -3,6 +3,7 @@ import Nav from '../src/components/Nav/Nav';
 import NotFoundPage from './components/NotFoundPage';
 import Home from './components/Home';
 import PI from './components/ProductPage';
+import Test from "./components/products/Offprdct"
 import Products from './components/ProductList';
 import Cart from './components/account/Cart/cart';
 import Signin from './components/authentication/signin';
@@ -12,7 +13,6 @@ import PrivateRoute from "./components/authentication/PrivateRoute";
 import RefreshToken from "./components/authentication/RefreshToken";
 import Footer from './components/footer';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Prdctlist from './components/Features/PrdctList';
 import About from './components/CornerPages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
@@ -67,7 +67,7 @@ const AppContent = () => {
             </PrivateRoute>} />
           <Route path='/signin' element={<Signin theme={theme} />} />
           <Route path='/login' element={<Login theme={theme} />} />
-          <Route path='/prdct' element={<Prdctlist />} />
+          <Route path='/test' element={<Test />} />
           <Route path='/cart' element={
             <PrivateRoute>
               <div class="col-md-12 col-12 justify-content-center d-flex">
