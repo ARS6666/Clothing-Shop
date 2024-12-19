@@ -37,18 +37,19 @@ const ProductCarousel = () => {
 
   const handleResize = () => {
     if (window.innerWidth < 1024) {
-      setSlidesToShow(1);
+      setSlidesToShow(3);
     } else {
-      setSlidesToShow(4);
+      setSlidesToShow(5);
     }
   };
+
+
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: slidesToShow,
-    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -99,10 +100,10 @@ const ProductCarousel = () => {
                       <img src={c.pic} className="Image col-12" alt={c.name} />
                     </div>
                     <div className="d-flex justify-content-center pt-3">
-                      <span className="h5 fontr text-center">{c.name}</span>
+                      <span className="h5 fontr text-center product-name">{c.name}</span>
                     </div>
                     <div className=" d-flex justify-content-center">
-                      <span className=" fontr h5 pt-1">{addCommas(c.price)} تومان</span>
+                      <span className=" fontr h5 pt-1 product-name">{addCommas(c.price)} تومان</span>
                     </div>
                   </div>
                   <a href={`pi?id=${c.id}#${c.name}`} className=" hrefb align-self-center" aria-label={`View ${c.name}`}>
