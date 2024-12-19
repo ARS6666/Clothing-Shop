@@ -45,6 +45,7 @@ const ProductSlider = (theme) => {
               <button
                 className="btn border-0"
                 onClick={nextSlide}
+                disabled={currentIndex === Categories.length-1}
                 aria-label="Next"
               >
                 {`<`}

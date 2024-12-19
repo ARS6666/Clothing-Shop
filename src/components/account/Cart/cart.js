@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import IMg from "../../../assets/media/s1.jpg"
 import "../../../assets/css/account/cart.css"
 import "../../../assets/css/hide.css"
@@ -13,7 +14,7 @@ function Cart(theme) {
     const token = localStorage.getItem('token');
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [IsLoading, setIsLoading] = useState(true);
-
+    const navigate = useNavigate();
 
     const myHeaders = new Headers();
     myHeaders.append("accept", "application/json");
@@ -139,28 +140,32 @@ function Cart(theme) {
 
         fetch(`${url.baseUrl}/order/order/create_order/`, requestOptions)
             .then((response) => response.text())
-            .then((result) => { setIsLoading(false); show() })
+            .then((result) => {
+                setIsLoading(false);
+                show();
+            })
             .catch((error) => console.error(error));
 
     }
 
+//   navigate('/account')
 
 
     return (<>
         {IsLoading ? <Loading /> : null}
-        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5 pb-5" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>
-            <div class="col-md-12 col-12 pt-5 pb-5" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "white"}}>
-                <div class="col-md-12 col-12 row m-0 " style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
+        <div class="col-md-12 col-12 fontr d-flex justify-content-center pt-5 pb-5" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "white" }}>
+            <div class="col-md-12 col-12 pt-5 pb-5" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "white" }}>
+                <div class="col-md-12 col-12 row m-0 " style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "#f8f9fa" }}>
                     <div class="col-md-4 col-12 col-5 pb-4 pt-4" dir="rtl">
                         <div class="col-md-12 col-12 " >
-                            <div class="col-md-12 col-12 border" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
+                            <div class="col-md-12 col-12 border" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "#f8f9fa" }}>
                                 <div class="col-md-12 col-12 pt-3 pb-2 d-flex justify-content-center">
                                     <span class="h5">
                                         جمع کل سبد خرید
                                     </span>
                                 </div>
                                 <div class="col-md-12 col-12 d-flex justify-content-center">
-                                    <div class=" col-md-11 col-11 rounded" style={{backgroundColor : theme.theme === "dark" ? "#121212" : "#f8f9fa"}}>
+                                    <div class=" col-md-11 col-11 rounded" style={{ backgroundColor: theme.theme === "dark" ? "#121212" : "#f8f9fa" }}>
                                         <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0 border-bottom">
                                             <div class="col-md-4 col-4 d-flex justify-content-start pb-2">
                                                 <span>جمع جزء</span>
@@ -169,8 +174,8 @@ function Cart(theme) {
                                                 <span>{addCommas(TotalPrice)} تومان</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0 border-bottom">
-                                            <div class="col-md-4 col-4 d-flex justify-content-start pb-2">
+                                        <div class="col-md-12 col-12 pb-2 pt-2 d-flex justify-content-center row m-0 border-bottom">
+                                            <div class="col-md-4 col-4 d-flex justify-content-start ">
                                                 <span class="align-self-center">حمل و نقل</span>
                                             </div>
                                             <div class="col-md-8 col-8 d-flex justify-content-start pt-2">
@@ -181,7 +186,7 @@ function Cart(theme) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0">
+                                        <div class="col-md-12 col-12 pt-2 d-flex justify-content-center row m-0 border-bottom">
                                             <div class="col-md-4 col-4 d-flex justify-content-start pb-2">
                                                 <span>مجموع</span>
                                             </div>
