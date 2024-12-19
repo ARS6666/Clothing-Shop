@@ -1,5 +1,5 @@
-.Image {
-    object-fit: cover;
+.ImageProd {
+    object-fit:contain;
     background-color: white;
     height: 400px;
     position: relative;
@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 1024px) {
-    .Image {
+    .ImageProd {
         object-fit: cover;
         background-color: white;
         width: 100%;

@@ -126,19 +126,21 @@ function ProductInfo(theme) {
                   <img key={c.image} className="img-fluid m-1 remove" src={c.image} alt="Product Thumbnail" />
                 ))}
               </div>
-              <div className="magnify-container col-md-10 d-flex justify-content-center">
+              <div className="magnify-container col-md-10 col-12 d-flex justify-content-center">
                 <div className="justify-content-start">{product.discount !== 0 && product.count !== 0 ? <div class="discountDisplay">{product.discount}%</div> : null}</div>
-                <Carousel>
-                  {IMG.map((Pic, index) => (
-                    <Carousel.Item key={index}>
-                      <img className="d-block Image magnify-image" src={Pic.image} alt={`Product Image ${index + 1}`} onMouseMove={handleMouseMove} style={{ transformOrigin }} />
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
+                <div className="col-md-12 col-12">
+                  <Carousel>
+                    {IMG.map((Pic, index) => (
+                      <Carousel.Item key={index}>
+                        <img className="d-block ImageProd magnify-image" src={Pic.image} alt={`Product Image ${index + 1}`} onMouseMove={handleMouseMove} style={{ transformOrigin }} />
+                      </Carousel.Item>
+                    ))}
+                  </Carousel>
+                </div>  
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-center">
+          <div className="col-md-6 col-sm-12 col-12 fontr pt-4 d-flex justify-content-start">
             <div className="col-md-10 col-sm-11 col-11">
               <div><h2 className={theme.theme.theme === "dark" ? "text-white" : "text-dark"}>{product.name}</h2></div>
               <div className="col-md-12 col-12 col-sm row m-0">
